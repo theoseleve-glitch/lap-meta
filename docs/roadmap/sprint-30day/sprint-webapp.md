@@ -12,9 +12,9 @@
 - [x] T002 [sonnet] Copy tsconfig.json from old lap-website, set `strict: true` + `noUncheckedIndexedAccess: true` ⇒ tsc clean (79534e3)
 - [x] T003 [sonnet] Copy Tailwind config + design tokens + fonts from old repo ⇒ styling renders (9ac2fa5)
 - [x] T004 [codex] Copy `public/` assets (fonts, icons) ⇒ fonts load (9048c83)
-- [ ] T005 [codex] Move `src/app/app/**` from old repo → `src/app/(app)/**` in new repo ⇒ structure preserved
-- [ ] T006 [codex] Move `src/components/**` (app-scoped only) → new repo ⇒ imports resolve
-- [ ] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve
+- [x] T005 [codex] Move `src/app/app/**` from old repo → `src/app/(app)/**` in new repo ⇒ structure preserved (49c0643)
+- [x] T006 [codex] Move `src/components/**` (app-scoped only) → new repo ⇒ imports resolve (a8835b6)
+- [x] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve (29ffe70)
 - [ ] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve
 - [ ] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir
 - [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works

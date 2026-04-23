@@ -13,8 +13,8 @@
 - [x] T002 [sonnet] Tailwind integration + design tokens from old lap-website ⇒ styling renders (lap-website@fa5f6d8)
 - [x] T003 [sonnet] Font setup (monospace Font Monument + sans Inter) with preload + swap ⇒ FOUT minimized (lap-website@06f4255)
 - [x] T004 [sonnet] Directory layout: `src/pages/`, `src/layouts/`, `src/components/`, `src/content/`, `public/` ⇒ organized (lap-website@a9e3e2b)
-- [x] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green (lap-website@bffd825)
-- [x] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes (lap-website@9cb0ecf)
+- [NEEDS_REWORK] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green (lap-website@bffd825) — failed review cycle 4: astro-check / eslint typecheck exposed 4×ts(2580) errors in playwright.config.ts ("Cannot find name 'process'" — needs @types/node), git revert blocked by cascading pnpm-lock.yaml conflicts across T005/T006/T007. Strategy-decision alert fired (Resend b44e45c1).
+- [NEEDS_REWORK] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes (lap-website@9cb0ecf) — failed review cycle 4: T006 introduced playwright.config.ts without @types/node in devDependencies, causing the ts(2580) errors T005's astro-check catches. Fix options: add @types/node OR switch playwright.config.ts to avoid process.env. revert blocked by lock conflict chain.
 - [x] T007 [codex] GitHub Actions CI: build + typecheck + lint + test ⇒ workflow green (lap-website@5826a14, verified locally; first GH run will confirm)
 - [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push
 - [ ] T009 [codex] Domain DNS: `lap.com` → Cloudflare Pages; `app.lap.com` → webapp ⇒ configured

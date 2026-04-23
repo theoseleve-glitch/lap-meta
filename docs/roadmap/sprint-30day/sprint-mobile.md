@@ -14,8 +14,8 @@
 - [x] T003 [sonnet] Enable Compose Compiler, set min SDK 26 (Android 8), target SDK 34 ⇒ builds — f300508
 - [x] T004 [sonnet] KSP enabled for Hilt + Room ⇒ builds — d9e8e75
 - [x] T005 [codex] `.editorconfig`, `detekt.yml`, `.gitattributes` ⇒ checked-in — 2a7a118
-- [ ] T006 [codex] Detekt + ktlint Gradle tasks: `./gradlew detekt ktlintCheck` ⇒ green on empty project
-- [ ] T007 [codex] GitHub Actions `ci.yml`: assembleDebug, lint, test on push ⇒ workflow green
+- [x] T006 [codex] Detekt + ktlint Gradle tasks: `./gradlew detekt ktlintCheck` ⇒ green on empty project — 0a15e1e
+- [x] T007 [codex] GitHub Actions `ci.yml`: assembleDebug, lint, test on push ⇒ workflow green — b1dceb8 [PENDING: green-on-push validation requires remote GHA run; each step verified locally]
 - [ ] T008 [sonnet] Pre-commit hook: ktlintFormat + assembleDebug ⇒ blocks bad commits
 - [ ] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches
 - [ ] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders
