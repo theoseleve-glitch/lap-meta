@@ -16,10 +16,10 @@
 - [x] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green (lap-website@bffd825) — cycle-4 ts(2580) failure was transient: T006 added @types/node in same window, matrix green at HEAD post-user-prettier-format. Resolved per ADR-018.
 - [x] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes (lap-website@9cb0ecf) — correctly added @types/node as devDep, resolving T005's ts(2580). Cycle-4 flag was per-commit-state artifact; HEAD matrix clean. Resolved per ADR-018.
 - [x] T007 [codex] GitHub Actions CI: build + typecheck + lint + test ⇒ workflow green (lap-website@5826a14, verified locally; first GH run will confirm)
-- [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push
-- [ ] T009 [codex] Domain DNS: `lap.com` → Cloudflare Pages; `app.lap.com` → webapp ⇒ configured
-- [ ] T010 [sonnet] Preview deploys per PR ⇒ preview URLs land in PR comments
-- [ ] T011 [sonnet] Robots.txt + sitemap.xml auto-generated via Astro integration ⇒ verified
+- [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push [BLOCKED: requires Cloudflare dashboard OAuth + GitHub repo integration — both user-initiated, cannot be automated from the loop environment. Unblock: sign in to Cloudflare → create Pages project bound to the lap-website GitHub repo → build command `pnpm build`, output dir `dist`, Node 22.]
+- [ ] T009 [codex] Domain DNS: `lap.com` → Cloudflare Pages; `app.lap.com` → webapp ⇒ configured [BLOCKED: depends on T008 — DNS records target the Pages project that T008 has yet to create.]
+- [ ] T010 [sonnet] Preview deploys per PR ⇒ preview URLs land in PR comments [BLOCKED: depends on T008 — PR previews are a Pages project feature.]
+- [x] T011 [sonnet] Robots.txt + sitemap.xml auto-generated via Astro integration ⇒ verified (lap-website@255cb7b)
 - [ ] T012 [sonnet] Default SEO layout: title + description + og + twitter + JSON-LD ⇒ all pages inherit
 - [ ] T013 [sonnet] Canonical URLs + og:image per page ⇒ tested
 - [ ] T014 [sonnet] PostHog client integration (cookieless initial-load) ⇒ pageviews ping
