@@ -13,7 +13,7 @@
 - [x] T002 [sonnet] Tailwind integration + design tokens from old lap-website ⇒ styling renders (lap-website@fa5f6d8)
 - [x] T003 [sonnet] Font setup (monospace Font Monument + sans Inter) with preload + swap ⇒ FOUT minimized (lap-website@06f4255)
 - [x] T004 [sonnet] Directory layout: `src/pages/`, `src/layouts/`, `src/components/`, `src/content/`, `public/` ⇒ organized (lap-website@a9e3e2b)
-- [ ] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green
+- [x] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green (lap-website@bffd825)
 - [ ] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes
 - [ ] T007 [codex] GitHub Actions CI: build + typecheck + lint + test ⇒ workflow green
 - [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push
