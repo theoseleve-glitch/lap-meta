@@ -6,10 +6,12 @@
 
 | Terminal | Path | Repo | Sprint file | Platform |
 |---|---|---|---|---|
-| 1 — BACKEND | `C:/Users/Admin/Documents/Telemetry/lap-backend` | Python FastAPI | `sprint-backend.md` | ✓ Windows |
-| 2 — WEBAPP | `C:/Users/Admin/Documents/Telemetry/lap-webapp` | Next.js | `sprint-webapp.md` | ✓ Windows |
-| 3 — DESKTOP | `C:/Users/Admin/Documents/Telemetry/datalogger` | Python / Qt QML | `sprint-desktop.md` | ✓ Windows |
-| 4 — MOBILE | `C:/Users/Admin/Documents/Telemetry/lap-mobile-android` | Kotlin / Compose | `sprint-mobile.md` | ✓ Windows |
+| 1 — BACKEND | `C:/Users/Admin/Documents/Telemetry/lap-backend` | Python FastAPI | `sprint-backend.md` then `sprint2-backend.md` | ✓ Windows |
+| 2 — WEBAPP | `C:/Users/Admin/Documents/Telemetry/lap-webapp` | Next.js | `sprint-webapp.md` then `sprint2-webapp.md` | ✓ Windows |
+| 3 — DESKTOP | `C:/Users/Admin/Documents/Telemetry/datalogger` | Python / Qt QML | `sprint-desktop.md` then `sprint2-desktop.md` | ✓ Windows |
+| 4 — MOBILE | `C:/Users/Admin/Documents/Telemetry/lap-mobile-android` | Kotlin / Compose | `sprint-mobile.md` then `sprint2-mobile.md` | ✓ Windows |
+| 5 — REVIEW + DEPLOY | `C:/Users/Admin/Documents/Telemetry` | all 6 repos | `loop-review.md` runbook | ✓ Windows |
+| 6 — MARKETING | `C:/Users/Admin/Documents/Telemetry/lap-website` | Astro static | `sprint-marketing.md` | ✓ Windows |
 
 **`lap_mobile/` (iOS)** is frozen until Mac available. `sprint-mobile-ios-future.md` preserves its 240 iOS tasks for resumption.
 
@@ -140,15 +142,22 @@ claude
 
 ```
 LOOP-SETUP.md                         ← this file
-sprint-backend.md                     ← 240 backend tasks
-sprint-webapp.md                      ← 240 webapp tasks
-sprint-desktop.md                     ← 240 desktop tasks
-sprint-mobile.md                      ← 240 Android tasks (ACTIVE)
+sprint-backend.md                     ← Sprint 1: 240 backend tasks (drains ~Day 10)
+sprint-webapp.md                      ← Sprint 1: 240 webapp tasks
+sprint-desktop.md                     ← Sprint 1: 240 desktop tasks
+sprint-mobile.md                      ← Sprint 1: 240 Android tasks
 sprint-mobile-ios-future.md           ← 240 iOS tasks (FROZEN until Mac)
+sprint2-backend.md                    ← Sprint 2: 200 backend tasks (M3 APIs + bridge + cohort + endurance + events + 50 rules + B2B)
+sprint2-webapp.md                     ← Sprint 2: 150 webapp tasks (bridge UI + cohort UI + endurance UX + V1 polish + B2B + perf + a11y)
+sprint2-desktop.md                    ← Sprint 2: 80 desktop tasks (endurance refinement + auto-update + perf + bug bash)
+sprint2-mobile.md                     ← Sprint 2: 90 mobile tasks (stabilization + Play Store + Wear OS)
+sprint-marketing.md                   ← 220 marketing tasks (new pillar, never in any prior sprint)
 loop-review.md                        ← runbook for Terminal 5 (review + deploy)
 review-log.md                         ← append-only log, maintained by review loop
 metrics.md                            ← live snapshot, overwritten by review loop
 ```
+
+Totals: Sprint 1 = 960 tasks (4 × 240). Sprint 2 = 520 tasks (200 + 150 + 80 + 90). Marketing = 220 tasks. **Grand total = 1,700 tasks** covering ~100% of the 6-month roadmap.
 
 ---
 
@@ -205,3 +214,67 @@ Day 3+              → All 5 running in steady state. Your only job: triage
 ### If you find you can't resist checking daily
 
 That's fine — the review loop doesn't forbid human intervention. It just doesn't require it. Adding human review on top strictly improves quality. Removing human review entirely is the deliberate trade you made today.
+
+---
+
+## Terminal 6 — MARKETING (NEW — launch alongside the others)
+
+Unlike Sprint 2 terminals (which wait for Sprint 1 to drain), the marketing terminal runs **immediately**. Marketing has zero prior sprint work and no backend dependencies for the first ~100 tasks. Start it now.
+
+### Start command
+
+```bash
+cd C:/Users/Admin/Documents/Telemetry/lap-website
+claude --dangerously-skip-permissions
+```
+
+### Paste this prompt once Claude starts
+
+```
+/loop 1h Read C:/Users/Admin/Documents/Telemetry/docs/roadmap/sprint-30day/sprint-marketing.md. Find the next `[ ]` task in order (skip blocked-by-dep). Invoke superpowers:using-superpowers then superpowers:test-driven-development for code, or superpowers:writing-skills for long-form content. Complete fully: code + `pnpm build && pnpm typecheck && pnpm test` green + commit. Commit: `sprint(marketing): T### <short>`. No --no-verify. Reference C:/Users/Admin/Documents/Telemetry/docs/roadmap/02-ARCHITECTURE-DECISIONS.md, 01-STRATEGIC-DOCTRINE.md for positioning, and ./CLAUDE.md. Invoke superpowers:verification-before-completion before claim-done. Mark `[x]` with sha. If blocked, `[BLOCKED: <reason>]`. All public-facing copy must align with 01-STRATEGIC-DOCTRINE.md — no "AI coach now" claims (roadmap forbids LLMs in coaching per ADR). Never ask the user. Never exit. Minimal diffs. When writing long-form content (blog, pillar pages), the target is human-quality professional prose, not SEO keyword soup.
+```
+
+---
+
+## Sprint 1 → Sprint 2 transition
+
+Around Day 10-12, Sprint 1 queues will drain. `metrics.md` will show `[ ] open` close to 0 on a repo. When that happens:
+
+### For the affected terminal:
+
+1. Ctrl+C the old /loop prompt.
+2. Re-paste the same /loop command but **change the filename**:
+   - `sprint-backend.md` → `sprint2-backend.md`
+   - `sprint-webapp.md` → `sprint2-webapp.md`
+   - `sprint-desktop.md` → `sprint2-desktop.md`
+   - `sprint-mobile.md` → `sprint2-mobile.md`
+
+No other change needed. Same terminal, same /loop cadence, new task queue.
+
+### Expected drain order (at current velocity)
+
+```
+Day 10-12   → sprint-backend drains  → switch to sprint2-backend
+Day 11-13   → sprint-webapp drains   → switch to sprint2-webapp
+Day 14-16   → sprint-desktop drains  → switch to sprint2-desktop
+Day 16-20   → sprint-mobile drains   → switch to sprint2-mobile
+Day 22-30   → Sprint 2 queues drain  → full 6-month plan complete
+Day 25-32   → sprint-marketing drains → marketing site live
+```
+
+If a Sprint 2 queue also drains before end of month, that means you're running faster than expected — the 6-month plan is done early and you can start planning the 7-12 month roadmap.
+
+## Total coverage
+
+With Sprint 1 + Sprint 2 + Marketing executed:
+
+| Pillar | Sprint 1 | Sprint 2 | Coverage of 6mo plan |
+|---|---|---|---|
+| Backend | 240 tasks (M1-M2) | 200 tasks (M3-M6 + bridge + cohort + rules) | ~95% |
+| Webapp | 240 tasks (M1-M3) | 150 tasks (M4-M6) | ~95% |
+| Desktop | 240 tasks (M1-M5) | 80 tasks (M5-M6 polish) | ~100% |
+| Mobile (Android) | 240 tasks (M1-M5 scaffolding) | 90 tasks (Play Store + Wear OS) | ~90% (iOS still frozen) |
+| Marketing | 0 | 220 tasks (full 6mo scope) | ~95% |
+| **Net** | | | **~95% of 6-month roadmap** |
+
+The remaining ~5% is things like Apple Watch (needs Mac), second rounds of iteration based on real paying-user feedback, and paid ad experiments that require a marketing budget decision.
