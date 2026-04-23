@@ -674,3 +674,36 @@ Cron-fired 23:07 UTC. Baselines: backend=`14180aa`, webapp=`52e1cce`, schemas=`a
 - `meta: review loop cycle 11` with review-log + metrics + sprint-backend (T013 [NEEDS_REWORK]) + sprint-marketing (T017 [SCOPE_FLAG]) + any other sprint-file bookkeeping. Push to lap-meta.
 
 ---
+
+## 2026-04-23T23:50:00Z — Cycle #12
+
+Cron-fired 23:37 UTC. Baselines: backend=`3312b5e` (revert tip from c11), webapp=`52e1cce`, schemas=`a50d39a`, mobile=`8577f35`, website=`317d62c`, datalogger=`eb97496`. Disk 87% (up 1%). Daily email: skip (dedup).
+
+### Per-repo
+- **lap-backend `6018966` T014 app/deps.py DI stubs**: ACCEPTED + tagged + pushed. Full matrix green — pytest 8 passed (+2 from T012's 6). Diff: 3 files / 55 ins. Sprint loop skipped T013 (now NEEDS_REWORK) and moved to T014 — expected.
+- **lap-webapp**: 4th consecutive idle cycle. HEAD still `52e1cce`.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `2208d57` T015 keystore.properties signing**: ACCEPTED. Full matrix green. Diff: 1 file / 30 ins / 4 del.
+- **lap-website `3e57701` T019 404 page**: ACCEPTED. Full matrix green. Diff: 2 files / 49 ins. Build now emits 2 static pages (/ + /404.html). 4 TDD tests added.
+- **datalogger**: 8th quiet cycle.
+
+### Step 5 cross-repo
+- Schema drift: none.
+- Endpoint drift: n/a.
+- **Observation (not drift)**: website T013 migrated `lap.com → lap-coach.racing`. Backend/webapp/mobile still reference old domain in task docs + potentially in code (e.g., CORS origins). No current sprint task tests cross-repo URL coherence, so not a Step-5 contract failure — tracked in metrics.md current issues.
+
+### Steps 6-7: all skipped (no deploy configs).
+
+### Steps 10-11
+- Daily email: skipped (dedup).
+- Alerts: none fired.
+
+### Baselines cycle 13
+- backend=`6018966`, webapp=`52e1cce` (4 idle), schemas=`a50d39a`, mobile=`2208d57`, website=`3e57701`, datalogger=`eb97496` (8 quiet)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 12` with review-log + metrics + any sprint-file bookkeeping.
+
+---
