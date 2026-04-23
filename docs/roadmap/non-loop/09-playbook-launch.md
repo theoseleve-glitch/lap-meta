@@ -20,6 +20,7 @@ Can only launch if ALL:
 - [ ] Figma mockups → real implementations for Driver Timeline, Profile, Coaching tab (at minimum)
 - [ ] Mobile Android in Play Store internal test track (nice-to-have, not blocker)
 - [ ] Desktop installer signed + downloadable from GitHub Release
+- [ ] **Domain hygiene check**: `grep -rn "lap\.com" lap-backend lap-webapp lap-website lap-mobile-android datalogger lap-schemas` returns ZERO hits. Sprint loops heal most references naturally but any hardcoded `lap.com` in CSP headers, next.config.mjs, email templates, or similar must be manually swept before public beta. This is the safety net for the 2026-04-23 domain rename.
 
 ### Content readiness gate (Day -14)
 
