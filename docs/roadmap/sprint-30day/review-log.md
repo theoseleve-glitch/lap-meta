@@ -530,3 +530,29 @@ Cron-fired 21:07 UTC. Baselines: backend=`602d05b`, webapp=`33cde90`, schemas=`a
 - review-log + metrics + any sprint-file modifications with `meta: review loop cycle 7`.
 
 ---
+
+## 2026-04-23T21:50:00Z — Cycle #8
+
+Cron-fired 21:37 UTC. Baselines: backend=`20484aa`, webapp=`bac7b0c`, schemas=`a50d39a`, mobile=`690db9f`, website=`cd14740`, datalogger=`eb97496`. Disk 86%. Daily email dedup: skip.
+
+### Per-repo
+- **lap-backend `699bc51` T010 first test for /healthz**: ACCEPTED + tagged + pushed. Full matrix green; **pytest actually passes a real test**: `1 passed in 0.32s`. Diff: 1 file / 8 ins.
+- **lap-webapp `52e1cce` T014 Prettier config + one-time format pass**: ACCEPTED. Full matrix green. Diff: 14 files / 286 ins / 118 del (total 404, under 1500). Large because it reformats many files.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `098f8bd` T011 material3 theme**: ACCEPTED. Full matrix green (:app:detekt, :app:ktlintCheck, assemble, test — all BUILD SUCCESSFUL). Diff: 5 files / 102 ins / 3 del. Adds ui/theme/ (Color.kt, Typography.kt, Shape.kt).
+- **lap-website `c370601` T014 PostHog cookieless integration**: ACCEPTED. Full matrix green. Diff: 5 files / 380 ins / 3 del. Init only when `PUBLIC_POSTHOG_KEY` set — no-op in dev/preview.
+- **datalogger**: 4th consecutive quiet cycle at `eb97496`.
+
+### Step 5 cross-repo: no drift.
+### Step 6-7: deploys all skipped (no configs). Smoke n/a.
+### Step 10-11: daily email dedup-skipped; no alerts fired.
+
+### Baselines cycle 9
+- backend=`699bc51`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`098f8bd`, website=`c370601`, datalogger=`eb97496` (unchanged)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- review-log + metrics + sprint-file bookkeeping → `meta: review loop cycle 8`.
+
+---

@@ -21,7 +21,7 @@
 - [x] T011 [sonnet] Configure next.config.mjs for `app.lap-coach.racing` subdomain + strict CSP ⇒ deploys (33cde90)
 - [x] T012 [codex] Re-enable TS + ESLint checks in next build (remove audit's bypass) ⇒ `next build` strict (no-op: T001 scaffold never carried the audit's `eslint.ignoreDuringBuilds` / `typescript.ignoreBuildErrors` bypass)
 - [x] T013 [codex] Setup ESLint with next/core-web-vitals + strict TS rules ⇒ lint green (bac7b0c)
-- [ ] T014 [codex] Prettier config, format all files once ⇒ no diff on re-run
+- [x] T014 [codex] Prettier config, format all files once ⇒ no diff on re-run (52e1cce)
 - [ ] T015 [codex] Husky + lint-staged for pre-commit ⇒ blocks bad commits
 - [ ] T016 [codex] GitHub Actions: typecheck + lint + test on PR ⇒ workflow green
 - [ ] T017 [sonnet] Vitest setup for unit tests, Playwright for e2e ⇒ sample tests run. **Per ADR-018: `pnpm add -D @types/node` BEFORE writing any playwright.config.ts or test that uses `process.env`/`fs`/`path`. Non-optional.**

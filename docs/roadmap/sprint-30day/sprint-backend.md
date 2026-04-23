@@ -29,7 +29,7 @@
 - [x] T008 [sonnet] Setup `structlog` for JSON logging, wire into FastAPI middleware ⇒ request logs are JSON — sha: 602d05b
 - [x] T009 [sonnet] Add pytest + pytest-asyncio + httpx in dev deps, `tests/` dir with conftest.py ⇒ `pytest` finds 0 tests green — sha: 20484aa
 - [x] T010 [codex] First test: `test_healthz_returns_200` in `tests/test_health.py` ⇒ test green — sha: 699bc51
-- [ ] T011 [sonnet] Domain layout: create `app/`, `domain/`, `infra/`, `coaching/` top-level packages with `__init__.py` ⇒ importable
+- [x] T011 [sonnet] Domain layout: create `app/`, `domain/`, `infra/`, `coaching/` top-level packages with `__init__.py` ⇒ importable — sha: fbef621
 - [ ] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested
 - [ ] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed
 - [ ] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work

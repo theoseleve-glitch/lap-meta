@@ -19,7 +19,7 @@
 - [x] T008 [sonnet] Pre-commit hook: ktlintFormat + assembleDebug ⇒ blocks bad commits — 226b89a
 - [x] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches — 1426ca2 [PENDING: app-launch-on-device]
 - [x] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders — 690db9f [PENDING: default-route-renders-on-device]
-- [ ] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed
+- [x] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed — 098f8bd [PENDING: visual-check-on-device]
 - [ ] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device
 - [ ] T013 [sonnet] Strings.xml: default English strings, values-fr/ stubbed ⇒ localizable
 - [ ] T014 [sonnet] ProGuard/R8 rules file with defaults + Hilt+Room+Retrofit keep rules ⇒ release build works
