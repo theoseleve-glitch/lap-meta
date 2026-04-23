@@ -18,7 +18,7 @@
 - **Acceptance:**
   - `lap-webapp` builds and runs locally
   - `lap-website` becomes marketing-only
-  - Routes: marketing on `lap.com`, webapp on `app.lap.com`
+  - Routes: marketing on `lap-coach.racing`, webapp on `app.lap-coach.racing`
 
 ### WA-002 🔴 Install `@lap/schemas` and replace local DTO definitions
 - **Month/week:** M1/W2

@@ -18,7 +18,7 @@
 - [x] T007 [codex] GitHub Actions `ci.yml`: assembleDebug, lint, test on push ⇒ workflow green — b1dceb8 [PENDING: green-on-push validation requires remote GHA run; each step verified locally]
 - [x] T008 [sonnet] Pre-commit hook: ktlintFormat + assembleDebug ⇒ blocks bad commits — 226b89a
 - [x] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches — 1426ca2 [PENDING: app-launch-on-device]
-- [ ] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders
+- [x] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders — 690db9f [PENDING: default-route-renders-on-device]
 - [ ] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed
 - [ ] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device
 - [ ] T013 [sonnet] Strings.xml: default English strings, values-fr/ stubbed ⇒ localizable
@@ -217,7 +217,7 @@
 - [ ] T182 [sonnet] Unpair (revoke this device): POST /auth/devices/:id/revoke ⇒ tested
 - [ ] T183 [sonnet] Offline capture permitted without auth for current session (auth check at upload) ⇒ tested
 - [ ] T184 [sonnet] Deep-link from webapp: `lap://pair?token=...` ⇒ routes correctly
-- [ ] T185 [sonnet] Deep-link domain: App Links verification on `app.lap.com/pair` ⇒ configured
+- [ ] T185 [sonnet] Deep-link domain: App Links verification on `app.lap-coach.racing/pair` ⇒ configured
 - [ ] T186 [sonnet] Session expired UX: sign-in-again modal, preserves local data ⇒ works
 - [ ] T187 [sonnet] Multi-account scaffold (single-account active in v1) ⇒ not user-facing
 - [ ] T188 [sonnet] Biometric lock option (Settings → Security) ⇒ works

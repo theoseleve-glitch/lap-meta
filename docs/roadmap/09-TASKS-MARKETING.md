@@ -21,8 +21,8 @@
   - JSON-LD, sitemap generators → new site
 - **Acceptance:**
   - Marketing site builds and deploys standalone
-  - Webapp routes remain functional on `app.lap.com`
-  - Marketing remains on `lap.com`
+  - Webapp routes remain functional on `app.lap-coach.racing`
+  - Marketing remains on `lap-coach.racing`
 
 ### MK-002 🔴 Astro migration (OR: skip if Next.js decided to stay)
 - **Month/week:** M1/W3

@@ -33,7 +33,7 @@
 - [ ] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested
 - [ ] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed
 - [ ] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work
-- [ ] T015 [sonnet] Add CORS middleware configured for `app.lap.com` origins only ⇒ preflight test green
+- [ ] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green
 - [ ] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests
 - [ ] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works
 - [ ] T018 [codex] Dockerfile for backend (multi-stage, python:3.12-slim base) ⇒ `docker build` succeeds

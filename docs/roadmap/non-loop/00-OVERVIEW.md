@@ -17,7 +17,7 @@ From 2026-04-23 answer block:
 | Weekly review | **Friday 17:00 CET** |
 | SaaS monthly budget | **<€50 → €50-150 scaling with user count** |
 | Business entity | **Micro-entreprise (SIRET pending)** |
-| Domain | **`lap-coach.racing` on Cloudflare** (NOT `lap.com`) |
+| Domain | **`lap-coach.racing` on Cloudflare** |
 | Logo | **Exists in Figma** |
 | Brand | **LAP / LAP COACH (with variants)** |
 | Community accounts | **None exist yet — build as part of launch prep** |

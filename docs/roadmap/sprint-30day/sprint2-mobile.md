@@ -19,7 +19,7 @@
 - [ ] T009 [sonnet] Fix: foreground notification dismissible on Android 13+ ⇒ ongoing flag
 - [ ] T010 [sonnet] Fix: dark-mode colors in preflight screen ⇒ corrected
 - [ ] T011 [sonnet] Fix: landscape orientation breaks dashboard on some devices ⇒ tested on Pixel + Samsung + OnePlus
-- [ ] T012 [sonnet] Fix: Deep-link from lap.com/pair opens but doesn't handle token correctly ⇒ resolved
+- [ ] T012 [sonnet] Fix: Deep-link from lap-coach.racing/pair opens but doesn't handle token correctly ⇒ resolved
 - [ ] T013 [sonnet] Fix: RaceBox BLE cold-boot scan takes >30s on some devices ⇒ timeout + user cue
 - [ ] T014 [sonnet] Fix: upload progress not updating when app is backgrounded ⇒ WorkManager status → notification
 - [ ] T015 [sonnet] Fix: language picker doesn't persist across app restart ⇒ resolved

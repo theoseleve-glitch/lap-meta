@@ -18,16 +18,16 @@
 - [x] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve (19b0803)
 - [x] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir (no-op: webapp seeded clean, never had marketing routes)
 - [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works [BLOCKED: waiting on lap-backend T045 — TS codegen pipeline; lap-schemas/typescript/ is empty (no package.json)]
-- [x] T011 [sonnet] Configure next.config.mjs for `app.lap.com` subdomain + strict CSP ⇒ deploys (33cde90)
-- [ ] T012 [codex] Re-enable TS + ESLint checks in next build (remove audit's bypass) ⇒ `next build` strict
-- [ ] T013 [codex] Setup ESLint with next/core-web-vitals + strict TS rules ⇒ lint green
+- [x] T011 [sonnet] Configure next.config.mjs for `app.lap-coach.racing` subdomain + strict CSP ⇒ deploys (33cde90)
+- [x] T012 [codex] Re-enable TS + ESLint checks in next build (remove audit's bypass) ⇒ `next build` strict (no-op: T001 scaffold never carried the audit's `eslint.ignoreDuringBuilds` / `typescript.ignoreBuildErrors` bypass)
+- [x] T013 [codex] Setup ESLint with next/core-web-vitals + strict TS rules ⇒ lint green (bac7b0c)
 - [ ] T014 [codex] Prettier config, format all files once ⇒ no diff on re-run
 - [ ] T015 [codex] Husky + lint-staged for pre-commit ⇒ blocks bad commits
 - [ ] T016 [codex] GitHub Actions: typecheck + lint + test on PR ⇒ workflow green
 - [ ] T017 [sonnet] Vitest setup for unit tests, Playwright for e2e ⇒ sample tests run. **Per ADR-018: `pnpm add -D @types/node` BEFORE writing any playwright.config.ts or test that uses `process.env`/`fs`/`path`. Non-optional.**
 - [ ] T018 [sonnet] Storybook setup for component docs ⇒ `pnpm storybook` boots
 - [ ] T019 [sonnet] Cloudflare Pages deployment via OpenNext ⇒ preview URL works
-- [ ] T020 [sonnet] Domain routing: `app.lap.com` → webapp, `lap.com` → marketing ⇒ DNS configured
+- [ ] T020 [sonnet] Domain routing: `app.lap-coach.racing` → webapp, `lap-coach.racing` → marketing ⇒ DNS configured
 
 ## Block B — Contracts migration (T021–T045)
 

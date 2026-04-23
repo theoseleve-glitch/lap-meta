@@ -40,7 +40,7 @@
 ## Block C — Auto-update mechanism (T026–T040)
 
 - [ ] T026 [opus] Auto-update architecture design ⇒ ADR written
-- [ ] T027 [opus] Version-check endpoint: `GET https://releases.lap.com/latest.json` returns semver + download-url + signature ⇒ mocked
+- [ ] T027 [opus] Version-check endpoint: `GET https://releases.lap-coach.racing/latest.json` returns semver + download-url + signature ⇒ mocked
 - [ ] T028 [opus] Client version-check on app start + periodically ⇒ runs
 - [ ] T029 [opus] Update-available notification in UI ⇒ rendered
 - [ ] T030 [opus] Download to temp dir with progress ⇒ works

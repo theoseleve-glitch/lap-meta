@@ -2,7 +2,7 @@
 
 **Repo:** `lap-website/`.
 **Stack:** Astro 5 (static-first), Tailwind, TypeScript strict, GSAP (motion), Cloudflare Pages (host), Resend (forms), Plausible/PostHog (analytics cookieless).
-**Deploys to:** `lap.com` (webapp is on `app.lap.com`, separate).
+**Deploys to:** `lap-coach.racing` (webapp is on `app.lap-coach.racing`, separate).
 **Total:** 220 tasks. Same /loop rules as sprint-backend.md.
 
 ---
@@ -17,7 +17,7 @@
 - [x] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes (lap-website@9cb0ecf) — correctly added @types/node as devDep, resolving T005's ts(2580). Cycle-4 flag was per-commit-state artifact; HEAD matrix clean. Resolved per ADR-018.
 - [x] T007 [codex] GitHub Actions CI: build + typecheck + lint + test ⇒ workflow green (lap-website@5826a14, verified locally; first GH run will confirm)
 - [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push [BLOCKED: requires Cloudflare dashboard OAuth + GitHub repo integration — both user-initiated, cannot be automated from the loop environment. Unblock: sign in to Cloudflare → create Pages project bound to the lap-website GitHub repo → build command `pnpm build`, output dir `dist`, Node 22.]
-- [ ] T009 [codex] Domain DNS: `lap.com` → Cloudflare Pages; `app.lap.com` → webapp ⇒ configured [BLOCKED: depends on T008 — DNS records target the Pages project that T008 has yet to create.]
+- [ ] T009 [codex] Domain DNS: `lap-coach.racing` → Cloudflare Pages; `app.lap-coach.racing` → webapp ⇒ configured [BLOCKED: depends on T008 — DNS records target the Pages project that T008 has yet to create.]
 - [ ] T010 [sonnet] Preview deploys per PR ⇒ preview URLs land in PR comments [BLOCKED: depends on T008 — PR previews are a Pages project feature.]
 - [x] T011 [sonnet] Robots.txt + sitemap.xml auto-generated via Astro integration ⇒ verified (lap-website@255cb7b)
 - [x] T012 [sonnet] Default SEO layout: title + description + og + twitter + JSON-LD ⇒ all pages inherit (lap-website@250a5f0)
@@ -36,7 +36,7 @@
 - [ ] T022 [opus] Hero component: positioning headline + subhead + dual CTA ⇒ Astro component
 - [ ] T023 [opus] Headline options (A/B): "The Driver OS — Train. Race. Improve." / "Every lap, one step better." ⇒ default chosen
 - [ ] T024 [opus] Subhead: one-sentence ecosystem pitch ⇒ copy locked
-- [ ] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap.com handoff) ⇒ wired
+- [ ] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired
 - [ ] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired
 - [ ] T027 [opus] Hero motion: subtle GSAP entrance, reduced-motion respected ⇒ smooth
 - [ ] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp
@@ -80,7 +80,7 @@
 - [ ] T060 [opus] Founder-waitlist offer section: "Signed up before launch? €12/mo for 12 months" ⇒ rendered
 - [ ] T061 [opus] FAQ section: 10 questions (cancel anytime, no card for trial, data export, etc.) ⇒ accordion
 - [ ] T062 [opus] B2B teaser: "Running a racing academy? Talk to us." ⇒ inline CTA to `/for-schools`
-- [ ] T063 [opus] Checkout CTA wires to `app.lap.com/signup?plan=monthly|yearly` ⇒ tested
+- [ ] T063 [opus] Checkout CTA wires to `app.lap-coach.racing/signup?plan=monthly|yearly` ⇒ tested
 - [ ] T064 [opus] Value-anchor comparison: "vs €80-150/hr human coach" ⇒ visible
 - [ ] T065 [sonnet] Refund policy link ⇒ works
 - [ ] T066 [sonnet] Contact sales link ⇒ email form or Calendly
@@ -96,7 +96,7 @@
 - [ ] T073 [opus] Choose format: embedded video (YouTube/Vimeo) OR inline screenshots ⇒ default video
 - [ ] T074 [opus] 3-minute product walkthrough video embedded ⇒ lazy-loaded
 - [ ] T075 [opus] Below-video: key screens in static cards ⇒ Storybook each
-- [ ] T076 [opus] "Try it with a real session" option: upload `.ibt` or use sample ⇒ CTA to app.lap.com sample path
+- [ ] T076 [opus] "Try it with a real session" option: upload `.ibt` or use sample ⇒ CTA to app.lap-coach.racing sample path
 - [ ] T077 [opus] Sample session data: pre-seeded Sebring session viewable without signup (read-only) ⇒ linked
 - [ ] T078 [opus] Call-outs on each screen explaining what it does ⇒ annotations
 - [ ] T079 [opus] Transcript of video ⇒ linked (a11y + SEO)
@@ -251,7 +251,7 @@
 - [ ] T201 [opus] `/for-schools` landing: karting academies + racing schools ⇒ renders
 - [ ] T202 [opus] B2B hero + value-prop + case-study placeholder ⇒ renders
 - [ ] T203 [opus] B2B form: name, school, students-count, email, message ⇒ submits
-- [ ] T204 [opus] B2B form → Resend → sales@lap.com inbox + confirmation email ⇒ tested
+- [ ] T204 [opus] B2B form → Resend → sales@lap-coach.racing inbox + confirmation email ⇒ tested
 - [ ] T205 [opus] B2B pricing overview (anchor, not commit) ⇒ "from €X/seat/mo, contact us" 
 - [ ] T206 [opus] B2B social proof slots ⇒ scaffolded
 - [ ] T207 [sonnet] Press kit page `/press`: logo files, screenshots, founder bio, facts ⇒ renders
