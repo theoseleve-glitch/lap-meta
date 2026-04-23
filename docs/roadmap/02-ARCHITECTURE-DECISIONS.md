@@ -583,6 +583,124 @@ Per Q192:
 
 ---
 
+## ADR-017 — Review loop tooling policy: applicability checks + INFRA_FLAG (2026-04-23)
+
+**Decision:** The review loop does **not** revert commits that fail verification due to infrastructure gaps (tool not installed, command not defined, task scaffolding not yet landed). It accepts with `INFRA_FLAG` and pushes. It only reverts on actual code failure (broken tests, compile errors, lint violations in code that could have been written correctly).
+
+**Context:** Cycle 2 of the review loop surfaced the structural issue. Sprint 1 backend and mobile matrices couldn't run fully because:
+- `uv` not in review host PATH (sprint T001 created the venv but system-level uv wasn't available)
+- `detekt` / `ktlintCheck` Gradle tasks don't exist yet (they're created by sprint tasks T005 and T006 respectively)
+- JDK 21 installed but `JAVA_HOME` not exported in the review terminal's environment
+
+If the review loop had reverted these commits, the sprint loops would have immediately re-done the same work, the review loop would have re-failed them the same way, and the system would enter an infinite recreate-revert cycle that burns quota and ships nothing. The review loop's intuition to accept-with-flag was correct.
+
+The general principle: **a review loop cannot enforce a verification step that hasn't been built yet by the sprint it's reviewing.** Early-sprint commits legitimately operate in a sub-tooled environment; full verification is only realistic once the sprint has scaffolded its own lint/format/test infrastructure.
+
+### Tool categories
+
+Tools are classified into three tiers based on when they must be available:
+
+| Tier | Tool | When required | Behavior if missing |
+|---|---|---|---|
+| **Hard-required** (always) | `git`, `gh`, `python 3.12`, `node 20+`, `pnpm 9+`, `java 21` + `JAVA_HOME`, `uv`, Android SDK + `ANDROID_HOME` | Entire sprint lifecycle | INFRA_FLAG + alert; if missing for 3 consecutive cycles, loop pauses |
+| **Conditionally-required** | `detekt`, `ktlintCheck`, custom Gradle tasks, `mypy strict`, `pnpm test:contracts`, `make codegen-check` | Only after the sprint task creating them has landed `[x]` | INFRA_FLAG without alert; skip verification step gracefully |
+| **Deferred** | `xcodebuild`, `swift`, Apple Watch toolchain | Only when Mac available | INFRA_FLAG + logged; never alerts |
+
+### Applicability check pattern
+
+Before running any verification command, the review loop MUST check the command is applicable:
+
+```python
+# pseudocode for review loop's Step 2 dispatcher
+
+def applicable(command, repo):
+    if command.startswith("pnpm "):
+        script = command.split()[1]
+        return script in read_json(f"{repo}/package.json")["scripts"]
+    if command.startswith("./gradlew "):
+        task = command.split()[1]
+        return task in run(f"cd {repo} && ./gradlew tasks --no-daemon").stdout
+    if command == "uv sync":
+        return Path(f"{repo}/pyproject.toml").exists()
+    if command.startswith("mypy "):
+        return Path(f"{repo}/mypy.ini").exists() or has_mypy_config_in_pyproject(repo)
+    # ... etc
+    return True
+
+for cmd in verification_matrix[repo]:
+    if not applicable(cmd, repo):
+        log(f"INFRA_FLAG: {cmd} not applicable (scaffolding not yet landed)")
+        continue
+    if not tool_on_path(cmd):
+        log(f"INFRA_FLAG: {cmd} tool missing on review host")
+        if cmd_is_hard_required(cmd):
+            increment_cycle_miss_counter(cmd)
+            if cycle_miss_counter(cmd) >= 3:
+                fire_alert("pause-triggered", f"hard-required tool '{cmd}' missing for 3 cycles")
+                write_pause_entry()
+        continue
+    run_and_verify(cmd)
+```
+
+### Revert-vs-flag decision
+
+| Failure mode | Behavior |
+|---|---|
+| Test fails on code that exists | REVERT |
+| Code doesn't compile | REVERT |
+| Lint error in new code | REVERT |
+| Secret detected in diff | REVERT (critical) |
+| Scope blowup >1500 LOC | FLAG (accept, tag `[SCOPE_FLAG]`) |
+| Tool not in PATH | INFRA_FLAG (accept, log, maybe alert) |
+| Task doesn't exist (conditionally-required) | INFRA_FLAG (accept silently, log only) |
+| Cross-repo contract test fails | FLAG (ambiguous attribution) |
+
+### Escalation
+
+The review loop fires `pause-triggered` alert (via `ops/send_alert.py`) when:
+- A hard-required tool is missing for 3 consecutive cycles (6 hours).
+- The cumulative count of INFRA_FLAG commits exceeds 20 in any repo without the underlying gap being fixed.
+
+These triggers exist because "tool should be installed" is a human action the loop can't take itself.
+
+### What this ADR does NOT authorize
+
+- It does NOT allow the review loop to skip verification for convenience.
+- It does NOT allow the review loop to ignore secret-leak or code-fail.
+- It does NOT allow any loop to `pip install` or `choco install` new tools on the host (those are user actions).
+- It does NOT extend to production — production verification is still full-strict, and a tooling gap in prod blocks deployment.
+
+### Review-host bootstrap requirement
+
+To close the hard-required gap, the user must install on the Windows host:
+
+```powershell
+# Install uv (adds to user PATH automatically)
+irm https://astral.sh/uv/install.ps1 | iex
+
+# Set JAVA_HOME for current user
+[Environment]::SetEnvironmentVariable('JAVA_HOME', 'C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot', 'User')
+
+# Add Java bin to PATH
+$currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+if ($currentPath -notlike '*jdk-21*') {
+  [Environment]::SetEnvironmentVariable('Path', $currentPath + ';C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\bin', 'User')
+}
+
+# Optionally: set ANDROID_HOME if Android Studio didn't
+# [Environment]::SetEnvironmentVariable('ANDROID_HOME', "$env:LOCALAPPDATA\Android\Sdk", 'User')
+
+# Close and reopen the review terminal after this runs.
+```
+
+After user runs this, the review loop resumes full-strict verification on hard-required tools. Conditionally-required tools continue to be tolerated until their sprint task lands.
+
+### Status
+
+Accepted. Implemented in `loop-review.md` Step 2 + Step 2.5 (applicability check) + Hard NEVER rules update. Flexible on the specific tool list — can add/remove as sprint scope evolves.
+
+---
+
 ## ADR-016 — What the audits got wrong
 
 Q197 asked for this. My read, to be validated with you:

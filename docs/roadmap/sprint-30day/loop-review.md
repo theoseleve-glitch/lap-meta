@@ -19,19 +19,66 @@ For each of the 5 repos (`lap-backend`, `lap-webapp`, `lap-schemas`, `lap-mobile
 
 ### Step 2 — Verify each commit
 
-For each unreviewed commit, in order:
+For each unreviewed commit, in order, run the language-specific verification matrix. **But first apply Step 2.5 (applicability check, per ADR-017) before each command.**
 
-**Build + type + lint + test — language-specific matrix:**
+**Verification matrix (full):**
 
-| Repo | Command sequence (must all exit 0) |
+| Repo | Command sequence |
 |---|---|
 | `lap-backend` | `uv sync` → `ruff check .` → `mypy app/ domain/` → `pytest -q` → `python -c "import app.main"` |
 | `lap-webapp` | `pnpm install --frozen-lockfile` → `pnpm typecheck` → `pnpm lint` → `pnpm test` → `pnpm build` |
-| `lap-schemas` | `uv sync` → `ruff check python/` → `mypy python/` → `pytest python/tests/` → `make codegen-check` (if Makefile has it) |
+| `lap-schemas` | `uv sync` → `ruff check python/` → `mypy python/` → `pytest python/tests/` → `make codegen-check` |
 | `lap-mobile-android` | `./gradlew detekt` → `./gradlew ktlintCheck` → `./gradlew app:assembleDebug` → `./gradlew app:testDebugUnitTest` |
+| `lap-website` | `pnpm install --frozen-lockfile` → `pnpm typecheck` → `pnpm lint` → `pnpm test` → `pnpm build` |
 | `datalogger` | `pytest -q` → `ruff check src/` → `mypy src/` |
 
-If any command fails: **go to Step 3 (revert path)**. If all pass: **go to Step 4 (accept path)**.
+### Step 2.5 — Applicability check (ADR-017)
+
+Before running any command, check whether it's currently applicable in the target repo. The review loop is NOT permitted to fail commits for absent scaffolding that hasn't been built yet.
+
+**Per-command applicability rules:**
+
+| Command pattern | Applicable iff |
+|---|---|
+| `uv sync` | `pyproject.toml` exists in repo root |
+| `ruff check X` | `pyproject.toml` has `[tool.ruff]` OR `ruff.toml` exists |
+| `mypy X` | `pyproject.toml` has `[tool.mypy]` OR `mypy.ini` exists |
+| `pytest X` | `pyproject.toml` has `[tool.pytest]` OR `tests/` exists |
+| `pnpm install --frozen-lockfile` | `package.json` + `pnpm-lock.yaml` both exist |
+| `pnpm <script>` | that script exists in `package.json` `scripts` |
+| `pnpm build` | `package.json` has `build` script |
+| `./gradlew <task>` | task appears in `./gradlew tasks --no-daemon` output |
+| `make <target>` | `Makefile` exists AND target is listed in `make help` or grep of Makefile |
+| `python -c "import X"` | module `X` is importable (`python -c "import X"` returns 0) |
+
+**Tool-on-PATH check** (separate from applicability):
+
+Before invoking any CLI tool, check it's on PATH. If not:
+- **Hard-required tool missing** (per ADR-017 list: `git`, `gh`, `python`, `node`, `pnpm`, `java` + `JAVA_HOME`, `uv`, Android SDK + `ANDROID_HOME`): log `INFRA_FLAG` + increment per-tool cycle-miss counter. If counter ≥3 for the same tool, fire `pause-triggered` alert with context "hard-required tool '{tool}' missing for 3 cycles on review host — user must install".
+- **Conditionally-required tool missing** (detekt, ktlintCheck, codegen-check): log `INFRA_FLAG` silently, skip that step, continue other steps.
+- **Deferred tool** (xcodebuild, swift): log and skip without alert — expected absence.
+
+**After applying Step 2.5, the verification matrix becomes:**
+
+- Run command → exit 0 → pass
+- Command not applicable yet → skip silently, no flag
+- Tool missing (conditionally-required) → `INFRA_FLAG`, skip
+- Tool missing (hard-required) → `INFRA_FLAG`, skip, maybe alert
+- Command runs and fails → **Step 3 (revert path)**
+- All applicable commands pass → **Step 4 (accept path)**
+
+### Revert-vs-flag matrix (ADR-017)
+
+| Outcome | Action |
+|---|---|
+| Applicable command fails (test red, compile error, lint error, type error on real code) | REVERT via Step 3 |
+| Secret detected in diff | REVERT (critical) |
+| Scope blowup >1500 LOC | `[SCOPE_FLAG]` — accept + push |
+| Tool missing on PATH | `[INFRA_FLAG]` — accept + push — **never revert** |
+| Command not yet applicable (scaffolding not landed) | Silent skip — **never revert, never flag** |
+| Cross-repo contract test fails | FLAG (ambiguous attribution) |
+
+**Rationale for never-reverting on INFRA_FLAG or not-applicable:** sprint loops will re-create whatever was reverted in the next iteration. A review loop that reverts config commits for tool-absence reasons creates an infinite revert-recreate cycle that burns quota and ships nothing. The correct response is to accept + flag + push, so the work accumulates, and alert the user to install missing tools.
 
 ### Step 3 — Revert path
 
@@ -241,7 +288,15 @@ python ops/send_alert.py secret-leak "lap-backend abc1234 task=T011 — detected
 
 ---
 
-## Hard NEVER rules
+## Hard NEVER rules (updated per ADR-017)
+
+**Never revert for infrastructure reasons.** If a commit fails verification because a tool is missing or a command/task hasn't been scaffolded yet: `INFRA_FLAG` + accept. Never revert. Reverting creates infinite recreate-revert loops because sprint loops re-do their work and the same gap persists.
+
+**Never install tools on the host.** The review loop cannot `pip install`, `choco install`, `apt install`, or otherwise modify system state. If a hard-required tool is missing, alert the user.
+
+---
+
+## Hard NEVER rules (original)
 
 1. **Never revert a commit whose author email is NOT `theos.eleve@gmail.com`.** Those are manual commits — human intent.
 2. **Never revert a commit whose message starts with `hotfix:`, `manual:`, `meta:`, or `revert:`.** Revert chains are human business.
