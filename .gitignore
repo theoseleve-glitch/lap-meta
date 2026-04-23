@@ -1,0 +1,49 @@
+# lap-meta — strict includelist at Telemetry root
+# Strategy: ignore everything by default, then whitelist the meta folders.
+
+# Everything ignored by default
+/*
+
+# Whitelist meta-repo content
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/docs/
+!/ops/
+
+# Inside whitelisted trees, apply normal rules
+ops/.env
+ops/*.log
+ops/alert-dedup.json
+ops/.last_daily_sent
+ops/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+# Explicitly exclude sub-repos (they have their own .git)
+lap-backend/
+lap-webapp/
+lap-schemas/
+lap-mobile-android/
+lap-website/
+lap_mobile/
+datalogger/
+
+# Session data (too large, not meta)
+LapCoachLogger_sessions/
+Analysis/
+Results/
+
+# Screenshots / bitmaps at root
+*.PNG
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.swp
