@@ -8,7 +8,7 @@
 
 ## Block A — P0 fixes + CI unblock (T001–T020)
 
-- [x] T001 [opus] Audit `live_telemetry_processor.py` imports, list every missing module reference ⇒ doc comment (ab2208b)
+- [x] T001 [opus] Audit `live_telemetry_processor.py` imports, list every missing module reference ⇒ doc comment (4cd3623)
 - [ ] T002 [opus] Define `LiveProcessor` ABC in `core/live_processor.py` with slots (on_sample, on_lap_end, on_session_end) ⇒ ABC importable
 - [ ] T003 [opus] Rebuild `CoachingLiveProcessor` using existing `live_detectors.py` primitives ⇒ no external missing imports
 - [ ] T004 [opus] Rebuild `DashboardLiveProcessor` exposing normalized snapshots ⇒ consumable by VM
