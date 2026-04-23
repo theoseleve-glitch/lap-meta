@@ -556,3 +556,37 @@ Cron-fired 21:37 UTC. Baselines: backend=`20484aa`, webapp=`bac7b0c`, schemas=`a
 - review-log + metrics + sprint-file bookkeeping → `meta: review loop cycle 8`.
 
 ---
+
+## 2026-04-23T22:20:00Z — Cycle #9
+
+Cron-fired 22:07 UTC. Baselines: backend=`699bc51`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`098f8bd`, website=`c370601`, datalogger=`eb97496`. Disk 86%. Daily email dedup: skip (UTC 2026-04-23, last_daily=2026-04-23).
+
+### Per-repo
+- **lap-backend `fbef621` T011 infra + coaching packages**: ACCEPTED + tagged + pushed. Full matrix green (pytest 1 passed 0.37s). Diff: 2 files / 0 ins / 0 del — two empty `__init__.py` files completing the 4-package doctrine (app/domain/infra/coaching).
+- **lap-webapp**: NO new sprint commits this cycle. Webapp sprint loop idle — first idle cycle for webapp since cycle 1 baseline. HEAD still at `52e1cce` (T014).
+- **lap-schemas**: no commits.
+- **lap-mobile-android `40e013e` T012 launcher icon placeholder**: ACCEPTED. Full matrix green (detekt+ktlint+assemble+test). Diff: 5 files / 28 ins. Adaptive icon (minSdk=26 skips legacy mipmap-density PNGs entirely).
+- **lap-website `92b142b` T015 analytics decision — keep PostHog**: ACCEPTED. Full matrix green. Diff: 1 file / 10 ins / 5 del. Commits ADR-019 analytics decision inline.
+- **datalogger**: 5th consecutive quiet cycle. Terminal 3 likely stopped.
+
+### Also observed on lap-meta (out of review scope)
+- `5e9ff39 sprint(marketing): T015 complete + ADR-019 analytics decision` — marketing loop self-commit to lap-meta documenting the PostHog-kept decision.
+
+### Step 5-7
+- Cross-repo: no drift. Backend T011 creates empty infra/coaching packages — no functional change. Mobile T012 is pure resource. Website T015 is config/docs.
+- Deploys: all skipped (no configs; T008 website user-blocked).
+- Smoke: n/a.
+
+### Step 10-11
+- Daily email: skipped via dedup. Will re-check first cycle after 2026-04-24 08:00 UTC.
+- Alerts: none.
+
+### Baselines cycle 10
+- backend=`fbef621`, webapp=`52e1cce` (unchanged), schemas=`a50d39a`, mobile=`40e013e`, website=`92b142b`, datalogger=`eb97496`
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 9` with review-log + metrics + sprint-file bookkeeping.
+
+---

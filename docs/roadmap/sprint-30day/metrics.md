@@ -1,42 +1,40 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-23T21:50Z (Cycle #8)
+## Last updated: 2026-04-23T22:20Z (Cycle #9)
 
 ## Per-repo status
 
-| Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | HEAD |
-|---|---|---|---|---|---|
-| lap-backend | 10 | 230 | 0 | 0 | `699bc51` (T010 first /healthz test) |
-| lap-webapp | 11 | 229 | 0 | 0 | `52e1cce` (T014 Prettier + format pass) |
-| lap-schemas | 0 | — | 0 | 0 | `a50d39a` |
-| lap-mobile-android | 11 | 229 | 0 | 0 | `098f8bd` (T011 material3 theme) |
-| lap-website | 11 | 3 BLOCKED | 3 | 0 | `c370601` (T014 PostHog cookieless) |
-| datalogger | 2 | 238 | 0 | 0 | `eb97496` (unchanged — 4th consecutive quiet cycle) |
+| Repo | `[x]` | `[ ]` | `[BLOCKED]` | HEAD |
+|---|---|---|---|---|
+| lap-backend | 11 | 229 | 0 | `fbef621` (T011 infra+coaching packages) |
+| lap-webapp | 11 | 229 | 0 | `52e1cce` (T014 — no new commits this cycle) |
+| lap-schemas | 0 | — | 0 | `a50d39a` |
+| lap-mobile-android | 12 | 228 | 0 | `40e013e` (T012 launcher icon) |
+| lap-website | 12 | 3 BLOCKED | 3 | `92b142b` (T015 analytics decision) |
+| datalogger | 2 | 238 | 0 | `eb97496` (unchanged — 5th consecutive quiet cycle) |
 
-## This cycle (Cycle #8)
+## This cycle (Cycle #9)
 
-- Verified GREEN at HEAD: **4** commits (backend T010, webapp T014, mobile T011, website T014)
-- Reverted: 0 | NEEDS_REWORK: 0 | SCOPE_FLAG: 0 | INFRA_FLAG: 0
+- Verified GREEN: **3** commits (backend T011, mobile T012, website T015)
+- Webapp: no new sprint commits this cycle (first cycle with webapp idle)
+- Reverted: 0 | NEEDS_REWORK: 0 | flags: 0
 
-Biggest diffs: webapp T014 (14 files / 404 lines — Prettier reformatting many files, under 1500 threshold), website T014 (5 files / 383 lines PostHog wiring).
+## Cumulative (9 cycles)
 
-## Cumulative (8 cycles)
-
-- Total reviewed: 41 · Accepted+tagged: 40 (1 INFRA_FLAG cycle-4 datalogger)
-- Reverted: 0 · NEEDS_REWORK events: 2 (both cycle-4, cleared cycle-5)
-- SCOPE_FLAG: 0 active · SCAFFOLD_BULK: 1 informational (T001)
+- Total reviewed: 44 · Accepted+tagged: 43 (1 INFRA_FLAG c4 datalogger)
+- Reverted: 0 · NEEDS_REWORK events: 2 (both c4, cleared c5)
 - Pause triggers: 0 · Forced checkpoints: 0
-- CI green rate: 41/41 applicable-pass
 
-## Cycle 8 notables
+## Cycle 9 notables
 
-- **Backend first real pytest pass**: T010 added a test asserting /healthz returns 200. `1 passed in 0.32s` — matrix now truly covers code-level correctness.
-- **Datalogger 4th consecutive quiet cycle** — desktop sprint loop still at `eb97496` (T002). T003 CoachingLiveProcessor remains open. Either mid-work (complex) or Terminal 3 stopped.
+- New **ADR-019 analytics decision** landed on lap-meta (`5e9ff39 sprint(marketing): T015 complete + ADR-019 analytics decision` — out of review scope: sprint-marketing commits to lap-meta directly, not a 6-repo target).
+- Webapp idle first cycle — prettier format pass (T014) was the last; T015+ may be blocked by dep or taking longer.
+- Datalogger 5th quiet cycle. Reinforces suspicion that Terminal 3 is down or heavily stuck.
 
 ## Current issues
 
-- lap-website T008-T010 BLOCKED on Cloudflare OAuth (carried, user-action)
-- Datalogger pytest dep gap (carried, not triggered)
-- Datalogger Terminal 3 likely stalled on T003 (4 cycles now)
+- lap-website T008-T010 BLOCKED on Cloudflare OAuth (carried)
+- Datalogger pytest dep gap + 5-cycle quiet period: Terminal 3 almost certainly stalled
+- Daily email: dedup still holds (UTC date 2026-04-23). Will re-check at first post-08:00-UTC cycle of 2026-04-24.
 
-## Cron: `b6279c25` next fire 22:07 UTC.
+## Cron: `b6279c25` next fire 22:37 UTC.

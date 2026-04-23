@@ -20,7 +20,7 @@
 - [x] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches — 1426ca2 [PENDING: app-launch-on-device]
 - [x] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders — 690db9f [PENDING: default-route-renders-on-device]
 - [x] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed — 098f8bd [PENDING: visual-check-on-device]
-- [ ] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device
+- [x] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device — 40e013e [PENDING: install-on-device]
 - [ ] T013 [sonnet] Strings.xml: default English strings, values-fr/ stubbed ⇒ localizable
 - [ ] T014 [sonnet] ProGuard/R8 rules file with defaults + Hilt+Room+Retrofit keep rules ⇒ release build works
 - [ ] T015 [sonnet] Signing configs: debug default, release placeholder reading from `keystore.properties` ⇒ compiles both
