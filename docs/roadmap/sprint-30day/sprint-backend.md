@@ -31,8 +31,8 @@
 - [x] T010 [codex] First test: `test_healthz_returns_200` in `tests/test_health.py` ⇒ test green — sha: 699bc51
 - [x] T011 [sonnet] Domain layout: create `app/`, `domain/`, `infra/`, `coaching/` top-level packages with `__init__.py` ⇒ importable — sha: fbef621
 - [x] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested — sha: 14180aa
-- [ ] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed
-- [ ] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work
+- [x] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed — sha: 3ada05d
+- [x] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work — sha: 6018966
 - [ ] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green
 - [ ] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests
 - [ ] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works

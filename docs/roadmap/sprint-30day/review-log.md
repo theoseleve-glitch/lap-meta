@@ -619,3 +619,58 @@ Cron-fired 22:37 UTC. Baselines: backend=`fbef621`, webapp=`52e1cce`, schemas=`a
 - `meta: review loop cycle 10` with review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-23T23:20:00Z — Cycle #11
+
+Cron-fired 23:07 UTC. Baselines: backend=`14180aa`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`40e013e`, website=`92b142b`, datalogger=`eb97496`. Disk 86%. Daily email: skip (dedup).
+
+### lap-backend — REVERT (first of loop history)
+- `3ada05d sprint(backend): T013 .env.example schema` — **REVERT**. Matrix: uv sync ✓ / **ruff check . exit 1 (2 errors)** / mypy ✓ "5 source files" / pytest 6 passed / import ✓.
+- Ruff errors in `tests/test_env_example.py`:
+  - E501 line 5:89 (89 > 88 chars) — `REQUIRED_KEYS = frozenset({"DATABASE_URL", "REDIS_URL", "CLERK_SECRET", "STRIPE_SECRET"})` is one char over.
+  - SIM300 line 23:12 — `assert REQUIRED_KEYS <= _keys_in_env_example()` is a Yoda condition; rewrite as `_keys_in_env_example() >= REQUIRED_KEYS`.
+- Actions:
+  - Pushed original T013 `3ada05d` to origin (runbook "keeps history honest").
+  - `git revert --no-edit 3ada05d` → revert commit **`3312b5e`**.
+  - Pushed revert to origin.
+  - sprint-backend.md T013 `[x]` → `[NEEDS_REWORK]` with reason citing first failing check.
+- NOT tagged. Cycle-12 baseline for backend: `3312b5e` (tip after revert), meaning sprint loop's re-attempt will be past this SHA.
+
+### lap-webapp — idle (3rd consecutive)
+- No new commits. Same `52e1cce`.
+
+### lap-schemas — no commits.
+
+### lap-mobile-android — GREEN
+- `8577f35 sprint(mobile): T014 R8 rules + minified release`: ACCEPTED + tagged + pushed `reviewed/20260423/lap-mobile-android/8577f35`. Full matrix green. Diff: 2 files / 78 ins / 1 del.
+
+### lap-website — GREEN + SCOPE_FLAG
+- `317d62c sprint(marketing): T017 Lighthouse CI LCP<1.8s gate`: ACCEPTED + tagged + pushed `reviewed/20260423/lap-website/317d62c`. Full matrix green. **Diff: 5 files / 2267 insertions / 8 deletions → [SCOPE_FLAG]** (above 1500 non-scaffold threshold; not scaffold-tagged per ADR-018 — it's Lighthouse CI config, not scaffold/init). Annotation added to sprint-marketing.md T017. scope-blowup alert dedup'd for 2026-04-23 (already fired cycle 3/4).
+
+### datalogger — 7th consecutive quiet cycle.
+
+### Step 5-7: no drift. Deploys skipped. Smoke n/a.
+
+### Step 10-11
+- Daily email: skipped via dedup.
+- Alerts: none fired. Per Step 11 table, revert → "skip (daily email covers it)". scope-blowup → dedup-suppressed.
+
+### Baselines cycle 12
+- **backend: `3312b5e`** (revert tip, not `3ada05d` since that's orphaned from master's review-perspective by the revert's existence)
+- webapp: `52e1cce` (unchanged, 3 idle)
+- schemas: `a50d39a` (unchanged)
+- mobile: `8577f35`
+- website: `317d62c`
+- datalogger: `eb97496` (unchanged, 7 quiet)
+
+### Pause-trigger evaluation
+- Reverts this cycle: 1 (threshold >3)
+- Other triggers: n/a
+- **No pause.**
+
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 11` with review-log + metrics + sprint-backend (T013 [NEEDS_REWORK]) + sprint-marketing (T017 [SCOPE_FLAG]) + any other sprint-file bookkeeping. Push to lap-meta.
+
+---

@@ -22,7 +22,7 @@
 - [x] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed — 098f8bd [PENDING: visual-check-on-device]
 - [x] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device — 40e013e [PENDING: install-on-device]
 - [x] T013 [sonnet] Strings.xml: default English strings, values-fr/ stubbed ⇒ localizable — 584a231
-- [ ] T014 [sonnet] ProGuard/R8 rules file with defaults + Hilt+Room+Retrofit keep rules ⇒ release build works
+- [x] T014 [sonnet] ProGuard/R8 rules file with defaults + Hilt+Room+Retrofit keep rules ⇒ release build works — 8577f35
 - [ ] T015 [sonnet] Signing configs: debug default, release placeholder reading from `keystore.properties` ⇒ compiles both
 - [ ] T016 [sonnet] Flavor setup: `dev`, `staging`, `prod` with different API endpoints ⇒ all three build
 - [ ] T017 [sonnet] BuildConfig fields: API_BASE_URL, CLERK_PUBLISHABLE_KEY, SENTRY_DSN, POSTHOG_KEY ⇒ populated per flavor
