@@ -10,7 +10,7 @@
 ## Block A — Project scaffold + deploy pipeline (T001–T020)
 
 - [x] T001 [opus] Astro 5 init with TypeScript strict template ⇒ `pnpm dev` boots (lap-website@fbe7bd6)
-- [ ] T002 [sonnet] Tailwind integration + design tokens from old lap-website ⇒ styling renders
+- [x] T002 [sonnet] Tailwind integration + design tokens from old lap-website ⇒ styling renders (lap-website@fa5f6d8)
 - [ ] T003 [sonnet] Font setup (monospace Font Monument + sans Inter) with preload + swap ⇒ FOUT minimized
 - [ ] T004 [sonnet] Directory layout: `src/pages/`, `src/layouts/`, `src/components/`, `src/content/`, `public/` ⇒ organized
 - [ ] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green
