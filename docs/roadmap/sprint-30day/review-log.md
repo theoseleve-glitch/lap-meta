@@ -340,3 +340,94 @@ Disk 87% / pause-threshold 95%. Daily email dedup: skip (already sent today).
 - Committing `review-log.md` + `metrics.md` + `sprint-backend.md` + `sprint-mobile.md` + `sprint-webapp.md` + `sprint-marketing.md` (T005/T006 [NEEDS_REWORK]) with message `meta: review loop cycle 4`. Push to lap-meta origin.
 
 ---
+
+## 2026-04-23T20:20:00Z — Cycle #5
+
+Cron-fired ~20:18 UTC (new `b6279c25` 30-min interval from cycle-4 cadence change). ADR-018 landed between cycle 4 and 5 — policy changes applied this cycle:
+- Decision 1: @types/node mandatory in TS repos → lap-website verified with `"@types/node": "25.6.0"` already in place
+- Decision 2: scaffold-task SCOPE_FLAG threshold raised to 8000 → T001 reclassified `[SCAFFOLD_BULK]` informational
+- Decision 3: cycle-4's NEEDS_REWORK flags for T005+T006 retroactively invalidated (transient per-commit state, green at HEAD)
+- Decision 4: sprint-webapp.md T017 now mandates `@types/node` preemptively
+- Decision 5: runbook Step 2 → verify at HEAD not per-commit (applied this cycle)
+
+Baselines cycle-5 start: backend=`0360564`, webapp=`a8835b6`, schemas=`a50d39a`, mobile-android=`b1dceb8`, lap-website=`a9e3e2b`, datalogger=`eb97496`.
+
+Disk 86% / pause-threshold 95%. Daily email dedup: skip (last=today).
+
+### lap-backend
+- `3f3d471 sprint(backend): T007 FastAPI app with /healthz and /readyz` — **ACCEPTED + pushed + tagged** `reviewed/20260423/lap-backend/3f3d471`. Full matrix green **including `python -c "import app.main"` which is NOW APPLICABLE** (T007 creates app/main.py). uv sync → 30 packages / ruff → all checks passed / mypy → "no issues found in 3 source files" / pytest skipped (no tests/ yet) / import successful. Diff: 3 files / 194 ins / 1 del. No workflow / secrets.
+
+### lap-webapp
+- `29ffe70 sprint(webapp): T007 extract lib/api/bundles helpers` — **ACCEPTED + pushed + tagged**. Full matrix green. Diff: 2 files / 31 ins.
+- `19b0803 sprint(webapp): T008 extract useReducedMotion hook` — **ACCEPTED + pushed + tagged**. Full matrix green. Diff: 1 file / 26 ins.
+
+### lap-schemas
+- No new sprint commits past baseline `a50d39a`. No-op.
+
+### lap-mobile-android
+- `226b89a sprint(mobile): T008 pre-commit hook` — **ACCEPTED + pushed + tagged**. Matrix: assembleDebug + testDebugUnitTest green; detekt + ktlintCheck **still silently skipped** per ADR-017 applicability (tasks are at `:app:detekt` / `:app:ktlintCheck`, runbook matrix uses root-level names). Diff: 2 files / 64 ins. No workflow — pre-commit is `.githooks/` not `.github/workflows/`.
+
+### lap-website (cycle-4 NEEDS_REWORK retroactively cleared per ADR-018)
+Matrix at HEAD `255cb7b` = GREEN (typecheck 0 errors / lint 0 errors / test 2/2 pass / build 1 page + sitemap-index.xml + robots.txt). `@types/node` confirmed at 25.6.0 in devDeps. Accepting the full range:
+- `bffd825 sprint(marketing): T005 ESLint + Prettier + astro-check` — **ACCEPTED + tagged** `reviewed/20260423/lap-website/bffd825`. Diff 8 files / 1153 ins / 14 del (under default 1500 threshold).
+- `9cb0ecf sprint(marketing): T006 Vitest + Playwright sample tests` — **ACCEPTED + tagged**. Diff 6 files / 371 ins / 12 del. **This is the commit that added @types/node** — the transient ts(2580) cycle-4 saw was between T005 landing and T006 landing; ADR-018 Decision 3 documented the forensic.
+- `5826a14 sprint(marketing): T007 GitHub Actions CI workflow` — **ACCEPTED + tagged**. Diff 1 file / 45 ins (workflow yaml, wd=0 secrets=0 → path guardrail clean).
+- `255cb7b sprint(marketing): T011 robots.txt + sitemap via Astro integrations` — **ACCEPTED + tagged**. Diff 3 files / 93 ins / 1 del.
+- Sprint-marketing.md T001 annotation updated: `[SCOPE_FLAG]` → `[SCAFFOLD_BULK]` per ADR-018 Decision 2 (4068 insertions < 8000 scaffold threshold).
+- Sprint-marketing.md T008-T010 confirmed `[BLOCKED]` with clear user-action unblock notes (Cloudflare Pages OAuth, DNS, PR previews — cascading).
+
+### datalogger
+- No new sprint commits past baseline `eb97496`. Sprint-desktop loop quiet this cycle (T003 likely in progress — CoachingLiveProcessor rebuild is non-trivial). No INFRA_FLAG re-surfacing since no new commit to verify.
+
+### Deploys (Step 6)
+- All still skipped — no repo has deploy config yet. lap-website's deploy config is **user-blocked** on Cloudflare OAuth (T008).
+
+### Post-deploy smoke (Step 7)
+- N/A.
+
+### Cross-repo coherence (Step 5)
+- Schema drift: none (lap-schemas unchanged).
+- Endpoint drift: lap-backend NOW has `app/main.py` + `/healthz` + `/readyz` endpoints (T007), but `app/routers/` still doesn't exist — no client contract consuming those endpoints yet. Not drift.
+- Contract test: backend T007 adds HTTP surface; no webapp change consumes it. Skipped.
+
+### Metrics delta
+- 8 verified + accepted + tagged (HEAD-based review per ADR-018 Dec 5 — all 4 repos green at HEAD).
+- 0 reverted.
+- 2 NEEDS_REWORK cleared (retroactively via ADR-018 Decision 3).
+- 1 SCOPE_FLAG reclassified to SCAFFOLD_BULK (informational).
+
+### Alerts fired this cycle (Step 11)
+- **None.** All repos green; no triggers hit.
+
+### Daily email (Step 10)
+- Skipped via dedup (`ops/.last_daily_sent` = `2026-04-23`).
+
+### Baseline updates for cycle 6
+- `lap-backend`: `0360564` → **`3f3d471`**
+- `lap-webapp`: `a8835b6` → **`19b0803`**
+- `lap-schemas`: `a50d39a` (unchanged)
+- `lap-mobile-android`: `b1dceb8` → **`226b89a`**
+- `lap-website`: `a9e3e2b` → **`255cb7b`**
+- `datalogger`: `eb97496` (unchanged)
+
+### Pause-trigger check
+- Reverts this cycle: 0 (threshold >3)
+- Cross-repo contract fails: 0 (threshold >1)
+- Secret leaks: 0
+- Prod smoke fails: 0 (no deploys)
+- Unexpected fetch refs: 0
+- Disk: 86% (threshold 95%)
+- **No pause triggers hit.**
+
+### Forced human-review checkpoints
+- Backend T070 ADR-005 objects: NOT YET (we're at T007)
+- Webapp T165 Driver OS pages: NOT YET (we're at T008)
+- lap-backend/app/auth or /billing changes: NONE (T007 touches app/main.py + deps, not auth/billing)
+- Crypto/token/payment code: NONE
+- Month 3 / Week 11 (2026-07-01): 2.2 months out
+- **No forced checkpoints hit.**
+
+### Step 9 commit + push
+- Committing `review-log.md` + `metrics.md` + `sprint-marketing.md` (SCAFFOLD_BULK reclassification) + any sprint-loop bookkeeping deltas (backend/webapp/mobile sprint files if modified) with `meta: review loop cycle 5`. Push to lap-meta origin.
+
+---
