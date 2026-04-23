@@ -15,7 +15,7 @@
 - [x] T005 [codex] Move `src/app/app/**` from old repo → `src/app/(app)/**` in new repo ⇒ structure preserved (49c0643)
 - [x] T006 [codex] Move `src/components/**` (app-scoped only) → new repo ⇒ imports resolve (a8835b6)
 - [x] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve (29ffe70)
-- [ ] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve
+- [x] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve (19b0803)
 - [ ] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir
 - [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works
 - [ ] T011 [sonnet] Configure next.config.mjs for `app.lap.com` subdomain + strict CSP ⇒ deploys
@@ -24,7 +24,7 @@
 - [ ] T014 [codex] Prettier config, format all files once ⇒ no diff on re-run
 - [ ] T015 [codex] Husky + lint-staged for pre-commit ⇒ blocks bad commits
 - [ ] T016 [codex] GitHub Actions: typecheck + lint + test on PR ⇒ workflow green
-- [ ] T017 [sonnet] Vitest setup for unit tests, Playwright for e2e ⇒ sample tests run
+- [ ] T017 [sonnet] Vitest setup for unit tests, Playwright for e2e ⇒ sample tests run. **Per ADR-018: `pnpm add -D @types/node` BEFORE writing any playwright.config.ts or test that uses `process.env`/`fs`/`path`. Non-optional.**
 - [ ] T018 [sonnet] Storybook setup for component docs ⇒ `pnpm storybook` boots
 - [ ] T019 [sonnet] Cloudflare Pages deployment via OpenNext ⇒ preview URL works
 - [ ] T020 [sonnet] Domain routing: `app.lap.com` → webapp, `lap.com` → marketing ⇒ DNS configured

@@ -17,9 +17,20 @@ For each of the 5 repos (`lap-backend`, `lap-webapp`, `lap-schemas`, `lap-mobile
 3. Identify commits since the last review-log entry for this repo (parse `review-log.md`).
 4. List only commits whose author email is `theos.eleve@gmail.com` AND commit message starts with `sprint(`. These are AI-authored sprint commits that require review. Skip others (manual commits, merges).
 
-### Step 2 — Verify each commit
+### Step 2 — Verify at HEAD of unreviewed range, not per-commit (per ADR-018 Decision 5)
 
-For each unreviewed commit, in order, run the language-specific verification matrix. **But first apply Step 2.5 (applicability check, per ADR-017) before each command.**
+Rather than running the full verification matrix against each unreviewed sprint commit in sequence (which can catch legitimate transient intermediate states as "failures"), run the matrix **once at HEAD of the unreviewed range**. Apply Step 2.5 applicability checks per ADR-017.
+
+If HEAD is green:
+- Mark every sprint commit in the unreviewed range as reviewed + tag `reviewed/YYYYMMDD/<repo>/<sha>` for each.
+- If any commits in the range exceed scope-flag thresholds individually, annotate with `[SCOPE_FLAG]` per normal rules.
+
+If HEAD is red:
+- Identify which commit introduced the failing state (last-known-green bisect, optional; usually the top 1-3 commits).
+- Revert the offending commit per Step 3, mark the associated task `[NEEDS_REWORK]`.
+- Earlier commits in the range that were fine stay accepted.
+
+**Never treat transient intermediate state as a failure.** Sprint loops commit incrementally; half-configured states between two commits are expected and not bugs.
 
 **Verification matrix (full):**
 

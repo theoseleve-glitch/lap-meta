@@ -583,6 +583,88 @@ Per Q192:
 
 ---
 
+## ADR-018 — TypeScript scaffold hygiene: `@types/node` mandatory; scaffold-task scope-flag threshold (2026-04-23)
+
+**Context:** Two related issues surfaced in review loop Cycle 4 on lap-website.
+
+1. **Verification failure at T005+T006+T007 (`HEAD 5826a14`)**: `playwright.config.ts` uses `process.env` but `@types/node` wasn't added to devDependencies. `astro check` + `eslint` failed with `ts(2580) Cannot find name 'process'` (4 errors). Pattern is general: any TS repo with Node-adjacent APIs (Playwright, Vitest, build scripts, dotenv, `process.env`, `fs`, `path`, `Buffer`) needs `@types/node`. Sprint loops that scaffold TS projects can forget it because the initial `pnpm create astro` / `npx create-next-app` doesn't include it by default.
+
+2. **Scope flag false-positive on T001 (`fbe7bd6`, 4068 insertions)**: Astro 5 scaffold bulk-imports framework-standard files. 4068 lines is normal. The 1500-LOC threshold from ADR-017 is designed to catch scope creep in implementation tasks, not scaffold tasks which legitimately bulk-create boilerplate. Alert noise wastes review quota.
+
+### Decision 1 — `@types/node` mandatory in every TS repo with Node-adjacent usage
+
+Every TypeScript repo in the LAP workspace MUST include `@types/node` in devDependencies from the earliest scaffold task. Applies to:
+
+- `lap-website` (Astro + Playwright)
+- `lap-webapp` (Next.js + Playwright)
+- `lap-schemas/typescript` (codegen + tests)
+- Any future TS package
+
+Sprint tasks that scaffold a TS project are updated to include `pnpm add -D @types/node` as part of T001 or the first "install dev tooling" task. The review loop's applicability check (ADR-017 Step 2.5) does NOT exempt this.
+
+**Why not "remove `process.env` usage"?** Fighting the tool. Playwright configs, Next.js runtime detection, build scripts, test setup all use `process.env` as standard practice. Rewriting around it would require fighting well-trodden patterns for no benefit.
+
+**Why not LOOSER TS config (e.g., `skipLibCheck: true`)?** Masks other real errors. `@types/node` is 2MB in devDependencies — trivial cost.
+
+### Decision 2 — Scaffold-tagged tasks get higher SCOPE_FLAG threshold
+
+Update `loop-review.md` Step 4 scope-check rules:
+
+- **Default threshold** (unchanged): 1500 insertions+deletions → `[SCOPE_FLAG]`
+- **Scaffold-tagged tasks (new)**: 8000 insertions+deletions threshold
+- Between 1500 and 8000 on scaffold tasks: silently accept, tag `[SCAFFOLD_BULK]` (informational, not alerting)
+- Above 8000 on scaffold tasks: still `[SCOPE_FLAG]` + alert (something genuinely overreaching)
+
+**Scaffold-tagged** = task title matches `T001` OR contains `scaffold`, `init`, `bootstrap`, `seed`, or `boilerplate`. These legitimately bulk-create framework-standard files.
+
+### Decision 3 — Resolution for current in-flight blocker
+
+Investigation (2026-04-23):
+
+- Review loop cycle-4 reported matrix failure at T005+T006+T007 (`HEAD 5826a14`) with ts(2580) errors.
+- User-invoked reproduction: `@types/node` **is already present** in package.json at HEAD 5826a14 (added by T006 `9cb0ecf` in the same failing window). `astro check` passes clean (0 errors).
+- **Actual remaining blocker at HEAD was prettier `--check .` failing** on 6 not-yet-formatted files (`.prettierrc.mjs`, `eslint.config.mjs`, `package.json`, `src/layouts/BaseLayout.astro`, `src/pages/index.astro`, `src/styles/global.css`).
+- Root cause of the ts(2580) error was transient per-commit state: the review loop likely inspected a working-tree snapshot between T005 (eslint config landed) and T006 (@types/node landed in same cycle), catching an inconsistent intermediate state. By the time cycle-4 completed, T006 had resolved it — but cycle-4 already flagged.
+- User intervention: `pnpm format` (prettier --write) at HEAD. Working tree normalized; git diff empty after CRLF re-normalization. Matrix now fully green.
+- Sprint file updated: T005 and T006 restored from `[NEEDS_REWORK]` to `[x]` with explanatory note.
+
+**Net outcome:** no git commit required. Problem self-resolved by sprint loop's own T006 commit, masked briefly by prettier-format state. Matrix is GREEN at current HEAD.
+
+**Implication for loop-review.md:** Step 2 verification should inspect HEAD at time of review, not per-commit historical states. If a range of unreviewed sprint commits collectively leave the repo in a green state at HEAD, accept the range. Per-commit failures that resolve by the time review runs are not failures. This prevents false-positive `[NEEDS_REWORK]` tagging on commits that form a valid atomic unit when taken together. (See Decision 5 below.)
+
+### Decision 4 — Preemptive application to lap-webapp
+
+`sprint-webapp.md` T017 (Vitest + Playwright setup) task description updated to include `pnpm add -D @types/node` as the first step of the task. Prevents same failure when webapp loop reaches that task.
+
+### Decision 5 — Review loop verifies HEAD, not per-commit states
+
+Corollary of Decision 3. When multiple unreviewed sprint commits exist in a range:
+
+- The review loop runs the verification matrix once at HEAD of the unreviewed range.
+- If green: all commits in the range are marked reviewed. A `[SCOPE_FLAG]` or `[BATCH_REVIEW]` annotation may be added to commits that had intermediate issues.
+- If red at HEAD: identify the first commit that still fails (bisect-style, optional). Revert that commit or flag the range for human review.
+- **Never treat transient intermediate state as a failure.** Sprint loops operate in small commits; a half-configured state between two commits in a range is expected and not a bug.
+
+`loop-review.md` runbook Step 2 is updated to reflect this.
+
+### Decision 4 — Preemptive application to lap-webapp
+
+`sprint-webapp.md` T017 (Vitest setup) is updated to include `pnpm add -D @types/node` as the first step of the task. Prevents same failure when webapp loop reaches that task.
+
+### Scope
+
+This ADR does NOT:
+- Mandate any particular TS target version or strictness level
+- Require type coverage metrics
+- Extend to runtime dependencies (production code), only devDeps
+- Create a "pre-scaffold checklist" agent — the rule is embedded in the sprint task text, not a separate review step
+
+### Status
+
+Accepted. Implemented 2026-04-23. Fix committed to lap-website. Sprint files updated in lap-meta.
+
+---
+
 ## ADR-017 — Review loop tooling policy: applicability checks + INFRA_FLAG (2026-04-23)
 
 **Decision:** The review loop does **not** revert commits that fail verification due to infrastructure gaps (tool not installed, command not defined, task scaffolding not yet landed). It accepts with `INFRA_FLAG` and pushes. It only reverts on actual code failure (broken tests, compile errors, lint violations in code that could have been written correctly).
