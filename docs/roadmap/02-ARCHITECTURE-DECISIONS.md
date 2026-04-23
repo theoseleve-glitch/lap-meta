@@ -665,6 +665,62 @@ Accepted. Implemented 2026-04-23. Fix committed to lap-website. Sprint files upd
 
 ---
 
+## ADR-019 — Analytics stack: PostHog cookieless on lap-website, Plausible deferred (2026-04-24)
+
+**Context:** T014 (sprint-marketing) integrated `posthog-js` into lap-website in cookieless mode — `persistence: 'memory'`, `autocapture: false`, `capture_pageview: true`. The bundled client weighs 62.33 kB gzip — roughly 40% of the per-page 150 kB gzip budget defined in `lap-website/CLAUDE.md`. T015 asks for a formal yes/no on swapping to Plausible (~1 kB gzip) before the site is publicly launched.
+
+### The three candidates
+
+| Option | Client JS | Cost | Features we use today | Features we might use |
+|---|---|---|---|---|
+| PostHog (cookieless) | ~62 kB gzip | €0 (free tier ≤1M events/mo) | pageviews | funnels, feature flags, experiments, session replay |
+| Plausible | ~1 kB gzip | ~€9/mo hosted (self-host: €0 + ops) | pageviews, referrers, simple goals | basics only |
+| No analytics | 0 kB | €0 | none | none |
+
+### Decision
+
+**Keep PostHog.** Plausible is deferred — not rejected.
+
+### Why
+
+The lap-website's job (01-STRATEGIC-DOCTRINE.md §9) is to convert visits into €15/month trials and to land 1,000 paying users by 2026-10-31. That is a conversion-funnel problem, not a vanity-metric problem. Questions a solo founder needs answered weekly:
+
+- How many /pricing visitors click "Start 14-day trial"?
+- Does headline A beat headline B for signup rate?
+- Which blog pillar drives the most /pricing traffic?
+
+Plausible can answer the first with care, the second only through manual A/B infrastructure, and the third only partially. PostHog answers all three natively through its funnels + experiments surface — and a solo founder iterating weekly will use them.
+
+The 62 kB gzip cost is real but within budget, and the script is emitted as `type="module"` (browser-deferred by default), so it does not block LCP. T036's performance audit is the next checkpoint that would empirically reject this.
+
+### Revisit triggers
+
+Swap to Plausible if any of these become true:
+
+1. Homepage LCP under test conditions exceeds 1.8 s (CLAUDE.md gate) and the analytics bundle is the dominant bottleneck as measured by Lighthouse (T017).
+2. Six months in (target 2026-10-24), we have not opened the PostHog funnels or experiments UI a single time.
+3. The free-tier threshold (1M events/mo) is crossed and the resulting paid bill exceeds €20/mo.
+4. GDPR guidance tightens such that `persistence: 'memory'` no longer qualifies as non-consensual tracking — i.e. a DPA explicitly ruling on in-memory session identifiers.
+
+### Mitigations that preserve the keep-decision
+
+If bundle size becomes the constraint but we still want PostHog:
+
+- Lazy-load `posthog-js` on first user interaction (defer past LCP).
+- Swap to `posthog-js-lite` (~5 kB gzip) when only pageview + basic funnels are needed.
+- Self-host the capture endpoint behind `lap-coach.racing` so the third-party DNS + TLS handshake disappears.
+
+### Alternatives rejected
+
+- **Skip analytics entirely.** Flying blind on a conversion-driven launch is not viable at Month 1-5. Revisit post-V1 if the data ends up unused.
+- **Run both PostHog and Plausible.** Doubles JS cost, doubles vendor ops, splits funnel tracking. No added signal.
+
+### Status
+
+Accepted. Implementation remains as committed in lap-website@c370601. Revisit at T036 (LCP audit), T017 (Lighthouse CI gate), or when any revisit trigger fires.
+
+---
+
 ## ADR-017 — Review loop tooling policy: applicability checks + INFRA_FLAG (2026-04-23)
 
 **Decision:** The review loop does **not** revert commits that fail verification due to infrastructure gaps (tool not installed, command not defined, task scaffolding not yet landed). It accepts with `INFRA_FLAG` and pushes. It only reverts on actual code failure (broken tests, compile errors, lint violations in code that could have been written correctly).
