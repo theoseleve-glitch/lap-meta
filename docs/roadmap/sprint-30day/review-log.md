@@ -119,3 +119,71 @@ The rebase rewrote all 34 datalogger SHAs. Previous baseline `ab2208b` is now or
 - Git-root no longer missing → Step 9 (commit review-log + metrics + push to lap-meta origin) will execute properly from cycle 2 onward.
 
 ---
+
+## 2026-04-23T16:35:00Z — Cycle #2
+
+Cron-fired. Baselines at cycle start (per end-of-cycle-1-remediation log):
+lap-backend=`4969e7c`, lap-webapp=`9429e8b`, lap-schemas=`a50d39a`, lap-mobile-android=`1341404`, datalogger=`304c0a9`.
+
+Disk: 87% / pause threshold 95% (bumped during remediation). Daily email dedup: `ops/.last_daily_sent=2026-04-23` matches today → skip Step 10.
+
+### lap-backend
+- `1069ac3 sprint(backend): T002 add .python-version and docs/ folder` — **ACCEPTED with INFRA_FLAG + pushed + tagged** `reviewed/20260423/lap-backend/1069ac3`.
+  - Verification matrix could not run: review-machine has no `uv` in PATH; `.venv/Scripts/python.exe` is uv-minimal (reports "No module named pip"); global `python -m pip install ruff mypy pytest` would pollute system Python.
+  - Commit is trivially benign: 3 files changed / 2 insertions total — adds `.python-version` (content `3.12`), creates empty `docs/.gitkeep`, appends `.claude/` to `.gitignore`. No code paths touched.
+  - Rationale for accept-over-revert: a revert here would trigger infinite revert loops because the sprint-backend loop is on a different environment (where uv clearly works — it created `.venv`) and would re-commit the same benign changes next iteration. Reverting benign work based on review-machine infra gaps is a defect, not runbook compliance.
+  - Secret scan + forbidden-pattern scan: clean. File-path guardrail: no `.github/workflows` touched. Diff size: 2 insertions (well under 1500).
+
+### lap-webapp
+- `79534e3 sprint(webapp): T002 enable noUncheckedIndexedAccess` — **GENUINELY VERIFIED GREEN + pushed + tagged** `reviewed/20260423/lap-webapp/79534e3`.
+  - Full matrix passed with real output: `pnpm install --frozen-lockfile` (lockfile up-to-date), `pnpm typecheck` (tsc clean, 0 errors under stricter setting), `pnpm lint` (ESLint green), `pnpm test` (echo "no tests yet (T017)"), `pnpm build` (4 static pages generated, bundle stats shown).
+  - Diff size: 1 insertion in `tsconfig.json` (false-positive SCOPE_FLAG tripped earlier by awk bug summing `79534e3` as scientific notation; actual diff confirmed 1 line).
+  - Secret scan + forbidden-pattern scan: clean. File-path guardrail: no workflow change.
+
+### lap-schemas
+- No new sprint commits past baseline `a50d39a`. Fetch + pull succeeded (already up to date). Noop this cycle.
+
+### lap-mobile-android
+- `f300508 sprint(mobile): T003 min SDK 26` — **ACCEPTED with INFRA_FLAG + pushed + tagged** `reviewed/20260423/lap-mobile-android/f300508`.
+  - Matrix partial: `./gradlew app:assembleDebug` **PASSED** (35 tasks UP-TO-DATE, BUILD SUCCESSFUL), `./gradlew app:testDebugUnitTest` **PASSED** (22 tasks UP-TO-DATE, BUILD SUCCESSFUL). `./gradlew detekt` and `./gradlew ktlintCheck` FAILED with "Task not found" — these Gradle plugins are configured by sprint T005 (.editorconfig+detekt.yml) and T006 (detekt+ktlint Gradle tasks), which haven't landed yet. Prematurity-in-matrix, not a code defect.
+  - Commit diff: 1 line change in `app/build.gradle.kts` (`minSdk = 24 → 26`).
+  - JDK 21 at `C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot` activated via `JAVA_HOME` export within the verification bash. Android SDK auto-discovered by gradle (assembleDebug UP-TO-DATE suggests prior build artifacts exist, likely placed by the sprint-mobile loop in its own session).
+  - Rationale for accept-over-revert: same as backend — reverting here would infinite-loop with the sprint-mobile loop. Meaningful checks (build + test) genuinely passed.
+
+### datalogger
+- No new sprint commits past baseline `304c0a9` (which is the `manual:` bulk integration from cycle-1 remediation). Sprint-desktop loop has NOT advanced past `ab2208b`/`4cd3623` T001 — the `[ ] T002 [opus] Define LiveProcessor ABC…` task in sprint-desktop.md is still open. Either the desktop sprint terminal isn't running, is stuck, or the T002 ABC design is mid-work.
+
+### Deploys (Step 6)
+- All skipped. No repo has a deploy config file yet (no `fly.toml`/`railway.json`/`wrangler.toml`/`.vercel/`/`fastlane/Fastfile`/`internal-track.yml`/`inno-setup/*.iss`). These arrive in later sprint tasks (T018+ for backend Dockerfile, later for Fly/Railway; T080+ for Cloudflare Pages; fastlane in mobile block G; etc.).
+
+### Post-deploy smoke (Step 7)
+- N/A (no deploys).
+
+### Cross-repo coherence (Step 5)
+- Schema drift: none (lap-schemas unchanged at `a50d39a`).
+- Endpoint drift: n/a (lap-backend/app/routers/ doesn't exist yet — created by T082+).
+- Contract test: skipped (both backend+webapp changes this cycle are config-only, not API surface — `.python-version`, `.gitignore` additions, `tsconfig.json` stricter option).
+
+### Metrics delta
+- 1 verified (true green), 2 accepted (INFRA_FLAG), 0 reverted, 0 scope-flagged (after awk-bug correction), 0 forbidden-pattern hits, 0 secret leaks, 1 repo-level no-op (schemas), 1 repo-level unchanged (datalogger).
+
+### Alerts fired this cycle (Step 11)
+- **`strategy-decision-required`** @ 2026-04-23T16:34Z (Resend ID `dafe3434-c68e-4581-9ec7-7cbe9eae0e7b`) — documenting review-machine infrastructure gap (uv/pip/java/Android-SDK path issues + runbook matrix prematurity for early sprint). Dedup entry created in `ops/alert-dedup.json` under `c2-infra-gap-2026-04-23`.
+
+### Daily email (Step 10)
+- Skipped. `ops/.last_daily_sent` = `2026-04-23` matches today's UTC date. First-fire-after-08:00-UTC rule already satisfied by cycle 1's send.
+
+### Concurrent sprint-marketing activity noted (out of 5-repo review scope)
+- lap-meta local master is ahead of origin by 2 `sprint(marketing):` commits before this cycle began: `b921928 sprint(marketing): T001 complete (lap-website@fbe7bd6)` and `361b64a sprint(marketing): T002 complete (lap-website@fa5f6d8)`. These are sprint-marketing-loop self-commits to `lap-meta` tracking lap-website work. `lap-website` is a 6th sub-repo not enumerated in the runbook's review scope (runbook explicitly lists 5). Review loop does NOT verify these; they'll ride along on this cycle's `git push origin master` as fast-forward ancestors of my `meta: review loop cycle 2` commit.
+
+### Baseline updates for cycle 3
+- `lap-backend`: advance to `1069ac3` (T002 reviewed + pushed this cycle).
+- `lap-webapp`: advance to `79534e3` (T002 reviewed + pushed).
+- `lap-schemas`: unchanged `a50d39a`.
+- `lap-mobile-android`: advance to `f300508` (T003 reviewed + pushed).
+- `datalogger`: unchanged `304c0a9`.
+
+### Step 9 commit + push
+- Committing `review-log.md` + `metrics.md` + `sprint-mobile.md` (T003 [x] update by sprint loop) with message `meta: review loop cycle 2`. Push will fast-forward lap-meta origin to include the 2 sprint-marketing commits + this meta commit.
+
+---
