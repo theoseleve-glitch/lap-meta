@@ -12,8 +12,8 @@
 - [x] T001 [opus] Gradle project init: `./gradlew init` with Kotlin+Compose template, package `com.lap.mobile` ⇒ `gradlew assembleDebug` works — 999f2f3
 - [x] T002 [sonnet] Gradle version catalog `gradle/libs.versions.toml` with Kotlin 2.0, Compose BOM 2025.01, AGP 8.7 ⇒ builds — 1341404
 - [x] T003 [sonnet] Enable Compose Compiler, set min SDK 26 (Android 8), target SDK 34 ⇒ builds — f300508
-- [ ] T004 [sonnet] KSP enabled for Hilt + Room ⇒ builds
-- [ ] T005 [codex] `.editorconfig`, `detekt.yml`, `.gitattributes` ⇒ checked-in
+- [x] T004 [sonnet] KSP enabled for Hilt + Room ⇒ builds — d9e8e75
+- [x] T005 [codex] `.editorconfig`, `detekt.yml`, `.gitattributes` ⇒ checked-in — 2a7a118
 - [ ] T006 [codex] Detekt + ktlint Gradle tasks: `./gradlew detekt ktlintCheck` ⇒ green on empty project
 - [ ] T007 [codex] GitHub Actions `ci.yml`: assembleDebug, lint, test on push ⇒ workflow green
 - [ ] T008 [sonnet] Pre-commit hook: ktlintFormat + assembleDebug ⇒ blocks bad commits

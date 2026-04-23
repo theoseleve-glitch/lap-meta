@@ -21,8 +21,8 @@
 
 - [x] T001 [opus] Scaffold `lap-backend/` with `pyproject.toml` (uv), Python 3.12, MIT license ⇒ `uv sync` succeeds — sha: 4969e7c
 - [x] T002 [sonnet] Add `.gitignore`, `.python-version`, `README.md` stub, `docs/` folder ⇒ repo clean — sha: 1069ac3
-- [ ] T003 [sonnet] Configure ruff (rules: E,F,I,N,UP,B,C4,SIM,RET,ARG,PTH) in `pyproject.toml` ⇒ `ruff check .` green
-- [ ] T004 [sonnet] Configure mypy strict mode for `app/` and `domain/` ⇒ `mypy` green on empty dirs
+- [x] T003 [sonnet] Configure ruff (rules: E,F,I,N,UP,B,C4,SIM,RET,ARG,PTH) in `pyproject.toml` ⇒ `ruff check .` green — sha: 15c52ff
+- [x] T004 [sonnet] Configure mypy strict mode for `app/` and `domain/` ⇒ `mypy` green on empty dirs — sha: 2bbca58
 - [ ] T005 [codex] GitHub Actions: `.github/workflows/ci.yml` runs ruff+mypy+pytest on push ⇒ workflow valid
 - [ ] T006 [codex] Pre-commit: `.pre-commit-config.yaml` with ruff, mypy, trailing-whitespace ⇒ `pre-commit run --all-files` green
 - [ ] T007 [opus] Create `app/main.py` with FastAPI() + `/healthz` + `/readyz` endpoints ⇒ uvicorn starts, curl returns 200

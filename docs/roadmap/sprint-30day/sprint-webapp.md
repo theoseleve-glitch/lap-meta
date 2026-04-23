@@ -10,8 +10,8 @@
 
 - [x] T001 [opus] Scaffold `lap-webapp/` as new Next.js 14 app-router project (pnpm) ⇒ `pnpm dev` boots (9429e8b)
 - [x] T002 [sonnet] Copy tsconfig.json from old lap-website, set `strict: true` + `noUncheckedIndexedAccess: true` ⇒ tsc clean (79534e3)
-- [ ] T003 [sonnet] Copy Tailwind config + design tokens + fonts from old repo ⇒ styling renders
-- [ ] T004 [codex] Copy `public/` assets (fonts, icons) ⇒ fonts load
+- [x] T003 [sonnet] Copy Tailwind config + design tokens + fonts from old repo ⇒ styling renders (9ac2fa5)
+- [x] T004 [codex] Copy `public/` assets (fonts, icons) ⇒ fonts load (9048c83)
 - [ ] T005 [codex] Move `src/app/app/**` from old repo → `src/app/(app)/**` in new repo ⇒ structure preserved
 - [ ] T006 [codex] Move `src/components/**` (app-scoped only) → new repo ⇒ imports resolve
 - [ ] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve
