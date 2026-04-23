@@ -14,7 +14,7 @@
 - [x] T003 [sonnet] Font setup (monospace Font Monument + sans Inter) with preload + swap ⇒ FOUT minimized (lap-website@06f4255)
 - [x] T004 [sonnet] Directory layout: `src/pages/`, `src/layouts/`, `src/components/`, `src/content/`, `public/` ⇒ organized (lap-website@a9e3e2b)
 - [x] T005 [sonnet] ESLint + Prettier + astro-check ⇒ `pnpm lint` green (lap-website@bffd825)
-- [ ] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes
+- [x] T006 [sonnet] Vitest + Playwright for tests ⇒ sample passes (lap-website@9cb0ecf)
 - [ ] T007 [codex] GitHub Actions CI: build + typecheck + lint + test ⇒ workflow green
 - [ ] T008 [codex] Cloudflare Pages project linked to repo ⇒ auto-deploy on push
 - [ ] T009 [codex] Domain DNS: `lap.com` → Cloudflare Pages; `app.lap.com` → webapp ⇒ configured
