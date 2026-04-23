@@ -27,7 +27,7 @@
 - [x] T006 [codex] Pre-commit: `.pre-commit-config.yaml` with ruff, mypy, trailing-whitespace ⇒ `pre-commit run --all-files` green — sha: 0360564
 - [x] T007 [opus] Create `app/main.py` with FastAPI() + `/healthz` + `/readyz` endpoints ⇒ uvicorn starts, curl returns 200 — sha: 3f3d471
 - [x] T008 [sonnet] Setup `structlog` for JSON logging, wire into FastAPI middleware ⇒ request logs are JSON — sha: 602d05b
-- [ ] T009 [sonnet] Add pytest + pytest-asyncio + httpx in dev deps, `tests/` dir with conftest.py ⇒ `pytest` finds 0 tests green
+- [x] T009 [sonnet] Add pytest + pytest-asyncio + httpx in dev deps, `tests/` dir with conftest.py ⇒ `pytest` finds 0 tests green — sha: 20484aa
 - [ ] T010 [codex] First test: `test_healthz_returns_200` in `tests/test_health.py` ⇒ test green
 - [ ] T011 [sonnet] Domain layout: create `app/`, `domain/`, `infra/`, `coaching/` top-level packages with `__init__.py` ⇒ importable
 - [ ] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested

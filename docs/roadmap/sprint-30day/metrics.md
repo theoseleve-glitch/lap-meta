@@ -4,72 +4,65 @@ Overwritten each review cycle. Single source of truth for "how's the sprint goin
 
 ---
 
-## Last updated: 2026-04-23T20:20Z (Cycle #5)
+## Last updated: 2026-04-23T20:50Z (Cycle #6)
 
 ## Per-repo status
 
 | Repo | `[x]` done | `[ ]` open | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD SHA |
 |---|---|---|---|---|---|---|
-| lap-backend | 7 | 233 | 0 | 0 | 0 | `3f3d471` (T007 FastAPI /healthz /readyz) |
-| lap-webapp | 8 | 232 | 0 | 0 | 0 | `19b0803` (T008 useReducedMotion hook) |
+| lap-backend | 8 | 232 | 0 | 0 | 0 | `602d05b` (T008 structlog JSON middleware) |
+| lap-webapp | 9 | 231 | 0 | 0 | 0 | `33cde90` (T011 security headers + CSP) |
 | lap-schemas | 0 | — | 0 | 0 | 0 | `a50d39a` (unchanged) |
-| lap-mobile-android | 8 | 232 | 0 | 0 | 0 | `226b89a` (T008 pre-commit hook) |
-| lap-website (sprint-marketing) | 8 | **3 BLOCKED** (T008-T010, user-action) | 3 | 0 (was 2 in cycle 4 — cleared per ADR-018) | 0 (T001 now `[SCAFFOLD_BULK]` informational, not SCOPE_FLAG per ADR-018 Dec 2) | `255cb7b` (T011 robots+sitemap) |
-| datalogger (sprint-desktop) | 2 | 238 | 0 | 0 | 0 | `eb97496` (unchanged — no new desktop commits this cycle) |
+| lap-mobile-android | 9 | 231 | 0 | 0 | 0 | `1426ca2` (T009 HiltAndroidApp) |
+| lap-website (sprint-marketing) | 9 | 3 BLOCKED (T008-T010 Cloudflare) | 3 | 0 | 0 (T001 SCAFFOLD_BULK informational) | `250a5f0` (T012 SEO layout) |
+| datalogger (sprint-desktop) | 2 | 238 | 0 | 0 | 0 | `eb97496` (unchanged — desktop loop quiet through cycles 5+6) |
 
-## This cycle (Cycle #5)
+## This cycle (Cycle #6)
 
-- Verified (true green at HEAD per ADR-018 Dec 5): **8** sprint commits
-  - lap-backend: T007 `3f3d471` (FastAPI — `import app.main` now applicable + passes)
-  - lap-webapp: T007 `29ffe70`, T008 `19b0803`
-  - lap-mobile-android: T008 `226b89a`
-  - lap-website: T005 `bffd825`, T006 `9cb0ecf`, T007 `5826a14`, T011 `255cb7b` (re-verified from cycle 4 — all green now per ADR-018)
+- Verified (true green at HEAD): **4** sprint commits, 1 per active repo
+  - lap-backend: T008 `602d05b` (structlog JSON middleware)
+  - lap-webapp: T011 `33cde90` (security headers + CSP; T009/T010 apparently skipped by webapp sprint loop between T008 and T011)
+  - lap-mobile-android: T009 `1426ca2` (HiltAndroidApp — diff only 8 insertions, extending Application class)
+  - lap-website: T012 `250a5f0` (default SEO layout — tests jumped 2→8 from added SEO coverage)
 - Reverted: 0
-- NEEDS_REWORK markers cleared: **2** (lap-website T005 + T006 — already restored by user/ADR-018 before this cycle)
-- Flagged (scope): 0 (cycle 3's T001 SCOPE_FLAG reclassified to SCAFFOLD_BULK per ADR-018 Dec 2)
-- Flagged (scaffold-bulk): 1 (lap-website T001 retroactive, informational)
-- INFRA_FLAG: 0 (datalogger had no new commits this cycle; pytest-in-dev-deps gap from cycle 4 still applies when next commit lands)
-- BLOCKED: 3 new markers in sprint-marketing.md (T008 Cloudflare Pages, T009 DNS, T010 Preview deploys — all require user Cloudflare OAuth)
-- Skipped (ADR-017 applicability): backend pytest (still no tests/); mobile detekt/ktlintCheck (silent-skip continues — tasks wired to `:app:` subproject, runbook uses root-level names, benign noise)
+- NEEDS_REWORK: 0
+- SCOPE_FLAG: 0 (all commits under 1500-LOC)
+- SCAFFOLD_BULK: 0 new
+- INFRA_FLAG: 0
+- Skipped (ADR-017 applicability): backend pytest (no tests/ yet, pre-T009-T010)
 - Repo-level skipped (non-FF): 0
 
 ## Cumulative (since loop start)
 
-- Total cycles run: 5
-- Total sprint commits reviewed: 29 (c1: 0, c2: 3, c3: 9, c4: 9, c5: 8)
-- Total accepted + pushed + tagged: 28 (1 INFRA_FLAG from c4 datalogger T002)
+- Total cycles run: 6
+- Total sprint commits reviewed: 33 (c1: 0, c2: 3, c3: 9, c4: 9, c5: 8, c6: 4)
+- Total accepted + pushed + tagged: 32 (1 was INFRA_FLAG c4)
 - Total reverted: 0
-- Total NEEDS_REWORK events: 2 (both c4 lap-website, both cleared c5 per ADR-018)
-- Total SCOPE_FLAG: 0 current (c3's T001 now SCAFFOLD_BULK informational)
-- CI green rate at HEAD: 29/29 true-or-applicable-green
-- Last deploy: n/a (no repo has deploy config yet — lap-website T008 blocked on user OAuth)
+- Total NEEDS_REWORK events: 2 (c4, both cleared c5)
+- Total SCOPE_FLAG: 0 current
+- Total SCAFFOLD_BULK: 1 (T001 informational)
+- CI green rate at HEAD: 33/33 true-or-applicable-green; 0 matrix-failures since cycle 4's transient window
+- Last deploy: n/a
+
+## Cycle 6 firsts
+
+- **Mobile `:app:detekt` and `:app:ktlintCheck` BOTH actually ran and passed** — first cycle where mobile's full lint matrix was live instead of silent-skip. Fix: called `:app:` qualified task names directly.
+- **Datalogger second cycle in a row with no sprint commits** — desktop sprint loop quiet since `eb97496` (cycle 4). T003 (CoachingLiveProcessor rebuild) is non-trivial; might still be in progress or Terminal 3 stopped.
 
 ## Current issues
 
-- **lap-website T008-T010 BLOCKED on user Cloudflare setup** — marketing loop correctly self-marked these as [BLOCKED] with reason notes. Unblock requires: user signs into Cloudflare dashboard, creates Pages project bound to the lap-website GitHub repo, sets build command `pnpm build` + output dir `dist` + Node 22. Then T009 (DNS) and T010 (PR previews) unblock cascadingly. Loop will keep skipping these.
-- **Mobile detekt/ktlintCheck still silent-skipped** — tasks confirmed wired to `:app:` subproject (e.g., `./gradlew :app:detekt` works per cycle 4 commit 0a15e1e), but my applicability grep uses `^detekt\s` pattern not matching `:app:detekt`. Cycle-4 memo flagged this; fix is trivial in a future runbook revision. Not impacting results (assemble+test cover real behavior).
-- **Datalogger pytest gap** (carried from cycle 4) — dev deps don't yet include pytest. datalogger sprint loop didn't commit anything this cycle so no impact; next sprint(desktop) commit will re-surface INFRA_FLAG until resolved.
+- **lap-website T008-T010 BLOCKED on user Cloudflare OAuth** (carried from cycle 5). Sprint-marketing loop now past the blocker with T011-T012 → sprint can continue without unblocking T008 immediately.
+- **Datalogger pytest in dev deps gap** (carried from cycle 4). Not triggered this cycle since no new sprint(desktop) commit.
+- **Webapp sprint skipped T009+T010** — went directly from T008 to T011. Likely legitimate skip-ahead if tasks were dependency-blocked. Not a review-loop concern.
 
 ## Disk usage
 
-C: at 86% (down 1% — weird, cleanup may have happened). Threshold 95%. Within headroom.
+C: at 86% (unchanged). Threshold 95%.
 
 ## Alert state (ops/alert-dedup.json)
 
-- `strategy-decision-required`:
-  - `c2-infra-gap-2026-04-23` (resolved)
-  - `c4-lapwebsite-matrix-fail-2026-04-23` (resolved by ADR-018)
-- `scope-blowup`:
-  - `2026-04-23` (cycle-3 T001 blowup, now reclassified to SCAFFOLD_BULK; entry kept as historical dedup)
-
-No new alerts this cycle — all repos green, no triggers hit.
+Unchanged from cycle 5. No new alerts this cycle.
 
 ## Cron
 
-Active: `b6279c25` (`7,37 * * * *`, 30-min rounded from user's 45m). Next fire 20:37 UTC.
-
-## ADR-018 policy adoption
-
-- Decision 1 (@types/node mandatory): lap-website already has `"@types/node": "25.6.0"` in devDeps (T006 fix). sprint-webapp T017 task description updated per Decision 4.
-- Decision 2 (scaffold-task threshold 8000): T001 line in sprint-marketing.md updated `[SCOPE_FLAG]` → `[SCAFFOLD_BULK]`.
-- Decision 5 (HEAD-based review, not per-commit): now canonical in runbook Step 2.
+Active: `b6279c25` (`7,37 * * * *`). Next fire 21:07 UTC.

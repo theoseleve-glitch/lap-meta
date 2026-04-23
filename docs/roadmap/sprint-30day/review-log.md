@@ -431,3 +431,67 @@ Matrix at HEAD `255cb7b` = GREEN (typecheck 0 errors / lint 0 errors / test 2/2 
 - Committing `review-log.md` + `metrics.md` + `sprint-marketing.md` (SCAFFOLD_BULK reclassification) + any sprint-loop bookkeeping deltas (backend/webapp/mobile sprint files if modified) with `meta: review loop cycle 5`. Push to lap-meta origin.
 
 ---
+
+## 2026-04-23T20:50:00Z — Cycle #6
+
+Cron-fired at 20:37 UTC (30-min cadence from cycle-4 change). Baselines: backend=`3f3d471`, webapp=`19b0803`, schemas=`a50d39a`, mobile-android=`226b89a`, lap-website=`255cb7b`, datalogger=`eb97496`.
+
+Disk 86% / threshold 95%. Daily email dedup: skip.
+
+### lap-backend
+- `602d05b sprint(backend): T008 structlog JSON logging middleware` — **ACCEPTED + pushed + tagged**. Full matrix green (uv sync 31 pkgs / ruff clean / mypy "no issues in 4 files" / pytest still ADR-017-skipped / import app.main ✓). Diff: 4 files / 55 ins / 1 del.
+
+### lap-webapp
+- `33cde90 sprint(webapp): T011 security headers + strict-ish CSP` — **ACCEPTED + pushed + tagged**. Full matrix green. Diff: 1 file / 47 ins. Sprint loop skipped T009+T010 (went T008→T011) — not a review-loop concern; sprint files show those as either [ ] still or skip-marked.
+
+### lap-schemas
+- No new sprint commits. No-op.
+
+### lap-mobile-android
+- `1426ca2 sprint(mobile): T009 HiltAndroidApp on LapApplication` — **ACCEPTED + pushed + tagged**. Matrix: **first successful full mobile matrix run** — `:app:detekt` ran + passed (1 task executed), `:app:ktlintCheck` ran + passed (ktlintMainSourceSetCheck + ktlintKotlinScriptCheck), assembleDebug + testDebugUnitTest passed. Diff: 2 files / 8 ins. Called `:app:`-qualified task names directly vs cycle-4's root-level grep miss.
+
+### lap-website
+- `250a5f0 sprint(marketing): T012 default SEO layout` — **ACCEPTED + pushed + tagged**. Full matrix green with **tests jumping 2→8** (T012 added SEO layout test coverage — 2 test files now). astro build produces `/index.html`, sitemap-index.xml, robots.txt. Diff: 2 files / 110 ins / 1 del.
+
+### datalogger
+- No new sprint commits (2nd cycle in a row quiet since `eb97496`). Desktop sprint loop appears stalled on T003 (`CoachingLiveProcessor` rebuild). User may want to check Terminal 3.
+
+### Deploys (Step 6) / Smoke (Step 7)
+- All skipped. Deploy configs still absent across all repos.
+
+### Cross-repo coherence (Step 5)
+- Schema drift: none.
+- Endpoint drift: lap-backend T008 adds logging middleware — doesn't add/change routes. No drift.
+- Contract test: skipped (no API surface change).
+
+### Metrics delta
+- 4 verified + accepted + tagged. 0 reverted. 0 flags.
+
+### Alerts fired this cycle (Step 11)
+- **None.** All repos green.
+
+### Daily email (Step 10)
+- Skipped via dedup.
+
+### Baseline updates for cycle 7
+- `lap-backend`: `3f3d471` → **`602d05b`**
+- `lap-webapp`: `19b0803` → **`33cde90`**
+- `lap-schemas`: `a50d39a` (unchanged)
+- `lap-mobile-android`: `226b89a` → **`1426ca2`**
+- `lap-website`: `255cb7b` → **`250a5f0`**
+- `datalogger`: `eb97496` (unchanged — 2nd consecutive quiet cycle)
+
+### Pause-trigger check
+- All counts within thresholds. No pause.
+
+### Forced human-review checkpoints
+- None hit.
+
+### Cycle 6 firsts
+- Mobile full lint matrix (detekt + ktlint) truly ran — not silent-skipped. :app:-qualified calls work.
+- Webapp sprint loop jumped T009/T010 → T011 (review loop doesn't care, just reviews what's committed).
+
+### Step 9 commit + push
+- Committing review-log + metrics + any sprint-loop bookkeeping as `meta: review loop cycle 6`. Push lap-meta.
+
+---
