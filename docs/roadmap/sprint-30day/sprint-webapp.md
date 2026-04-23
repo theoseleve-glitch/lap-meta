@@ -16,9 +16,9 @@
 - [x] T006 [codex] Move `src/components/**` (app-scoped only) → new repo ⇒ imports resolve (a8835b6)
 - [x] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve (29ffe70)
 - [x] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve (19b0803)
-- [ ] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir
-- [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works
-- [ ] T011 [sonnet] Configure next.config.mjs for `app.lap.com` subdomain + strict CSP ⇒ deploys
+- [x] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir (no-op: webapp seeded clean, never had marketing routes)
+- [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works [BLOCKED: waiting on lap-backend T045 — TS codegen pipeline; lap-schemas/typescript/ is empty (no package.json)]
+- [x] T011 [sonnet] Configure next.config.mjs for `app.lap.com` subdomain + strict CSP ⇒ deploys (33cde90)
 - [ ] T012 [codex] Re-enable TS + ESLint checks in next build (remove audit's bypass) ⇒ `next build` strict
 - [ ] T013 [codex] Setup ESLint with next/core-web-vitals + strict TS rules ⇒ lint green
 - [ ] T014 [codex] Prettier config, format all files once ⇒ no diff on re-run

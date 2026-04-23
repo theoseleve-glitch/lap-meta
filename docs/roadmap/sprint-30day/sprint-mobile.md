@@ -17,7 +17,7 @@
 - [x] T006 [codex] Detekt + ktlint Gradle tasks: `./gradlew detekt ktlintCheck` ⇒ green on empty project — 0a15e1e
 - [x] T007 [codex] GitHub Actions `ci.yml`: assembleDebug, lint, test on push ⇒ workflow green — b1dceb8 [PENDING: green-on-push validation requires remote GHA run; each step verified locally]
 - [x] T008 [sonnet] Pre-commit hook: ktlintFormat + assembleDebug ⇒ blocks bad commits — 226b89a
-- [ ] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches
+- [x] T009 [sonnet] Hilt setup: `@HiltAndroidApp` on `LapApplication`, AppComponent wired ⇒ app launches — 1426ca2 [PENDING: app-launch-on-device]
 - [ ] T010 [sonnet] Navigation-compose dep + NavHost scaffold in MainActivity ⇒ default route renders
 - [ ] T011 [sonnet] Material 3 theme: light + dark color schemes, Typography, Shapes ⇒ screens themed
 - [ ] T012 [sonnet] App icon + launcher icon set (temporary placeholders) ⇒ installed on device
