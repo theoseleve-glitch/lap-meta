@@ -21,7 +21,7 @@
 - [ ] T010 [sonnet] Preview deploys per PR ⇒ preview URLs land in PR comments [BLOCKED: depends on T008 — PR previews are a Pages project feature.]
 - [x] T011 [sonnet] Robots.txt + sitemap.xml auto-generated via Astro integration ⇒ verified (lap-website@255cb7b)
 - [x] T012 [sonnet] Default SEO layout: title + description + og + twitter + JSON-LD ⇒ all pages inherit (lap-website@250a5f0)
-- [ ] T013 [sonnet] Canonical URLs + og:image per page ⇒ tested
+- [x] T013 [sonnet] Canonical URLs + og:image per page ⇒ tested (lap-website@cd14740; also migrates site URL lap.com → lap-coach.racing)
 - [ ] T014 [sonnet] PostHog client integration (cookieless initial-load) ⇒ pageviews ping
 - [ ] T015 [sonnet] Plausible alternative or skip (pick one analytics, per GDPR preference) ⇒ decision noted
 - [ ] T016 [sonnet] Sentry browser SDK integrated ⇒ errors captured
