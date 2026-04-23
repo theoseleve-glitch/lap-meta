@@ -20,7 +20,7 @@
 ## Block A — Project scaffold (T001–T020)
 
 - [x] T001 [opus] Scaffold `lap-backend/` with `pyproject.toml` (uv), Python 3.12, MIT license ⇒ `uv sync` succeeds — sha: 4969e7c
-- [ ] T002 [sonnet] Add `.gitignore`, `.python-version`, `README.md` stub, `docs/` folder ⇒ repo clean
+- [x] T002 [sonnet] Add `.gitignore`, `.python-version`, `README.md` stub, `docs/` folder ⇒ repo clean — sha: 1069ac3
 - [ ] T003 [sonnet] Configure ruff (rules: E,F,I,N,UP,B,C4,SIM,RET,ARG,PTH) in `pyproject.toml` ⇒ `ruff check .` green
 - [ ] T004 [sonnet] Configure mypy strict mode for `app/` and `domain/` ⇒ `mypy` green on empty dirs
 - [ ] T005 [codex] GitHub Actions: `.github/workflows/ci.yml` runs ruff+mypy+pytest on push ⇒ workflow valid

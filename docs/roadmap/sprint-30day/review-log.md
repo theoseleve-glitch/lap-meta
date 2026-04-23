@@ -80,3 +80,42 @@ Last-seen commits per repo (baseline — review loop should NOT review these, th
 - First cycle after 08:00 UTC of 2026-04-23. ops/.last_daily_sent was missing → treated as first-send-of-day. Email sent to theos.eleve@gmail.com covering KPIs (all zero), strategy decisions requiring input (2: datalogger divergence + missing git-root), awareness issues (sprint-mobile inconsistency + datalogger working-tree noise), blockers (none), next 24h outlook.
 
 ---
+
+## 2026-04-23T15:30:00Z — Cycle #1 Remediation (manual, outside loop)
+
+User responded to cycle-1 daily email with: "1a 2a, increase disk alert to 95%, integrate and clean everything". Executed all three decisions in this interactive session.
+
+### Disk threshold bump
+- `docs/roadmap/sprint-30day/loop-review.md` Pause Triggers line edited: "Disk usage >90%" → "Disk usage >95%".
+
+### Datalogger reconciliation (Option 1a)
+- Extended `datalogger/.gitignore` with `.superpowers/`, `.claude/`, `*.pid`, `*.lock`, `=1.26` to filter automation-state noise.
+- `git stash push -u` — stashed 64 modified + ~270 untracked (post-gitignore).
+- `git pull --rebase origin master` — replayed 34 local commits on top of origin's 2 commits (PR #1 gzip upload fix).
+- One conflict: `tests/test_sync_queue.py` — commit `6b2b459 feat: webapp sync v1 — schema, queue, and client` replaced the file entirely; origin's PR #1 had added a test to the old `TestSyncQueueManager` class. Resolved by **unioning** both test suites (old `core.sync_queue.SyncQueueManager` tests + new `sync.queue.SyncQueue` tests). Both subsystems coexist in tree.
+- `git stash pop` — reintroduced modifications + untracked.
+- Unstaged `.superpowers/` + `.claude/` that slipped through (stash-pop bypasses gitignore filtering for untracked items).
+- Committed as `304c0a9 manual: integrate 2-3 weeks pre-sprint WIP — overlay system, backend, native frontend, coaching` (334 files: 125 src, 79 tests, 43 backend, 28 native_frontend, 18 docs, 14 assets).
+- `git push origin master` succeeded as fast-forward (`f89eabc..304c0a9`). Local == origin now.
+
+### Baseline updates (CRITICAL for cycle 2 parsing)
+
+The rebase rewrote all 34 datalogger SHAs. Previous baseline `ab2208b` is now orphaned. **Effective baselines as of 2026-04-23T15:30Z:**
+
+- `lap-backend`: `4969e7c` (unchanged — T001 scaffold, no new commits this session)
+- `lap-webapp`: `9429e8b` (unchanged — T001 scaffold, no new commits)
+- `lap-schemas`: `a50d39a` (unchanged — seed, no new commits)
+- `lap-mobile-android`: `1341404` (ADVANCED — was `62d2562` seed; sprint-mobile loop committed T001 `999f2f3` + T002 `1341404` concurrently during this session; both pushed to origin; cycle 2 should treat 1341404 as last-seen and review any commits after)
+- `datalogger`: `304c0a9` (ADVANCED — was `ab2208b` which no longer exists post-rebase; 304c0a9 is the tip after both the 34-commit rebase and the bulk manual integration; cycle 2 should treat 304c0a9 as last-seen)
+
+### lap_mobile (iOS, not in 5-repo review scope)
+- Committed `1d81a63 manual: mark lap_mobile (iOS) as FROZEN pending Mac availability` (FROZEN.md marker).
+- Pushed to origin on `main` branch. Not part of loop review, documented here for completeness.
+
+### Next cycle behavior (fires at 17:07 UTC)
+- lap-backend/webapp/schemas: likely no new commits, quick no-op.
+- lap-mobile-android: will review T001 + T002 commits since baseline `1341404` if any sprint loop lands more; otherwise no-op.
+- datalogger: will review any `sprint(desktop):` commits since `304c0a9`.
+- Git-root no longer missing → Step 9 (commit review-log + metrics + push to lap-meta origin) will execute properly from cycle 2 onward.
+
+---
