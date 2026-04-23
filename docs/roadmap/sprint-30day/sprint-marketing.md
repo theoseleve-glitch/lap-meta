@@ -24,7 +24,7 @@
 - [x] T013 [sonnet] Canonical URLs + og:image per page ⇒ tested (lap-website@cd14740; also migrates site URL lap.com → lap-coach.racing)
 - [x] T014 [sonnet] PostHog client integration (cookieless initial-load) ⇒ pageviews ping (lap-website@c370601; client bundle 62.33 kB gzip — 40% of the <150 kB budget, flagged for T015 Plausible comparison)
 - [x] T015 [sonnet] Plausible alternative or skip (pick one analytics, per GDPR preference) ⇒ decision noted (lap-website@92b142b; ADR-019 — keep PostHog, Plausible deferred; revisit triggers: LCP >1.8 s, funnels/experiments UI unused at M6, free-tier exceeded, or GDPR tightening)
-- [ ] T016 [sonnet] Sentry browser SDK integrated ⇒ errors captured
+- [x] T016 [sonnet] Sentry browser SDK integrated ⇒ errors captured (lap-website@1798f49; env-gated PUBLIC_SENTRY_DSN, DCE'd when unset — 62.33 kB gzip unchanged; activated: 88.77 kB gzip)
 - [ ] T017 [sonnet] Lighthouse CI in GitHub Actions: LCP <1.8s threshold on homepage ⇒ gate
 - [ ] T018 [sonnet] Visual regression via Chromatic or Percy ⇒ baseline set
 - [ ] T019 [sonnet] 404 page designed + linked ⇒ renders
