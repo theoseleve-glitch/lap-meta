@@ -31,7 +31,7 @@
 - [x] T010 [codex] First test: `test_healthz_returns_200` in `tests/test_health.py` ⇒ test green — sha: 699bc51
 - [x] T011 [sonnet] Domain layout: create `app/`, `domain/`, `infra/`, `coaching/` top-level packages with `__init__.py` ⇒ importable — sha: fbef621
 - [x] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested — sha: 14180aa
-- [x] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed — sha: 3ada05d
+- [NEEDS_REWORK] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed — sha: 3ada05d — failed review cycle 11: `ruff check .` exit 1 with 2 errors in tests/test_env_example.py (E501 line 5 89>88 chars on REQUIRED_KEYS frozenset; SIM300 line 23 yoda condition on `REQUIRED_KEYS <= _keys_in_env_example()`), reverted in 3312b5e. Re-do: line-wrap + rewrite as `_keys_in_env_example() >= REQUIRED_KEYS`.
 - [x] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work — sha: 6018966
 - [ ] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green
 - [ ] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests
