@@ -590,3 +590,32 @@ Cron-fired 22:07 UTC. Baselines: backend=`699bc51`, webapp=`52e1cce`, schemas=`a
 - `meta: review loop cycle 9` with review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-23T22:50:00Z — Cycle #10
+
+Cron-fired 22:37 UTC. Baselines: backend=`fbef621`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`40e013e`, website=`92b142b`, datalogger=`eb97496`. Disk 86%. Daily email: skip (dedup).
+
+### Per-repo
+- **lap-backend `14180aa` T012 pydantic-settings Config**: ACCEPTED + tagged + pushed. Full matrix green — **pytest 4 passed 0.35s** (T011+T012 added 3 new tests beyond cycle-8's 1). Diff: 4 files / 70 ins. Config.database_url/redis_url as str, clerk_secret/stripe_secret as SecretStr.
+- **lap-webapp**: NO new sprint commits (**2nd consecutive idle cycle**). HEAD still `52e1cce` T014. Webapp sprint loop may be stalled or waiting on backend dependency.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `584a231` T013 values-fr strings stub**: ACCEPTED. Full matrix green. Diff: 1 file / 5 ins. Mirror of default strings.xml in values-fr/ — only app_name present (brand doesn't translate).
+- **lap-website `1798f49` T016 Sentry browser error capture**: ACCEPTED. Full matrix green. Diff: 5 files / 139 ins. Init only when `PUBLIC_SENTRY_DSN` set; error-capture-only config.
+- **datalogger**: 6th consecutive quiet cycle at `eb97496`.
+
+### Also observed on lap-meta
+- `e7a8c25 sprint(marketing): T016 complete (lap-website@1798f49)` — marketing-loop bookkeeping commit.
+
+### Steps 5-7: no drift, no deploys, no smoke.
+
+### Steps 10-11: daily email dedup-skipped; no alerts fired.
+
+### Baselines cycle 11
+- backend=`14180aa`, webapp=`52e1cce` (unchanged), schemas=`a50d39a`, mobile=`584a231`, website=`1798f49`, datalogger=`eb97496`.
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 10` with review-log + metrics + sprint-file bookkeeping.
+
+---

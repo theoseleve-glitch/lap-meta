@@ -1,40 +1,36 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-23T22:20Z (Cycle #9)
+## Last updated: 2026-04-23T22:50Z (Cycle #10)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | HEAD |
 |---|---|---|---|---|
-| lap-backend | 11 | 229 | 0 | `fbef621` (T011 infra+coaching packages) |
-| lap-webapp | 11 | 229 | 0 | `52e1cce` (T014 — no new commits this cycle) |
+| lap-backend | 12 | 228 | 0 | `14180aa` (T012 pydantic-settings Config) |
+| lap-webapp | 11 | 229 | 0 | `52e1cce` (T014 — **2 consecutive idle cycles**) |
 | lap-schemas | 0 | — | 0 | `a50d39a` |
-| lap-mobile-android | 12 | 228 | 0 | `40e013e` (T012 launcher icon) |
-| lap-website | 12 | 3 BLOCKED | 3 | `92b142b` (T015 analytics decision) |
-| datalogger | 2 | 238 | 0 | `eb97496` (unchanged — 5th consecutive quiet cycle) |
+| lap-mobile-android | 13 | 227 | 0 | `584a231` (T013 values-fr strings stub) |
+| lap-website | 13 | 3 BLOCKED | 3 | `1798f49` (T016 Sentry browser error capture) |
+| datalogger | 2 | 238 | 0 | `eb97496` (unchanged — **6th consecutive quiet cycle**) |
 
-## This cycle (Cycle #9)
+## This cycle (Cycle #10)
 
-- Verified GREEN: **3** commits (backend T011, mobile T012, website T015)
-- Webapp: no new sprint commits this cycle (first cycle with webapp idle)
+- Verified GREEN: **3** commits (backend T012, mobile T013, website T016)
+- Webapp idle for second consecutive cycle
 - Reverted: 0 | NEEDS_REWORK: 0 | flags: 0
 
-## Cumulative (9 cycles)
+**Notable**: backend pytest went from 1 → 4 passing tests (T011's infra+coaching packages + T012 Config tests combined).
 
-- Total reviewed: 44 · Accepted+tagged: 43 (1 INFRA_FLAG c4 datalogger)
+## Cumulative (10 cycles)
+
+- Total reviewed: 47 · Accepted+tagged: 46 (1 INFRA_FLAG c4)
 - Reverted: 0 · NEEDS_REWORK events: 2 (both c4, cleared c5)
-- Pause triggers: 0 · Forced checkpoints: 0
-
-## Cycle 9 notables
-
-- New **ADR-019 analytics decision** landed on lap-meta (`5e9ff39 sprint(marketing): T015 complete + ADR-019 analytics decision` — out of review scope: sprint-marketing commits to lap-meta directly, not a 6-repo target).
-- Webapp idle first cycle — prettier format pass (T014) was the last; T015+ may be blocked by dep or taking longer.
-- Datalogger 5th quiet cycle. Reinforces suspicion that Terminal 3 is down or heavily stuck.
+- Pause triggers: 0
 
 ## Current issues
 
+- **Webapp sprint loop idle 2 cycles** — may indicate Terminal 2 stalled or hit a dep block.
+- **Datalogger 6th quiet cycle** — Terminal 3 almost certainly stopped.
 - lap-website T008-T010 BLOCKED on Cloudflare OAuth (carried)
-- Datalogger pytest dep gap + 5-cycle quiet period: Terminal 3 almost certainly stalled
-- Daily email: dedup still holds (UTC date 2026-04-23). Will re-check at first post-08:00-UTC cycle of 2026-04-24.
 
-## Cron: `b6279c25` next fire 22:37 UTC.
+## Cron: next fire 23:07 UTC.
