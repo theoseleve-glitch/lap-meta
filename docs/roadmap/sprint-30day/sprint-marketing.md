@@ -28,7 +28,7 @@
 - [x] T017 [sonnet] Lighthouse CI in GitHub Actions: LCP <1.8s threshold on homepage ⇒ gate (lap-website@317d62c; config + job wired, lhci healthcheck green locally, ubuntu-latest CI is the gate of record — Windows local EPERM cleanup known-issue) [SCOPE_FLAG] diff=2267 lines, reviewer-triggered cycle 11 (threshold 1500 default non-scaffold). scope-blowup alert dedup-suppressed for 2026-04-23 (already fired cycle 3/4).
 - [ ] T018 [sonnet] Visual regression via Chromatic or Percy ⇒ baseline set [BLOCKED: both services require external accounts + OAuth tokens that cannot be automated from the loop environment. Unblock via one of: (a) Chromatic — create Storybook first (out of scope for a 1-page static site today), sign up, set CHROMATIC_PROJECT_TOKEN as a GitHub secret, add chromatic action to ci.yml; (b) Percy — sign up, set PERCY_TOKEN secret, install @percy/playwright and wrap the existing e2e spec with percy snapshots. If user prefers zero external deps, Playwright's built-in `toHaveScreenshot()` is a no-account alternative — ask before swapping away from the spec.]
 - [x] T019 [sonnet] 404 page designed + linked ⇒ renders (lap-website@3e57701; /404.html emitted from src/pages/404.astro, inherits BaseLayout SEO, 4 TDD cases)
-- [ ] T020 [sonnet] 500 page designed + linked ⇒ renders
+- [x] T020 [sonnet] 500 page designed + linked ⇒ renders (lap-website@6add4af; /500.html emitted from src/pages/500.astro, BaseLayout SEO inherited, 4 TDD cases mirror T019 pattern)
 
 ## Block B — Homepage (T021–T040)
 
