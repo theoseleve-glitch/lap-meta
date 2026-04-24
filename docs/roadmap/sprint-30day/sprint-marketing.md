@@ -75,7 +75,7 @@
 
 - [ ] T056 [design] Figma: pricing page (one tier, monthly + yearly) ⇒ approved
 - [x] T057 [opus] Route `/pricing` shell ⇒ renders (lap-website@e3732a4; minimal BaseLayout + main landmark + H1 "One tier. Clear price." + intro paragraph. Title/description lock the €15 + 14-day trial anchors for SERP. Build emits dist/pricing/index.html (7.35 kB). T034/T052 "See full pricing →" links now resolve. T058+ land the tier card, FAQ, founder offer, B2B teaser. 6 TDD cases, 177 unit green)
-- [ ] T058 [opus] Tier card: €15/mo or €150/yr (save €30) + "14-day free trial" badge ⇒ Storybook
+- [x] T058 [opus] Tier card: €15/mo or €150/yr (save €30) + "14-day free trial" badge ⇒ Storybook (lap-website@f40baec; PricingTierCard.astro ships inverse-pill trial badge + H2 "Full LAP access" + 2-col price grid (Monthly €15 / Yearly €150 + acid-green "save €30") + both CTAs wired to app.lap-coach.racing/signup?plan={monthly,yearly}. Integration test strengthened past shell subhead false-positive. Note: Storybook not installed in repo — developed in isolation via AstroContainer unit tests instead. 8 TDD cases + 1 integration, 186 unit green)
 - [ ] T059 [opus] "What's included" checklist ⇒ 12 bullets
 - [ ] T060 [opus] Founder-waitlist offer section: "Signed up before launch? €12/mo for 12 months" ⇒ rendered
 - [ ] T061 [opus] FAQ section: 10 questions (cancel anytime, no card for trial, data export, etc.) ⇒ accordion
