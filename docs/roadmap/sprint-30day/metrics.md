@@ -1,33 +1,38 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T14:25Z (Cycle #42)
+## Last updated: 2026-04-24T14:40Z (Cycle #43)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 37 | 200 | 2 | 1 (T013) | 0 | `7b64848` (**26 idle cycles**) |
-| lap-webapp | 53 | 187 | 0 | 0 | 0 | `61d4e8f` (T126 TimelineSkeleton loading state) |
-| lap-schemas (subset) | 21 | — | 0 | 0 | 0 | `5bb57e8` (idle 1 cycle) |
-| lap-mobile-android | 39 | 201 | 0 | 0 | 0 | `291c7f3` (idle 18 cycles) |
-| lap-website (marketing) | 39 | 181 | 0 | 0 | 1 (T017 inline) | `ce6706d` (idle 1 cycle) |
-| datalogger (desktop) | 17 | 223 | 0 | 0 | 0 | `76d39dc` (T017 SessionStateMachine → transitions lib) |
+| lap-backend (total) | 38 | 199 | 2 | 1 (T013) | 0 | `7b64848` (**27 idle cycles**) |
+| lap-webapp | 54 | 186 | 0 | 0 | 0 | `32b3640` (T127 TimelineError with retry) |
+| lap-schemas (subset) | 22 | — | 0 | 0 | 0 | `1e07eb9` (T041 TargetEvent + DriverReadinessState; pytest 60) |
+| lap-mobile-android | 40 | 200 | 0 | 0 | 0 | `ffa78e5` (T040 no hand-rolled schema duplicates audit) |
+| lap-website (marketing) | 40 | 180 | 0 | 0 | 1 (T017 inline) | `95545d6` (T046 Brain section step 02) |
+| datalogger (desktop) | 18 | 222 | 0 | 0 | 0 | `7fa3933` (T018 SessionCoordinator logger contract) |
 
-## This cycle (Cycle #42)
+## This cycle (Cycle #43)
 
-- Verified GREEN: 2 (webapp T126, datalogger T017)
+- Verified GREEN: 5 (webapp T127, schemas T041 Python, mobile T040 audit, website T046, datalogger T018)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- **First lap-mobile-android sprint commit since cycle 24 (19 cycles ago)** — T040 is a small audit correction (2 files, comment edits only)
 
-## Cumulative (42 cycles)
+## Cumulative (43 cycles)
 
-- Total reviewed: 162 · Accepted+tagged: 160 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 167 · Accepted+tagged: 165 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 42 notables
+## Cycle 43 notables
 
-- **Datalogger T017 = substantial refactor** (session_state.py +93/-20, net +73 lines; adds `transitions` library as pyproject dependency; adds 53-line backend test). Downstream tests importing `SessionStateMachine` (test_evaluation_gate, test_release_readiness, test_session_coordinator, test_session_state, test_session_state_transitions_backend): **116/116 pass**. Refactor preserves public API contract.
-- Webapp T126 TimelineSkeleton loading state (37 + 38 = 75 lines + index) — 124 tests (+6).
-- Disk 86% stable 19 cycles.
+- **Mobile T040 audit confirms no hand-rolled duplicates** of schema types. Only corrections: comments in `app/src/main/kotlin/com/lap/mobile/core/Serialization.kt` and its test pointing future readers at the right serializer (`LapSchemasJson`). 14 ins / 14 del — pure refactor/documentation. Full gradle matrix green (detekt + ktlintCheck + assembleDebug + testDebugUnitTest + `:schemas:test --rerun-tasks`).
+- **Schemas T041 = TargetEvent + DriverReadinessState** multi-object Python commit (79 + 46 = 125 lines; pytest 60 +3).
+- Webapp T127 TimelineError with retry (30 + 37 = 67 lines + index) — 130 tests (+6).
+- Website T046 Brain section step 02 (63 lines HowItWorksBrain.astro + mount) — 147 tests (+7).
+- Datalogger T018 SessionCoordinator logger contract test (59 lines, 4 tests) — locks the logger module contract as a pure-add test.
+- Backend 27 idle. Mobile no longer idle (T040 landed). 
+- Disk 86% stable 20 cycles.
 
 ## Current issues
 
@@ -38,4 +43,4 @@
 - Kotlin-ahead-of-Python CoachingInsight (cycle 38).
 - Step 10 daily-email deferred.
 
-## Cron: next 14:30 UTC.
+## Cron: next 14:45 UTC.
