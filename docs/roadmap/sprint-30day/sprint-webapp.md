@@ -151,7 +151,7 @@
 - [x] T126 [sonnet] Loading: skeleton cards ⇒ shows (61d4e8f)
 - [x] T127 [sonnet] Error: retry ⇒ works (32b3640)
 - [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works
-- [ ] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured
+- [x] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured (9293914)
 - [ ] T130 [sonnet] Click entry → navigate to session detail ⇒ works
 - [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes
 - [ ] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean
