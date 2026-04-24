@@ -3130,3 +3130,37 @@ Cron-fired 21:07 UTC. No PAUSE. 4 accepts + 1 no-op sprint-file flip, 0 reverts.
 - `meta: review loop cycle 69 — 4 accepts + 1 no-op, 4th ORM + mobile recovery flow complete + v2-only cleanup` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T21:25:00Z — Cycle #70 — **2ND ALL-IDLE**
+
+Cron-fired 21:22 UTC. No PAUSE. 0 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+- All 6 idle at c69 baselines. Schemas idle 11 cycles.
+
+### Step 4 / 5 / 6 / 7
+- Nothing to verify; no cross-repo surfaces changed; no deploys; no smoke.
+
+### Step 8
+- `metrics.md` updated — counts unchanged from c69.
+
+### Step 10 / 11
+- No alerts. Daily deferred.
+
+### Baselines cycle 71
+- backend=`9a6a35b`, webapp=`78eb856` (3 idle), schemas=`0dda9cb` (11 idle), mobile=`e9bd309`, website=`75b848c`, datalogger=`ea4b34a`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Observation
+
+- **Cadence pattern emerging**: 2 idle cycles in 8 (c66, c70) = 25% idle rate. The active bursts (c63-c65, c67-c69) each averaged ~5 accepts per cycle for 4-5 cycles, then simultaneous pause.
+- The simultaneity is interesting — all 5 sprint loops going quiet together suggests they hit their respective "next task is substantial" points at similar wall-clock moments, which makes sense if each typically does ~1 task per 10-15min and they started together.
+- No runbook change needed. Idle-cycle logging is cheap and preserves cadence observability.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 70 — IDLE (2nd all-idle)` + metrics + review-log. Push to lap-meta master.
+
+---
