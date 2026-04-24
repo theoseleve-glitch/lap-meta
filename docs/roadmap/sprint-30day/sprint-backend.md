@@ -90,7 +90,7 @@
 - [x] T060 [opus] ORM model `Session` (id, driver_id, manifest jsonb, created_at, status) ⇒ migration applied — sha: 3de44d4
 - [x] T061 [opus] ORM model `SessionRecord` (id, session_id, processed payload jsonb) ⇒ migration applied — sha: 9a6a35b
 - [x] T062 [opus] ORM model `TelemetryArtifact` (id, session_id, s3_key, sha256, size_bytes) ⇒ migration applied — sha: 9882ce2
-- [ ] T063 [opus] ORM model `Lap` (id, session_id, lap_number, time_ms, sector_times, valid) ⇒ migration applied
+- [x] T063 [opus] ORM model `Lap` (id, session_id, lap_number, time_ms, sector_times, valid) ⇒ migration applied — sha: 40eeed0
 - [ ] T064 [opus] ORM model `WeaknessEpisode` matching Pydantic shape ⇒ migration applied
 - [ ] T065 [opus] ORM model `ActionPrescription` matching Pydantic shape ⇒ migration applied
 - [ ] T066 [opus] ORM model `ActionOutcome` matching Pydantic shape ⇒ migration applied

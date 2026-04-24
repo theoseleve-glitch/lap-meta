@@ -50,7 +50,7 @@
 - [x] T037 [sonnet] Integration test: interrupted finalize doesn't corrupt prior bundles ⇒ green (a146064)
 - [x] T038 [sonnet] Backward compat shim: read old v1 bundles, re-serialize as v2 on demand ⇒ reprocess path works (7e2cde5)
 - [x] T039 [sonnet] Update `bundle_schema.py` to emit v2-only ⇒ v1 writer removed (ea4b34a)
-- [ ] T040 [sonnet] Update `writers/*` to use canonical field names ⇒ consistency
+- [x] T040 [sonnet] Update `writers/*` to use canonical field names ⇒ consistency (c59dc8e)
 
 ## Block C — Upload client to new ingest endpoint (T041–T055)
 

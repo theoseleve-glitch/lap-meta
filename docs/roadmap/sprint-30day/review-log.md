@@ -3239,3 +3239,83 @@ Cron-fired 21:37 UTC. No PAUSE. 3 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 71 — 3 accepts, 5th ORM + mobile retention + Block E begins` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T21:55:00Z — Cycle #72 — **6TH ORM + FIRST MOBILE HARDWARE + WEBAPP STORYBOOK**
+
+Cron-fired 21:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `40eeed0` sprint(backend): T063 Lap ORM + migration** — ACCEPT + tag + push.
+  - Full matrix green: ruff clean, mypy 7 files, pytest 37/37 (+4).
+  - Diff: 3 files / 208 ins (orm.py +20 Lap + alembic versions/6995cae20177 44 + tests/test_lap_model.py 144 — biggest backend test file to date).
+  - 6th ORM model. FK to Session. Aggregate shape: User → DriverProfile → Session → {SessionRecord, TelemetryArtifact, Lap}.
+- **lap-webapp `ebaef85` sprint(webapp): T156 ProfilePage stories (3 data states)** — ACCEPT + tag + push.
+  - Full matrix green: typecheck + lint OK, 263 tests (+8 from 255), build OK.
+  - Diff: 116 ins. Storybook full-page surface at Profile/ProfilePage with Loaded/Loading/Empty stories. Per-story one title, each state composes its own component tree.
+  - Completes profile data-state coverage: Layout + Skeleton + Error + Empty + 3 composed stories.
+- **lap-schemas**: idle 13 cycles.
+- **lap-mobile-android `d2f4e52` sprint(mobile): T061 LocationCaptureService over FusedLocationProviderClient at 10Hz** — ACCEPT + tag + push (mid-cycle commit).
+  - Full gradle matrix green on stashed tree.
+  - Diff: 341 ins. 5 new files with clean separation:
+    - LocationDataSource.kt 13 — interface
+    - FusedLocationDataSource.kt 67 — Google Play Services impl
+    - LocationCaptureConfig.kt 23 — config object
+    - LocationAccuracyMode.kt 14 — enum
+    - LocationCaptureService.kt 19 — orchestrator
+    - build.gradle.kts +1 dep
+  - **First hardware sensor integration on mobile**. Capture layer begins — mirrors desktop/datalogger's data-capture role for Android.
+  - 8 consecutive clean mobile accepts.
+- **lap-website `002d38f` sprint(marketing): T073 demo format — video (default)** — ACCEPT + tag + push.
+  - Full matrix: 246 tests (+7), 7-page build.
+  - Diff: 153 ins. Locks walkthrough format (video over screenshot grid), reserves 16:9 footprint so T074 iframe is zero-CLS. Commit body forward-references T074 (iframe) + T075 (supplemental key-screen cards).
+- **datalogger `c59dc8e` sprint(desktop): T040 writers canonical SessionManifest adapter** — ACCEPT + tag + push.
+  - Diff: 246 ins. `write_bundle_v2_from_manifest` helper replaces hand-wired kwargs in finalizer (session_id, sim_title, duration_seconds, total_samples, started_at/ended_at). Writers now present one consistent entry point.
+  - Full suite: 1479 passed (+2), 19 pre-existing failures stable.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = mobile T061 at 341).
+- Forbidden patterns: clean.
+- Secrets: clean across 5 commits.
+- File-path guardrails: no workflow .yml changes.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- Endpoint drift: backend T063 still ORM-only. No `app/routers/`.
+- Contract test: still no shared surface. Skipped.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped (no configs).
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 73
+
+- backend=`40eeed0`, webapp=`ebaef85`, schemas=`0dda9cb` (13 idle), mobile=`d2f4e52`, website=`002d38f`, datalogger=`c59dc8e`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **6 ORM models, aggregate fanout continues**: Session now has 3 children (SessionRecord + TelemetryArtifact + Lap). Lap is the highest-cardinality (many laps per session), first scaling signal.
+- **Mobile's capture layer begins** (T061) — 8 cycles of clean mobile accepts. The recovery/journal layer (c63-c71) is complete; now starting the actual telemetry capture layer. Sensor + persistence + recovery will close the full write path.
+- **Webapp profile surface complete across data states** — Layout + Skeleton + Error + Empty + 3 composed stories. Next: backend wiring (T157+) when a real API exists.
+- 271 cumulative accepts / 3 reverts / 1.09% revert rate / 72 cycles.
+
+### Runbook process note
+
+- **Mid-cycle commits are becoming routine**: c65 webapp T152, c68 and c71 had none, c72 mobile T061. The re-fetch-per-repo pattern (re-pull after initial baseline check) is catching them. If rate continues, consider making re-fetch explicit between per-repo verifications.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 72 — 5 accepts, 6th ORM + first mobile hardware + webapp storybook` + metrics + review-log. Push to lap-meta master.
+
+---
+
