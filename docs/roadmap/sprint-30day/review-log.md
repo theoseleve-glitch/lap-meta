@@ -2146,3 +2146,45 @@ Cron-fired 16:22 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`cb5285e`, 
 - `meta: review loop cycle 50` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T16:40:00Z — Cycle #51
+
+Cron-fired 16:37 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`c2bf3d3`, schemas=`4f84bc8`, mobile=`233e538`, website=`ca94b17`, datalogger=`4f26585`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 3 idle at `772dc3d`.
+- **lap-webapp `53ff994` T141 OpenWeaknessesList component**: ACCEPTED + tagged + pushed. **tests 171/171** (+9). Diff: 3 files / 219 ins (OpenWeaknessesList.tsx 56 + test 88 + index).
+- **lap-schemas `8fc6ec8` sprint(backend): T047 add generate:ts script**: ACCEPTED + tagged + pushed. pytest 69 (unchanged — TS-side change). Diff: 2 files / 5 ins (typescript/package.json +3 scripts + .gitignore +2). TS codegen emit command now exists.
+- **lap-mobile-android `c86b7ff` T046 PrescriptionCacheEntity + MIGRATION_4_5**: ACCEPTED + tagged + pushed. **4th Room migration** (v4→v5). Diff: 4 files / 124 ins / 2 del (PrescriptionCacheEntity.kt 35 + test 64 + Migrations.kt MIGRATION_4_5 + LapDatabase bump). Offline cache for ActionPrescriptions keyed by prescription id, indexed by driver_id. kotlinx-serialized JSON payload via LapSchemasJson. Full gradle matrix BUILD SUCCESSFUL.
+- **lap-website `83956c6` T054 /how-it-works SEO meta tuned**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 171/171** (no net test-count change but +25 test ins / -0 del as SEO-meta structure assertions land), build 4 pages. Diff: 2 files / 33 ins / 2 del (how-it-works.astro head meta + test 25 lines).
+- **datalogger `a1de554` T024 audit — no duplicate Pydantic models in desktop**: ACCEPTED + tagged + pushed. 3/3 pass. Diff: 1 file / 69 ins (test_no_duplicate_pydantic_models.py). **Mirrors mobile T040 c43 audit pattern**: sprint loop checking its own source for drift from shared contracts. After T022 + T023 replaced local SessionManifest + LapRecord with shared v1 types, T024 asserts no other local duplicates exist. Completes the cross-repo consolidation.
+
+### Step 5 — Cross-repo coherence
+
+- **Cross-repo Python consolidation complete**: datalogger T022 + T023 + T024 = replace SessionManifest + LapRecord + audit-no-duplicates. All Python repos (backend + datalogger + schemas-itself) now use shared `lap_schemas.v1` types exclusively.
+- TS codegen side (T046+T047): scaffold + emit script. Webapp can consume generated types when ready.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 52
+
+- backend=`772dc3d` (4 idle), webapp=`53ff994`, schemas=`8fc6ec8`, mobile=`c86b7ff`, website=`83956c6`, datalogger=`a1de554`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestones
+
+- **Webapp [x]=60 (25%)** — sprint-webapp.md at 60/240 T-numbered tasks complete.
+- **Mobile Room v5** with 5 entity tables + 4 migrations across T041-T046.
+- **Desktop cross-repo audit complete** — no hand-rolled Pydantic duplicates remain.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 51` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

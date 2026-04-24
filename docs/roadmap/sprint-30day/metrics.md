@@ -1,36 +1,38 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T16:25Z (Cycle #50)
+## Last updated: 2026-04-24T16:40Z (Cycle #51)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 43 | 194 | 2 | 1 (T013) | 0 | `772dc3d` (idle 2 cycles) |
-| lap-webapp | 59 | 181 | 0 | 0 | 0 | `c2bf3d3` (T140 SkillRadarChart) |
-| lap-schemas (subset) | 26 | — | 0 | 0 | 0 | `4f84bc8` (idle 1 cycle; pytest 69) |
-| lap-mobile-android | 45 | 195 | 0 | 0 | 0 | `233e538` (idle 1 cycle) |
-| lap-website (marketing) | 45 | 175 | 0 | 0 | 1 (T017 inline) | `ca94b17` (idle 1 cycle) |
-| datalogger (desktop) | 23 | 217 | 0 | 0 | 0 | `4f26585` (T023 shared LapRecord) |
+| lap-backend (total) | 44 | 193 | 2 | 1 (T013) | 0 | `772dc3d` (idle 3 cycles) |
+| lap-webapp | 60 | 180 | 0 | 0 | 0 | `53ff994` (T141 OpenWeaknessesList) |
+| lap-schemas (subset) | 27 | — | 0 | 0 | 0 | `8fc6ec8` (T047 generate:ts script; pytest 69) |
+| lap-mobile-android | 46 | 194 | 0 | 0 | 0 | `c86b7ff` (T046 PrescriptionCacheEntity + MIGRATION_4_5) |
+| lap-website (marketing) | 46 | 174 | 0 | 0 | 1 (T017 inline) | `83956c6` (T054 SEO meta tuned) |
+| datalogger (desktop) | 24 | 216 | 0 | 0 | 0 | `a1de554` (T024 audit — no duplicate Pydantic models) |
 
-## This cycle (Cycle #50)
+## This cycle (Cycle #51)
 
-- Verified GREEN: 2 (webapp T140, datalogger T023)
+- Verified GREEN: 5 (webapp T141, schemas T047, mobile T046, website T054, datalogger T024)
 - Reverted: 0 | SCOPE_FLAG: 0 new
 
-## Cumulative (50 cycles) — MILESTONE
+## Cumulative (51 cycles)
 
-- Total reviewed: 192 · Accepted+tagged: 190 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 197 · Accepted+tagged: 195 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
-- **50 cycles / ~25 hours of autonomous review loop** at 15-min cadence
-- Revert rate: 0.52%
+- Webapp crosses **[x]=60 milestone** (60/240 = 25% of sprint-webapp.md complete)
 
-## Cycle 50 notables
+## Cycle 51 notables
 
-- **Datalogger T023 mirrors T022 pattern** for LapRecord: replace local type with `lap_schemas.v1.LapRecord`. Touches 4 src files (lap_analysis.py +4, session_coordinator.py +5, bundle_schema.py +23, finalizer.py +2) + 3 test files (+2+2+2). 27 downstream tests pass. Three Python consumers (backend + datalogger + schemas-itself) now use shared LapRecord runtime.
-- Webapp T140 SkillRadarChart component (126 + 95 + index = 269 lines). 162 tests (+8 from T139's 154). Large component — radar chart rendering.
-- Backend 2 idle, schemas 1 idle, mobile 1 idle, website 1 idle (all cooling after yesterday's burst).
-- Disk 86% stable 27 cycles.
+- **Mobile Room v5**: T046 PrescriptionCacheEntity + MIGRATION_4_5. 4th Room migration in 7 cycles (T041 skeleton → T042 Session v1 → T043 Journal v2 → T044 UploadQueue v3 → T045 InsightCache v4 → T046 PrescriptionCache v5). Full gradle matrix BUILD SUCCESSFUL. All 5 entity types now cached via kotlinx-serialized JSON keyed by session/driver.
+- **Datalogger T024 audit** (mirrors mobile T040 c43 pattern): adds `test_no_duplicate_pydantic_models.py` (69 lines, 3 tests) asserting desktop source has no local duplicates of shared lap-schemas types. Passes — cross-repo type substitution complete for desktop.
+- **Schemas T047** adds `generate:ts` npm script to typescript/package.json (+3 lines) + .gitignore entry. TS codegen now has emit command ready.
+- Webapp T141 OpenWeaknessesList (56 + 88 + index = 219 lines). 171 tests (+9). Profile-page timeline component.
+- Website T054 SEO meta tuning on /how-it-works (10/-2 page changes + 25 test additions). 171 tests.
+- Backend 3 idle cycles — cooling after T045 activation.
+- Disk 86% stable 28 cycles.
 
 ## Current issues
 
@@ -40,4 +42,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 16:30 UTC.
+## Cron: next 16:45 UTC.

@@ -71,7 +71,7 @@
 ## Block C — TS & Swift codegen (T046–T055)
 
 - [x] T046 [sonnet] TS codegen: `lap-schemas/typescript/` with `openapi-typescript@7` setup ⇒ runs — sha: lap-schemas@4f84bc8
-- [ ] T047 [sonnet] TS codegen script: `pnpm generate:ts` produces `generated/schema.d.ts` ⇒ file exists
+- [x] T047 [sonnet] TS codegen script: `pnpm generate:ts` produces `generated/schema.d.ts` ⇒ file exists — sha: lap-schemas@8fc6ec8
 - [ ] T048 [sonnet] TS codegen: wrap into `@lap/schemas` npm package (private workspace) ⇒ importable
 - [ ] T049 [sonnet] Swift codegen: `openapi-generator-cli` config for Swift5 ⇒ produces `.swift` files
 - [ ] T050 [sonnet] Swift codegen script: `make swift-codegen` ⇒ output in `lap-mobile/Generated/`
