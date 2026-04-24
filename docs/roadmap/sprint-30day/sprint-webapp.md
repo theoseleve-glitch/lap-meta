@@ -180,7 +180,7 @@
 - [x] T152 [sonnet] Loading skeletons per section ⇒ shows (cc32108)
 - [x] T153 [sonnet] Error states per section ⇒ handled (fc7d610)
 - [x] T154 [sonnet] Empty state (new user, no data): onboarding CTA ⇒ shown (78eb856)
-- [ ] T155 [sonnet] Cohort-locked state: "Unlocks at 20 drivers" copy ⇒ rendered
+- [x] T155 [sonnet] Cohort-locked state: "Unlocks at 20 drivers" copy ⇒ rendered (no-op: already delivered by T145 ArchetypeBadge locked state — renders 'Archetype locked' visually with 'Unlocks at 20 drivers' sub-copy and the same phrase in aria-label when archetype is null, using the default cohort size of 20 drivers from Q149)
 - [ ] T156 [sonnet] Storybook stories for full page with 3 data states ⇒ renders
 - [ ] T157 [sonnet] E2E: profile page loads, navigate to skill drilldown ⇒ green
 - [ ] T158 [sonnet] LCP <2s on profile ⇒ Lighthouse passes
