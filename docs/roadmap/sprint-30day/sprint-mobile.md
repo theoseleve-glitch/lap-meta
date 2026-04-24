@@ -47,7 +47,7 @@
 - [x] T033 [sonnet] `LapRecord` data class ⇒ compiles — b6ce2ed (schemas)
 - [x] T034 [sonnet] `WeaknessEpisode` data class (consumer-side) ⇒ compiles — c7a1821 (schemas)
 - [x] T035 [sonnet] `ActionPrescription` data class ⇒ compiles — ef37165 (schemas)
-- [ ] T036 [sonnet] `CoachingInsight` data class ⇒ compiles
+- [x] T036 [sonnet] `CoachingInsight` data class ⇒ compiles — 60f600c (schemas; rendering subset, full shape pending Pydantic source)
 - [ ] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles
 - [ ] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green
 - [ ] T039 [sonnet] UUID7 type alias (`typealias UUID7 = String` with validation) ⇒ unit-tested

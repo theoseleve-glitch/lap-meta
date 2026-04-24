@@ -1642,3 +1642,45 @@ Cron-fired 13:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`1dfa795`, 
 - `meta: review loop cycle 37` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T13:25:00Z — Cycle #38
+
+Cron-fired 13:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`1dfa795`, schemas=`d6f89f0`, mobile=`291c7f3`, website=`374fb80`, datalogger=`b76bdbd`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 22 idle.
+- **lap-webapp `8dac3bc` T123 DateRangeFilter (native date inputs)**: ACCEPTED + tagged + pushed. **tests 96/96** (+11). Diff: 3 files / 216 ins (DateRangeFilter.tsx 68 + test 112 + index).
+- **lap-schemas** TWO commits (one snapshot + one concurrent-capture):
+  - `60f600c sprint(mobile): T036 CoachingInsight consumer stub` (snapshotted): ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL. Diff: 2 files / 85 ins (CoachingInsight.kt 34 + test 51). **Kotlin-first pattern**: commit body confirms no Python source exists yet; sprint-mobile is stubbing ahead of source-of-truth. Not a Pause Trigger (still `sprint(` prefix, matrix green, no secrets, no unauthorized workflow changes), but **minor contract-drift risk flagged**: requires reconciliation when canonical Python T045 lands.
+  - `be89964 sprint(backend): T038 DivergencePoint model` **concurrent-capture** (landed between snapshot and push, detected via `d6f89f0..be89964` range in push output): ACCEPTED + tagged + pushed. Python pytest 51 (+3 from T037's 48). Diff: 2 files / 55 ins (divergence_point.py 15 + test 40). Secret/pattern scan clean.
+- **lap-mobile-android**: 14 idle.
+- **lap-website**: 1 idle at `374fb80`.
+- **datalogger**: 1 idle at `b76bdbd`.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas Python+Kotlin both grew (T038 Python, T036 Kotlin) but **asymmetric content**: T038 Python DivergencePoint has no Kotlin counterpart; T036 Kotlin CoachingInsight has no Python counterpart. Cross-language contract is *eventually consistent* per sprint-loop design. Will converge when later cycles fill the gaps. `:schemas:build` green from mobile dir confirms classpath still compiles.
+- Backend idle → no endpoint drift.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear (Kotlin-ahead pattern is a *documented* drift, not a `contract-drift` alert trigger — it's flagged in metrics Current-Issues instead).
+
+### Baselines cycle 39
+
+- backend=`7b64848` (23 idle), webapp=`8dac3bc`, schemas=`be89964`, mobile=`291c7f3` (15 idle), website=`374fb80` (2 idle), datalogger=`b76bdbd` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Runbook process note
+
+- **Kotlin-first sprint commits accepted** when commit body documents the asymmetry explicitly. Hard NEVER rule set doesn't prohibit writing Kotlin ahead of Python — it prohibits production deploys, workflow privilege escalation, secret leaks, and force-pushes. Kotlin-first shapes are a documented reconciliation-later pattern, tracked in metrics.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 38` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
+
+---
