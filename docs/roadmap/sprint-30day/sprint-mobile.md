@@ -63,7 +63,7 @@
 - [x] T046 [opus] Entity `PrescriptionCacheEntity` ⇒ migration — c86b7ff (mobile; driver-indexed JSON payload, no session FK — longitudinal)
 - [x] T047 [opus] Entity `TrackCacheEntity` (offline sector splits) ⇒ migration — 94e76a3 (mobile; JSON-payload envelope for sectors, global catalog)
 - [x] T048 [opus] Entity `RuleBundleEntity` (compiled coaching-rules bundle + fetched_at) ⇒ migration — fa8ad18 (mobile; JSON-payload envelope + signature column)
-- [ ] T049 [sonnet] DAO `SessionDao`: insert, update, list by status, observe as Flow ⇒ tested
+- [x] T049 [sonnet] DAO `SessionDao`: insert, update, list by status, observe as Flow ⇒ tested — 92e1ff3 (mobile; JVM sig tests, KSP validates queries; real DAO round-trip [PENDING: device-required])
 - [ ] T050 [sonnet] DAO `JournalDao`: upsertHeartbeat, listStale ⇒ tested
 - [ ] T051 [sonnet] DAO `UploadQueueDao`: enqueue, dequeueNext, updateAttempt ⇒ tested
 - [ ] T052 [sonnet] DAO `InsightCacheDao`: upsertBatch, listForSession ⇒ tested
