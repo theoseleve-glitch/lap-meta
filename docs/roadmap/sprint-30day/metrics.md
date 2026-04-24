@@ -1,36 +1,35 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T17:10Z (Cycle #53)
+## Last updated: 2026-04-24T17:25Z (Cycle #54)
 
 ## Per-repo status
 
 | Repo | `[x]` | HEAD |
 |---|---|---|
-| lap-backend | 46 | `772dc3d` (idle 5 cycles) |
-| lap-webapp | 62 | `7a5bb70` (idle 1 cycle) |
-| lap-schemas (subset) | 29 | `add2745` (T049 Swift5 codegen config; pytest 69; 4-language scaffold) |
-| lap-mobile-android | 48 | `fa8ad18` (T048 RuleBundleEntity + MIGRATION_6_7 — 7 entities, 6 migrations) |
-| lap-website (marketing) | 48 | `e3732a4` (T057 /pricing route shell — 5 pages now) |
-| datalogger (desktop) | 26 | `a7d327f` (T026 SessionFinalizer step 2 — writes v2 manifest.json) |
+| lap-backend | 46 | `772dc3d` (idle 6 cycles) |
+| lap-webapp | 62 | `77c0267` (T143 ReadinessGauge) |
+| lap-schemas (subset) | 29 | `add2745` (idle 1 cycle; pytest 69) |
+| lap-mobile-android | 48 | `fa8ad18` (idle 1 cycle) |
+| lap-website (marketing) | 48 | `e3732a4` (idle 1 cycle) |
+| datalogger (desktop) | 26 | `a7d327f` (idle 1 cycle) |
 
-## This cycle (Cycle #53)
+## This cycle (Cycle #54)
 
-- Verified GREEN: 4 (schemas T049, mobile T048, website T057, datalogger T026)
+- Verified GREEN: 1 (webapp T143 ReadinessGauge)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- 5 repos idle at cycle-53-end baselines
 
-## Cumulative (53 cycles)
+## Cumulative (54 cycles)
 
-- Total reviewed: 206 · Accepted+tagged: 204 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 207 · Accepted+tagged: 205 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 53 notables
+## Cycle 54 notables
 
-- **Schemas now 4-language**: T049 adds Swift codegen config (swift/openapi-generator-config.yaml + openapitools.json + 1822-line package-lock.json). Schemas subdirs: `python/` (source-of-truth) + `kotlin/` (cycle 24) + `typescript/` (cycle 49) + `swift/` (cycle 53). Likely for future iOS mobile app when unfrozen.
-- **Mobile Room 7 entities, 6 migrations**: T048 RuleBundleEntity (coaching rule bundle cache, 7-day TTL per T213, signature-verified at read time). Payload opaque JSON (T211 rule-engine shape stays out of Room). Full gradle matrix BUILD SUCCESSFUL.
-- **Website 5 pages now** (T057 /pricing shell): home + /how-it-works + /pricing + 404 + 500. /pricing has 62-line test + 31-line Astro component (placeholder pricing shell). 177 tests (+6).
-- Datalogger T026 SessionFinalizer **now writes v2 manifest.json** (step 2 in the multi-step pipeline wiring). Finalizer.py +11 lines + 54 more test lines. 7/7 pass. Cross-repo type flowing through WRITES now, not just INPUTS.
-- Backend 5 idle, webapp 1 idle.
-- Disk 86% stable 30 cycles.
+- Webapp T143 ReadinessGauge (103 + 62 + index = 207 lines). 190 tests (+11). Profile component.
+- All other repos idle — post-burst cooling after cycle 52-53 (Swift schemas scaffold + Room v7 + /pricing shell + SessionFinalizer step 2).
+- Backend 6 idle cycles.
+- Disk 86% stable 31 cycles.
 
 ## Current issues
 
@@ -40,4 +39,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 17:15 UTC.
+## Cron: next 17:30 UTC.
