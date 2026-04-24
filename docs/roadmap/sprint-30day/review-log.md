@@ -1438,3 +1438,39 @@ Cron-fired 11:37 UTC. No PAUSE. MCP servers for claude-flow/context7/pinecone/fi
 - `meta: review loop cycle 31` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T11:55:00Z — Cycle #32
+
+Cron-fired 11:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`f03f703`, schemas=`8af8655`, mobile=`291c7f3`, website=`b0c103b`, datalogger=`8343002`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 16 idle.
+- **lap-webapp `6b34ca9` T117 newWeaknessesBadge derivation**: ACCEPTED + tagged + pushed. Full matrix green; **tests 69/69** (+7). Diff: 2 files / 50 ins (badges.ts 12 + test 38).
+- **lap-schemas** TWO commits:
+  - `12b1685 sprint(backend): T033 WeaknessCategory enum`: ACCEPTED + tagged + pushed. pytest 36 (+3). Diff: 2 files / 38 ins (enum 10 lines + test 28 lines).
+  - `2e9717c sprint(mobile): T032 SensorConfigSnapshot data class`: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL 4 executed. Diff: 4 files / 78 ins / 6 del (SensorConfigSnapshotTest.kt 47 + SessionManifestTest.kt rewire + source). **5th consecutive Python+Kotlin lockstep cycle**.
+- **lap-mobile-android**: 8 idle.
+- **lap-website `6250dc6` T037 homepage JS budget lock <100 kB gzip**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 120/120** (+2), build 3 pages. Diff: 1 file / 64 ins (`homepage-js-budget.test.ts` — parses dist/index.html, gzips chunks at zlib 9, asserts <100_000 bytes). No workflow file touched this time (unlike T036). Pure-add contract test.
+- **datalogger `ed9b004` T010 regression guard — VM property-collision TypeError**: ACCEPTED + tagged + pushed. Pure-add test (64 lines, 2 tests). Diff: 1 file / 64 ins.
+
+### Step 5-7: schemas Python+Kotlin coherent (gradle rerun green), backend idle (no endpoint drift), website is budget-only (no surface drift). No deploys. No smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 33
+
+- backend=`7b64848` (17 idle), webapp=`6b34ca9`, schemas=`2e9717c`, mobile=`291c7f3` (9 idle), website=`6250dc6`, datalogger=`ed9b004`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- Datalogger desktop sprint hits **T-count [x]=10** this cycle — from baseline [x]=2 (cycle 1) to [x]=10 (cycle 32), 8 accepted over 30 cycles.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 32` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

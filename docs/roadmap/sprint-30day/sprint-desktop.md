@@ -17,7 +17,7 @@
 - [x] T007 [sonnet] Feature flag `LIVE_COACHING_ENABLED` to disable live coaching if needed ⇒ env-driven (c36b134)
 - [x] T008 [sonnet] Smoke test: run main with sim-disconnected → app boots without crash ⇒ green (b6754ee)
 - [x] T009 [sonnet] Smoke test: run main with iRacing mock → live processor runs ⇒ green (8343002)
-- [ ] T010 [sonnet] Fix `tests/test_qml_bootstrap.py` TypeError (property collision) ⇒ collection green
+- [x] T010 [sonnet] Fix `tests/test_qml_bootstrap.py` TypeError (property collision) ⇒ collection green (ed9b004)
 - [ ] T011 [sonnet] Add regression test: import all VM classes via bootstrap ⇒ green
 - [ ] T012 [sonnet] Add regression test: import all processor classes ⇒ green
 - [ ] T013 [codex] `pyproject.toml`: upgrade to Python 3.12, pin deps ⇒ `uv sync` clean
