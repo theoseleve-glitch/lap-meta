@@ -1359,3 +1359,37 @@ Cron-fired 11:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`75f5e3b`, 
 - `meta: review loop cycle 29` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T11:25:00Z — Cycle #30
+
+Cron-fired 11:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`75f5e3b`, schemas=`3ffbbc9`, mobile=`291c7f3`, website=`6f733b1`, datalogger=`b6754ee`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 14 idle.
+- **lap-webapp `470ecde` T114 TimelineEntry component**: ACCEPTED + tagged + pushed. Full matrix green; **tests 53/53** (+11 from T112's 42). Diff: 3 files / 226 ins (TimelineEntry.tsx 88 lines + test 82 lines + index). Component for the `/timeline` route shell from T112.
+- **lap-schemas**: 1 idle at `3ffbbc9`.
+- **lap-mobile-android**: 6 idle.
+- **lap-website `50b9148` T035 social-proof placeholder scaffold**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 114/114** (+7), build 3 pages. Diff: 4 files / 130 ins / 6 del (SocialProof.astro 42 lines + test + homepage mount + misc hero copy edits).
+- **datalogger**: 1 idle.
+
+### Step 5-7: no drift, no deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 31
+
+- backend=`7b64848` (15 idle), webapp=`470ecde`, schemas=`3ffbbc9` (2 idle), mobile=`291c7f3` (7 idle), website=`50b9148`, datalogger=`b6754ee` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **30 cycles complete**, 15 hours of autonomous review since the /loop started at 2026-04-23T15:06Z. 115 accepts, 1 revert (cycle 4), 2 flags. Revert rate remains ≈1%.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 30` + metrics + review-log. Push to lap-meta master.
+
+---
