@@ -145,7 +145,7 @@
 - [x] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works (1dfa795)
 - [ ] T121 [sonnet] Filter chip: track ⇒ works
 - [ ] T122 [sonnet] Filter chip: car ⇒ works
-- [ ] T123 [sonnet] Filter chip: date range picker ⇒ works
+- [x] T123 [sonnet] Filter chip: date range picker ⇒ works (8dac3bc)
 - [ ] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs
 - [ ] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered
 - [ ] T126 [sonnet] Loading: skeleton cards ⇒ shows
