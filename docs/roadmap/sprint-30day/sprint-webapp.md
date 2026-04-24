@@ -174,7 +174,7 @@
 - [x] T146 [sonnet] Layout: hero (score+trend) + radar + 3 columns (weaknesses, prescriptions, readiness) ⇒ approved (5dbd53a)
 - [x] T147 [sonnet] Responsive: stacks on mobile ⇒ tested (625d2a8)
 - [x] T148 [sonnet] Click skill dimension → navigate to skill drilldown (Block H) ⇒ works (2c5ed02)
-- [ ] T149 [sonnet] Click weakness → navigate to weakness detail ⇒ works
+- [x] T149 [sonnet] Click weakness → navigate to weakness detail ⇒ works (a9c6043)
 - [ ] T150 [sonnet] Click prescription → navigate to prescription detail ⇒ works
 - [ ] T151 [sonnet] Click readiness → navigate to target event picker ⇒ works
 - [ ] T152 [sonnet] Loading skeletons per section ⇒ shows
