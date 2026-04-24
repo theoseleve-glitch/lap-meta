@@ -57,7 +57,7 @@
 
 - [ ] T041 [design] Figma: ecosystem architecture diagram (desktop / mobile / webapp / bridge) ⇒ approved
 - [x] T042 [opus] Route `/how-it-works` shell ⇒ renders (lap-website@374fb80; minimal shell with BaseLayout + main landmark + H1 "How LAP works" + intro paragraph naming the three page pillars (coaching loop / bridge / data model). T026 secondary CTA now resolves. Build emits dist/how-it-works/index.html (7.5 kB). T043 will land the full hero; T055 will e2e the flow. 5 TDD cases, 125 unit + 13 e2e green)
-- [ ] T043 [opus] Hero: "The whole driver improvement loop, in one place" ⇒ renders
+- [x] T043 [opus] Hero: "The whole driver improvement loop, in one place" ⇒ renders (lap-website@041d415; H1 locked verbatim + eyebrow "The loop" + subhead naming the four-step loop vocabulary (capture / brain / plan / improve) which maps 1:1 to T045-T048 sections and ADR-005 objects. All four step-words locked at HTML surface. No GSAP on this page hero — /how-it-works stays JS-free. 5 TDD cases, 125 unit green)
 - [ ] T044 [opus] Diagram component: annotated SVG showing data flow ⇒ accessible text alt
 - [ ] T045 [opus] Section "1. Capture" — desktop + mobile capture explained ⇒ renders
 - [ ] T046 [opus] Section "2. Brain" — backend intelligence layer (weaknesses, prescriptions, bridge) ⇒ renders
