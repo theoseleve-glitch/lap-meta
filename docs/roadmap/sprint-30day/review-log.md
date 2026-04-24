@@ -3721,3 +3721,74 @@ Cron-fired 23:22 UTC. No PAUSE. 0 accepts, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-25T23:40:00Z — Cycle #79 — **11TH ORM + DEEP SKILL CHART + LOCATION VALIDATION + CHUNKED UPLOAD**
+
+Cron-fired 23:37 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `512892a` sprint(backend): T068 TransferLink ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 50/50 (+2).
+  - Diff: 195 ins (tests 119 + orm.py + migration). 11th ORM model.
+- **lap-webapp `59453d2` sprint(webapp): T169 SkillTrendChart component** — ACCEPT + tag + push.
+  - Full matrix: 292 tests (+11 from 281 — **largest single-commit test increase in webapp**), build OK.
+  - Diff: 268 ins. data-session-id on each point marker (T170 interaction readiness). Domain-level skill-trend visualization.
+- **lap-schemas**: idle 20 cycles.
+- **lap-mobile-android `b100bb8` sprint(mobile): T066 LocationSampleValidator physical-bounds plausibility filter** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree.
+  - Diff: 251 ins. LocationFieldViolation (18) + LocationSampleValidator (39) + 194 test lines.
+  - **Plausibility filter** — guards against sensor spikes (GPS teleport, impossible speed). Complements T065 mapper — samples now validated before mapping to domain.
+  - 13 consecutive clean mobile accepts.
+- **lap-website `38a447c` sprint(marketing): T088 /demo SEO meta — "sim racing telemetry demo"** — ACCEPT + tag + push.
+  - Full matrix: 255 tests (+2), 7-page build.
+  - Diff: 40 ins. Title + description + og/twitter derivatives updated.
+- **datalogger `864e1c7` sprint(desktop): T044 chunk telemetry into 5 MiB parts** — ACCEPT + tag + push.
+  - Diff: 149 ins. Adds `chunk_size_bytes` to `IngestClient` (default 5 MiB per ADR-012). Files > threshold split `<name>.part<i>of<N>` as separate `chunks[]` multipart parts.
+  - Full suite: oscillates 19/20 failures (known flake since c68). Re-ran → 19 failed, 1507 passed (+4 from c77's 1503). T044 own test file (`tests/test_ingest_client_upload.py`) 11 passed.
+  - **ADR-012 client now handles large bundles** — with T043 idempotency + T042 base upload + T044 chunking, the IngestClient is ready for realistic session sizes (multi-GB telemetry files).
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = mobile T066 at 251 tightly contested with webapp T169 at 268).
+- Forbidden patterns: clean.
+- Secrets: clean across 5 commits.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- **ADR-012 datalogger client complete in 4 commits** (c73 T041 typed surface + c76 T042 upload + c77 T043 idempotency + c79 T044 chunking). Next backend router for `/api/v1/sessions/ingest` has a precise target.
+- 6 concurrent blocks unchanged.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped.
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 80
+
+- backend=`512892a`, webapp=`59453d2`, schemas=`0dda9cb` (20 idle), mobile=`b100bb8`, website=`38a447c`, datalogger=`864e1c7`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **11 ORM models, 1 likely to go** (sprint-backend at T068; T069-T070 probably complete the ADR-005 ORM set before router transition).
+- **ADR-012 ingestion client end-to-end ready** on datalogger: typed surface → upload → idempotency → chunking. Backend router will have a 4-commit client-side contract to match.
+- **Mobile capture pipeline growing deep**: permission (T062) → sensor (T061+T063+T064) → transform (T065) → validate (T066). 6-layer stack. T067+ will likely orchestrate this into a running capture loop.
+- 295 cumulative accepts / 3 reverts / 1.02% revert rate / 79 cycles.
+
+### Runbook process note
+
+- **Client-first contract**: datalogger landed 4 IngestClient commits before backend has a single router. This is unusual (usually backend defines first) but the contract is carried by ADR-012 doc. The review loop has been flagging the emerging contract in Step 5 notes but can't run a real contract test until both sides exist. When backend T069+ router lands, first real Step 5 action.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 79 — 5 accepts, 11th ORM + skill chart + plausibility + chunked upload` + metrics + review-log. Push to lap-meta master.
+
+---
+

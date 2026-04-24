@@ -83,7 +83,7 @@
 - [x] T063 [opus] Foreground service: `CaptureForegroundService` with persistent notification during recording ⇒ survives backgrounding — 94b81b6 (mobile; Service shell + CaptureForegroundCommand dispatch enum + CaptureNotification IMPORTANCE_LOW lock + manifest <service foregroundServiceType="location">) [PENDING: device-required for live survives-backgrounding behavior — T083]
 - [x] T064 [opus] Notification channel + lock-screen visible notification ⇒ user-aware — 9e89acb (mobile; CaptureNotification.LOCK_SCREEN_VISIBILITY=PUBLIC + CATEGORY="service" applied to both channel + builder; 5 cases) [PENDING: device-required for visual lock-screen verification — T083]
 - [x] T065 [opus] `LocationSample` mapped to `TelemetrySample` shape with `t_source_clock="gnss"` ⇒ tested — 590d4ca (mobile; toTelemetrySample() extension + LocationChannels wire-name lock; tCanonicalNs==tSourceNs per ADR-007 client-no-pre-fuse; 8 cases)
-- [ ] T066 [opus] Horizontal accuracy, speed, bearing fields populated ⇒ validated
+- [x] T066 [opus] Horizontal accuracy, speed, bearing fields populated ⇒ validated — b100bb8 (mobile; LocationSampleValidator + LocationFieldViolation enum; 18 cases — physical bounds only, half-open [0,360) bearing, accuracy>0; T091 keeps the per-track accuracy threshold gate separate)
 - [ ] T067 [sonnet] Location error handling: loss of fix surfaced via UiState ⇒ tested
 - [ ] T068 [sonnet] `MotionCaptureService`: SensorManager accelerometer + gyroscope at 50Hz ⇒ samples stream
 - [ ] T069 [sonnet] Motion samples mapped to TelemetrySample with `t_source_clock="device_monotonic"` (using `SensorEvent.timestamp` in nanos) ⇒ tested

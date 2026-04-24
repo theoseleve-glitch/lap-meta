@@ -57,7 +57,7 @@
 - [x] T041 [opus] Replace current upload module with new `IngestClient` in `infra/ingest.py` ⇒ typed (be38dbe)
 - [x] T042 [opus] `IngestClient.upload(manifest, artifacts)` returns `ingest_job_id` ⇒ tested against mock server (5a979d8)
 - [x] T043 [opus] `Idempotency-Key` = session UUIDv7, added to headers ⇒ tested (a6a40c7)
-- [ ] T044 [opus] Chunk streaming: upload telemetry file in 5MB chunks ⇒ works
+- [x] T044 [opus] Chunk streaming: upload telemetry file in 5MB chunks ⇒ works (864e1c7)
 - [ ] T045 [opus] Resume-on-interrupt: chunk cursor persisted, resumes from last ⇒ tested
 - [ ] T046 [sonnet] SSE consumer: poll `/jobs/:id/events` for progress ⇒ emits Qt signal
 - [ ] T047 [sonnet] Progress dial on Finalize/Upload screen reflects SSE ⇒ visible
