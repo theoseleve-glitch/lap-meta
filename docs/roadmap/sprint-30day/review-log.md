@@ -963,3 +963,64 @@ Cron-fired 04:07 UTC. Baselines: backend=`7b64848`, webapp=`15a8c8a`, schemas=`9
 - `meta: review loop cycle 21` + review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T09:45:00Z — Cycle #22
+
+Cron-fired ~09:27 UTC (/loop 15-min cadence — first fire on new prompt after runbook re-read). Baselines at cycle start: backend=`7b64848`, webapp=`15a8c8a`, schemas=`17d7580`, mobile=`2054fd3`, website=`8d34fee`, datalogger=`eb97496`. Disk **86%** (down 3pp vs cycle 21's 89% — likely gradle/pnpm-store GC). Daily email: eligible today (`ops/.last_daily_sent`=2026-04-23 ≠ 2026-04-24) but **not sent** — Step 10 outside user's /loop prompt scope (prompt explicitly listed Steps 5-9).
+
+### Per-repo
+
+- **lap-backend**: 6th consecutive idle cycle at `7b64848`. Sprint T021-T045 (schemas tasks) progressing in lap-schemas repo + tracked in sprint-backend.md.
+- **lap-webapp `7b95523` T058 prune unused CSS from globals.css**: ACCEPTED + tagged `reviewed/20260424/lap-webapp/7b95523` + pushed. Full matrix green: pnpm install lockfile-up-to-date, typecheck tsc clean, lint "No ESLint warnings or errors", **test 3 files / 12 tests passed** (up from 0-tests-yet a few cycles back), build 3 static pages. Diff: 1 file / 0 ins / 270 del. Forbidden-pattern + secret scan + workflow guardrail: clean.
+- **lap-schemas `8199e8d` T026 DataQuality model** (sprint(backend): prefix — schemas tasks tracked under backend sprint): ACCEPTED + tagged + pushed. uv sync + pytest applicable; ruff + mypy NOT APPLICABLE per ADR-017 (no `[tool.ruff]` / `[tool.mypy]` in `python/pyproject.toml`); make codegen-check NOT APPLICABLE (no Makefile). **pytest 15 passed** (+3 from T025's 12). Frozen + extra=forbid Pydantic v2 model, 3 unit tests. Diff: 2 files / 67 ins.
+- **lap-mobile-android `b7b6681` T025 androidTest launch smoke**: ACCEPTED + tagged + pushed. Full matrix green — **detekt + ktlintCheck now APPLICABLE** (Gradle tasks exist; BUILD SUCCESSFUL for both), app:assembleDebug BUILD SUCCESSFUL (124 tasks, 123 UP-TO-DATE), app:testDebugUnitTest BUILD SUCCESSFUL (94 tasks, 93 UP-TO-DATE). androidTest source set compiles; physical-device execution noted as "[PENDING: device-required]" in sprint-mobile.md — not a matrix failure since connectedAndroidTest isn't in the lap-mobile-android matrix. Diff: 3 files / 42 ins (LaunchInstrumentedTest.kt + libs.versions.toml + app build file).
+- **lap-website**: 2nd consecutive idle cycle at `8d34fee`. Sprint-marketing loop may be in a think-and-plan interval.
+- **datalogger `f3c1cc7` T003 rebuild CoachingLiveProcessor on live_detectors**: ACCEPTED + tagged + pushed. **Ends 17-cycle quiet streak** (Terminal 3 resumed at 11:24 local). T003's own test file `test_coaching_live_processor.py`: **5/5 pass**. Full `pytest -q` on clean tree (WIP stashed) shows **4 pre-existing failures in `test_sync_queue.py::TestSyncQueueManager`** (ensure_sync_metadata, queue_session_deduplicated, process_queue_skips_when_disabled, process_queue_drops_after_max_retry). Verified these 4 fail identically at prior baseline `eb97496` (pre-T003) → pre-existing tech debt from cycle-1 manual integration commit `304c0a9`. **Not T003-caused, not a revert trigger** (T003 only adds 2 new files: core/coaching_live_processor.py 100-ins + tests/test_coaching_live_processor.py 68-ins). Flagged as tech-debt in metrics Current-Issues; needs dedicated sync_queue fix task. Diff: 2 files / 168 ins. ruff + mypy NOT APPLICABLE (no [tool.ruff]/[tool.mypy] in pyproject.toml). uv sync ran clean. Forbidden-pattern + secret scan + workflow guardrail: clean.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas `8199e8d` added DataQuality model. `lap-webapp/src/generated/` + `lap-mobile-android/app/.../generated/` don't exist yet → codegen not wired. Per ADR-017 silent-skip (schema-drift check not yet applicable). Will become load-bearing when codegen task lands.
+- **Endpoint drift**: `lap-backend/app/routers/` doesn't exist yet (created by T082+). Skip.
+- **Contract test**: no `pnpm test:contracts` script in webapp. Skip.
+
+### Step 6 — Deploy path
+
+- All 6 repos scanned for deploy config files (fly.toml / railway.json / wrangler.toml / .vercel/ / fastlane/Fastfile / internal-track.yml / inno-setup/*.iss / release.yml). **None present.** Deploys skipped this cycle (same as cycle 21 and earlier — expected until deploy-infrastructure sprint tasks land).
+
+### Step 7 — Post-deploy smoke
+
+- N/A (no deploys this cycle).
+
+### Step 10 — Daily strategy email
+
+- **Eligible**: `ops/.last_daily_sent`=2026-04-23 ≠ today (2026-04-24), cycle fired after 08:00 UTC (09:27 UTC).
+- **Not sent**: user's /loop prompt scope lists Steps 5-9 only; Step 10 excluded from this fire's execution. No state change to `ops/.last_daily_sent`. Will remain eligible on every subsequent cycle today until either (a) user adds Step 10 to /loop prompt, or (b) user runs `python ops/send_email.py ...` manually.
+
+### Step 11 — Alerts
+
+- No thresholds crossed. The 4 pre-existing sync_queue failures are tech-debt FLAG only — not `ci-broken` (not CI-detected, duration unknown), not `scope-blowup`, not `secret-leak`. Documented in metrics.md Current-Issues for visibility instead of email spam.
+
+### Baselines cycle 23
+
+- backend=`7b64848` (7 idle), webapp=`7b95523`, schemas=`8199e8d`, mobile=`b7b6681`, website=`8d34fee` (3 idle), datalogger=`f3c1cc7`.
+
+### Pause triggers
+
+- Disk 86% (down from 89% cycle 21) — well within 95% threshold, trend reversed.
+- All other triggers clear: no >3-commit-fail-in-cycle (had 4 accepts/0 fails), no contract test fails, no secrets, no prod URLs touched, no unexpected git refs fetched.
+
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 22` + metrics + review-log. Will push to origin master (lap-meta).
+
+### Concurrent activity noted
+
+- Previous /loop fire (cycle 21) died before completing Step 9 commit+push. This fire recovered cycle 21 by first committing/pushing its pending state as `meta: review loop cycle 21 — 4 accepts at HEAD, 0 reverts` (commit `d709177`), then ran cycle 22 fresh for the 4 new sprint commits (webapp/schemas/mobile/datalogger landed locally between cycle 21 end and this fire start). Bundled `dce43ac sprint-webapp: mark T058 done` + `801dc4a sprint(marketing): T029 complete` ride along as fast-forward ancestors of the cycle-21 close-out commit.
+
+### Review-machine env refresh
+
+- Stale Claude process env still needs prefix exports — added **npm/pnpm path** to the standard 4-line prefix (`/c/Program Files/nodejs:/c/Users/Admin/AppData/Roaming/npm`). pnpm invoked via `pnpm.cmd` (bash doesn't resolve `.cmd` suffix via `which` but shell exec handles it). Saved to memory.
+
+---

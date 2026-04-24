@@ -1,37 +1,42 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T04:20Z (Cycle #21)
+## Last updated: 2026-04-24T09:45Z (Cycle #22)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend | 17 | 223 | 0 | 1 (T013) | 0 | `7b64848` (**5 idle cycles** — expected, schemas phase) |
-| lap-webapp | 18 | 222 | 3 | 0 | 0 | `15a8c8a` (idle this cycle) |
-| lap-schemas | 5 | 235 | 0 | 0 | 0 | `17d7580` (T025 SensorConfigSnapshot — 12 pytest) |
-| lap-mobile-android | 24 | 216 | 0 | 0 | 0 | `2054fd3` (T024 Routes sealed class) |
-| lap-website | 24 | 5 BLOCKED | 5 | 0 | 1 (T017) | `8d34fee` (T029 "After every session" section) |
-| datalogger | 2 | 238 | 0 | 0 | 0 | `eb97496` (**17th quiet cycle**) |
+| lap-backend | 17 | 214 | 2 | 1 (T013) | 0 | `7b64848` (**6 idle cycles** — schemas-phase natural) |
+| lap-webapp | 39 | 201 | 0 | 0 | 0 | `7b95523` (T058 prune unused CSS) |
+| lap-schemas (T021–T055 tracked in sprint-backend) | 6 | — | 0 | 0 | 0 | `8199e8d` (T026 DataQuality — pytest 15) |
+| lap-mobile-android | 25 | 215 | 0 | 0 | 0 | `b7b6681` (T025 androidTest launch smoke) |
+| lap-website (sprint-marketing) | 25 | 195 | 0 | 0 | 1 (T017) | `8d34fee` (idle, 2 cycles) |
+| datalogger (sprint-desktop) | 3 | 237 | 0 | 0 | 0 | `f3c1cc7` (T003 — ends 17-cycle quiet streak) |
 
-## This cycle (Cycle #21)
+## This cycle (Cycle #22)
 
-- Verified GREEN: 3 (schemas T025, mobile T024, website T029)
+- Verified GREEN: 4 (webapp T058, schemas T026, mobile T025, datalogger T003)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- Datalogger **T003 ends Terminal-3 quiet streak** at 17 cycles
 
-## Cumulative (21 cycles)
+## Cumulative (22 cycles)
 
-- Total reviewed: 87 · Accepted+tagged: 85 (1 INFRA_FLAG c4)
-- Reverted: 1 · SCOPE_FLAG active: 1 · Pause triggers: 0
+- Total reviewed: 91 · Accepted+tagged: 89 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c_)
+- Reverted: 1 · Pause triggers: 0
 
-## Cycle 21 notables
+## Cycle 22 notables
 
-- Schemas pytest **12** (up from 9 at T024). Steady coverage growth.
-- **Disk usage: 89%** (up 2% from cycle 20's 87%). Pause threshold 95% — still headroom but trending. Sprint artifacts + gradle/pnpm caches growing.
-- Backend 5 idle cycles, webapp 1 idle cycle, datalogger 17 quiet cycles.
+- **Mobile `detekt` + `ktlintCheck` now APPLICABLE** per Gradle task list (previously flagged as not-applicable per cycle-2 memory) — sprint-mobile block landed detekt/ktlint config between then and now. Both pass BUILD SUCCESSFUL at HEAD.
+- **Datalogger 4 pre-existing `test_sync_queue` failures detected** (tests from the cycle-1 manual integration commit `304c0a9`). Verified fail at both current HEAD `f3c1cc7` and prior baseline `eb97496` — predates T003, not regression. Flagged as tech-debt; not a cycle-22 revert trigger.
+- Schemas pytest **15 passed** (+3 from T025's 12). Steady coverage growth per new Pydantic model.
+- Disk usage: **86%** (down 3pp from cycle 21's 89%; 95% pause threshold healthy).
+- Webapp `[x]` count 39 at cycle 22 vs. 18 reported cycle 21 — prior metrics rows under-counted; current count authoritative via `grep -cE '^- \[x\] T[0-9]' sprint-webapp.md`.
 
 ## Current issues
-- Disk 89% trending up — monitor for 95% pause threshold.
-- Datalogger Terminal 3 clearly stopped (17 quiet cycles ≈ 8.5h).
-- Backend T013 NEEDS_REWORK persistent.
 
-## Cron: next 04:37 UTC. Daily email eligible ~08:07 UTC (~4h / 8 cycles from now).
+- **Datalogger sync_queue tech-debt** — 4 failing tests (`test_ensure_sync_metadata_persists_required_fields`, `test_queue_session_is_deduplicated_by_session_and_bundle_hash`, `test_process_queue_skips_when_sync_feature_disabled`, `test_process_queue_drops_entry_after_max_retry_attempts`). Pre-existing since cycle-1 bulk integration. Needs dedicated fix task.
+- Datalogger user-WIP working tree (30+ files) causes additional 15 flaky overlay/session_coordinator test failures when left in-tree; clean-HEAD pytest shows only the 4 pre-existing failures.
+- Backend T013 NEEDS_REWORK persistent.
+- Website T017 SCOPE_FLAG persistent.
+
+## Cron: next 10:00 UTC (15-min /loop cadence). Daily email eligible (ops/.last_daily_sent=2026-04-23, today=2026-04-24) — NOT sent this cycle (out of user-prompt scope Step 10).
