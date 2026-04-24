@@ -1766,3 +1766,35 @@ Cron-fired 13:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`538b89d`, 
 - `meta: review loop cycle 40` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T14:10:00Z — Cycle #41
+
+Cron-fired 14:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`455a6b4`, schemas=`eaa5145`, mobile=`291c7f3`, website=`2145635`, datalogger=`b49d989`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 25 idle.
+- **lap-webapp**: 1 idle at `455a6b4`.
+- **lap-schemas** TWO commits:
+  - `d749fb3 sprint(backend): T040 CohortDef + DriverBenchmarkProfile models`: ACCEPTED + tagged + pushed. pytest 57 (+3). Diff: 2 files / 94 ins (driver_benchmark_profile.py 41 + test 53). **First multi-object Python commit** — bundles 2 related ADR objects in one commit to reduce cycle overhead.
+  - `5bb57e8 sprint(mobile): T039 UUID7 typealias + validateUuid7`: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL. Diff: 3 files / 83 ins / 4 del (UUID7 typealias + IdsTest.kt 54 + SessionManifest.kt rewire -4/+4 to use typealias).
+- **lap-mobile-android**: 17 idle.
+- **lap-website `ce6706d` T045 /how-it-works Capture section (step 01)**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 140/140** (+8), build 4 pages. Diff: 4 files / 145 ins (HowItWorksCapture.astro 56 + how-it-works.astro mount 3 + tests + register).
+- **datalogger**: 1 idle at `b49d989`.
+
+### Step 5-7: schemas P+K both grew (green), no other drift triggers, no deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 42
+
+- backend=`7b64848` (26 idle), webapp=`455a6b4` (2 idle), schemas=`5bb57e8`, mobile=`291c7f3` (18 idle), website=`ce6706d`, datalogger=`b49d989` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 41` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

@@ -50,7 +50,7 @@
 - [x] T036 [sonnet] `CoachingInsight` data class ⇒ compiles — 60f600c (schemas; rendering subset, full shape pending Pydantic source)
 - [x] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles — 4fadcd6 (schemas)
 - [x] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green — eaa5145 (schemas)
-- [ ] T039 [sonnet] UUID7 type alias (`typealias UUID7 = String` with validation) ⇒ unit-tested
+- [x] T039 [sonnet] UUID7 type alias (`typealias UUID7 = String` with validation) ⇒ unit-tested — 5bb57e8 (schemas)
 - [ ] T040 [sonnet] Replace any hand-rolled duplicate types ⇒ diff clean
 
 ## Block C — Room database + journal (T041–T060)
