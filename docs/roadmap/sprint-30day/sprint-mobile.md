@@ -42,7 +42,7 @@
 - [x] T028 [sonnet] `TelemetrySample` Kotlin data class ⇒ compiles — e3277f1 (schemas)
 - [x] T029 [sonnet] `SourceTag` enum ⇒ compiles — 2b17115 (schemas)
 - [x] T030 [sonnet] `EnvironmentTag` enum ⇒ compiles — 3ffbbc9 (schemas)
-- [ ] T031 [sonnet] `DataQuality` data class ⇒ compiles
+- [x] T031 [sonnet] `DataQuality` data class ⇒ compiles — 8af8655 (schemas)
 - [ ] T032 [sonnet] `SensorConfigSnapshot` data class ⇒ compiles
 - [ ] T033 [sonnet] `LapRecord` data class ⇒ compiles
 - [ ] T034 [sonnet] `WeaknessEpisode` data class (consumer-side) ⇒ compiles

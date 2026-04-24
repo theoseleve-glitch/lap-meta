@@ -53,7 +53,7 @@
 - [x] T029 [opus] Pydantic model `SessionRecord` (canonical post-ingestion shape) ⇒ validates — sha: lap-schemas@4d0cb40
 - [x] T030 [opus] Pydantic model `LapRecord` (lap splits, sector times, flags) ⇒ validates — sha: lap-schemas@f602965
 - [x] T031 [opus] Pydantic model `SkillDimension` per ADR-005 §5.1 ⇒ validates — sha: lap-schemas@37dba87
-- [ ] T032 [opus] Pydantic model `DriverProgressSnapshot` per ADR-005 §5.1 ⇒ validates, example fixture
+- [x] T032 [opus] Pydantic model `DriverProgressSnapshot` per ADR-005 §5.1 ⇒ validates, example fixture — sha: lap-schemas@bf37c5b
 - [ ] T033 [opus] Pydantic enum `WeaknessCategory` per ADR-005 §5.2 ⇒ frozen
 - [ ] T034 [opus] Pydantic model `WeaknessEpisode` per ADR-005 §5.2 ⇒ validates
 - [ ] T035 [opus] Pydantic model `SuccessCondition` per ADR-005 §5.3 ⇒ validates

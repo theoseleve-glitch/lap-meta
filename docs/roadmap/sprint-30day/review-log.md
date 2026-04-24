@@ -1393,3 +1393,48 @@ Cron-fired 11:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`75f5e3b`, 
 - `meta: review loop cycle 30` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T11:40:00Z — Cycle #31
+
+Cron-fired 11:37 UTC. No PAUSE. MCP servers for claude-flow/context7/pinecone/firebase/playwright disconnected this cycle — review loop unaffected (uses only base Bash/Read/Write/Edit/Grep). Baselines: backend=`7b64848`, webapp=`470ecde`, schemas=`3ffbbc9`, mobile=`291c7f3`, website=`50b9148`, datalogger=`b6754ee`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 15 idle.
+- **lap-webapp `f03f703` T116 groupByWeek utility**: ACCEPTED + tagged + pushed. Full matrix green; **tests 62/62** (+9 from T114's 53). Diff: 2 files / 147 ins (pure utility function + TDD test, no component rendering).
+- **lap-schemas** TWO commits:
+  - `bf37c5b sprint(backend): T032 DriverProgressSnapshot model`: ACCEPTED + tagged + pushed. pytest 33 (+3). Diff: 2 files / 124 ins (driver_progress_snapshot.py 37 + test 87 lines).
+  - `8af8655 sprint(mobile): T031 DataQuality Kotlin data class`: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` → BUILD SUCCESSFUL 4 executed. Diff: 4 files / 91 ins / 9 del (DataQualityTest.kt 51 + SessionManifestTest.kt rewire + kotlin source adds). 4th consecutive Python+Kotlin lockstep cycle.
+- **lap-mobile-android**: 7 idle.
+- **lap-website `b0c103b` T036 tighten LCP budget to 1.5s mobile 4G**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 118/118** (+4 from T035's 114), build 3 pages. Diff: 4 files / 71 ins / 5 del (lighthouserc.json config change + lhci-budget.test.ts 67 lines + CLAUDE.md convention update + **`.github/workflows/ci.yml` label rename**). 
+  
+  **Workflow-edit guardrail check**: T036 touches `.github/workflows/ci.yml` — triggers the runbook's file-path guardrail prompt. Inspected diff: only renames the Lighthouse job label from "LCP <1.8s" to "LCP <1.5s (mobile 4G)" to match new budget. **No `workflow_dispatch` or `secrets.*` additions** (guardrail's specific trigger condition). Commit body cites T017 completion notes + explicit sprint-marketing T036 scope. ACCEPT.
+- **datalogger `8343002` T009 smoke test — iRacing mock live processor**: ACCEPTED + tagged + pushed. Pure-add commit (new test file only). 3/3 pass. Diff: 1 file / 86 ins. Second smoke test after T008 disconnect-scenario.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas Python + Kotlin both grew (4th lockstep cycle). `:schemas:test --rerun-tasks` green.
+- Website LCP gate tightening changes CI threshold. Backend idle, webapp idle in routing surface — no endpoint drift.
+- **LHCI gate will re-measure on next GitHub Actions push**: the ubuntu-latest run is the authoritative measurement per T017 completion notes (Windows LHCI has known EPERM cleanup issue). If the gate fails on origin's first run with the 1500ms cap, sprint-marketing will need a follow-up budget-revisit task.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A locally.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 32
+
+- backend=`7b64848` (16 idle), webapp=`f03f703`, schemas=`8af8655`, mobile=`291c7f3` (8 idle), website=`b0c103b`, datalogger=`8343002`.
+
+### Pause triggers: disk 86% stable; all clear. MCP disconnects are out-of-scope (not a runbook trigger).
+### Forced checkpoints: none hit.
+
+### Runbook process note
+
+- **Workflow-file edits ARE allowed** per-sprint-task when the commit body cites explicit task scope + no secrets/dispatch additions. The guardrail is narrower than "any workflow change": it specifically targets the `workflow_dispatch` + `secrets.*` combination which signals an unauthorized privilege-escalating change. Label renames, job renames, and step-name edits are routine sprint work.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 31` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
