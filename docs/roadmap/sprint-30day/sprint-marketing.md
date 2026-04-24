@@ -109,7 +109,7 @@
 - [x] T086 [sonnet] Testimonial placement post-video ⇒ structured — 7f2e426 (lap-website; reuses T035 SocialProof — "no testimonials until beta" stays in one component; /demo flow is walkthrough → social proof → CTA)
 - [ ] T087 [sonnet] Video captions + subtitles ⇒ uploaded
 - [x] T088 [sonnet] SEO: target "sim racing telemetry demo" ⇒ meta — 38a447c (lap-website; title "Sim racing telemetry demo — LAP", description pairs phrase with walkthrough scent; T072 session + no-signup anchors preserved)
-- [ ] T089 [sonnet] Related links: how-it-works, pricing ⇒ placed
+- [x] T089 [sonnet] Related links: how-it-works, pricing ⇒ placed — 0b6d1ca (lap-website; <footer> inside /demo main, mirrors /pricing footer visual grammar; after FinalCta so the CTA stays focal)
 - [ ] T090 [sonnet] E2E: demo page → CTA → signup ⇒ green
 
 ## Block F — Waitlist + email capture (T091–T105)
