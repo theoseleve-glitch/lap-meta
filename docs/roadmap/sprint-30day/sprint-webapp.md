@@ -175,7 +175,7 @@
 - [x] T147 [sonnet] Responsive: stacks on mobile ⇒ tested (625d2a8)
 - [x] T148 [sonnet] Click skill dimension → navigate to skill drilldown (Block H) ⇒ works (2c5ed02)
 - [x] T149 [sonnet] Click weakness → navigate to weakness detail ⇒ works (a9c6043)
-- [ ] T150 [sonnet] Click prescription → navigate to prescription detail ⇒ works
+- [x] T150 [sonnet] Click prescription → navigate to prescription detail ⇒ works (43a81a0)
 - [ ] T151 [sonnet] Click readiness → navigate to target event picker ⇒ works
 - [ ] T152 [sonnet] Loading skeletons per section ⇒ shows
 - [ ] T153 [sonnet] Error states per section ⇒ handled
