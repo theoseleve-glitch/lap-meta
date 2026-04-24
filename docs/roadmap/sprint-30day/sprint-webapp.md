@@ -197,7 +197,7 @@
 - [ ] T166 [design] Mockup: per-skill drilldown page ⇒ approved
 - [x] T167 [opus] Route `src/app/(app)/profile/skills/[dimension]/page.tsx` ⇒ renders (f863930)
 - [ ] T168 [opus] Data hook `useSkillDrilldown(dimension)` ⇒ returns trend + sessions + weaknesses [BLOCKED: waiting on lap-backend — skill drilldown endpoint(s) that return trend points, best/worst sessions, and related weaknesses for a given dimension. Also depends on @lap/schemas types for the response shape once codegen is live.]
-- [ ] T169 [opus] `SkillTrendChart` component ⇒ Storybook
+- [x] T169 [opus] `SkillTrendChart` component ⇒ Storybook (59453d2)
 - [ ] T170 [opus] `BestSessionsList` component (top 5 by this dimension) ⇒ Storybook
 - [ ] T171 [opus] `WorstSessionsList` component ⇒ Storybook
 - [ ] T172 [opus] `RelatedWeaknessesList` component ⇒ Storybook
