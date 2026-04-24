@@ -1,37 +1,37 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T12:40Z (Cycle #35)
+## Last updated: 2026-04-24T12:55Z (Cycle #36)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 32 | 205 | 2 | 1 (T013) | 0 | `7b64848` (**19 idle cycles**) |
-| lap-webapp | 48 | 192 | 0 | 0 | 0 | `da3079f` (T119 outcomeAchievedBadge) |
-| lap-schemas (subset) | 15 | — | 0 | 0 | 0 | `c7a1821` (T035 SuccessCondition + T034 WeaknessEpisode Kotlin; pytest 42) |
-| lap-mobile-android | 34 | 206 | 0 | 0 | 0 | `291c7f3` (idle 11 cycles) |
-| lap-website (marketing) | 34 | 186 | 0 | 0 | 1 (T017 inline) | `1fed09c` (T039 mobile layout 360px gate) |
-| datalogger (desktop) | 12 | 228 | 0 | 0 | 0 | `934bcd5` (T012 processor imports regression) |
+| lap-backend (total) | 33 | 204 | 2 | 1 (T013) | 0 | `7b64848` (**20 idle cycles**) |
+| lap-webapp | 49 | 191 | 0 | 0 | 0 | `1dfa795` (T120 FilterChipGroup primitive) |
+| lap-schemas (subset) | 16 | — | 0 | 0 | 0 | `ef37165` (T036 ActionPrescription + T035 Kotlin; pytest 45) |
+| lap-mobile-android | 35 | 205 | 0 | 0 | 0 | `291c7f3` (idle 12 cycles) |
+| lap-website (marketing) | 35 | 185 | 0 | 0 | 1 (T017 inline) | `d94f7a8` (T040 signup e2e flow) |
+| datalogger (desktop) | 13 | 227 | 0 | 0 | 0 | `323fe7f` (T013 pyproject pinning contract) |
 
-## This cycle (Cycle #35)
+## This cycle (Cycle #36)
 
-- Verified GREEN: 5 (webapp T119, schemas T035 Python + T034 Kotlin, website T039, datalogger T012)
+- Verified GREEN: 5 (webapp T120, schemas T036 Python + T035 Kotlin, website T040, datalogger T013)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- Schemas P+K resumed after 1-cycle break — 7 of last 8 cycles paired Python+Kotlin schemas commits
 
-## Cumulative (35 cycles)
+## Cumulative (36 cycles)
 
-- Total reviewed: 137 · Accepted+tagged: 135 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 142 · Accepted+tagged: 140 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 35 notables
+## Cycle 36 notables
 
-- Badge trio webapp T117/T118/T119 (new/acknowledged/achieved) — all in `src/lib/timeline/badges.ts` incremental adds. 79 tests (+3).
-- Website T039 mobile layout gate at 360px viewport (e2e playwright test) — defensive against horizontal-overflow regressions at production's floor viewport.
-- Datalogger T012 regression test for processor imports (65 lines, 4 tests) — continues sprint-desktop's defensive test series (T010/T011/T012 are all `regression test —` prefixed guards).
-- Schemas: T035 SuccessCondition (Python 16 + 41 = 57 lines) + T034 WeaknessEpisode Kotlin (38 + 81 + 23 = 142 lines including rewire). P+K lockstep resumed.
-- Backend 19 idle. Mobile 11 idle.
-- Disk 86% stable 12 cycles.
+- **Backend hits 20-cycle idle milestone** — since T020 Makefile, all backend-scope work (T021+) has been landing in lap-schemas (Python subdir). Expected per ADR.
+- **Mobile 12-cycle idle milestone** — all mobile-scope work since T025 androidTest lives in lap-schemas/kotlin/ subproject. Mobile-android repo itself is a passive consumer of `:schemas:build`.
+- Schemas Python+Kotlin 8 of 10 recent cycles paired (T036 ActionPrescription 99-line test + T035 SuccessCondition Kotlin 19 + 66). Schemas subset [x]=16 = half of ADR-006/007's 35-object target.
+- Webapp T120 FilterChipGroup primitive (48 + 97 lines) — first non-badge, non-entry UI primitive for timeline filtering. 85 tests (+6).
+- Website T040 signup e2e flow — pure-add Playwright spec (55 lines). Matches T038 a11y + T039 mobile layout scope.
+- Datalogger T013 **contract-test for pyproject pinning** — unique shape: asserts pyproject.toml has 3.12 pin + uv.lock invariants (55 lines, 5 tests). Locks the Python version constraint as tested state. Pure-add (no actual lock file changes).
+- Disk 86% stable 13 cycles.
 
 ## Current issues
 
@@ -41,4 +41,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 12:45 UTC.
+## Cron: next 13:00 UTC.

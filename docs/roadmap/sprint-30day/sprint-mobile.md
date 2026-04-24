@@ -46,7 +46,7 @@
 - [x] T032 [sonnet] `SensorConfigSnapshot` data class ⇒ compiles — 2e9717c (schemas)
 - [x] T033 [sonnet] `LapRecord` data class ⇒ compiles — b6ce2ed (schemas)
 - [x] T034 [sonnet] `WeaknessEpisode` data class (consumer-side) ⇒ compiles — c7a1821 (schemas)
-- [ ] T035 [sonnet] `ActionPrescription` data class ⇒ compiles
+- [x] T035 [sonnet] `ActionPrescription` data class ⇒ compiles — ef37165 (schemas)
 - [ ] T036 [sonnet] `CoachingInsight` data class ⇒ compiles
 - [ ] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles
 - [ ] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green

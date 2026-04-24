@@ -57,7 +57,7 @@
 - [x] T033 [opus] Pydantic enum `WeaknessCategory` per ADR-005 §5.2 ⇒ frozen — sha: lap-schemas@12b1685
 - [x] T034 [opus] Pydantic model `WeaknessEpisode` per ADR-005 §5.2 ⇒ validates — sha: lap-schemas@fe83faf
 - [x] T035 [opus] Pydantic model `SuccessCondition` per ADR-005 §5.3 ⇒ validates — sha: lap-schemas@2846574
-- [ ] T036 [opus] Pydantic model `ActionPrescription` per ADR-005 §5.3 ⇒ validates
+- [x] T036 [opus] Pydantic model `ActionPrescription` per ADR-005 §5.3 ⇒ validates — sha: lap-schemas@0b90b77
 - [ ] T037 [opus] Pydantic model `ActionOutcome` per ADR-005 §5.4 ⇒ validates
 - [ ] T038 [opus] Pydantic model `DivergencePoint` per ADR-005 §5.5 ⇒ validates
 - [ ] T039 [opus] Pydantic model `TransferLink` per ADR-005 §5.5 ⇒ validates

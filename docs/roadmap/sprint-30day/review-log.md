@@ -1576,3 +1576,39 @@ Cron-fired 12:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`38433aa`, 
 - `meta: review loop cycle 35` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T12:55:00Z — Cycle #36
+
+Cron-fired 12:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`da3079f`, schemas=`c7a1821`, mobile=`291c7f3`, website=`1fed09c`, datalogger=`934bcd5`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: **20 idle cycles** milestone. All backend-scope work since T020 Makefile (cycle 2) landed in lap-schemas Python subdir.
+- **lap-webapp `1dfa795` T120 FilterChipGroup primitive (source filter)**: ACCEPTED + tagged + pushed. **tests 85/85** (+6). Diff: 3 files / 191 ins (FilterChipGroup.tsx 48 + test 97 + index). First non-badge UI primitive for timeline filtering.
+- **lap-schemas** TWO commits:
+  - `0b90b77 sprint(backend): T036 ActionPrescription model`: ACCEPTED + tagged + pushed. pytest 45 (+3). Diff: 3 files / 154 ins (session_context.py 14 + test_action_prescription.py 99 + action_prescription.py ~41).
+  - `ef37165 sprint(mobile): T035 ActionPrescription (+ SessionContext + SuccessCondition) Kotlin`: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL. Diff: 4 files / 131 ins (SuccessCondition.kt 19 + ActionPrescriptionTest.kt 66 + rest). 8 of 10 recent cycles paired P+K.
+- **lap-mobile-android**: **12 idle cycles** milestone. Passive consumer of :schemas:build since T025.
+- **lap-website `d94f7a8` T040 e2e homepage → trial CTA → /signup**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 120/120** (unit unchanged — new e2e spec), build 3 pages. Diff: 1 file / 55 ins (signup-flow.spec.ts).
+- **datalogger `323fe7f` T013 lock pyproject 3.12 pin + uv.lock invariants**: ACCEPTED + tagged + pushed. **Unique shape: contract-test of pyproject.toml + uv.lock invariants** (test 55 lines, 5 pass; no actual lock-file changes in commit). Core module imports sanity-checked: `import lap_coach_logger.core.{live_telemetry,coaching_live,dashboard_live,input_diagnostics}_processor` → all OK. Pyproject-pinning test asserts current 3.12 constraint + lock structure invariants.
+
+### Step 5-7: schemas P+K green; backend+mobile idle; no deploys; no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 37
+
+- backend=`7b64848` (21 idle), webapp=`1dfa795`, schemas=`ef37165`, mobile=`291c7f3` (13 idle), website=`d94f7a8`, datalogger=`323fe7f`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestones
+
+- Backend **20 consecutive idle cycles**. Mobile **12**. Schemas subset crosses **16/35** (~45% of ADR-006/007 object surface complete).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 36` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
