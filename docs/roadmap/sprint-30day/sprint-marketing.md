@@ -41,7 +41,7 @@
 - [x] T027 [opus] Hero motion: subtle GSAP entrance, reduced-motion respected ⇒ smooth (lap-website@3f653a1; gsap 3.15.0 code-split to Hero chunk — 27.86 kB gzip — with prefers-reduced-motion early-return. Homepage 90.13 kB gzip total, error pages stay at 62.33 kB)
 - [x] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp (lap-website@af60964; HTML/CSS mock — vector-sharp at every DPR, no raster asset, ADR-005 §5.1 shape, figure[role=img]+aria-label for a11y, zero runtime JS)
 - [x] T029 [opus] Section "After every session" — 3 tile grid (weakness detected / prescription / outcome tracked) ⇒ renders (lap-website@8d34fee; 3 tiles map to ADR-005 §5.2/§5.3/§5.4 backend objects; semantic section[aria-labelledby] + h2 + 3 article/h3; server-rendered, bundle unchanged)
-- [ ] T030 [opus] Section "Sim and real, one driver profile" — bridge narrative ⇒ renders
+- [x] T030 [opus] Section "Sim and real, one driver profile" — bridge narrative ⇒ renders (lap-website@b9dc94b; two-beat section narrates ADR-005 §5.5 TransferLink in reader-facing prose — H3s "One session format" + "Shape vs intensity" lock the framework vocabulary. Zero runtime JS, bundle unchanged. Doctrine-aligned per 01-STRATEGIC-DOCTRINE.md Principle 7; ADR-004 §4 "no LLM / AI coach / generative" negatives locked at HTML surface. 7 TDD cases + 1 homepage ordering assertion)
 - [ ] T031 [opus] Section "Built for serious sim racers" — persona fit bullets ⇒ renders
 - [ ] T032 [opus] Section "Compare to tools you know" — MoTeC/Garage61 comparison ⇒ tight bullets
 - [ ] T033 [opus] Section "Not for you if" — anti-persona disclosure ⇒ builds trust
