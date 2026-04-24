@@ -141,7 +141,7 @@
 - [x] T116 [sonnet] Group by week header ⇒ correct headers (f03f703)
 - [x] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count (6b34ca9)
 - [x] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct (38433aa)
-- [ ] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct
+- [x] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct (da3079f)
 - [ ] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works
 - [ ] T121 [sonnet] Filter chip: track ⇒ works
 - [ ] T122 [sonnet] Filter chip: car ⇒ works
