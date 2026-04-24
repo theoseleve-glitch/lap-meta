@@ -87,7 +87,7 @@
 - [x] T057 [sonnet] Alembic init: `alembic.ini` + `alembic/env.py` configured for async ⇒ `alembic upgrade head` works on empty DB — sha: 10b3e92
 - [x] T058 [opus] ORM model `User` (id UUIDv7, clerk_user_id, email, created_at, subscription_status, is_admin) ⇒ migration applied — sha: 76d6046
 - [x] T059 [opus] ORM model `DriverProfile` (id, user_id, display_name, skill_level, cohort_opt_in) ⇒ migration applied — sha: 31fb7b4
-- [ ] T060 [opus] ORM model `Session` (id, driver_id, manifest jsonb, created_at, status) ⇒ migration applied
+- [x] T060 [opus] ORM model `Session` (id, driver_id, manifest jsonb, created_at, status) ⇒ migration applied — sha: 3de44d4
 - [ ] T061 [opus] ORM model `SessionRecord` (id, session_id, processed payload jsonb) ⇒ migration applied
 - [ ] T062 [opus] ORM model `TelemetryArtifact` (id, session_id, s3_key, sha256, size_bytes) ⇒ migration applied
 - [ ] T063 [opus] ORM model `Lap` (id, session_id, lap_number, time_ms, sector_times, valid) ⇒ migration applied

@@ -48,7 +48,7 @@
 - [BLOCKED: backend ingestion endpoint not live — cannot validate manifest server-side] T035 [sonnet] Integration test: finalize an archived Sebring session → manifest validates server-side ⇒ green
 - [x] T036 [sonnet] Integration test: finalize with CSV fallback (no pyarrow) ⇒ works (f0f2855)
 - [x] T037 [sonnet] Integration test: interrupted finalize doesn't corrupt prior bundles ⇒ green (a146064)
-- [ ] T038 [sonnet] Backward compat shim: read old v1 bundles, re-serialize as v2 on demand ⇒ reprocess path works
+- [x] T038 [sonnet] Backward compat shim: read old v1 bundles, re-serialize as v2 on demand ⇒ reprocess path works (7e2cde5)
 - [ ] T039 [sonnet] Update `bundle_schema.py` to emit v2-only ⇒ v1 writer removed
 - [ ] T040 [sonnet] Update `writers/*` to use canonical field names ⇒ consistency
 

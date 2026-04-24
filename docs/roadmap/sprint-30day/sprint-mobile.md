@@ -72,7 +72,7 @@
 - [x] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested — d3f131f (mobile; 6 cases lock strict-`>` semantics + boundary behavior)
 - [x] T056 [opus] Reconciliation: find orphan temp files ⇒ tested — 29fc1ee (mobile; TempFileInventory abstracts disk, 4 cases)
 - [x] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested — 03d180f (mobile; 5 cases lock recoverable vs terminal vs pre-capture states)
-- [ ] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview
+- [x] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview — 8fc1087 (mobile; 3 @Preview fixtures — single, multiple, empty) [PENDING: visual-check-on-device]
 - [ ] T059 [sonnet] Recovery → Finalize-from-journal path ⇒ works for test fixture
 - [ ] T060 [sonnet] Journal retention: rows >7 days auto-clean after user confirms ⇒ tested
 
