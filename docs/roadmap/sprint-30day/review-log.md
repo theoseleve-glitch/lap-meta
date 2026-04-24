@@ -1947,3 +1947,38 @@ Cron-fired 15:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`9293914`, 
 - `meta: review loop cycle 45` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T15:25:00Z — Cycle #46
+
+Cron-fired 15:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`9293914`, schemas=`afed51d`, mobile=`435a9de`, website=`add0c59`, datalogger=`bb2a36f`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: **30 idle cycles** milestone.
+- **lap-webapp `a500e17` T130 sessionDetailPath route helper**: ACCEPTED + tagged + pushed. **tests 139/139** (+5). Diff: 2 files / 30 ins (routes.ts 6 + test 24). Small but unlocks T131+ for clickable timeline navigation.
+- **lap-schemas**: 1 idle at `afed51d`.
+- **lap-mobile-android `428000f` T042 SessionEntity + @Database v1 activation**: ACCEPTED + tagged + pushed. Diff: 5 files / 128 ins / 29 del (SessionEntity.kt + SessionEntityTest.kt 64 + LapDatabase.kt @Database annotation activation + LapTypeConverters.kt SourceTag converter / UUID7 removal + SessionConverters). **Room annotation processor now active for the first time** — full matrix BUILD SUCCESSFUL (163 tasks, 6 executed) confirms KSP schema gen green at v1. Commit body documents T053 migration policy + why UUID7 converter was removed (Room/KSP rejects identity converters on typealiases — "multiple methods define the same conversion").
+- **lap-website**: 1 idle at `add0c59`.
+- **datalogger**: 1 idle at `bb2a36f`.
+
+### Step 5-7: mobile T042 exercises :schemas types (SourceTag) via its wireValue converter — indirect cross-repo consumption green. No deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 47
+
+- backend=`7b64848` (31 idle), webapp=`a500e17`, schemas=`afed51d` (2 idle), mobile=`428000f`, website=`add0c59` (2 idle), datalogger=`bb2a36f` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestones
+
+- **Backend 30 idle cycles** — new ceiling. Schemas-phase work dominates.
+- **Mobile T041 + T042 pair** (cycles 44 + 46) land Room persistence layer: skeleton + converters → SessionEntity + @Database v1 activation. The sprint-mobile loop correctly split the commit: T041 green without entities (infrastructure only), T042 lights up @Database once a valid entity exists.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 46` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
+
+---

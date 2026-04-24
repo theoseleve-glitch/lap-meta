@@ -1,37 +1,35 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T15:10Z (Cycle #45)
+## Last updated: 2026-04-24T15:25Z (Cycle #46)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 40 | 197 | 2 | 1 (T013) | 0 | `7b64848` (**29 idle cycles**) |
-| lap-webapp | 56 | 184 | 0 | 0 | 0 | `9293914` (idle 1 cycle) |
-| lap-schemas (subset) | 24 | — | 0 | 0 | 0 | `afed51d` (T043 OpenAPI generator script; pytest 66) |
-| lap-mobile-android | 42 | 198 | 0 | 0 | 0 | `435a9de` (idle 1 cycle) |
-| lap-website (marketing) | 42 | 178 | 0 | 0 | 1 (T017 inline) | `add0c59` (T048 Improve section step 04) |
-| datalogger (desktop) | 20 | 220 | 0 | 0 | 0 | `bb2a36f` (T020 pip-pin leak regression guard) |
+| lap-backend (total) | 40 | 197 | 2 | 1 (T013) | 0 | `7b64848` (**30 idle cycles**) |
+| lap-webapp | 56 | 184 | 0 | 0 | 0 | `a500e17` (T130 sessionDetailPath route helper) |
+| lap-schemas (subset) | 24 | — | 0 | 0 | 0 | `afed51d` (idle 1 cycle) |
+| lap-mobile-android | 42 | 198 | 0 | 0 | 0 | `428000f` (T042 SessionEntity + @Database v1 activation) |
+| lap-website (marketing) | 42 | 178 | 0 | 0 | 1 (T017 inline) | `add0c59` (idle 1 cycle) |
+| datalogger (desktop) | 20 | 220 | 0 | 0 | 0 | `bb2a36f` (idle 1 cycle) |
 
-## This cycle (Cycle #45)
+## This cycle (Cycle #46)
 
-- Verified GREEN: 3 (schemas T043 OpenAPI generator, website T048, datalogger T020)
+- Verified GREEN: 2 (webapp T130, mobile T042)
 - Reverted: 0 | SCOPE_FLAG: 0 new
 
-## Cumulative (45 cycles)
+## Cumulative (46 cycles)
 
-- Total reviewed: 175 · Accepted+tagged: 173 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 177 · Accepted+tagged: 175 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
+- **Backend 30 idle cycles milestone** (from cycle 2 T020 Makefile → cycle 46 still at 7b64848)
 
-## Cycle 45 notables
+## Cycle 46 notables
 
-- **Codegen infrastructure landing**: schemas T043 adds `generate_openapi.py` (81 lines) + test (50 lines). First codegen primitive — OpenAPI spec emission from Pydantic models. Future cycles could wire this to webapp `src/generated/` and mobile Kotlin generated classes. Sits idle until consumers invoke it.
-- **Datalogger [x]=20 milestone** (from [x]=2 baseline at cycle 1 → [x]=20 at cycle 45; 18 accepted over 44 cycles).
-- Website `/how-it-works` page now has 4 step sections: Capture (T045) + Brain (T046) + Plan (T047) + Improve (T048). 161 tests (+7). Full 4-step coaching-loop narrative assembled.
-- Datalogger T020 removes a stray `=1.26` pip pin from an old requirement + 2-test regression guard. Pure-add (no actual pip-pin changes in the commit — just the guard). Another contract-test in the growing desktop shelf.
-- Schemas Python pytest 66 (+3 from T043's generator tests).
-- Backend 29 idle. Webapp + mobile 1 idle each.
-- Disk 86% stable 22 cycles.
+- **Mobile T042 activates Room persistence**: First `@Entity` lands (`SessionEntity` with id/state/started_at/ended_at/source/track_id/car_id/sample_count/file_uri), `@Database v1` active, KSP annotation processor green. SourceTag now has a dedicated converter (wireValue round-trip) so ingest-rejected values can't reach local storage. UUID7 identity converter removed per Room/KSP constraint. Subsequent entity additions will bump via Migrations per T053 policy. Full gradle matrix BUILD SUCCESSFUL with `:app:testDebugUnitTest` green.
+- Webapp T130 sessionDetailPath helper (6 lines ts + 24 test). 139 tests (+5). Unlocks T131+ for clickable timeline entries.
+- Backend 30 idle, webapp 0 idle, schemas 1 idle, mobile 0 idle, website 1 idle, datalogger 1 idle.
+- Disk 86% stable 23 cycles.
 
 ## Current issues
 
@@ -41,4 +39,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 15:15 UTC.
+## Cron: next 15:30 UTC.

@@ -51,12 +51,12 @@
 - [x] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles — 4fadcd6 (schemas)
 - [x] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green — eaa5145 (schemas)
 - [x] T039 [sonnet] UUID7 type alias (`typealias UUID7 = String` with validation) ⇒ unit-tested — 5bb57e8 (schemas)
-- [ ] T040 [sonnet] Replace any hand-rolled duplicate types ⇒ diff clean
+- [x] T040 [sonnet] Replace any hand-rolled duplicate types ⇒ diff clean — ffa78e5 (mobile; audit found none, stale comments cleaned)
 
 ## Block C — Room database + journal (T041–T060)
 
-- [ ] T041 [opus] Room setup: `LapDatabase` abstract class, `TypeConverters` for UUID7/Instant ⇒ compiles
-- [ ] T042 [opus] Entity `SessionEntity` (id, state, started_at, ended_at, source, track_id, car_id, sample_count, file_uri) ⇒ migration applied
+- [x] T041 [opus] Room setup: `LapDatabase` abstract class, `TypeConverters` for UUID7/Instant ⇒ compiles — 435a9de (mobile; @Database annotation defers to T042 when first entity lands)
+- [x] T042 [opus] Entity `SessionEntity` (id, state, started_at, ended_at, source, track_id, car_id, sample_count, file_uri) ⇒ migration applied — 428000f (mobile; @Database v1 activated, KSP schema gen green)
 - [ ] T043 [opus] Entity `SessionJournalEntity` (session_id, last_heartbeat_at, file_offset, status) ⇒ migration
 - [ ] T044 [opus] Entity `UploadQueueEntity` (session_id, state, attempt_count, next_retry_at, last_http_code, last_error, chunks_sent, chunks_total, idempotency_key) ⇒ migration
 - [ ] T045 [opus] Entity `InsightCacheEntity` (session-level CoachingInsights cached for offline view) ⇒ migration
