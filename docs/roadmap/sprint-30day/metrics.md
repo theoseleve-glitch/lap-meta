@@ -1,37 +1,37 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T17:55Z (Cycle #56)
+## Last updated: 2026-04-24T18:10Z (Cycle #57)
 
 ## Per-repo status
 
 | Repo | `[x]` | HEAD |
 |---|---|---|
-| lap-backend | 48 | `772dc3d` (idle 8 cycles) |
-| lap-webapp | 64 | `0d650c9` (T145 ArchetypeBadge; 209 tests) |
-| lap-schemas (subset) | 31 | `4916bc0` (T051 Kotlin codegen + chore exclude generated/; pytest 69) |
-| lap-mobile-android | 50 | `dd36dcf` (T050 JournalDao — 2nd DAO; mobile [x]=50 milestone) |
-| lap-website (marketing) | 50 | `4f3aa37` (T059 /pricing "What's included" checklist) |
-| datalogger (desktop) | 28 | `c4cd898` (T028 SessionFinalizer step 4 — laps.parquet write) |
+| lap-backend | 49 | `772dc3d` (idle 9 cycles) |
+| lap-webapp | 65 | `0d650c9` (idle 1 cycle) |
+| lap-schemas (subset) | 32 | `7efa477` (T052 schema-sync-check CI job; pytest 72) |
+| lap-mobile-android | 51 | `3856589` (T051 UploadQueueDao — 3rd DAO) |
+| lap-website (marketing) | 51 | `a60b55c` (T060 founder-waitlist offer) |
+| datalogger (desktop) | 29 | `07329a9` (T029 events.json contract) |
 
-## This cycle (Cycle #56)
+## This cycle (Cycle #57)
 
-- Verified GREEN: 5 (webapp T145, schemas T051, mobile T050, website T059, datalogger T028)
+- Verified GREEN: 4 (schemas T052, mobile T051, website T060, datalogger T029)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- Non-sprint ride-along accepted: schemas `4916bc0 chore(kotlin): exclude generated/ pending BigDecimal serializer`
+- **New workflow file**: `.github/workflows/schema-sync.yml` added in schemas T052 (push + pull_request triggers, no workflow_dispatch, no secrets.*) — guardrail condition NOT met → ACCEPT
 
-## Cumulative (56 cycles)
+## Cumulative (57 cycles)
 
-- Total reviewed: 217 · Accepted+tagged: 215 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 221 · Accepted+tagged: 219 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 56 notables
+## Cycle 57 notables
 
-- **Mobile 2nd DAO** (JournalDao). DAO layer 2/7 entities covered.
-- **Mobile [x]=50 milestone** (50/240 = 20.8%).
-- **Schemas Kotlin codegen config** at parity with Swift + TS. Only Python source-of-truth; three codegen targets ready.
-- Webapp T145 ArchetypeBadge — 209 tests (+9).
-- Website T059 pricing "What's included" checklist — 195 tests (+9).
-- Datalogger T028 SessionFinalizer now writes laps.parquet with round-trip validation. 4-step pipeline complete: accept manifest → write v2 manifest.json → parquet primary/CSV fallback → write laps.parquet.
+- **Schemas T052 schema-sync-check CI job**: 62-line new workflow file runs Python OpenAPI generate → TypeScript + Kotlin codegen → verify committed generated files match. Fires on push + pull_request. Uses `astral-sh/setup-uv@v5` + `actions/setup-node@v4` + `actions/setup-java@v4` — standard actions, no secrets, no workflow_dispatch. pytest 72 (+3 from T051's 69; contract test validates workflow structure). **Load-bearing cross-language sync enforcement now in CI**.
+- **Mobile 3rd DAO**: T051 UploadQueueDao + LapDatabase.uploadQueueDao(). Methods: enqueue (upsert at finalize), dequeueNext (FIFO pick for T147 UploadBundleWorker), updateAttempt (records backoff state per T154 retry curve). FIFO via `ORDER BY session_id ASC` since UUIDv7 is time-ordered by construction.
+- Website T060 founder-waitlist offer (35-line PricingFounderOffer.astro + mount + test). 202 tests (+7).
+- Datalogger T029 locks events.json contract structure (sector/lap/flag) at SessionFinalizer. 17/17 tests (up from 14). +66 lines in test_finalizer_accepts_manifest.py only — pure test-add.
+- Backend 9 idle, webapp 1 idle.
+- Disk 86% stable 34 cycles.
 
 ## Current issues
 
@@ -41,4 +41,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 18:00 UTC.
+## Cron: next 18:15 UTC.
