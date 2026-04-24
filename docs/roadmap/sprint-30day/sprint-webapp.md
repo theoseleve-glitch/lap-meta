@@ -148,7 +148,7 @@
 - [x] T123 [sonnet] Filter chip: date range picker ⇒ works (8dac3bc)
 - [x] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs (538b89d)
 - [x] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered (455a6b4)
-- [ ] T126 [sonnet] Loading: skeleton cards ⇒ shows
+- [x] T126 [sonnet] Loading: skeleton cards ⇒ shows (61d4e8f)
 - [ ] T127 [sonnet] Error: retry ⇒ works
 - [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works
 - [ ] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured
