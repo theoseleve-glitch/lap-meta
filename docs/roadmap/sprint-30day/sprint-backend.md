@@ -66,7 +66,7 @@
 - [x] T042 [opus] Pydantic model `CoachingInsight` (session-level, pre-episode aggregation) ⇒ validates — sha: lap-schemas@c9aff82
 - [x] T043 [sonnet] OpenAPI generator script: `python -m lap_schemas.generate_openapi` outputs `openapi.json` ⇒ valid OpenAPI 3.1 — sha: lap-schemas@afed51d
 - [x] T044 [sonnet] Package `lap-schemas` publishable locally: `pip install -e lap-schemas/python` ⇒ imports work — sha: lap-schemas@94493f7
-- [ ] T045 [codex] Add `lap-backend` dependency on `lap-schemas` in pyproject.toml ⇒ import works in backend
+- [x] T045 [codex] Add `lap-backend` dependency on `lap-schemas` in pyproject.toml ⇒ import works in backend — sha: 772dc3d
 
 ## Block C — TS & Swift codegen (T046–T055)
 

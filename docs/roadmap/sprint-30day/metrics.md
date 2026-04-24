@@ -1,38 +1,40 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T15:45Z (Cycle #47)
+## Last updated: 2026-04-24T16:00Z (Cycle #48)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 41 | 196 | 2 | 1 (T013) | 0 | `7b64848` (**31 idle cycles**) |
-| lap-webapp | 57 | 183 | 0 | 0 | 0 | `ed63d1c` (T137 profile route shell) |
-| lap-schemas (subset) | 25 | — | 0 | 0 | 0 | `8cac625` (T044 pip install-e + v1 re-exports; pytest 69) |
-| lap-mobile-android | 43 | 197 | 0 | 0 | 0 | `77b661e` (T043 SessionJournalEntity + MIGRATION_1_2) |
-| lap-website (marketing) | 43 | 177 | 0 | 0 | 1 (T017 inline) | `2343382` (T049 /how-it-works honesty section) |
-| datalogger (desktop) | 21 | 219 | 0 | 0 | 0 | `ff57d65` (T021 lap_schemas.v1 as dep) |
+| lap-backend (total) | 42 | 195 | 2 | 1 (T013) | 0 | `772dc3d` (T045 depend on lap-schemas — **first backend commit since cycle 2**, 31-cycle idle streak ended) |
+| lap-webapp | 58 | 182 | 0 | 0 | 0 | `cb5285e` (T139 DriverScoreCard component) |
+| lap-schemas (subset) | 25 | — | 0 | 0 | 0 | `8cac625` (idle 1 cycle; pytest 69) |
+| lap-mobile-android | 44 | 196 | 0 | 0 | 0 | `6bc18a7` (T044 UploadQueueEntity + MIGRATION_2_3) |
+| lap-website (marketing) | 43 | 177 | 0 | 0 | 1 (T017 inline) | `2343382` (idle 1 cycle) |
+| datalogger (desktop) | 22 | 218 | 0 | 0 | 0 | `b78fdb5` (T022 shared SessionManifest from lap-schemas) |
 
-## This cycle (Cycle #47)
+## This cycle (Cycle #48)
 
-- Verified GREEN: 5 (webapp T137, schemas T044 + ride-along 8cac625 re-exports, mobile T043, website T049, datalogger T021)
+- Verified GREEN: 4 (backend T045, webapp T139, mobile T044, datalogger T022)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- **First cross-repo Python dep**: datalogger T021 wires `lap_schemas.v1` via pip install-e enabled by schemas T044 + v1 re-exports
+- **Backend 31-cycle idle streak ENDS** (cycle 2 T020 Makefile → cycle 48 T045 depend on lap-schemas)
+- **Backend full matrix green** for first time: ruff clean, mypy Success (7 source files), pytest 18 passed, uv sync resolved 44 packages, uv.lock regenerated
+- **Datalogger uses shared SessionManifest**: T022 completes the cycle-47 T021 dep wiring by actually replacing local type with shared v1 type — the cross-repo dep is now load-bearing
 
-## Cumulative (47 cycles)
+## Cumulative (48 cycles)
 
-- Total reviewed: 182 · Accepted+tagged: 180 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 186 · Accepted+tagged: 184 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 47 notables
+## Cycle 48 notables
 
-- **Cross-repo Python dependency landing** (first time): datalogger → lap-schemas.v1 runtime binding. Enabled by two coordinated commits: schemas T044 (`make lap-schemas pip install -e able` — editable install support + `v1` re-export namespace) + datalogger T021 (adds `lap-schemas` to pyproject.toml + requirements.txt + contract test). Parallel to the mobile-kotlin side which has been consuming :schemas via gradle since cycle 24.
-- **First Room Migration lands**: mobile T043 adds SessionJournalEntity + manual `MIGRATION_1_2` from Room v1 → v2. Includes `MigrationsTest.kt` (18 lines) that validates migration logic. FK cascade to sessions.id. Full gradle matrix green with Room KSP re-exercised.
-- Webapp T137 profile route shell (17 + 15 lines) — 141 tests (+2). Second app route after /timeline.
-- Website T049 "honesty section" (today vs Year 2) — 107-line HowItWorksHonesty.astro; 168 tests (+7). Meta-narrative addressing roadmap transparency.
-- **Schemas ride-along commit** `8cac625 schemas(v1): re-export SessionManifest, LapRecord, TelemetrySample` — NOT `sprint(` prefix so non-reviewable per Step 1.4, but pushable via fast-forward (Hard NEVER #2 only protects hotfix/manual/meta/revert). Same pattern as cycle 24's `feat(kotlin):` Kotlin scaffold.
-- Backend 31 idle, webapp 0 idle, schemas 0 idle, mobile 0 idle, website 0 idle, datalogger 0 idle — **every repo active this cycle except backend** (which is structurally quiet).
-- Disk 86% stable 24 cycles.
+- **Backend activation event**: After 31 idle cycles (cycle 2 → cycle 47), lap-backend sprint T045 lands `depend on lap-schemas` — adds lap-schemas to pyproject.toml + 10-line test_schemas_import.py + 29-line uv.lock refresh. Backend now mirrors datalogger T021's cross-repo wiring pattern. Backend matrix: uv sync OK, ruff "All checks passed", mypy "Success: no issues found in 7 source files", pytest 18 passed.
+- **Cross-repo dep parity achieved across ALL Python consumers**: schemas source-of-truth → datalogger (T021) → backend (T045). Plus Kotlin `:schemas` → mobile-android (since cycle 24). Schema contract layer is now the true single source of truth, with declared dependencies in consumers.
+- Mobile T044 second Room migration (v2→v3) — UploadQueueEntity for T147 chunked upload worker + T154 backoff curve. 55+56 = 111 lines. Full gradle matrix green.
+- Datalogger T022 replaces local `SessionManifest` with `lap_schemas.v1.SessionManifest` — bundle_schema.py + finalizer.py refactored, 23 tests pass (bundle_schema_uses_shared_manifest + session_bundle + lap_schemas_available).
+- Webapp T139 DriverScoreCard (100 + 73 + index = 234 ins) — 154 tests (+13 from T137's 141). Substantial profile-route component.
+- Backend 0 idle, webapp 0 idle, schemas 1 idle, mobile 0 idle, website 1 idle, datalogger 0 idle — most active cycle yet.
+- Disk 86% stable 25 cycles.
 
 ## Current issues
 
@@ -42,4 +44,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 15:50 UTC.
+## Cron: next 16:05 UTC.
