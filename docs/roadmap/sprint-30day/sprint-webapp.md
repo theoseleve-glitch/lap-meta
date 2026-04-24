@@ -183,7 +183,7 @@
 - [x] T155 [sonnet] Cohort-locked state: "Unlocks at 20 drivers" copy ⇒ rendered (no-op: already delivered by T145 ArchetypeBadge locked state — renders 'Archetype locked' visually with 'Unlocks at 20 drivers' sub-copy and the same phrase in aria-label when archetype is null, using the default cohort size of 20 drivers from Q149)
 - [x] T156 [sonnet] Storybook stories for full page with 3 data states ⇒ renders (ebaef85)
 - [ ] T157 [sonnet] E2E: profile page loads, navigate to skill drilldown ⇒ green [BLOCKED: waiting on lap-backend — driver profile endpoint (unblocks useDriverProfile T138). Profile page currently renders only PageIntro placeholder; without the data hook the SkillRadarChart isn't wired in and there's no skill dimension link to click. Target drilldown page T167 is also unbuilt and blocked on the same backend dependency.]
-- [ ] T158 [sonnet] LCP <2s on profile ⇒ Lighthouse passes
+- [ ] T158 [sonnet] LCP <2s on profile ⇒ Lighthouse passes [BLOCKED: waiting on lap-backend — useDriverProfile T138 data hook (driver profile endpoint). Profile page renders only PageIntro placeholder today; measuring LCP against near-empty content is not representative. Lighthouse CI integration itself belongs to T231 in Block K.]
 - [ ] T159 [sonnet] A11y: all charts have text descriptions ⇒ axe clean
 - [ ] T160 [sonnet] Print styles: profile page printable for coaching review ⇒ works
 - [ ] T161 [sonnet] Share action: generate profile share link (public or private) ⇒ works
