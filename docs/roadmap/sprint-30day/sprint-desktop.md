@@ -19,7 +19,7 @@
 - [x] T009 [sonnet] Smoke test: run main with iRacing mock → live processor runs ⇒ green (8343002)
 - [x] T010 [sonnet] Fix `tests/test_qml_bootstrap.py` TypeError (property collision) ⇒ collection green (ed9b004)
 - [x] T011 [sonnet] Add regression test: import all VM classes via bootstrap ⇒ green (cdfd017)
-- [ ] T012 [sonnet] Add regression test: import all processor classes ⇒ green
+- [x] T012 [sonnet] Add regression test: import all processor classes ⇒ green (934bcd5)
 - [ ] T013 [codex] `pyproject.toml`: upgrade to Python 3.12, pin deps ⇒ `uv sync` clean
 - [ ] T014 [codex] `.pre-commit-config.yaml`: ruff + mypy + pytest on staged ⇒ installed
 - [ ] T015 [codex] GitHub Action: `pytest -q` blocks merge ⇒ workflow green

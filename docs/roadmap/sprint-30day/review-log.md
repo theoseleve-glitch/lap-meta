@@ -1544,3 +1544,35 @@ Cron-fired 12:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`6b34ca9`, 
 - `meta: review loop cycle 34` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T12:40:00Z — Cycle #35
+
+Cron-fired 12:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`38433aa`, schemas=`b6ce2ed`, mobile=`291c7f3`, website=`515a907`, datalogger=`cdfd017`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 19 idle.
+- **lap-webapp `da3079f` T119 outcomeAchievedBadge derivation**: ACCEPTED + tagged + pushed. Full matrix green; **tests 79/79** (+3). Diff: 2 files / 28 ins / 1 del (badges.ts +10 + test +19). Badge trio T117+T118+T119 complete.
+- **lap-schemas** TWO commits (P+K lockstep resumed):
+  - `2846574 sprint(backend): T035 SuccessCondition model`: ACCEPTED + tagged + pushed. pytest 42 (+3). Diff: 2 files / 57 ins.
+  - `c7a1821 sprint(mobile): T034 WeaknessEpisode (+ WeaknessCategory enum)`: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL 4 executed. Diff: 3 files / 142 ins (WeaknessEpisode.kt 38 + WeaknessEpisodeTest.kt 81 + enum wire). 7 of 8 recent cycles had P+K pairs.
+- **lap-mobile-android**: 11 idle.
+- **lap-website `1fed09c` T039 mobile layout 360px gate**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 120/120** (unit count unchanged — new e2e test in `tests/e2e/mobile-layout.spec.ts`), build 3 pages. Diff: 1 file / 79 ins. Pure-add e2e test; no production code changes. Google's floor viewport (360px) assertion gates against horizontal-overflow regressions.
+- **datalogger `934bcd5` T012 regression test — processor imports coverage**: ACCEPTED + tagged + pushed. 4/4 pass. Diff: 1 file / 65 ins. Third consecutive desktop regression test (T010/T011/T012).
+
+### Step 5-7: schemas P+K green, no drift, no deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 36
+
+- backend=`7b64848` (20 idle), webapp=`da3079f`, schemas=`c7a1821`, mobile=`291c7f3` (12 idle), website=`1fed09c`, datalogger=`934bcd5`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 35` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
