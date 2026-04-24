@@ -37,7 +37,7 @@
 - [x] T023 [opus] Headline options (A/B): "The Driver OS — Train. Race. Improve." / "Every lap, one step better." ⇒ default chosen (lap-website@de66a0a; Option B — "Every lap, one step better." picked; "Driver OS" category lands in T024 subhead instead. Regression test locks the exact string and forbids Option A)
 - [x] T024 [opus] Subhead: one-sentence ecosystem pitch ⇒ copy locked (lap-website@37a19d9; "The cross-platform Driver OS that turns every sim and real-world session into measurable progress." — delivers category + cross-platform + progression in 15 words)
 - [x] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired (lap-website@b20f501; locked at both Vitest + Playwright layers; rel=noopener auto-emitted by Hero.astro and asserted)
-- [ ] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired
+- [x] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired (lap-website@0c170b3; locked at Vitest + Playwright layers; same-origin → no rel=noopener asserted. /how-it-works route lands in T042)
 - [ ] T027 [opus] Hero motion: subtle GSAP entrance, reduced-motion respected ⇒ smooth
 - [ ] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp
 - [ ] T029 [opus] Section "After every session" — 3 tile grid (weakness detected / prescription / outcome tracked) ⇒ renders
