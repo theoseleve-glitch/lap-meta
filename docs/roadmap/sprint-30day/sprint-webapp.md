@@ -134,7 +134,7 @@
 ## Block F — Driver Timeline page (T111–T135)
 
 - [ ] T111 [design] Figma mockup: Driver Timeline layout (desktop + mobile) ⇒ approved
-- [ ] T112 [opus] Route `src/app/(app)/timeline/page.tsx` with shell ⇒ renders
+- [x] T112 [opus] Route `src/app/(app)/timeline/page.tsx` with shell ⇒ renders (75f5e3b)
 - [ ] T113 [opus] Timeline data hook `useTimeline(cursor)` ⇒ paginates
 - [ ] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook
 - [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
