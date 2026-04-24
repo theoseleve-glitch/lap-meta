@@ -1,38 +1,37 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T14:40Z (Cycle #43)
+## Last updated: 2026-04-24T14:55Z (Cycle #44)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 38 | 199 | 2 | 1 (T013) | 0 | `7b64848` (**27 idle cycles**) |
-| lap-webapp | 54 | 186 | 0 | 0 | 0 | `32b3640` (T127 TimelineError with retry) |
-| lap-schemas (subset) | 22 | — | 0 | 0 | 0 | `1e07eb9` (T041 TargetEvent + DriverReadinessState; pytest 60) |
-| lap-mobile-android | 40 | 200 | 0 | 0 | 0 | `ffa78e5` (T040 no hand-rolled schema duplicates audit) |
-| lap-website (marketing) | 40 | 180 | 0 | 0 | 1 (T017 inline) | `95545d6` (T046 Brain section step 02) |
-| datalogger (desktop) | 18 | 222 | 0 | 0 | 0 | `7fa3933` (T018 SessionCoordinator logger contract) |
+| lap-backend (total) | 39 | 198 | 2 | 1 (T013) | 0 | `7b64848` (**28 idle cycles**) |
+| lap-webapp | 55 | 185 | 0 | 0 | 0 | `9293914` (T129 TanStack Query cache strategy) |
+| lap-schemas (subset) | 23 | — | 0 | 0 | 0 | `c9aff82` (T042 CoachingInsight Python — reconciles cycle-38 Kotlin; pytest 63) |
+| lap-mobile-android | 41 | 199 | 0 | 0 | 0 | `435a9de` (T041 LapDatabase skeleton + TypeConverters) |
+| lap-website (marketing) | 41 | 179 | 0 | 0 | 1 (T017 inline) | `38c8711` (T047 Plan section step 03) |
+| datalogger (desktop) | 19 | 221 | 0 | 0 | 0 | `e02fc36` (T019 launch-logs gitignore guard) |
 
-## This cycle (Cycle #43)
+## This cycle (Cycle #44)
 
-- Verified GREEN: 5 (webapp T127, schemas T041 Python, mobile T040 audit, website T046, datalogger T018)
+- Verified GREEN: 5 (webapp T129, schemas T042 Python, mobile T041, website T047, datalogger T019)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- **First lap-mobile-android sprint commit since cycle 24 (19 cycles ago)** — T040 is a small audit correction (2 files, comment edits only)
+- **Kotlin-ahead reconciled**: Python T042 CoachingInsight lands with 31+74 = 105 lines, matching the Kotlin stub from cycle 38. Asymmetric-for-6-cycles state now resolved.
 
-## Cumulative (43 cycles)
+## Cumulative (44 cycles)
 
-- Total reviewed: 167 · Accepted+tagged: 165 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 172 · Accepted+tagged: 170 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 43 notables
+## Cycle 44 notables
 
-- **Mobile T040 audit confirms no hand-rolled duplicates** of schema types. Only corrections: comments in `app/src/main/kotlin/com/lap/mobile/core/Serialization.kt` and its test pointing future readers at the right serializer (`LapSchemasJson`). 14 ins / 14 del — pure refactor/documentation. Full gradle matrix green (detekt + ktlintCheck + assembleDebug + testDebugUnitTest + `:schemas:test --rerun-tasks`).
-- **Schemas T041 = TargetEvent + DriverReadinessState** multi-object Python commit (79 + 46 = 125 lines; pytest 60 +3).
-- Webapp T127 TimelineError with retry (30 + 37 = 67 lines + index) — 130 tests (+6).
-- Website T046 Brain section step 02 (63 lines HowItWorksBrain.astro + mount) — 147 tests (+7).
-- Datalogger T018 SessionCoordinator logger contract test (59 lines, 4 tests) — locks the logger module contract as a pure-add test.
-- Backend 27 idle. Mobile no longer idle (T040 landed). 
-- Disk 86% stable 20 cycles.
+- **Schemas reconciliation event**: T042 CoachingInsight Python (31 + 74 = 105 lines, pytest 63 +3) matches the cycle-38 Kotlin stub. The "Kotlin-ahead-of-Python" entry can drop from Current-Issues next cycle.
+- **Mobile T041 LapDatabase skeleton + TypeConverters** (99 ins across 3 files: LapDatabase.kt + LapTypeConverters.kt + test 45 lines). Registers Instant (RFC3339) + UUID7 converters matching LapSchemasJson wire format per ADR-012. `@Database` annotation intentionally deferred to T042 (Room rejects empty-entities array). Full matrix + `:schemas:test --rerun-tasks` all green.
+- Webapp T129 TanStack Query cache strategy (15 + 26 = 41 lines + config). 134 tests (+4).
+- Website T047 Plan section step 03 (59 lines HowItWorksPlan.astro + mount + test). 154 tests (+7). Three-step sequence of /how-it-works page now live (Capture T045 → Brain T046 → Plan T047).
+- Datalogger T019 launch-logs gitignore guard (58 lines, 3 tests) — asserts that launch log output directories are in `.gitignore` so they never accidentally get committed. Fifth contract-test in desktop sprint (T013/T014/T015/T018/T019).
+- Disk 86% stable 21 cycles.
 
 ## Current issues
 
@@ -40,7 +39,7 @@
 - Backend T013 NEEDS_REWORK persistent.
 - Backend T018/T019 BLOCKED on docker.
 - Website T017 SCOPE_FLAG.
-- Kotlin-ahead-of-Python CoachingInsight (cycle 38).
+- ~~Kotlin-ahead-of-Python CoachingInsight~~ — **RESOLVED this cycle** (T042 Python landed).
 - Step 10 daily-email deferred.
 
-## Cron: next 14:45 UTC.
+## Cron: next 15:00 UTC.

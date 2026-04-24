@@ -1870,3 +1870,44 @@ Cron-fired 14:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`61d4e8f`, 
 - `meta: review loop cycle 43` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T14:55:00Z — Cycle #44
+
+Cron-fired 14:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`32b3640`, schemas=`1e07eb9`, mobile=`ffa78e5`, website=`95545d6`, datalogger=`7fa3933`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 28 idle.
+- **lap-webapp `9293914` T129 TanStack Query cache strategy**: ACCEPTED + tagged + pushed. **tests 134/134** (+4). Diff: 6 files / 80 ins / 1 del (query-client.ts 15 + test 26 + wiring).
+- **lap-schemas `c9aff82` sprint(backend): T042 CoachingInsight model**: ACCEPTED + tagged + pushed. pytest 63 (+3). Diff: 2 files / 105 ins (coaching_insight.py 31 + test 74). **Reconciles the Kotlin-ahead asymmetry from cycle 38** — CoachingInsight now exists in BOTH Python and Kotlin.
+- **lap-mobile-android `435a9de` T041 LapDatabase skeleton + TypeConverters**: ACCEPTED + tagged + pushed. Diff: 3 files / 99 ins (LapDatabase.kt + LapTypeConverters.kt 32 + test 45). Room `@Database` class skeleton + TypeConverters registering Instant (RFC3339) + UUID7 (identity-pass-through for now). Commit body flags the intentional deferral: `@Database` annotation held for T042 when SessionEntity lands (Room processor rejects empty entities array). Full matrix BUILD SUCCESSFUL (163 tasks, 6 executed) + `:schemas:test --rerun-tasks` green.
+- **lap-website `38c8711` T047 /how-it-works Plan section (step 03)**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 154/154** (+7), build 4 pages. Diff: 4 files / 131 ins (HowItWorksPlan.astro 59 + mount + tests). Three-step Capture (T045) → Brain (T046) → Plan (T047) sequence now assembled on /how-it-works page.
+- **datalogger `e02fc36` T019 lock launch logs out of git (gitignore guard)**: ACCEPTED + tagged + pushed. 3/3 pure-add test file. Diff: 1 file / 58 ins (test_launch_logs_gitignored.py). Fifth contract-test in desktop series (T013/T014/T015/T018/T019).
+
+### Step 5 — Cross-repo coherence
+
+- **Schema reconciliation**: Python CoachingInsight (c9aff82) landed, matching the cycle-38 Kotlin stub. Python side now 23 objects, Kotlin side catching up at its own pace. The cycle-38 Kotlin-first stub had deferred two nested types (Evidence, MeasurableTarget) and used RFC3339 strings for severity — T042 Python lands the canonical shape; Kotlin will reconcile on next mobile iteration.
+- Schemas Python + Kotlin both grew in isolation this cycle (Python T042 only; Kotlin unchanged this cycle — Kotlin is behind by the 2 most recent Python commits T041 + T042). Kotlin catch-up expected.
+- Mobile T041 wires TypeConverters matching schemas types. `:schemas:test` green from mobile dir.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 45
+
+- backend=`7b64848` (29 idle), webapp=`9293914`, schemas=`c9aff82`, mobile=`435a9de`, website=`38c8711`, datalogger=`e02fc36`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestones
+
+- **Kotlin-ahead reconciliation event** (CoachingInsight Python lands this cycle). Mobile-android second-consecutive active cycle (T040 + T041). Schemas subset 23/35 (~66%).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 44` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

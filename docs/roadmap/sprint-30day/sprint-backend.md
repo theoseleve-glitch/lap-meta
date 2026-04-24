@@ -63,7 +63,7 @@
 - [x] T039 [opus] Pydantic model `TransferLink` per ADR-005 §5.5 ⇒ validates — sha: lap-schemas@e56f41c
 - [x] T040 [opus] Pydantic model `CohortDef` + `DriverBenchmarkProfile` per ADR-005 §5.6 ⇒ validates — sha: lap-schemas@d749fb3
 - [x] T041 [opus] Pydantic model `TargetEvent` + `DriverReadinessState` per ADR-005 §5.7 ⇒ validates — sha: lap-schemas@1e07eb9
-- [ ] T042 [opus] Pydantic model `CoachingInsight` (session-level, pre-episode aggregation) ⇒ validates
+- [x] T042 [opus] Pydantic model `CoachingInsight` (session-level, pre-episode aggregation) ⇒ validates — sha: lap-schemas@c9aff82
 - [ ] T043 [sonnet] OpenAPI generator script: `python -m lap_schemas.generate_openapi` outputs `openapi.json` ⇒ valid OpenAPI 3.1
 - [ ] T044 [sonnet] Package `lap-schemas` publishable locally: `pip install -e lap-schemas/python` ⇒ imports work
 - [ ] T045 [codex] Add `lap-backend` dependency on `lap-schemas` in pyproject.toml ⇒ import works in backend

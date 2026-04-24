@@ -26,7 +26,7 @@
 - [x] T016 [codex] GitHub Action: ruff + mypy block merge ⇒ workflow green (b49d989)
 - [x] T017 [sonnet] Migrate `session_state.py` to typed enum + state machine lib (transitions) ⇒ tests green (76d39dc)
 - [x] T018 [sonnet] Migrate `SessionCoordinator` to use `logging.getLogger(__name__)` throughout ⇒ consistent (7fa3933)
-- [ ] T019 [sonnet] Remove `launch_stderr.log` + `launch_stdout.log` committed noise files ⇒ .gitignore updated
+- [x] T019 [sonnet] Remove `launch_stderr.log` + `launch_stdout.log` committed noise files ⇒ .gitignore updated (e02fc36)
 - [ ] T020 [sonnet] Clean up `=1.26` weird root file (looks like a pip pin leak) ⇒ gone
 
 ## Block B — Contract + schema integration (T021–T040)
