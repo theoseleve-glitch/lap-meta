@@ -1,38 +1,36 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T16:55Z (Cycle #52)
+## Last updated: 2026-04-24T17:10Z (Cycle #53)
 
 ## Per-repo status
 
 | Repo | `[x]` | HEAD |
 |---|---|---|
-| lap-backend | 45 | `772dc3d` (idle 4 cycles) |
-| lap-webapp | 61 | `7a5bb70` (T142 ActivePrescriptionsList) |
-| lap-schemas (subset) | 28 | `33111e6` (T048 @lap/schemas TS entry points; pytest 69) |
-| lap-mobile-android | 47 | `94e76a3` (T047 TrackCacheEntity + MIGRATION_5_6) |
-| lap-website (marketing) | 47 | `f63417e` (T055 /how-it-works e2e journey) |
-| datalogger (desktop) | 25 | `8c91bf2` (T025 SessionFinalizer step 1 — accept SessionManifest) |
+| lap-backend | 46 | `772dc3d` (idle 5 cycles) |
+| lap-webapp | 62 | `7a5bb70` (idle 1 cycle) |
+| lap-schemas (subset) | 29 | `add2745` (T049 Swift5 codegen config; pytest 69; 4-language scaffold) |
+| lap-mobile-android | 48 | `fa8ad18` (T048 RuleBundleEntity + MIGRATION_6_7 — 7 entities, 6 migrations) |
+| lap-website (marketing) | 48 | `e3732a4` (T057 /pricing route shell — 5 pages now) |
+| datalogger (desktop) | 26 | `a7d327f` (T026 SessionFinalizer step 2 — writes v2 manifest.json) |
 
-## This cycle (Cycle #52)
+## This cycle (Cycle #53)
 
-- Verified GREEN: 5 (webapp T142, schemas T048, mobile T047, website T055, datalogger T025)
+- Verified GREEN: 4 (schemas T049, mobile T048, website T057, datalogger T026)
 - Reverted: 0 | SCOPE_FLAG: 0 new
 
-## Cumulative (52 cycles)
+## Cumulative (53 cycles)
 
-- Total reviewed: 202 · Accepted+tagged: 200 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 206 · Accepted+tagged: 204 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
-- **200-accept cumulative milestone**
 
-## Cycle 52 notables
+## Cycle 53 notables
 
-- **Mobile Room v6**: T047 TrackCacheEntity + MIGRATION_5_6. 5th consecutive Room migration. 6 entity tables total now (Session, Journal, UploadQueue, InsightCache, PrescriptionCache, TrackCache). TrackCache payload is opaque JSON blob (no Track Pydantic yet — deferred coupling).
-- **Datalogger T025 SessionFinalizer** starts accepting `lap_schemas.v1.SessionManifest` at the writer boundary (31 ins / 2 del in finalizer.py + 156-line test). Cross-repo type now flowing through the actual data pipeline, not just imports.
-- **Schemas T048** wires @lap/schemas TS package entry points (exports/types fields in typescript/package.json +9 lines). TS codegen pipeline: scaffold (T046) → emit script (T047) → package entry points (T048).
-- Webapp T142 ActivePrescriptionsList (47 + 63 + index = 150 lines). 179 tests (+8).
-- Website T055 /how-it-works e2e journey (navigate → consume → CTA, 28-line Playwright spec extension). 171 unit tests (e2e counted separately).
-- Backend 4 idle.
-- Disk 86% stable 29 cycles.
+- **Schemas now 4-language**: T049 adds Swift codegen config (swift/openapi-generator-config.yaml + openapitools.json + 1822-line package-lock.json). Schemas subdirs: `python/` (source-of-truth) + `kotlin/` (cycle 24) + `typescript/` (cycle 49) + `swift/` (cycle 53). Likely for future iOS mobile app when unfrozen.
+- **Mobile Room 7 entities, 6 migrations**: T048 RuleBundleEntity (coaching rule bundle cache, 7-day TTL per T213, signature-verified at read time). Payload opaque JSON (T211 rule-engine shape stays out of Room). Full gradle matrix BUILD SUCCESSFUL.
+- **Website 5 pages now** (T057 /pricing shell): home + /how-it-works + /pricing + 404 + 500. /pricing has 62-line test + 31-line Astro component (placeholder pricing shell). 177 tests (+6).
+- Datalogger T026 SessionFinalizer **now writes v2 manifest.json** (step 2 in the multi-step pipeline wiring). Finalizer.py +11 lines + 54 more test lines. 7/7 pass. Cross-repo type flowing through WRITES now, not just INPUTS.
+- Backend 5 idle, webapp 1 idle.
+- Disk 86% stable 30 cycles.
 
 ## Current issues
 
@@ -42,4 +40,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 17:00 UTC.
+## Cron: next 17:15 UTC.
