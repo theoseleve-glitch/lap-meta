@@ -3792,3 +3792,78 @@ Cron-fired 23:37 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-25T23:55:00Z — Cycle #80 — **12TH ORM + BESTSESSIONS + FIX MONITOR + RELATED LINKS + CURSOR RESUMPTION** 🎯 300 ACCEPTS
+
+Cron-fired 23:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+**Milestone**: 300 cumulative accepts crossed this cycle (295 → 300). 80 review cycles, 97.4% first-pass rate.
+
+### Per-repo
+
+- **lap-backend `32999fb` sprint(backend): T069 DriverBenchmarkProfile ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 52/52 (+2).
+  - Diff: 170 ins (orm.py +21 + migration 45 + tests 104).
+  - **12th ORM model**. Likely cohort-relative benchmark data.
+- **lap-webapp `8cd9d3e` sprint(webapp): T170 BestSessionsList component** — ACCEPT + tag + push.
+  - Full matrix: 302 tests (+10 from 292), build OK.
+  - Diff: 260 ins. Best-of surfacing on profile. data-session-id pattern continuing from T169 — when the drilldown wires, clicking any session navigates.
+- **lap-schemas**: idle 21 cycles. Python parity 35/35 stable.
+- **lap-mobile-android `dacf4d7` sprint(mobile): T067 LocationFixMonitor surfaces loss-of-fix via UiState** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree.
+  - Diff: 254 ins. LocationFixMonitor 49 + LocationFixState 23 + test 182.
+  - **7th layer of mobile capture stack**: permission → service → notification → sensor → mapper → validator → **fix-monitor**. UI surfacing of GPS loss-of-fix state.
+  - 14 consecutive clean mobile accepts.
+- **lap-website `0b6d1ca` sprint(marketing): T089 /demo related links — how-it-works + pricing** — ACCEPT + tag + push.
+  - Full matrix: 258 tests (+3), 7-page build.
+  - Diff: 55 ins. Small `<footer>` in /demo <main> with caption-styled links. Fallback path for readers who skipped primary CTA.
+- **datalogger `a241f86` sprint(desktop): T045 persist completion cursor → skip re-upload** — ACCEPT + tag + push.
+  - Diff: 225 ins. `IngestClient.upload` writes `.ingest_cursor.json` with 202-response fields on success. Subsequent calls read cursor → session_id match against manifest → return cached `IngestResult` (no re-POST).
+  - Full suite: 1511 passed (+4 from c79 1507), 19 stable failures.
+  - **Resumability layer** — idempotency (T043, HTTP-level) + cursor (T045, client-level). Two layers of dedup.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = webapp T170 at 260).
+- Forbidden patterns: clean.
+- Secrets: clean across 5 commits.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- ADR-012 client now 5 commits deep (T041→T045): typed surface + upload + idempotency + chunking + cursor. Backend router will have a rich contract surface to match.
+- 6 concurrent blocks unchanged.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped.
+
+### Step 8 — Metrics
+- Rewritten. 300-accept milestone recorded.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 81
+
+- backend=`32999fb`, webapp=`8cd9d3e`, schemas=`0dda9cb` (21 idle), mobile=`dacf4d7`, website=`0b6d1ca`, datalogger=`a241f86`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **300 CUMULATIVE ACCEPTS** 🎯. 80 cycles. 304 reviewed. 3 reverts. 97.4% first-pass accept rate.
+- **12 ORM models + ADR-005 coverage growing**. Snapshot (T067) + Transfer (T068) + Benchmark (T069) are the supporting cast to the core aggregate (User → DriverProfile → Session → ...). Unclear if more ORMs coming or router phase next.
+- **Mobile capture stack at 7 layers**. Each layer ships with its own test file averaging 100+ lines.
+- 300 cumulative accepts / 3 reverts / **1.00% revert rate** / 80 cycles.
+
+### Runbook process note
+
+- **Revert rate hit exactly 1.00%** at c80. The 1-cycle-recovery-after-revert pattern (c60→c61, c62→c63) remains the pattern for the 3 reverts. No new reverts since c62 = **18 cycles clean**.
+- **Meta-observation**: the review loop has reviewed 304 AI-authored sprint commits. Only 3 reverts (all detekt-related, all fixed next cycle). Sprint loops have gotten better at pre-verifying their own detekt constraints.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 80 — 5 accepts + 300-accept milestone, 12th ORM + bestsessions + fix monitor + related links + cursor` + metrics + review-log. Push to lap-meta master.
+
+---
+

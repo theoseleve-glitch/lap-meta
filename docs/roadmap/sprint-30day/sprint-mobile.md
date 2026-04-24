@@ -84,7 +84,7 @@
 - [x] T064 [opus] Notification channel + lock-screen visible notification ⇒ user-aware — 9e89acb (mobile; CaptureNotification.LOCK_SCREEN_VISIBILITY=PUBLIC + CATEGORY="service" applied to both channel + builder; 5 cases) [PENDING: device-required for visual lock-screen verification — T083]
 - [x] T065 [opus] `LocationSample` mapped to `TelemetrySample` shape with `t_source_clock="gnss"` ⇒ tested — 590d4ca (mobile; toTelemetrySample() extension + LocationChannels wire-name lock; tCanonicalNs==tSourceNs per ADR-007 client-no-pre-fuse; 8 cases)
 - [x] T066 [opus] Horizontal accuracy, speed, bearing fields populated ⇒ validated — b100bb8 (mobile; LocationSampleValidator + LocationFieldViolation enum; 18 cases — physical bounds only, half-open [0,360) bearing, accuracy>0; T091 keeps the per-track accuracy threshold gate separate)
-- [ ] T067 [sonnet] Location error handling: loss of fix surfaced via UiState ⇒ tested
+- [x] T067 [sonnet] Location error handling: loss of fix surfaced via UiState ⇒ tested — dacf4d7 (mobile; LocationFixMonitor folds Flow<LocationSample> into Flow<LocationFixState> using transformLatest watchdog; 6 virtual-time cases — Searching→Acquired→Lost→Acquired recovery + boundary case)
 - [ ] T068 [sonnet] `MotionCaptureService`: SensorManager accelerometer + gyroscope at 50Hz ⇒ samples stream
 - [ ] T069 [sonnet] Motion samples mapped to TelemetrySample with `t_source_clock="device_monotonic"` (using `SensorEvent.timestamp` in nanos) ⇒ tested
 - [ ] T070 [sonnet] Low-pass filter option on accelerometer (configurable) ⇒ tested
