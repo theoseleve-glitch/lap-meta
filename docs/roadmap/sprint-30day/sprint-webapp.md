@@ -136,7 +136,7 @@
 - [ ] T111 [design] Figma mockup: Driver Timeline layout (desktop + mobile) ⇒ approved
 - [x] T112 [opus] Route `src/app/(app)/timeline/page.tsx` with shell ⇒ renders (75f5e3b)
 - [ ] T113 [opus] Timeline data hook `useTimeline(cursor)` ⇒ paginates
-- [ ] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook
+- [x] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook (470ecde)
 - [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
 - [ ] T116 [sonnet] Group by week header ⇒ correct headers
 - [ ] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count
