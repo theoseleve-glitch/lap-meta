@@ -33,7 +33,7 @@
 - [x] T012 [sonnet] Config via `pydantic-settings`: `Config` class in `app/config.py` reading env vars ⇒ unit-tested — sha: 14180aa
 - [NEEDS_REWORK] T013 [sonnet] Env schema: `.env.example` with DATABASE_URL, REDIS_URL, CLERK_SECRET, STRIPE_SECRET ⇒ committed — sha: 3ada05d — failed review cycle 11: `ruff check .` exit 1 with 2 errors in tests/test_env_example.py (E501 line 5 89>88 chars on REQUIRED_KEYS frozenset; SIM300 line 23 yoda condition on `REQUIRED_KEYS <= _keys_in_env_example()`), reverted in 3312b5e. Re-do: line-wrap + rewrite as `_keys_in_env_example() >= REQUIRED_KEYS`.
 - [x] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work — sha: 6018966
-- [ ] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green
+- [x] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green — sha: edeb53d
 - [ ] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests
 - [ ] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works
 - [ ] T018 [codex] Dockerfile for backend (multi-stage, python:3.12-slim base) ⇒ `docker build` succeeds

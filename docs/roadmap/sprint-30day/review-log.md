@@ -707,3 +707,38 @@ Cron-fired 23:37 UTC. Baselines: backend=`3312b5e` (revert tip from c11), webapp
 - `meta: review loop cycle 12` with review-log + metrics + any sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T00:20:00Z — Cycle #13
+
+Cron-fired 00:07 UTC (first cycle of 2026-04-24). UTC date rolled. Daily email check: `last_daily=2026-04-23 today=2026-04-24 but hour=00 < 8` → skip until 08:07 UTC cycle.
+
+Baselines: backend=`6018966`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`2208d57`, website=`3e57701`, datalogger=`eb97496`. Disk 87%.
+
+### Per-repo
+- **lap-backend `edeb53d` T015 CORS middleware for app.lap-coach.racing**: ACCEPTED + tagged `reviewed/20260424/lap-backend/edeb53d` + pushed. Full matrix green — pytest 10 passed (+2 from T014 CORS tests). Diff: 2 files / 37 ins. **Cross-repo coherence win**: CORS origin pins to `https://app.lap-coach.racing` aligned with website T013's domain migration.
+- **lap-webapp**: 5th consecutive idle cycle.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `d706c03` T016 flavor setup dev/staging/prod**: ACCEPTED + tagged. Full matrix green. Diff: 1 file / 30 ins. Flavor dimension `env` triples Gradle task count (121 assembleDebug vs typical 41) — matrix takes longer but under timeout.
+- **lap-website `6add4af` T020 500 page**: ACCEPTED + tagged. Full matrix green; build now emits 3 pages (/, /404, /500). Diff: 2 files / 48 ins.
+- **datalogger**: 9th consecutive quiet cycle.
+
+### Step 5 cross-repo
+- Schema drift: none.
+- Endpoint drift: none.
+- **Coherence improvement**: backend T015 aligned CORS origin to new domain `app.lap-coach.racing`. Domain migration (website T013) now consistently referenced by backend. Mobile still references old? Not tested — no flavor points at a URL yet.
+
+### Steps 6-7: all skipped (no deploy configs).
+
+### Steps 10-11
+- Daily email: skipped (hour<8 UTC). Next eligible first cycle after 08:00 UTC on 2026-04-24.
+- Alerts: none fired.
+
+### Baselines cycle 14
+- backend=`edeb53d`, webapp=`52e1cce` (5 idle), schemas=`a50d39a`, mobile=`d706c03`, website=`6add4af`, datalogger=`eb97496` (9 quiet)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 13` + review-log + metrics + any sprint-file bookkeeping. Push to lap-meta.
+
+---
