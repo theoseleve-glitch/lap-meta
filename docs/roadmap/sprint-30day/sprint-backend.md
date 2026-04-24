@@ -93,7 +93,7 @@
 - [x] T063 [opus] ORM model `Lap` (id, session_id, lap_number, time_ms, sector_times, valid) ⇒ migration applied — sha: 40eeed0
 - [x] T064 [opus] ORM model `WeaknessEpisode` matching Pydantic shape ⇒ migration applied — sha: 9eb760c
 - [x] T065 [opus] ORM model `ActionPrescription` matching Pydantic shape ⇒ migration applied — sha: dd601a7
-- [ ] T066 [opus] ORM model `ActionOutcome` matching Pydantic shape ⇒ migration applied
+- [x] T066 [opus] ORM model `ActionOutcome` matching Pydantic shape ⇒ migration applied — sha: 4622063
 - [ ] T067 [opus] ORM model `DriverProgressSnapshot` ⇒ migration applied
 - [ ] T068 [opus] ORM model `TransferLink` ⇒ migration applied
 - [ ] T069 [opus] ORM model `DriverBenchmarkProfile` ⇒ migration applied

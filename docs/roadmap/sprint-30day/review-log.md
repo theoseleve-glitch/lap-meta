@@ -3540,3 +3540,82 @@ Cron-fired 22:37 UTC. No PAUSE. 4 accepts, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-25T22:55:00Z — Cycle #76 — **9TH ORM + MOBILE LOCK-SCREEN + INGEST UPLOAD + MERGE FIX LANDED**
+
+Cron-fired 22:52 UTC. No PAUSE. 5 accepts + 1 fix commit acknowledged, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `4622063` sprint(backend): T066 ActionOutcome ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 46/46 (+3).
+  - Diff: 3 files / 236 ins (orm.py +22 + alembic versions/5ddf22a22336 47 + tests/test_action_outcome_model.py 167).
+  - 9th ORM model. Completes coaching feedback loop: ActionPrescription (c75) proposes → ActionOutcome (c76) observes result.
+- **lap-webapp `5e3c036` sprint(webapp): T165 memoize heavy profile charts** — ACCEPT + tag + push.
+  - Full matrix: 277 tests (+4 from 273), build OK.
+  - Diff: 44 ins. React.memo around 4 chart components. Test assertion: each memo skips re-render on unrelated parent state changes.
+  - **Sprint-webapp also wrote 4 self-aware entries this cycle** in sprint-webapp.md (T161 BLOCKED + T162 BLOCKED + T163 no-op + T164 BLOCKED).
+- **Webapp T161 [BLOCKED]**: profile share endpoint (POST /profile/share). "No client code can be exercised end-to-end without a server to POST to, and the public-vs-private toggle semantics must be owned server-side for auth reasons."
+- **Webapp T162 [BLOCKED]**: T229 (PostHog init in shell) + backend T138 useDriverProfile hook.
+- **Webapp T163 [NO-OP]** marked `[x]` without code: "already delivered by T129 9293914 — createQueryClient sets refetchOnWindowFocus: true in global defaults". Cites the exact test that pins behaviour.
+- **Webapp T164 [BLOCKED]**: prescription-accept + weakness-resolve mutation endpoints. Cannot wire mutation→invalidate round-trip before endpoints exist.
+- **lap-schemas**: idle 17 cycles.
+- **lap-mobile-android `9e89acb` sprint(mobile): T064 lock-screen visible notification + service category** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree.
+  - Diff: 56 ins (CaptureForegroundService +6 FOREGROUND_SERVICE_TYPE + CaptureNotification +33 visibility + category + CaptureNotificationTest +17).
+  - Android 14+ FGS transparency requirement satisfied. 11 consecutive clean mobile accepts.
+- **lap-website `6fe6390` sprint(marketing): T085 /demo post-demo trial CTA wired** — ACCEPT + tag + push.
+  - Full matrix: 251 tests (+2), 7-page build.
+  - Diff: 31 ins. Mounts shared T034 FinalCta on /demo (zero new components). Reuses signup href + rel=noopener + "Start 14-day" copy.
+  - **T084 [BLOCKED]** (conversion tracking PostHog) documented in sprint-marketing — implicit gate on video not shipped yet.
+- **datalogger `5a979d8` sprint(desktop): T042 IngestClient.upload returns ingest_job_id** — ACCEPT + tag + push.
+  - Diff: 288 ins. Happy-path `POST /api/v1/sessions/ingest`: reads manifest.json from bundle_dir, builds multipart/form-data body (manifest field + every bundle file). Returns `IngestResult(session_id, ingest_job_id, status_stream)`.
+  - T042 own test file: 5/5 GREEN (tests/test_ingest_client_typed_surface.py).
+  - Full suite: oscillates 19↔20 failures (flake in overlay_browser/sync_queue/session_coordinator set, known since c22). Stable 19 baseline confirmed via Phase-1 bisect.
+- **datalogger `c351c75` fix: resolve stash-pop conflict markers (P0 — 13 src files)** — **NOT reviewed** (non-`sprint(` prefix per runbook Step 1). Resolves the merge-marker pollution I flagged across c73-c75. Per-zone audit with cross-reference decisions. `finalizer.py` markers GONE. 3rd-cycle flag CLEARED.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = datalogger T042 at 288).
+- Forbidden patterns: clean.
+- Secrets: clean across 5 commits.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- **Cross-repo contract emerging**: datalogger T042 now does actual `POST /api/v1/sessions/ingest` with specific multipart body shape. When backend builds the matching router (ADR-012), contract test becomes possible.
+- 6 concurrent blocks on backend endpoints (desktop T035, webapp T157/T158/T161/T162/T164).
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped.
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 77
+
+- backend=`4622063`, webapp=`5e3c036`, schemas=`0dda9cb` (17 idle), mobile=`9e89acb`, website=`6fe6390`, datalogger=`5a979d8`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **9 ORM models, coaching feedback loop closed** (ActionPrescription → ActionOutcome).
+- **10 self-aware sprint events across 4 loops** — webapp's 6 in 3 cycles is the densest. Sprint-webapp is not only blocked but documenting the exact unblock path for each (specific endpoints, T# refs).
+- **Merge-marker pollution resolved by fix commit** — 3-cycle user-flag closed by a `fix:` prefix commit (not sprint-generated). The watch worked.
+- 285 cumulative accepts / 3 reverts / 1.04% revert rate / 76 cycles.
+
+### Runbook process note
+
+- **Fix-prefix commits are review-loop neutral by design**: runbook Step 1 only selects `sprint(` prefixes. `fix:`, `hotfix:`, `manual:`, `meta:`, `revert:` all skip review. For user-run cleanup (like c351c75 resolving pollution), this is correct — user-initiated fixes aren't AI-generated sprint commits to review.
+- **Backend convergence**: when sprint-backend transitions from ORM (T066) to routers, expect a multi-cycle unblock cascade across 6 waiting tasks (1 desktop + 5 webapp). Throughput will spike, possibly revealing contract drift between datalogger's T041/T042 client expectations and whatever the router actually delivers. First real cross-repo contract test opportunity.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 76 — 5 accepts + fix noted, 9th ORM + mobile lock-screen + ingest upload + merge fix landed` + metrics + review-log. Push to lap-meta master.
+
+---
+

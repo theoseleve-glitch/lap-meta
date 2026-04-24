@@ -81,7 +81,7 @@
 - [x] T061 [opus] `LocationCaptureService`: FusedLocationProviderClient at high-accuracy, 10Hz ⇒ samples stream — d2f4e52 (mobile; LocationDataSource seam + FusedLocationDataSource impl + 7 JVM cases over service/config/sample) [PENDING: device-required for live FLPC stream verification — T083]
 - [x] T062 [opus] Permission manager: request location (fine+coarse, foreground + background) ⇒ tested flows — e9f505e (mobile; LocationPermissionManager state machine + 8 cases — pre-Q implicit-background, foreground-then-background two-step gate)
 - [x] T063 [opus] Foreground service: `CaptureForegroundService` with persistent notification during recording ⇒ survives backgrounding — 94b81b6 (mobile; Service shell + CaptureForegroundCommand dispatch enum + CaptureNotification IMPORTANCE_LOW lock + manifest <service foregroundServiceType="location">) [PENDING: device-required for live survives-backgrounding behavior — T083]
-- [ ] T064 [opus] Notification channel + lock-screen visible notification ⇒ user-aware
+- [x] T064 [opus] Notification channel + lock-screen visible notification ⇒ user-aware — 9e89acb (mobile; CaptureNotification.LOCK_SCREEN_VISIBILITY=PUBLIC + CATEGORY="service" applied to both channel + builder; 5 cases) [PENDING: device-required for visual lock-screen verification — T083]
 - [ ] T065 [opus] `LocationSample` mapped to `TelemetrySample` shape with `t_source_clock="gnss"` ⇒ tested
 - [ ] T066 [opus] Horizontal accuracy, speed, bearing fields populated ⇒ validated
 - [ ] T067 [sonnet] Location error handling: loss of fix surfaced via UiState ⇒ tested
