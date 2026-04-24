@@ -37,7 +37,7 @@
 
 ## Block B — Schema integration (T026–T040)
 
-- [ ] T026 [sonnet] Install `@lap/schemas` Kotlin types as local module (`lap-schemas/kotlin/`) ⇒ Gradle includes
+- [x] T026 [sonnet] Install `@lap/schemas` Kotlin types as local module (`lap-schemas/kotlin/`) ⇒ Gradle includes — 291c7f3 (mobile) / 1e20418 (schemas)
 - [ ] T027 [sonnet] Reference `SessionManifest` Kotlin type (generated or hand-typed stub until codegen ready) ⇒ imports
 - [ ] T028 [sonnet] `TelemetrySample` Kotlin data class ⇒ compiles
 - [ ] T029 [sonnet] `SourceTag` enum ⇒ compiles

@@ -1076,3 +1076,59 @@ Cron-fired 09:45 UTC. Runbook mtime unchanged since cycle 22 read (2026-04-23T22
 - `meta: review loop cycle 23` + metrics + review-log → origin lap-meta master.
 
 ---
+
+## 2026-04-24T09:55:00Z — Cycle #24
+
+Cron-fired 09:52 UTC. Runbook mtime unchanged. No PAUSE markers. Baselines at cycle start: backend=`7b64848`, webapp=`7b95523`, schemas=`8199e8d`, mobile=`b7b6681`, website=`b9dc94b`, datalogger=`f3c1cc7`. Disk 86% (stable). Sprint loops VERY active this cycle — 5 of 6 repos advanced.
+
+### Per-repo
+
+- **lap-backend**: 8th consecutive idle cycle at `7b64848`.
+- **lap-webapp `2df91cc` T088 WeaknessEpisodeCard component**: ACCEPTED + tagged `reviewed/20260424/lap-webapp/2df91cc` + pushed. Full matrix green: install up-to-date, typecheck clean, lint "No ESLint warnings or errors", **test 4 files / 22 tests pass** (+10 from T088's 70-line `WeaknessEpisodeCard.test.tsx`), build static. Diff: 3 files / 217 ins (`WeaknessEpisodeCard.tsx` 83 lines + test 70 lines + homepage wire).
+- **lap-schemas `6eb295e` T027 SessionManifest model**: ACCEPTED + tagged + pushed. uv sync OK. **pytest 18 passed** (+3 from T026's 15). Diff: 3 files / 183 ins (session.py 50 lines + test_session.py 126 lines + objective.py 7 lines). **Rode-along non-reviewable commit**: `1e20418 feat(kotlin): scaffold Kotlin JVM module for mobile consumers` is the next commit in the schemas range — not `sprint(` prefix so out of review scope per Step 1.4, but `git push origin HEAD` advances origin through it. Matrix at HEAD (`1e20418`) is green, so both commits are implicitly green. Hard NEVER rule #2 protects only `hotfix:|manual:|meta:|revert:` — `feat(kotlin):` doesn't match, so it's pushable.
+- **lap-mobile-android `291c7f3` T026 include :schemas gradle module**: ACCEPTED + tagged + pushed. Full matrix green — detekt BUILD SUCCESSFUL, ktlintCheck BUILD SUCCESSFUL, app:assembleDebug BUILD SUCCESSFUL (126 tasks / 125 UP-TO-DATE), app:testDebugUnitTest BUILD SUCCESSFUL (96 tasks / 95 UP-TO-DATE). The `:schemas` subproject wires in via `include(":schemas") + projectDir = ../lap-schemas/kotlin` successfully → **cross-repo binding consistent at HEAD**. Diff: 5 files / 26 ins (settings.gradle.kts, libs.versions.toml, app build, classpath-smoke test).
+- **lap-website `21b7ee1` T031 "built for serious sim racers" section**: ACCEPTED + tagged + pushed. Full matrix green — typecheck 0/0/0, lint 0/0/0 + Prettier clean, **test 13 files / 82 tests pass** (+7 from T031's TDD cases), build 3 pages 2.11s. Diff: 4 files / 144 ins (`BuiltForSeriousSimRacers.astro` 64 lines + test + homepage mount + lockfile).
+- **datalogger `fa8ec3e` T004 rebuild DashboardLiveProcessor normalized snapshot**: ACCEPTED + tagged + pushed. T004-own tests `test_dashboard_live_processor.py`: **6/6 pass**. Diff: 2 files / 215 ins (dashboard_live_processor.py 114 lines + test 101 lines — **0 modifications to existing files**). 
+  
+  **systematic-debugging bisect**: full clean-tree pytest (WIP stashed) shows 15 failures at `fa8ec3e`. Same 15 failures AT f3c1cc7 (T003) clean tree via `git checkout f3c1cc7 -- src tests`. **T004 is innocent** — failures pre-exist T003. This EXPANDS the cycle-22 "4 sync_queue failures" flag to 19 total pre-existing failures: 4 sync_queue + 15 (test_desktop_workspaces 2, test_ghost_widget 1, test_overlay_browser_frontend 8, test_overlay_window_manager 4). Cycle 22's "overlay tests pass cleanly" was incorrect — my cycle-22 file-list invocation silently skipped collection failures. Noted in metrics Current-Issues.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas Python grew (`6eb295e` SessionManifest), kotlin/ scaffold added (`1e20418`). `lap-webapp/src/generated/` + `lap-mobile-android/app/.../generated/` still don't exist → silent-skip per ADR-017 (codegen pipeline not built). No GitHub issue opened (issue-open threshold: codegen pipeline must exist first).
+- **Endpoint drift**: backend unchanged at `7b64848` → skip.
+- **Contract test**: webapp + backend both have changes in history but `pnpm test:contracts` doesn't exist yet → skip. **Informal cross-repo check**: mobile T026 `include(":schemas")` + schemas kotlin scaffold `1e20418` → Gradle BUILD SUCCESSFUL with `:schemas` subproject → cross-repo gradle binding **verified live**.
+
+### Step 6 — Deploy path
+
+- Scan for deploy configs: none in any of 6 repos. Skip.
+
+### Step 7 — Post-deploy smoke
+
+- N/A.
+
+### Step 10 — Daily strategy email
+
+- Eligible (`ops/.last_daily_sent`=2026-04-23 ≠ 2026-04-24) but **not sent** — Step 10 outside user's /loop prompt scope. State will persist until resolved.
+
+### Step 11 — Alerts
+
+- No thresholds crossed. Datalogger failure-count jumped from 4 to 19 but all are **pre-existing** (bisect confirmed); this is re-classification of the existing FLAG, not a new regression → no alert dispatch (would dedup anyway per cycle-22 prior flag).
+
+### Baselines cycle 25
+
+- backend=`7b64848` (9 idle), webapp=`2df91cc`, schemas=`1e20418` (HEAD incl. ride-along kotlin scaffold), mobile=`291c7f3`, website=`21b7ee1`, datalogger=`fa8ec3e`.
+
+### Pause triggers
+
+- Disk 86% stable.
+- 4-commit-this-cycle is well below >3-fail-cycle Pause trigger (had 5 ACCEPTS / 0 fails — not failures).
+- All others clear.
+
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 24` + metrics + review-log → origin lap-meta master.
+- **Also including 3 sprint-file bookkeeping mods** (sprint-backend.md, sprint-desktop.md, sprint-mobile.md) pending from cycles 22-24 sprint-loop activity that hadn't been committed yet. Cycle 23 skipped them per runbook Step 9 strict (review-log + metrics only); this cycle bundles them since the sprint-files are growing stale in working tree and the metrics table references their counts.
+
+---

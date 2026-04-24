@@ -1,42 +1,45 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T09:50Z (Cycle #23)
+## Last updated: 2026-04-24T09:55Z (Cycle #24)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend | 17 | 214 | 2 | 1 (T013) | 0 | `7b64848` (**7 idle cycles** — schemas-phase natural) |
-| lap-webapp | 39 | 201 | 0 | 0 | 0 | `7b95523` (idle 1 cycle) |
-| lap-schemas (T021–T055 tracked in sprint-backend) | 6 | — | 0 | 0 | 0 | `8199e8d` (T026 DataQuality — pytest 15; idle 1 cycle) |
-| lap-mobile-android | 25 | 215 | 0 | 0 | 0 | `b7b6681` (idle 1 cycle) |
-| lap-website (sprint-marketing) | 25 | 195 | 0 | 0 | 1 (T017 inline) | `b9dc94b` (T030 sim-and-real bridge) |
-| datalogger (sprint-desktop) | 3 | 237 | 0 | 0 | 0 | `f3c1cc7` (idle 1 cycle) |
+| lap-backend | 18 | 213 | 2 | 1 (T013) | 0 | `7b64848` (**8 idle cycles** — schemas-phase natural) |
+| lap-webapp | 40 | 200 | 0 | 0 | 0 | `2df91cc` (T088 WeaknessEpisodeCard) |
+| lap-schemas (T021–T055 tracked in sprint-backend) | 7 | — | 0 | 0 | 0 | `1e20418` (T027 SessionManifest → pytest 18; + feat(kotlin) scaffold) |
+| lap-mobile-android | 26 | 214 | 0 | 0 | 0 | `291c7f3` (T026 include :schemas gradle module) |
+| lap-website (sprint-marketing) | 26 | 194 | 0 | 0 | 1 (T017 inline) | `21b7ee1` (T031 "built for serious sim racers" section) |
+| datalogger (sprint-desktop) | 4 | 236 | 0 | 0 | 0 | `fa8ec3e` (T004 DashboardLiveProcessor — own tests 6/6) |
 
-## This cycle (Cycle #23)
+## This cycle (Cycle #24)
 
-- Verified GREEN: 1 (website T030)
+- Verified GREEN: 5 (webapp T088, schemas T027, mobile T026, website T031, datalogger T004)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- 5 repos idle at cycle-22-end baselines (backend/webapp/schemas/mobile/datalogger)
+- Rode-along non-reviewable: 1 (lap-schemas `1e20418` feat(kotlin): scaffold — not `sprint(` prefix so out of review scope per Step 1.4, but HEAD-matrix green covers it)
 
-## Cumulative (23 cycles)
+## Cumulative (24 cycles)
 
-- Total reviewed: 92 · Accepted+tagged: 90 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 97 · Accepted+tagged: 95 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 23 notables
+## Cycle 24 notables
 
-- Website **T030 sim-and-real bridge section** (two-beat SimAndReal.astro + 7 TDD cases). Doctrine-anchored per 01-STRATEGIC-DOCTRINE.md Principle 7 + ADR-005 §5.5. Full vitest suite **75/75 pass** (+ from cycle 22 baseline of 68 by the 7 new TDD cases for T030).
-- Schemas idle 1 cycle after 6-task streak (T020-T026); natural pause as webapp/mobile catch up on typed-contracts wiring.
-- Backend still 7 idle cycles (unchanged from cycle 22+1). Expected — schemas-phase material commits to lap-schemas repo with sprint(backend): prefix.
-- Datalogger 1 idle cycle post-T003. Terminal 3 cadence TBD.
-- Disk usage: **86%** (unchanged cycle 22→23; 95% pause threshold comfortable).
+- **Cross-repo wiring landed**: lap-schemas `1e20418 feat(kotlin):` scaffold + lap-mobile-android T026 `include(":schemas")` both land this cycle. Mobile Gradle build BUILD SUCCESSFUL with the new `:schemas` subproject included → **contract-drift is logically-consistent at HEAD** even though codegen hasn't populated yet.
+- **Datalogger tech-debt FLAG expanded**: cycle 22 flagged "4 pre-existing sync_queue failures". Cycle 24's clean-tree full-suite bisect at T003 vs T004 reveals **15 pre-existing failures, not 4** — the earlier count missed `test_desktop_workspaces` (2), `test_ghost_widget` (1), `test_overlay_browser_frontend` (8) because cycle 22's clean test used a file-list invocation that silently swallowed collection failures. Same 15 failures at both T003 (f3c1cc7) and T004 (fa8ec3e) clean trees → T004 is innocent.
+- Cycle 22 narrative self-correction: "overlay tests PASS cleanly" was wrong; they fail clean at T003 too.
+- Disk usage: **86%** (unchanged — stable 3 cycles).
+- Schemas pytest climbed to 18 (+3 from T027).
+- Webapp: 4 test files / 22 tests pass (+10 from T088's `WeaknessEpisodeCard.test.tsx` 70-line spec).
+- Website: 13 test files / 82 tests pass (+7 from T031's "built for serious sim racers" section).
 
 ## Current issues
 
-- **Datalogger sync_queue tech-debt** — 4 failing tests (pre-existing since cycle-1 bulk integration `304c0a9`). Cycle 22 confirmed predates T003. Needs dedicated fix task; not a blocker.
+- **Datalogger pre-existing-failures tech-debt (expanded)**: 15 failing tests in test_desktop_workspaces (2), test_ghost_widget (1), test_overlay_browser_frontend (8), test_overlay_window_manager (4). Plus 4 in test_sync_queue.py (from cycle 22). All predate cycle-1 manual integration commit `304c0a9` or are consequences of it. Not blocking per-commit review; needs a dedicated tech-debt sprint pass.
 - Backend T013 NEEDS_REWORK persistent.
 - Backend T018/T019 Dockerfile + docker-compose BLOCKED (docker not installed in Windows sandbox).
 - Website T017 SCOPE_FLAG (Lighthouse CI, 2267 lines — cycle 11 alert).
+- `ops/.last_daily_sent`=2026-04-23 stale (today=2026-04-24); Step 10 not in user's /loop prompt scope so not fired here — daily summary won't auto-send until user changes prompt or runs manually.
 
-## Cron: next 10:00 UTC (15-min /loop cadence). Daily email eligible (ops/.last_daily_sent=2026-04-23, today=2026-04-24) — NOT sent this cycle (out of user-prompt scope Step 10).
+## Cron: next 10:00 UTC (15-min /loop cadence).

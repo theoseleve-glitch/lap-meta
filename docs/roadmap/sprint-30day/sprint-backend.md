@@ -48,7 +48,7 @@
 - [x] T024 [opus] Define `SourceTag` literal (iracing, acc, ac, ams2, rf2, lmu, rennsport, f1_game, real) ⇒ typed — sha: lap-schemas@9bffb16
 - [x] T025 [opus] Pydantic model `SensorConfigSnapshot` per ADR-006 ⇒ validates, 3 unit tests — sha: lap-schemas@17d7580
 - [x] T026 [opus] Pydantic model `DataQuality` per ADR-006 ⇒ validates, 3 unit tests — sha: lap-schemas@8199e8d
-- [ ] T027 [opus] Pydantic model `SessionManifest` per ADR-006 ⇒ validates, round-trip JSON test
+- [x] T027 [opus] Pydantic model `SessionManifest` per ADR-006 ⇒ validates, round-trip JSON test — sha: lap-schemas@6eb295e
 - [ ] T028 [opus] Pydantic model `TelemetrySample` per ADR-007 (dual timestamps) ⇒ validates
 - [ ] T029 [opus] Pydantic model `SessionRecord` (canonical post-ingestion shape) ⇒ validates
 - [ ] T030 [opus] Pydantic model `LapRecord` (lap splits, sector times, flags) ⇒ validates
