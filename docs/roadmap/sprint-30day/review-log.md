@@ -1506,3 +1506,41 @@ Cron-fired 12:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`6b34ca9`, 
 - `meta: review loop cycle 33` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T12:25:00Z — Cycle #34
+
+Cron-fired 12:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`6b34ca9`, schemas=`b6ce2ed`, mobile=`291c7f3`, website=`6250dc6`, datalogger=`cdfd017`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 18 idle.
+- **lap-webapp `38433aa` T118 prescriptionsAcceptedBadge derivation**: ACCEPTED + tagged + pushed. Full matrix green; **tests 76/76** (+7). Diff: 2 files / 48 ins / 1 del (badges.ts extended by 11 lines + test 38 lines).
+- **lap-schemas**: 1 idle at `b6ce2ed` — first time in 6 cycles schemas didn't advance. Sprint loops rotating focus back to other repos.
+- **lap-mobile-android**: 10 idle — first double-digit. Sprint-mobile work lives in lap-schemas/kotlin/.
+- **lap-website `515a907` T038 axe-clean homepage + e2e job in CI**: ACCEPTED + tagged + pushed. Matrix green, **tests 120/120** (unit count unchanged — axe lives in e2e suite). Diff: 8 files / 125 ins / 17 del (a11y.spec.ts 51 + home.spec.ts update 28 + 4 component color-contrast fixes + ci.yml new e2e job 27 lines + package.json axe-core/playwright dev dep + lockfile).
+  
+  **Workflow-edit review**: new `e2e` job (runs on ubuntu-latest, needs `verify`, timeout 15min) — standard `actions/checkout@v4` + `pnpm/action-setup@v4` + `actions/setup-node@v4` (Node 22) + `pnpm install --frozen-lockfile` + `pnpm exec playwright install --with-deps chromium` + `pnpm test:e2e`. **No `workflow_dispatch` trigger added. No `secrets.*` references added.** File-path guardrail trigger condition NOT met → ACCEPT.
+  
+  A11y fixes applied to pass axe: AfterEverySession.astro `<article>` wrapped in `<li>` under `<ol>` (list-rule); color contrast bumps on 3 components (`text-steel/70 → text-steel`, 3.25-3.8:1 → 6.2-6.9:1 on dark bg). Prescriptive accessibility work landing as sprint-marketing scope.
+- **datalogger**: 1 idle at `cdfd017`.
+
+### Step 5-7: no drift, no deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 35
+
+- backend=`7b64848` (19 idle), webapp=`38433aa`, schemas=`b6ce2ed` (2 idle), mobile=`291c7f3` (11 idle), website=`515a907`, datalogger=`cdfd017` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Runbook process note
+
+- **Two CI workflow edits in 3 cycles** (T036 label rename + T038 new e2e job). Both accepted under the narrow guardrail rule. Confirming the rule works: it catches privilege-escalating changes (workflow_dispatch + secrets.*) without blocking routine CI maintenance (label renames, new jobs for existing purposes, dependency installs).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 34` + metrics + review-log. Push to lap-meta master.
+
+---

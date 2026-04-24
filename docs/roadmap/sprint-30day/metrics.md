@@ -1,35 +1,35 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T12:10Z (Cycle #33)
+## Last updated: 2026-04-24T12:25Z (Cycle #34)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 31 | 206 | 2 | 1 (T013) | 0 | `7b64848` (**17 idle cycles**) |
-| lap-webapp | 47 | 193 | 0 | 0 | 0 | `6b34ca9` (idle; +1 no-code [x]) |
-| lap-schemas (subset) | 14 | — | 0 | 0 | 0 | `b6ce2ed` (T034 WeaknessEpisode + T033 LapRecord Kotlin; pytest 39) |
-| lap-mobile-android | 33 | 207 | 0 | 0 | 0 | `291c7f3` (idle 9 cycles) |
-| lap-website (marketing) | 32 | 188 | 0 | 0 | 1 (T017 inline) | `6250dc6` (idle 1 cycle) |
-| datalogger (desktop) | 11 | 229 | 0 | 0 | 0 | `cdfd017` (T011 bootstrap VM import regression) |
+| lap-backend (total) | 32 | 205 | 2 | 1 (T013) | 0 | `7b64848` (**18 idle cycles**) |
+| lap-webapp | 47 | 193 | 0 | 0 | 0 | `38433aa` (T118 prescriptionsAcceptedBadge) |
+| lap-schemas (subset) | 14 | — | 0 | 0 | 0 | `b6ce2ed` (idle 1 cycle) |
+| lap-mobile-android | 33 | 207 | 0 | 0 | 0 | `291c7f3` (idle 10 cycles) |
+| lap-website (marketing) | 33 | 187 | 0 | 0 | 1 (T017 inline) | `515a907` (T038 axe a11y + CI e2e job) |
+| datalogger (desktop) | 11 | 229 | 0 | 0 | 0 | `cdfd017` (idle 1 cycle) |
 
-## This cycle (Cycle #33)
+## This cycle (Cycle #34)
 
-- Verified GREEN: 3 (schemas T034 Python + T033 Kotlin, datalogger T011)
+- Verified GREEN: 2 (webapp T118, website T038)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- Webapp [x] grew +1 with HEAD unchanged (no-code task bookkept)
+- Workflow-touch: website T038 adds a new `e2e` job to `.github/workflows/ci.yml` — no `workflow_dispatch`/`secrets.*` additions → guardrail condition NOT met → ACCEPT
 
-## Cumulative (33 cycles)
+## Cumulative (34 cycles)
 
-- Total reviewed: 130 · Accepted+tagged: 128 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 132 · Accepted+tagged: 130 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 33 notables
+## Cycle 34 notables
 
-- **6th consecutive Python+Kotlin lockstep cycle** (cycles 27-33): T034 WeaknessEpisode (Python 39 + 86 = 125 lines) + T033 LapRecord Kotlin data class (21 + 57 = 78 lines). Schemas Python pytest 39 (+3).
-- Datalogger T011 third consecutive regression/guard test (T010 QML property collision → T011 bootstrap VM import). Sprint-desktop is building a lattice of guards covering known failure modes.
-- Backend 17 idle, mobile 9 idle. Quiet but steady across config/UI repos.
-- Disk 86% stable 10 cycles.
+- **Website T038 adds full a11y gate**: homepage WCAG 2.1 A/AA cleaned (4 component color-contrast fixes: AfterEverySession, DriverProfilePreview, SocialProof), new `tests/e2e/a11y.spec.ts` using `@axe-core/playwright`, new CI e2e job (Playwright chromium) running on ubuntu-latest after `verify`. T034 FinalCta mirror triggered Playwright strict-mode issue in existing `tests/e2e/home.spec.ts` → assertions updated to handle 2 "Start 14-day trial" links. Second CI workflow edit in 3 cycles (T036 label rename, T038 new job). Both accepted under narrow guardrail rule.
+- Webapp T118 prescriptionsAcceptedBadge derivation — 76 tests (+7). Pair with T117 newWeaknessesBadge.
+- Mobile hits 10 idle cycles (first double-digit) — expected: all mobile work since T025 went into lap-schemas/kotlin/ subproject.
+- Disk 86% stable 11 cycles.
 
 ## Current issues
 
@@ -39,4 +39,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 12:15 UTC.
+## Cron: next 12:30 UTC.
