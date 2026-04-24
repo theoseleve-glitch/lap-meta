@@ -178,7 +178,7 @@
 - [x] T150 [sonnet] Click prescription → navigate to prescription detail ⇒ works (43a81a0)
 - [x] T151 [sonnet] Click readiness → navigate to target event picker ⇒ works (3a094ab)
 - [x] T152 [sonnet] Loading skeletons per section ⇒ shows (cc32108)
-- [ ] T153 [sonnet] Error states per section ⇒ handled
+- [x] T153 [sonnet] Error states per section ⇒ handled (fc7d610)
 - [ ] T154 [sonnet] Empty state (new user, no data): onboarding CTA ⇒ shown
 - [ ] T155 [sonnet] Cohort-locked state: "Unlocks at 20 drivers" copy ⇒ rendered
 - [ ] T156 [sonnet] Storybook stories for full page with 3 data states ⇒ renders
