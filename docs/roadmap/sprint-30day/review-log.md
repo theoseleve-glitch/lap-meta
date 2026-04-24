@@ -3319,3 +3319,81 @@ Cron-fired 21:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-25T22:10:00Z — Cycle #73 — **7TH ORM + MOBILE PERMISSIONS + DEMO BUDGET GATE + INGEST CLIENT**
+
+Cron-fired 22:07 UTC. No PAUSE. 4 accepts (1 scheduled + 3 mid-cycle), 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `9eb760c` sprint(backend): T064 WeaknessEpisode ORM + migration** — ACCEPT + tag + push.
+  - Full matrix green: ruff clean, mypy 7 files, pytest 40/40 (+3).
+  - Diff: 3 files / 245 ins (orm.py +38 WeaknessEpisode + alembic versions/a99c24be9f52 55 + tests/test_weakness_episode_model.py 152 — new record for backend test file).
+  - 7th model. ADR-005 coaching artifact pattern: one Session → many WeaknessEpisodes.
+- **lap-webapp**: no new commits. Idle 1 cycle.
+- **lap-schemas**: idle 14 cycles.
+- **lap-mobile-android `e9f505e` sprint(mobile): T062 LocationPermissionManager fine+coarse+background flow** — ACCEPT + tag + push (mid-cycle).
+  - Full gradle matrix green on stashed tree.
+  - Diff: 239 ins. 5 files:
+    - PermissionChecker.kt 10 — interface
+    - ContextPermissionChecker.kt 15 — Android Context-backed impl
+    - LocationPermissionManager.kt 58 — orchestrator
+    - LocationPermissionState.kt 16 — enum state machine
+    - LocationPermissionManagerTest.kt 140 — 140 test lines
+  - Capture layer now has permission gating. 9 consecutive clean mobile accepts.
+- **lap-website `64ab068` sprint(marketing): T081 demo LCP budget — 2000ms** — ACCEPT + tag + push (mid-cycle).
+  - Full matrix: 249 tests (+3 from 246 — new assertMatrix schema test), 7-page build.
+  - Diff: 92 ins. Migrates lighthouserc.json: single `assertions` → `assertMatrix` with per-URL entries. /demo ≤2000ms LCP, / keeps 1500ms (T036 contract preserved).
+  - **Forward-defensive gate**: T081 (budget) ships BEFORE T074 (video lands). When video ships, it will face an already-live contract.
+  - Sprint-marketing committed lap-meta flip `bb81b2b` recording T081 done with "upstream T074-T080/T082/T084/T087 remain blocked on actually-shipped video + webapp screens, so T081 ships the budget gate first" — **sprint-loop forward planning**.
+- **datalogger `be38dbe` sprint(desktop): T041 IngestClient typed surface (infra/ingest.py)** — ACCEPT + tag + push (mid-cycle, Phase-1 bisect required).
+  - Diff: 171 ins. Creates `infra/` package + typed `IngestClient` skeleton. Frozen `IngestResult` dataclass: `session_id`, `ingest_job_id`, `status_stream`. Targets ADR-012 unified ingestion endpoint `POST /api/v1/sessions/ingest`.
+  - **Phase-1 systematic-debugging bisect**: initial verify failed with `SyntaxError: invalid syntax` at `src/lap_coach_logger/writers/finalizer.py:173` (`<<<<<<< Updated upstream` merge marker). NOT in T041's diff — sprint-desktop's half-merged T042+ WIP. Stashed ALL dirty state + popped → verified T041 on clean tree: 1485 passed (+6), 19 pre-existing failures stable → restored WIP (pop ok, dirty state returned as-was). **ACCEPT** per ADR-017 (not caused by this commit).
+  - **flagged to user in metrics Current-Issues**: datalogger working tree has unresolved `<<<<<<< Updated upstream` markers in finalizer.py:173 and :338. Sprint-desktop should resolve before next WIP commit or risk committing bad merge state.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = backend T064 at 245).
+- Forbidden patterns: clean.
+- Secrets: clean across 4 commits.
+- File-path guardrails: no workflow .yml changes (lighthouserc.json is not a workflow).
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- Endpoint drift: backend T064 is ORM. `app/routers/` still not created. But **datalogger T041 IngestClient** establishes the client-side shape for the `/api/v1/sessions/ingest` contract — ADR-012. Sprint-backend's upcoming T065-T080 router work will need to match this shape.
+- Contract test: no active HTTP surface yet; emergent contract documented in ADR-012 + now in datalogger IngestClient. Skipped.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped (no configs).
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 74
+
+- backend=`9eb760c`, webapp=`ebaef85` (2 idle), schemas=`0dda9cb` (14 idle), mobile=`e9f505e`, website=`64ab068`, datalogger=`be38dbe`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **7 ORM models landed**. WeaknessEpisode introduces the coaching-artifact pattern — Session spawns not just telemetry (Lap, SessionRecord, TelemetryArtifact) but also analysis output (WeaknessEpisode). ADR-005 core shape now covered.
+- **ADR-012 ingestion contract surface emerging**: datalogger T041 IngestClient is the first typed surface for the unified ingest endpoint. Desktop T035 BLOCKED unblock path now visible — when backend routers land, integration test can use this client.
+- **Forward-defensive pattern**: website T081 LCP budget BEFORE T074 video — gate set before the gated work ships. First example of this pattern in the sprint; worth noting for future sprint-loop design.
+- 275 cumulative accepts / 3 reverts / 1.08% revert rate / 73 cycles.
+
+### Runbook process note
+
+- **Mid-cycle commit rate** has been rising: c65 (1), c69 (1), c72 (1), c73 (3). All caught via re-fetch-before-tag pattern, but c73 had the first "3 mid-cycles in one window" — the 3-cycle gap between my initial sync and tag phase was enough for 3 sprint loops to each push one commit.
+- **Merge-marker pollution in WIP** is a new failure mode: stash+verify+pop pattern handles it, but it's a user-flag item. Sprint-desktop should resolve the finalizer.py markers or sprint loops risk committing the bad state.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 73 — 4 accepts, 7th ORM + mobile permissions + ingest client + WIP pollution flagged` + metrics + review-log. Push to lap-meta master.
+
+---
+

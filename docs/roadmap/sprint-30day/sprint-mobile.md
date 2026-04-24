@@ -79,7 +79,7 @@
 ## Block D — Location + motion capture (T061–T085)
 
 - [x] T061 [opus] `LocationCaptureService`: FusedLocationProviderClient at high-accuracy, 10Hz ⇒ samples stream — d2f4e52 (mobile; LocationDataSource seam + FusedLocationDataSource impl + 7 JVM cases over service/config/sample) [PENDING: device-required for live FLPC stream verification — T083]
-- [ ] T062 [opus] Permission manager: request location (fine+coarse, foreground + background) ⇒ tested flows
+- [x] T062 [opus] Permission manager: request location (fine+coarse, foreground + background) ⇒ tested flows — e9f505e (mobile; LocationPermissionManager state machine + 8 cases — pre-Q implicit-background, foreground-then-background two-step gate)
 - [ ] T063 [opus] Foreground service: `CaptureForegroundService` with persistent notification during recording ⇒ survives backgrounding
 - [ ] T064 [opus] Notification channel + lock-screen visible notification ⇒ user-aware
 - [ ] T065 [opus] `LocationSample` mapped to `TelemetrySample` shape with `t_source_clock="gnss"` ⇒ tested
