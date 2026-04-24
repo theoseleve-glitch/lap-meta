@@ -3619,3 +3619,75 @@ Cron-fired 22:52 UTC. No PAUSE. 5 accepts + 1 fix commit acknowledged, 0 reverts
 
 ---
 
+## 2026-04-25T23:10:00Z — Cycle #77 — **10TH ORM MODEL + FIRST DYNAMIC WEBAPP ROUTE + GNSS MAPPER + IDEMPOTENCY**
+
+Cron-fired 23:07 UTC. No PAUSE. 5 accepts (3 scheduled + 2 mid-cycle), 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `3eb2f5d` sprint(backend): T067 DriverProgressSnapshot ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 48/48 (+2).
+  - Diff: 3 files / 251 ins (orm.py +49 — largest ORM class yet + alembic versions/7a773cbc8 57 + tests/test_driver_progress_snapshot_model.py 145).
+  - **10th ORM model** 🎯. Snapshot captures point-in-time aggregate state (SkillProfile + Weaknesses + Prescriptions); likely the last ORM before router phase transitions.
+- **lap-webapp `f863930` sprint(webapp): T167 skill drilldown route shell** — ACCEPT + tag + push (mid-cycle).
+  - Full matrix: typecheck + lint OK, 281 tests (+4 from 277), build OK (first ƒ Dynamic route in webapp build output).
+  - Diff: 53 ins. Next.js 14 dynamic route `/profile/skills/[dimension]`. URL-decodes slug, kebab→human-readable label. Renders PageIntro with subtitle.
+  - **Ships the UI surface T157 e2e was blocked on** (drilldown target existed in none = T157 couldn't click through). T157 still needs the backend driver profile endpoint to fully wire data, but the navigation target now exists.
+- **lap-schemas**: idle 18 cycles.
+- **lap-mobile-android `590d4ca` sprint(mobile): T065 LocationSample→TelemetrySample mapper with gnss source clock** — ACCEPT + tag + push (mid-cycle).
+  - Full gradle matrix green on stashed tree.
+  - Diff: 178 ins (LocationChannels 22 + LocationSampleMapper 37 + Test 119).
+  - **Transformation layer**: capture (T061-T064) produces Android LocationSample → mapper converts to domain TelemetrySample. Uses GNSS source timestamp (satellite clock) not Android system clock — avoids system-time drift/skew corrupting telemetry.
+  - 12 consecutive clean mobile accepts.
+- **lap-website `7f2e426` sprint(marketing): T086 /demo testimonials placement** — ACCEPT + tag + push.
+  - Full matrix: 253 tests (+2 from 251), 7-page build.
+  - Diff: 34 ins. Mounts shared T035 SocialProof between T073 walkthrough and T085 CTA. Zero new components. Doctrine-aligned "No testimonials until beta opens" message anchored single-place.
+- **datalogger `a6a40c7` sprint(desktop): T043 Idempotency-Key = session UUID7 in headers** — ACCEPT + tag + push.
+  - Diff: 90 ins. Adds `Idempotency-Key: <session_id>` header to `IngestClient.upload`. Key is manifest's session_id (UUID7 per Bundle v2 contract), enabling backend HTTP-layer dedup of upload retries for same session.
+  - Full suite: 1503 passed (+2), 19 stable failures.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = backend T067 at 251).
+- Forbidden patterns: clean.
+- Secrets: clean across 5 commits.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- **ADR-012 ingestion contract continues materializing**: datalogger now has `IngestClient.upload(bundle_dir) → IngestResult(session_id, job_id, status_stream)` with manifest body + Idempotency-Key header. When backend routers land (T068+?), this will be the first live contract test.
+- 6 concurrent blocks on backend endpoints.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped.
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 78
+
+- backend=`3eb2f5d`, webapp=`f863930`, schemas=`0dda9cb` (18 idle), mobile=`590d4ca`, website=`7f2e426`, datalogger=`a6a40c7`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **10 ORM MODELS COMPLETE**. User → DriverProfile → Session → {SessionRecord, TelemetryArtifact, Lap, WeaknessEpisode, ActionPrescription → ActionOutcome} + DriverProgressSnapshot. Full ADR-005 aggregate + snapshot pattern. Likely the last ORM before routers.
+- **First webapp dynamic route** (T167 `[dimension]`). Server-rendered, unlike the static-prerender pattern of T067-T165.
+- **ADR-012 ingest contract now has 3-call shape**: client reads manifest → multipart upload → idempotency retry. Backend router will need to match.
+- 290 cumulative accepts / 3 reverts / 1.03% revert rate / 77 cycles.
+
+### Runbook process note
+
+- **Milestone recognition**: 10 ORM models in 13 cycles (c65-c77) with zero reverts and zero drift from ADR-005. Sprint-backend discipline is notable — each model landed with its own migration + dedicated test file (growing from 44 lines at T058 to 193 at T065). The matrix of mypy+pytest+ruff caught nothing because nothing was caughtable — TDD is covering the shape upstream.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 77 — 5 accepts, 10th ORM milestone + first dynamic webapp route + gnss mapper + idempotency` + metrics + review-log. Push to lap-meta master.
+
+---
+

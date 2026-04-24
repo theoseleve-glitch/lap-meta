@@ -94,7 +94,7 @@
 - [x] T064 [opus] ORM model `WeaknessEpisode` matching Pydantic shape ⇒ migration applied — sha: 9eb760c
 - [x] T065 [opus] ORM model `ActionPrescription` matching Pydantic shape ⇒ migration applied — sha: dd601a7
 - [x] T066 [opus] ORM model `ActionOutcome` matching Pydantic shape ⇒ migration applied — sha: 4622063
-- [ ] T067 [opus] ORM model `DriverProgressSnapshot` ⇒ migration applied
+- [x] T067 [opus] ORM model `DriverProgressSnapshot` ⇒ migration applied — sha: 3eb2f5d
 - [ ] T068 [opus] ORM model `TransferLink` ⇒ migration applied
 - [ ] T069 [opus] ORM model `DriverBenchmarkProfile` ⇒ migration applied
 - [ ] T070 [opus] ORM model `DriverReadinessState` ⇒ migration applied
