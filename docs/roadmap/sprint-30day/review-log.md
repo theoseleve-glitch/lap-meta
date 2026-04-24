@@ -1911,3 +1911,39 @@ Cron-fired 14:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`32b3640`, 
 - `meta: review loop cycle 44` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T15:10:00Z — Cycle #45
+
+Cron-fired 15:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`9293914`, schemas=`c9aff82`, mobile=`435a9de`, website=`38c8711`, datalogger=`e02fc36`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 29 idle.
+- **lap-webapp**: 1 idle at `9293914`.
+- **lap-schemas `afed51d` sprint(backend): T043 OpenAPI generator script**: ACCEPTED + tagged + pushed. pytest 66 (+3). Diff: 2 files / 131 ins (generate_openapi.py 81 lines + test 50 lines). **First codegen primitive** — Pydantic → OpenAPI spec emitter. Consumers (webapp `src/generated/`, mobile Kotlin generated) can wire this in later cycles. Still dormant — no consumers invoke it yet.
+- **lap-mobile-android**: 1 idle at `435a9de`.
+- **lap-website `add0c59` T048 /how-it-works Improve section (step 04)**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 161/161** (+7), build 4 pages. Diff: 4 files / 132 ins (HowItWorksImprove.astro 57 + mount + tests). **4-step sequence now live**: Capture (T045) → Brain (T046) → Plan (T047) → Improve (T048).
+- **datalogger `bb2a36f` T020 remove =1.26 pip-pin leak + add regression guard**: ACCEPTED + tagged + pushed. 2/2 pass on new guard; T013 pyproject-pinning test 5/5 still green (backward compatibility). Diff: 1 file / 34 ins (test_no_pip_pin_leaks.py — the actual `=1.26` leak in requirements.txt was already removed pre-sprint; this commit just adds the regression test to catch re-introduction). Sixth contract-test in desktop series (T013/T014/T015/T018/T019/T020).
+
+### Step 5-7: codegen primitive now exists in schemas but no consumer wired yet (webapp/mobile generated/ still absent); no deploys; no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 46
+
+- backend=`7b64848` (30 idle), webapp=`9293914` (2 idle), schemas=`afed51d`, mobile=`435a9de` (2 idle), website=`add0c59`, datalogger=`bb2a36f`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestones
+
+- Datalogger [x]=20 (from [x]=2 at cycle 1; 18 accepted over 44 cycles).
+- Schemas subset 24/35 (~69%) — getting close to 70%.
+- Website /how-it-works page 4-step story complete.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 45` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
