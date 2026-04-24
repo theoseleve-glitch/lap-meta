@@ -44,7 +44,7 @@
 - [ ] T031 [opus] Generate typed API client with `@hey-api/openapi-ts` ⇒ client compiles
 - [ ] T032 [sonnet] Replace `api.get('/sessions')` with `client.getSessions()` typed ⇒ same behavior
 - [ ] T033 [sonnet] Replace all raw `api.get<any>` calls throughout codebase (~20 files) ⇒ no `any` remains
-- [ ] T034 [sonnet] Error envelope typed: `ApiError` class with `code/message/field_errors` ⇒ consistent
+- [x] T034 [sonnet] Error envelope typed: `ApiError` class with `code/message/field_errors` ⇒ consistent (d9a0343)
 - [ ] T035 [sonnet] 401 handler retains: silent refresh via Clerk ⇒ behavior preserved
 - [ ] T036 [sonnet] TanStack Query key factory `query-keys.ts` exhaustive per domain ⇒ used everywhere
 - [ ] T037 [sonnet] Remove duplicate taxonomy enums (session type, status) — import from @lap/schemas ⇒ no duplicates

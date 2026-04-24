@@ -1,45 +1,49 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T02:20Z (Cycle #17)
+## Last updated: 2026-04-24T02:50Z (Cycle #18)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend | 17 | 223 | 0 | 1 (T013) | 0 | `7b64848` (T020 — **idle this cycle**) |
-| lap-webapp | 15 | 225 | 1 (T010 waiting on schemas TS codegen) | 0 | **2** (T017+T018) | `c352c1f` (T018 Storybook) |
-| lap-schemas | 1 | 239 | 0 | 0 | 0 | `08e6354` (T021 **FIRST sprint commit**) |
-| lap-mobile-android | 20 | 220 | 0 | 0 | 0 | `ea2eb5e` (T020 DispatcherProvider) |
-| lap-website | 20 | 5 BLOCKED | 5 | 0 | 1 (T017) | `b20f501` (T025 primary CTA) |
-| datalogger | 2 | 238 | 0 | 0 | 0 | `eb97496` (**13th quiet cycle**) |
+| lap-backend | 17 | 223 | 0 | 1 (T013) | 0 | `7b64848` (**2 idle cycles**) |
+| lap-webapp | 16 | 224 | 3 (T010, T019, T020) | 0 | 0 (T017+T018 reclassified to SCAFFOLD_BULK) | `d9a0343` (T034 ApiError) |
+| lap-schemas | 2 | 238 | 0 | 0 | 0 | `fcc4848` (T022 UUID7) |
+| lap-mobile-android | 21 | 219 | 0 | 0 | 0 | `d4b1b78` (T021 kotlinx-serialization) |
+| lap-website | 21 | 5 BLOCKED | 5 | 0 | 1 (T017 Lighthouse — may still qualify for ADR-018 reclassification, user decision) | `0c170b3` (T026 secondary CTA) |
+| datalogger | 2 | 238 | 0 | 0 | 0 | `eb97496` (**14th quiet cycle**) |
 
-## This cycle (Cycle #17)
+## This cycle (Cycle #18)
 
-- Verified GREEN: 4 (webapp T018; schemas T021 first-ever; mobile T020; website T025)
-- Backend idle this cycle.
-- Reverted: 0 | NEEDS_REWORK: 0 new
-- **SCOPE_FLAG: 1 new** (webapp T018 = 8722 lines — Storybook scaffold; exceeds BOTH 1500 non-scaffold and 8000 scaffold thresholds)
-- scope-blowup alert NOT fired (dedup-suppressed for today — T017 already used budget)
+- Verified GREEN: 4 (webapp T034, schemas T022 first matrix-running cycle, mobile T021, website T026)
+- Backend idle 2nd cycle.
+- Reverted: 0 | SCOPE_FLAG: 0 new
+- **ADR-018 Dec 2 expanded** by user: webapp T017 + T018 reclassified SCOPE_FLAG → SCAFFOLD_BULK (Tier B test-harness 8000, Tier C Storybook 15000).
 
-## Cumulative (17 cycles)
+### Schemas matrix actually ran this cycle
+T022 added pyproject.toml + src/lap_schemas/v1/ids.py + tests/test_ids.py. Matrix invocation:
+- Path quirk: my script ran `uv run pytest python/tests/` from inside `python/` dir, which resolved to `python/python/tests/` and failed with "file not found". **Script path bug**, not code defect. Re-ran with `cd python && uv run pytest -q` (uses testpaths config) → **3 passed in 0.14s**. TRUE VERDICT: GREEN.
+- ruff/mypy/codegen still silent-skipped per ADR-017 (no [tool.ruff]/[tool.mypy]/Makefile codegen-check yet).
 
-- Total reviewed: 72 · Accepted+tagged: 70 (1 INFRA_FLAG c4)
+## Cumulative (18 cycles)
+
+- Total reviewed: 76 · Accepted+tagged: 74 (1 INFRA_FLAG c4)
 - Reverted: 1 (T013)
-- Active SCOPE_FLAGs: **3** (website T017, webapp T017, webapp T018)
+- **Active SCOPE_FLAGs: 1** (down from 3 — website T017 only; webapp T017+T018 now SCAFFOLD_BULK)
 - Pause triggers: 0
 
-## Cycle 17 notables
+## Cycle 18 notables
 
-- **lap-schemas finally got its first sprint commit** (T021 by backend sprint loop). The commit is deliberately empty-package-tree scaffold — all matrix commands silent-skipped per ADR-017 (no pyproject.toml yet — T044 lands the editable install). GREEN.
-- **Backend cycle-idle first time since cycle 9** — prior run's T020 Makefile was a natural pause point before moving to different block.
-- Datalogger 13th quiet cycle (~6.5h since `eb97496`) — Terminal 3 almost certainly stopped.
-- **Pattern emerging**: infra/test/docs tasks tend to blow past 1500-LOC threshold due to framework-generated files. Three SCOPE_FLAGs on test/CI/Storybook tasks now (website T017 Lighthouse, webapp T017 Vitest+Playwright, webapp T018 Storybook). Future ADR may want to add "test-harness" or "docs-tooling" category to ADR-018 Dec 2.
+- **Webapp jumped T019→T034** due to T010-T033 being schema-dependent BLOCKED or schema-migration tasks. T034 ApiError is a self-contained typed-error work. Sprint loop correctly finding independent tasks.
+- Schemas matrix started running with T022 (first applicable pytest — 3/3 green).
+- Backend idle 2nd consecutive cycle (no new sprint commits past T020 Makefile).
+- Datalogger 14 quiet cycles.
 
 ## Current issues
 
-- webapp T010 BLOCKED on schemas TS codegen (T044-pending)
-- webapp T017 + T018 + website T017 SCOPE_FLAG (all test/CI/Storybook infra)
-- Backend T013 NEEDS_REWORK (persistent)
-- Datalogger Terminal 3 likely stopped
+- Backend 2-cycle idle (not stalled historically; may be finishing something).
+- Datalogger still appears stopped.
+- Backend T013 NEEDS_REWORK persistent.
+- Runbook-matrix path invocation for schemas needs cleanup: my bash script had a `cd python && pytest python/tests/` double-path bug. Future cycles should `cd python && pytest` (relies on testpaths config) OR run from repo root with `pytest python/tests/`.
 
-## Cron: next 02:37 UTC.
+## Cron: next 03:07 UTC.

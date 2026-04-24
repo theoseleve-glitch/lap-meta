@@ -43,8 +43,8 @@
 ## Block B — `lap-schemas` foundation (T021–T045)
 
 - [x] T021 [opus] Create `lap-schemas/` package with `python/src/lap_schemas/v1/__init__.py` ⇒ importable — sha: lap-schemas@08e6354
-- [ ] T022 [opus] Define `UUID7` type alias + validator using `uuid6` library ⇒ unit test generates valid v7
-- [ ] T023 [opus] Define `EnvironmentTag` enum (sim_practice, sim_race, real_track_day, real_race, real_karting, drill, test) ⇒ enum values frozen
+- [x] T022 [opus] Define `UUID7` type alias + validator using `uuid6` library ⇒ unit test generates valid v7 — sha: lap-schemas@fcc4848
+- [x] T023 [opus] Define `EnvironmentTag` enum (sim_practice, sim_race, real_track_day, real_race, real_karting, drill, test) ⇒ enum values frozen — sha: lap-schemas@fcd4277
 - [ ] T024 [opus] Define `SourceTag` literal (iracing, acc, ac, ams2, rf2, lmu, rennsport, f1_game, real) ⇒ typed
 - [ ] T025 [opus] Pydantic model `SensorConfigSnapshot` per ADR-006 ⇒ validates, 3 unit tests
 - [ ] T026 [opus] Pydantic model `DataQuality` per ADR-006 ⇒ validates, 3 unit tests

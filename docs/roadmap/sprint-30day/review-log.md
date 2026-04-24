@@ -856,3 +856,33 @@ Cron-fired 02:07 UTC. Baselines: backend=`7b64848`, webapp=`25dbeb1`, schemas=`a
 - `meta: review loop cycle 17` + review-log + metrics + sprint-webapp (T018 SCOPE_FLAG annotation) + other sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T02:50:00Z — Cycle #18
+
+Cron-fired 02:37 UTC. Baselines: backend=`7b64848`, webapp=`c352c1f`, schemas=`08e6354`, mobile=`ea2eb5e`, website=`b20f501`, datalogger=`eb97496`. Disk 87%. Daily email: skip.
+
+**Policy change noted**: sprint-webapp.md shows T017+T018 reclassified `[SCOPE_FLAG]` → `[SCAFFOLD_BULK]` per user-authored ADR-018 Dec 2 expansion 2026-04-24 (Tier B=test-harness 8000, Tier C=Storybook 15000). Active SCOPE_FLAG count drops from 3 to 1 (website T017 Lighthouse remaining).
+
+### Per-repo
+- **lap-backend**: idle 2nd consecutive cycle at `7b64848`.
+- **lap-webapp `d9a0343` T034 typed ApiError class**: ACCEPTED + tagged. Full matrix green. Diff: 2 files / 93 ins. Sprint loop jumped T019→T034 (T010-T033 block on schemas).
+- **lap-schemas `fcc4848` T022 UUID7 type alias + validator**: ACCEPTED + tagged. **First cycle with real schemas matrix running**: sync 13 pkgs ✓, pytest **3/3 passed** from `python/tests/test_ids.py`. ruff/mypy/codegen still ADR-017 silent-skipped. Diff: 5 files / 236 ins.
+  - **Script bug note**: initial matrix invocation ran `cd python && uv run pytest python/tests/` which resolved path to `python/python/tests/` → exit 4 "file not found". Fixed by running from python/ with no args (uses `testpaths = ["tests"]` config). True verdict GREEN.
+- **lap-mobile-android `d4b1b78` T021 kotlinx-serialization + polymorphic Json**: ACCEPTED + tagged. Full matrix green. Diff: 5 files / 102 ins.
+- **lap-website `0c170b3` T026 secondary CTA wired + locked**: ACCEPTED + tagged. Full matrix green. Diff: 3 files / 33 ins / 7 del.
+- **datalogger**: 14th quiet cycle.
+
+### Step 5 cross-repo: no drift.
+### Steps 6-7: all skipped.
+### Step 10: daily email skipped (hour<8).
+### Step 11: no alerts fired (no new SCOPE_FLAGs this cycle).
+
+### Baselines cycle 19
+- backend=`7b64848` (2 idle), webapp=`d9a0343`, schemas=`fcc4848`, mobile=`d4b1b78`, website=`0c170b3`, datalogger=`eb97496` (14 quiet).
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 18` + review-log + metrics + any sprint-file bookkeeping.
+
+---
