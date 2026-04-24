@@ -2070,3 +2070,39 @@ Cron-fired 15:57 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`ed63d1c`, 
 - `meta: review loop cycle 48` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T16:10:00Z — Cycle #49
+
+Cron-fired 16:07 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`cb5285e`, schemas=`8cac625`, mobile=`6bc18a7`, website=`2343382`, datalogger=`b78fdb5`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 1 idle at `772dc3d` (post-T045 activation).
+- **lap-webapp**: 1 idle at `cb5285e`.
+- **lap-schemas `4f84bc8` sprint(backend): T046 TS codegen scaffold (openapi-typescript@7)**: ACCEPTED + tagged + pushed. pytest 69 (Python unchanged — TS scaffolding is in `typescript/` subdir). Diff: 4 files / 398 ins / 1 del (typescript/package.json + package-lock.json 384 lines + .gitignore + python/uv.lock minor bump). **TS codegen side now exists alongside Python + Kotlin** — three-language schema layer fully scaffolded. Will feed webapp `src/generated/` once consumer wires it.
+- **lap-mobile-android `233e538` T045 InsightCacheEntity + MIGRATION_3_4**: ACCEPTED + tagged + pushed. **Third Room migration** (v3→v4). Diff: 4 files / 123 ins / 2 del (InsightCacheEntity.kt + test 51 + Migrations.kt MIGRATION_3_4 24 + LapDatabase.kt bump). Offline cache for backend-authored CoachingInsights keyed by session — dashboard renders without network. Full gradle matrix BUILD SUCCESSFUL. Payload uses kotlinx-serialized JSON via LapSchemasJson (schema drift compatibility).
+- **lap-website** TWO commits captured:
+  - `7f047ad sprint(marketing): T052 /how-it-works final CTA (trial, wired)`: ACCEPTED + tagged + pushed. Diff: 2 files / 20 ins (how-it-works.astro mount + test).
+  - `ca94b17 sprint(marketing): T053 /how-it-works a11y + responsive clean`: ACCEPTED + tagged + pushed. Diff: 2 files / 97 ins / 8 del (a11y.spec.ts +41/-8 e2e update + mobile-layout.spec.ts +64 e2e extension). Tests 169/169 (+1 from T049's 168, accounting for e2e reshuffle).
+- **datalogger**: 1 idle at `b78fdb5`.
+
+### Step 5-7: schemas TS scaffolding ready for consumers; mobile Room v4 active; no cross-repo drift; no deploys; no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 50
+
+- backend=`772dc3d` (2 idle), webapp=`cb5285e` (2 idle), schemas=`4f84bc8`, mobile=`233e538`, website=`ca94b17`, datalogger=`b78fdb5` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 49` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+### Side note
+
+- Previous turn's `loop-report-c48.md` sits untracked in `docs/roadmap/sprint-30day/`. Not committed by this cycle since Step 9 scope is review-log + metrics + sprint-file bookkeeping only. User can decide whether to commit the report separately.
+
+---

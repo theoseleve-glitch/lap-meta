@@ -57,9 +57,9 @@
 
 - [x] T041 [opus] Room setup: `LapDatabase` abstract class, `TypeConverters` for UUID7/Instant ⇒ compiles — 435a9de (mobile; @Database annotation defers to T042 when first entity lands)
 - [x] T042 [opus] Entity `SessionEntity` (id, state, started_at, ended_at, source, track_id, car_id, sample_count, file_uri) ⇒ migration applied — 428000f (mobile; @Database v1 activated, KSP schema gen green)
-- [ ] T043 [opus] Entity `SessionJournalEntity` (session_id, last_heartbeat_at, file_offset, status) ⇒ migration
-- [ ] T044 [opus] Entity `UploadQueueEntity` (session_id, state, attempt_count, next_retry_at, last_http_code, last_error, chunks_sent, chunks_total, idempotency_key) ⇒ migration
-- [ ] T045 [opus] Entity `InsightCacheEntity` (session-level CoachingInsights cached for offline view) ⇒ migration
+- [x] T043 [opus] Entity `SessionJournalEntity` (session_id, last_heartbeat_at, file_offset, status) ⇒ migration — 77b661e (mobile; MIGRATION_1_2 defined, cascading FK to sessions)
+- [x] T044 [opus] Entity `UploadQueueEntity` (session_id, state, attempt_count, next_retry_at, last_http_code, last_error, chunks_sent, chunks_total, idempotency_key) ⇒ migration — 6bc18a7 (mobile; MIGRATION_2_3 w/ cascading FK + state index)
+- [x] T045 [opus] Entity `InsightCacheEntity` (session-level CoachingInsights cached for offline view) ⇒ migration — 233e538 (mobile; JSON-payload envelope + MIGRATION_3_4)
 - [ ] T046 [opus] Entity `PrescriptionCacheEntity` ⇒ migration
 - [ ] T047 [opus] Entity `TrackCacheEntity` (offline sector splits) ⇒ migration
 - [ ] T048 [opus] Entity `RuleBundleEntity` (compiled coaching-rules bundle + fetched_at) ⇒ migration
