@@ -72,7 +72,7 @@
 
 - [x] T046 [sonnet] TS codegen: `lap-schemas/typescript/` with `openapi-typescript@7` setup ⇒ runs — sha: lap-schemas@4f84bc8
 - [x] T047 [sonnet] TS codegen script: `pnpm generate:ts` produces `generated/schema.d.ts` ⇒ file exists — sha: lap-schemas@8fc6ec8
-- [ ] T048 [sonnet] TS codegen: wrap into `@lap/schemas` npm package (private workspace) ⇒ importable
+- [x] T048 [sonnet] TS codegen: wrap into `@lap/schemas` npm package (private workspace) ⇒ importable — sha: lap-schemas@33111e6
 - [ ] T049 [sonnet] Swift codegen: `openapi-generator-cli` config for Swift5 ⇒ produces `.swift` files
 - [ ] T050 [sonnet] Swift codegen script: `make swift-codegen` ⇒ output in `lap-mobile/Generated/`
 - [ ] T051 [sonnet] Kotlin codegen (for Android later): `openapi-generator-cli` config for kotlin ⇒ produces `.kt`

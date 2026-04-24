@@ -61,7 +61,7 @@
 - [x] T044 [opus] Entity `UploadQueueEntity` (session_id, state, attempt_count, next_retry_at, last_http_code, last_error, chunks_sent, chunks_total, idempotency_key) ⇒ migration — 6bc18a7 (mobile; MIGRATION_2_3 w/ cascading FK + state index)
 - [x] T045 [opus] Entity `InsightCacheEntity` (session-level CoachingInsights cached for offline view) ⇒ migration — 233e538 (mobile; JSON-payload envelope + MIGRATION_3_4)
 - [x] T046 [opus] Entity `PrescriptionCacheEntity` ⇒ migration — c86b7ff (mobile; driver-indexed JSON payload, no session FK — longitudinal)
-- [ ] T047 [opus] Entity `TrackCacheEntity` (offline sector splits) ⇒ migration
+- [x] T047 [opus] Entity `TrackCacheEntity` (offline sector splits) ⇒ migration — 94e76a3 (mobile; JSON-payload envelope for sectors, global catalog)
 - [ ] T048 [opus] Entity `RuleBundleEntity` (compiled coaching-rules bundle + fetched_at) ⇒ migration
 - [ ] T049 [sonnet] DAO `SessionDao`: insert, update, list by status, observe as Flow ⇒ tested
 - [ ] T050 [sonnet] DAO `JournalDao`: upsertHeartbeat, listStale ⇒ tested

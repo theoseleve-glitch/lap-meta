@@ -35,7 +35,7 @@
 - [x] T022 [sonnet] Replace local `SessionMetadata` dataclass with `SessionManifest` ⇒ compiles (b78fdb5)
 - [x] T023 [sonnet] Replace local `BundleSchema` with shared types ⇒ compiles (4f26585)
 - [x] T024 [sonnet] Audit all duplicate Pydantic models in desktop, remove ⇒ ≥5 removals (a1de554)
-- [ ] T025 [opus] `SessionFinalizer` rewrite step 1: accept `SessionManifest` instead of ad-hoc dict ⇒ tests green
+- [x] T025 [opus] `SessionFinalizer` rewrite step 1: accept `SessionManifest` instead of ad-hoc dict ⇒ tests green (8c91bf2)
 - [ ] T026 [opus] `SessionFinalizer` step 2: write manifest.json in Bundle v2 format ⇒ format matches spec
 - [ ] T027 [opus] `SessionFinalizer` step 3: write telemetry as parquet (pyarrow) or CSV fallback ⇒ file present
 - [ ] T028 [opus] `SessionFinalizer` step 4: write laps.parquet with LapRecord shape ⇒ round-trip valid
