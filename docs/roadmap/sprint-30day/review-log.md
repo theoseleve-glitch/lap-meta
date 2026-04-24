@@ -1684,3 +1684,37 @@ Cron-fired 13:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`1dfa795`, 
 - `meta: review loop cycle 38` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T13:40:00Z — Cycle #39
+
+Cron-fired 13:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`8dac3bc`, schemas=`be89964`, mobile=`291c7f3`, website=`374fb80`, datalogger=`b76bdbd`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 23 idle.
+- **lap-webapp `538b89d` T124 URL codec for timeline filters**: ACCEPTED + tagged + pushed. **tests 113/113** (+17). Diff: 2 files / 192 ins (filter-params.ts 60 + test 132). URL-param serde for timeline filter state.
+- **lap-schemas `4fadcd6` sprint(mobile): T037 DriverProgressSnapshot + SkillDimension Kotlin**: ACCEPTED + tagged + pushed. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL. Diff: 3 files / 114 ins. Catches up Kotlin to Python T031+T032 (landed cycles 29+31).
+- **lap-mobile-android**: 15 idle.
+- **lap-website `041d415` T043 /how-it-works hero content**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 125/125** (reshuffled but count stable), build 4 pages. Diff: 2 files / 37 ins / 28 del — **modifies** existing how-it-works.astro + test (not pure-add).
+- **datalogger `a2d40a2` T015 CI pytest-blocks-merge contract test**: ACCEPTED + tagged + pushed. 4/4 pass. Diff: 1 file / 63 ins (test_ci_workflow_contract.py). **Contract-test pattern**: asserts the workflow file CONTENTS match expected shape (pytest as required-status gate) without modifying the workflow itself. Third contract-test in the T013/T014/T015 pattern (pyproject / pre-commit / CI).
+
+### Step 5-7: schemas Kotlin caught up to earlier Python; no drift. No deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 40
+
+- backend=`7b64848` (24 idle), webapp=`538b89d`, schemas=`4fadcd6`, mobile=`291c7f3` (16 idle), website=`041d415`, datalogger=`a2d40a2`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **150 cumulative accepts** at cycle 39 / 19.5h runtime. 1 revert (~0.7%). Pause triggers fired = 0.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 39` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
