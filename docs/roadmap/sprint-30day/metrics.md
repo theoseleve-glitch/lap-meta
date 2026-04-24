@@ -1,55 +1,47 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T18:55Z (Cycle #60)
+## Last updated: 2026-04-24T19:10Z (Cycle #61)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[NEEDS_REWORK]` | HEAD |
 |---|---|---|---|
-| lap-backend | 51 | 1 (T013) | `772dc3d` (idle 12 cycles) |
-| lap-webapp | 67 | 0 | `2c5ed02` (T148 skill-radar click-drilldown; 227) |
-| lap-schemas (subset) | 34 | 0 | `6b8e80d` (T054 regen workflow README; pytest 74) |
-| lap-mobile-android | 52 | **2** (T013 + T053 new) | `ff0fc60` (**REVERT of T053**) |
-| lap-website (marketing) | 53 | 0 | `b50ef92` (T062 /pricing B2B teaser) |
-| datalogger (desktop) | 31 | 0 | `dff270c` (T031 atomic temp→final rename lock) |
+| lap-backend | 52 | 1 (T013) | `772dc3d` (idle 13 cycles) |
+| lap-webapp | 68 | 0 | `a9c6043` (T149 weaknessDetailPath helper; 232) |
+| lap-schemas (subset) | 35 | 0 | `0dda9cb` (T055 calver versioning docs; pytest 74) |
+| lap-mobile-android | 53 | 0 | `a4c1bd2` (T053 **rework** — forEach, not spread) |
+| lap-website (marketing) | 54 | 0 | `fff0d89` (T063 /pricing plan-CTA e2e wiring) |
+| datalogger (desktop) | 32 | 0 | `b248656` (T032 SensorConfigSnapshot persistence contract) |
 
-## This cycle (Cycle #60)
+## This cycle (Cycle #61)
 
-- Verified GREEN: 4 (webapp T148, schemas T054, website T062, datalogger T031)
-- **Reverted: 1** — mobile T053 MigrationPolicy (ff0fc60 reverts f9ab816)
-- SCOPE_FLAG: 0 new
+- Verified GREEN: 5 (webapp T149, schemas T055, mobile T053-rework, website T063, datalogger T032)
+- Reverted: 0 | SCOPE_FLAG: 0 new
+- **T053 recovery event**: sprint-mobile re-picked T053 after c60 revert, replaced `*migrations.toTypedArray()` with `migrations.forEach { addMigrations(it) }` — detekt now passes. Mobile NR back to 0.
 
-## Cumulative (60 cycles)
+## Cumulative (61 cycles)
 
-- Total reviewed: 232 · Accepted+tagged: 229 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
-- Reverted: **2** (cycle 4 datalogger early-state, cycle 60 mobile T053)
-- Pause triggers: 0
+- Total reviewed: 237 · Accepted+tagged: 234 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Reverted: 2 · Pause triggers: 0
+- **Schemas subset at 35/35 (100%)** — ADR-006/007 object surface FULL Python parity
 
-## Cycle 60 notables — REVERT EVENT
+## Cycle 61 notables — T053 REWORK LANDED
 
-- **Mobile T053 REVERTED** — `builder.addMigrations(*migrations.toTypedArray())` at MigrationPolicy.kt:31:30 tripped detekt's `SpreadOperator` rule (1 weighted issue → analysis fails build). Real lint error on applicable-rule per runbook → Step 3 revert. 
-  - Revert commit: `ff0fc60`, pushed to origin alongside original `f9ab816`.
-  - `sprint-mobile.md` T053 marked `[NEEDS_REWORK]` with failure reason + proposed fix direction: `@Suppress("SpreadOperator")` annotation or rewrite migrations addition as a loop.
-  - After revert: detekt BUILD SUCCESSFUL at `ff0fc60` (confirmed clean).
-  - Sprint-mobile loop will re-pick T053 in next iteration. Infinite revert-recreate risk mitigated by the sprint-loop presumably adapting approach.
-- **First revert since cycle 4** (cycle 60 is the 2nd revert in 60 cycles — revert rate still 0.86%).
-
-- Other 4 accepts:
-  - Webapp T148 skill-radar click-drilldown → Routes.tsx +7 + test; 227 tests (+7).
-  - Schemas T054 regen workflow in README (91/16 +/-).
-  - Website T062 /pricing B2B teaser — 217 tests (+6).
-  - Datalogger T031 atomic temp→final rename contract lock — 23/23 tests (+3).
-
-- Backend 12 idle. Mobile back to T052 at `ff0fc60`.
-- Disk 86% stable 37 cycles.
+- **Sprint-loop self-correction cycle completed in exactly 1 fire** (c60 revert → c61 rework): sprint-mobile read the `[NEEDS_REWORK]` note + reverted-in sha, implemented the rewrite per recommendation (`forEach` not spread), re-submitted. Full gradle matrix BUILD SUCCESSFUL (163 tasks). Review loop's NEEDS_REWORK annotation carried sufficient diagnostic context for single-round recovery.
+- **Matrix vs working-tree confusion re-validated**: Initial mobile T053-rework matrix failed on `JournalWriterTest.kt:152:84` ktlint violation. Investigation showed JournalWriterTest.kt is UNTRACKED WIP from sprint-mobile's T054 preparation, not part of T053 commit. Stashed WIP → matrix passed cleanly. ACCEPT. Same pattern as cycle 22/24 datalogger. Lesson reinforced: when matrix fails, verify file belongs to reviewed commit before reverting.
+- **Schemas subset milestone**: T055 pushes ADR-006/007 count to 35/35 (100%). Python side of schema contracts FULLY landed. Kotlin side still catching up; Swift + TS generated targets.
+- Webapp T149 weaknessDetailPath helper (routes.ts +7 + test +24). 232 tests (+5).
+- Website T063 /pricing plan-CTA e2e wiring verification (28-line Playwright extension). 217 unit tests.
+- Datalogger T032 SensorConfigSnapshot persistence contract (+66 test lines). 26/26 tests (+3).
+- Schemas T055 calver versioning docs (94-line VERSIONING.md + README update).
+- Disk 86% stable 38 cycles.
 
 ## Current issues
 
-- **Mobile T053 NEEDS_REWORK** (new; detekt SpreadOperator).
 - Datalogger 19 pre-existing failures (tech-debt).
 - Backend T013 NEEDS_REWORK persistent.
 - Backend T018/T019 BLOCKED on docker.
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 19:00 UTC.
+## Cron: next 19:15 UTC.

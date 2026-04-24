@@ -2537,3 +2537,56 @@ Cron-fired 18:52 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`625d2a8`, 
 - `meta: review loop cycle 60 — 4 accepts, 1 REVERT` + metrics + review-log + sprint-mobile.md. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T19:10:00Z — Cycle #61 — **T053 REWORK RECOVERY**
+
+Cron-fired 19:07 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`2c5ed02`, schemas=`6b8e80d`, mobile=`ff0fc60`, website=`b50ef92`, datalogger=`dff270c`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 13 idle.
+- **lap-webapp `a9c6043` T149 weaknessDetailPath route helper**: ACCEPTED + tagged + pushed. **tests 232/232** (+5). Diff: 2 files / 30 ins / 1 del.
+- **lap-schemas `0dda9cb` sprint(backend): T055 document calver versioning strategy**: ACCEPTED + tagged + pushed. pytest 74. Diff: 2 files / 95 ins / 1 del (VERSIONING.md new 94 lines + README 1 line). **Schemas subset 35/35 (100%) Python parity on ADR-006/007 objects**.
+- **lap-mobile-android `a4c1bd2` T053 rework — forEach, not spread**: ACCEPTED + tagged + pushed.
+  
+  **Recovery story**: cycle 60 revert (`ff0fc60`) was driven by detekt's `SpreadOperator` rule firing on `builder.addMigrations(*migrations.toTypedArray())`. Sprint-mobile re-picked T053 with `migrations.forEach { addMigrations(it) }` — iterates without spread. Commit body explicitly references the c60 revert + fix approach.
+  
+  **Matrix-vs-working-tree subtlety re-encountered**: Initial matrix run failed ktlint on `JournalWriterTest.kt:152:84 "First line of body expression fits on same line as function signature"`. But that file is NOT in T053's diff — it's UNTRACKED sprint-mobile WIP for T054 (JournalWriter service). `git ls-files` confirmed untracked; `git stash -u` removed it; matrix at clean HEAD BUILD SUCCESSFUL with all 163 gradle tasks passing (detekt + ktlintCheck + assembleDebug + testDebugUnitTest all green). T053 itself is clean. Same pattern as cycle 22/24 datalogger WIP pollution.
+  
+  Diff: 2 files / 114 ins (MigrationPolicy.kt 53 + MigrationPolicyTest.kt 61). Pure re-creation of the reverted T053 with the rewrite.
+- **lap-website `fff0d89` T063 /pricing plan-CTA e2e wiring verified**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 217/217** (e2e spec extension), build 5 pages. Diff: 1 file / 28 ins / 1 del (tests/e2e/signup-flow.spec.ts extension).
+- **datalogger `b248656` T032 lock SensorConfigSnapshot persistence (adapter info)**: ACCEPTED + tagged + pushed. 26/26 (+3). Diff: 1 file / 66 ins (test-only). Contract test that SensorConfigSnapshot persists with adapter metadata.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas subset **reached 35/35 (100%) Python parity** — all ADR-006/007 data contracts authoritative. T055 VERSIONING.md codifies how future schema revisions use calendar versioning. Kotlin + TS + Swift codegen consumers still catching up with generated code.
+- Mobile revert-recreate loop closed cleanly in 2 cycles (c60 revert → c61 rework). sprint-mobile picked up the `[NEEDS_REWORK]` annotation + fix recommendation, produced working rework, review accepted.
+- Datalogger SessionFinalizer pipeline continues evolving contract tests (T032 SensorConfigSnapshot persistence — 8th step-related test file).
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 62
+
+- backend=`772dc3d` (14 idle), webapp=`a9c6043`, schemas=`0dda9cb`, mobile=`a4c1bd2`, website=`fff0d89`, datalogger=`b248656`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **Schemas Python parity 100%** (35/35 ADR objects).
+- **Revert-recreate loop completed in 1 cycle** — sprint-mobile adapted per [NEEDS_REWORK] annotation (`@Suppress("SpreadOperator")` or loop rewrite) and re-submitted successfully.
+- 234 cumulative accepts, 2 reverts (0.85%), 0 pause triggers over 61 cycles.
+
+### Runbook process note
+
+- **WIP-pollution in matrix** is now a 3rd-instance pattern (cycle 22 datalogger, cycle 24 datalogger, cycle 61 mobile). Standard response: `git stash -u`, rerun matrix, if clean-tree green → ACCEPT. The uncommitted files are the next-sprint-commit's problem, not this review's.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 61 — 5 accepts, T053 recovery` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

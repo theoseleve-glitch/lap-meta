@@ -42,7 +42,7 @@
 - [x] T029 [opus] `SessionFinalizer` step 5: write events.json (sector/lap/flag events) ⇒ valid JSON (07329a9)
 - [x] T030 [opus] `SessionFinalizer` step 6: compute sha256 per file, write manifest checksums ⇒ match on re-read (9bb1227)
 - [x] T031 [opus] `SessionFinalizer` step 7: atomic temp→final rename retained ⇒ no partial bundles (dff270c)
-- [ ] T032 [sonnet] `SessionFinalizer` step 8: write `SensorConfigSnapshot` with adapter info ⇒ populated
+- [x] T032 [sonnet] `SessionFinalizer` step 8: write `SensorConfigSnapshot` with adapter info ⇒ populated (b248656)
 - [ ] T033 [sonnet] `SessionFinalizer` step 9: write `DataQuality` score with all sub-metrics ⇒ populated
 - [ ] T034 [sonnet] `SessionFinalizer` step 10: timestamps include both t_source_ns + t_canonical_ns per ADR-007 ⇒ tested
 - [ ] T035 [sonnet] Integration test: finalize an archived Sebring session → manifest validates server-side ⇒ green
