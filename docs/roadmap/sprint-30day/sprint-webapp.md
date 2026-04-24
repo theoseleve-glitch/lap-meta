@@ -142,7 +142,7 @@
 - [x] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count (6b34ca9)
 - [x] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct (38433aa)
 - [x] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct (da3079f)
-- [ ] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works
+- [x] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works (1dfa795)
 - [ ] T121 [sonnet] Filter chip: track ⇒ works
 - [ ] T122 [sonnet] Filter chip: car ⇒ works
 - [ ] T123 [sonnet] Filter chip: date range picker ⇒ works
