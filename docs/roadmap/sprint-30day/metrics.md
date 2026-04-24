@@ -1,37 +1,40 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T13:40Z (Cycle #39)
+## Last updated: 2026-04-24T13:55Z (Cycle #40)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total) | 35 | 202 | 2 | 1 (T013) | 0 | `7b64848` (**23 idle cycles**) |
-| lap-webapp | 51 | 189 | 0 | 0 | 0 | `538b89d` (T124 URL codec for timeline filters) |
-| lap-schemas (subset) | 19 | — | 0 | 0 | 0 | `4fadcd6` (T037 Kotlin DriverProgressSnapshot + SkillDimension; pytest 51) |
-| lap-mobile-android | 37 | 203 | 0 | 0 | 0 | `291c7f3` (idle 15 cycles) |
-| lap-website (marketing) | 37 | 183 | 0 | 0 | 1 (T017 inline) | `041d415` (T043 /how-it-works hero) |
-| datalogger (desktop) | 15 | 225 | 0 | 0 | 0 | `a2d40a2` (T015 CI pytest-blocks-merge contract) |
+| lap-backend (total) | 36 | 201 | 2 | 1 (T013) | 0 | `7b64848` (**24 idle cycles**) |
+| lap-webapp | 52 | 188 | 0 | 0 | 0 | `455a6b4` (T125 TimelineEmptyState) |
+| lap-schemas (subset) | 20 | — | 0 | 0 | 0 | `eaa5145` (T039 TransferLink + T038 kotlinx-serialization refactor; pytest 54) |
+| lap-mobile-android | 38 | 202 | 0 | 0 | 0 | `291c7f3` (idle 16 cycles) |
+| lap-website (marketing) | 38 | 182 | 0 | 0 | 1 (T017 inline) | `2145635` (T044 /how-it-works annotated SVG) |
+| datalogger (desktop) | 16 | 224 | 0 | 0 | 0 | `b49d989` (T016 CI lint job — ruff + mypy) |
 
-## This cycle (Cycle #39)
+## This cycle (Cycle #40)
 
-- Verified GREEN: 4 (webapp T124, schemas T037 Kotlin, website T043, datalogger T015)
+- Verified GREEN: 5 (webapp T125, schemas T039 Python + T038 Kotlin-serialization refactor, website T044, datalogger T016)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- Workflow-touch: datalogger T016 adds new `lint` job to `.github/workflows/ci.yml` — no workflow_dispatch/secrets.* additions → guardrail NOT triggered → ACCEPT
+- **Schemas Kotlin T038 is a 17-file refactor** (333 ins / 30 del) adding `@Serializable` annotations across ALL existing schema types + new 235-line SerializationRoundTripTest.kt — verified with `:schemas:test --rerun-tasks`
 
-## Cumulative (39 cycles)
+## Cumulative (40 cycles)
 
-- Total reviewed: 152 · Accepted+tagged: 150 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 157 · Accepted+tagged: 155 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
+- **40 cycles / ~20 hours** of autonomous review loop runtime
 
-## Cycle 39 notables
+## Cycle 40 notables
 
-- **150-accept cumulative milestone** at cycle 39 / 19.5 hours of loop runtime.
-- Webapp T124 URL codec for timeline filters (60 + 132 = 192 lines) — 113 tests (+17). URL-parameter serialization/deserialization for the timeline route filter state.
-- Datalogger T015 **CI pytest-blocks-merge contract test** (63 lines, 4 tests) — asserts `.github/workflows/ci.yml` has the expected pytest job as a required-status-check gate. Pattern similar to T013 (pyproject pinning contract) + T014 (pre-commit config validation). Sprint-desktop continues its defensive contract-test shelf.
-- Schemas T037 Kotlin DriverProgressSnapshot + SkillDimension (114 lines) — catches up on earlier Python T032 (DriverProgressSnapshot cycle 31) + T031 (SkillDimension cycle 29). Python side unchanged at 51 tests.
-- Website T043 /how-it-works hero content (+37/-28 lines) — modifies existing shell, not pure-add. Tests reshuffled but 125 passing.
-- Backend 23 idle, mobile 15 idle, webapp 0 idle, website 0 idle, datalogger 0 idle.
-- Disk 86% stable 16 cycles.
+- Schemas subset reaches **20/35 (~57%)** — past half-way on the ADR-006/007 object surface.
+- **Kotlin serialization round-trip test** (T038) validates that all Kotlin data classes can JSON-serialize + deserialize identically — a cross-cutting contract that implicitly tests all 7 existing types together. Single test covering N types is a cheap generalization.
+- Datalogger T016 adds ruff + mypy lint job to CI — next `git push` on datalogger will exercise it. Runs on ubuntu-latest before the existing windows-latest test job. Note: review loop runs locally and doesn't gate on these jobs; they're CI-only.
+- Webapp T125 TimelineEmptyState (25 + 31 = 56 lines + index) — 118 tests (+5). Completes the timeline route's zero-state handling.
+- Website T044 annotated SVG diagram (199 lines HowItWorksDiagram.astro + 5 page mount + tests) — 132 tests (+7).
+- Backend 24 idle, mobile 16 idle.
+- Disk 86% stable 17 cycles.
 
 ## Current issues
 
@@ -42,4 +45,4 @@
 - Kotlin-ahead-of-Python CoachingInsight (cycle 38).
 - Step 10 daily-email deferred.
 
-## Cron: next 13:45 UTC.
+## Cron: next 14:00 UTC.

@@ -48,8 +48,8 @@
 - [x] T034 [sonnet] `WeaknessEpisode` data class (consumer-side) ⇒ compiles — c7a1821 (schemas)
 - [x] T035 [sonnet] `ActionPrescription` data class ⇒ compiles — ef37165 (schemas)
 - [x] T036 [sonnet] `CoachingInsight` data class ⇒ compiles — 60f600c (schemas; rendering subset, full shape pending Pydantic source)
-- [ ] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles
-- [ ] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green
+- [x] T037 [sonnet] `DriverProgressSnapshot` data class ⇒ compiles — 4fadcd6 (schemas)
+- [x] T038 [sonnet] All schema types serializable via kotlinx-serialization ⇒ round-trip tests green — eaa5145 (schemas)
 - [ ] T039 [sonnet] UUID7 type alias (`typealias UUID7 = String` with validation) ⇒ unit-tested
 - [ ] T040 [sonnet] Replace any hand-rolled duplicate types ⇒ diff clean
 

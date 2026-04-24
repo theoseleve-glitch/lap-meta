@@ -60,7 +60,7 @@
 - [x] T036 [opus] Pydantic model `ActionPrescription` per ADR-005 §5.3 ⇒ validates — sha: lap-schemas@0b90b77
 - [x] T037 [opus] Pydantic model `ActionOutcome` per ADR-005 §5.4 ⇒ validates — sha: lap-schemas@d6f89f0
 - [x] T038 [opus] Pydantic model `DivergencePoint` per ADR-005 §5.5 ⇒ validates — sha: lap-schemas@be89964
-- [ ] T039 [opus] Pydantic model `TransferLink` per ADR-005 §5.5 ⇒ validates
+- [x] T039 [opus] Pydantic model `TransferLink` per ADR-005 §5.5 ⇒ validates — sha: lap-schemas@e56f41c
 - [ ] T040 [opus] Pydantic model `CohortDef` + `DriverBenchmarkProfile` per ADR-005 §5.6 ⇒ validates
 - [ ] T041 [opus] Pydantic model `TargetEvent` + `DriverReadinessState` per ADR-005 §5.7 ⇒ validates
 - [ ] T042 [opus] Pydantic model `CoachingInsight` (session-level, pre-episode aggregation) ⇒ validates

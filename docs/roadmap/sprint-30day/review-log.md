@@ -1718,3 +1718,51 @@ Cron-fired 13:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`8dac3bc`, 
 - `meta: review loop cycle 39` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T13:55:00Z — Cycle #40
+
+Cron-fired 13:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`538b89d`, schemas=`4fadcd6`, mobile=`291c7f3`, website=`041d415`, datalogger=`a2d40a2`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 24 idle.
+- **lap-webapp `455a6b4` T125 TimelineEmptyState component**: ACCEPTED + tagged + pushed. **tests 118/118** (+5). Diff: 3 files / 76 ins.
+- **lap-schemas** TWO commits:
+  - `e56f41c sprint(backend): T039 TransferLink model`: ACCEPTED + tagged + pushed. pytest 54 (+3). Diff: 2 files / 107 ins (transfer_link.py 31 + test 76).
+  - `eaa5145 sprint(mobile): T038 kotlinx-serialization round-trip for all schema types`: ACCEPTED + tagged + pushed. **17-file Kotlin refactor** (333 ins / 30 del) adding `@Serializable` annotations across all existing data classes + new 235-line `SerializationRoundTripTest.kt` covering every type. `:schemas:test --rerun-tasks` BUILD SUCCESSFUL — 4 tasks executed. Cross-cutting refactor passes. Single round-trip test covers all types = cheap generalization.
+- **lap-mobile-android**: 16 idle.
+- **lap-website `2145635` T044 /how-it-works annotated SVG diagram**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 132/132** (+7), build 4 pages. Diff: 4 files / 293 ins (HowItWorksDiagram.astro 199 lines + how-it-works.astro mount 5 + test + new component register).
+- **datalogger `b49d989` T016 CI lint job — ruff + mypy block merge**: ACCEPTED + tagged + pushed. Diff: 2 files / 47 ins (`.github/workflows/ci.yml` +20 lines NEW `lint` job + `test_ci_workflow_contract.py` +27 lines extending the contract test from T015). Contract test `test_ci_workflow_contract.py` passes 6/6.
+  
+  **Workflow-edit review**: T016 adds a NEW `lint` job (ubuntu-latest, `actions/setup-python@v5`, `pip install ruff mypy`, `ruff check src tests`, `mypy src`). **No `workflow_dispatch` trigger. No `secrets.*` references.** File-path guardrail condition NOT met → ACCEPT.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas Python+Kotlin BOTH grew (T039 Python + T038 Kotlin cross-cutting serialization refactor). The Kotlin refactor adds `@Serializable` to existing types — cross-cutting but additive (no API surface changes). `:schemas:test --rerun-tasks` green proves it.
+- Backend idle → no endpoint drift.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 41
+
+- backend=`7b64848` (25 idle), webapp=`455a6b4`, schemas=`eaa5145`, mobile=`291c7f3` (17 idle), website=`2145635`, datalogger=`b49d989`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **20 hours / 40 cycles** of autonomous review loop. 155 accepts, 1 revert, 2 flags. Schemas surface 20/35 (~57%) complete.
+
+### Runbook process note
+
+- **Cross-cutting refactors need --rerun-tasks even when green**: schemas T038 added `@Serializable` to 17 Kotlin files. Gradle could have served an UP-TO-DATE cache from a prior sprint-loop invocation. The `--rerun-tasks` flag force-executed `:schemas:test` to prove the refactor survives serialization round-trip across all types. Required overhead for any commit that modifies N>1 existing files.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 40` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
