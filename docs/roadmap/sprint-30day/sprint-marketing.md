@@ -93,7 +93,7 @@
 
 - [ ] T071 [design] Figma: demo page with interactive or video walkthrough ⇒ approved
 - [x] T072 [opus] Route `/demo` shell ⇒ renders — a05663c
-- [ ] T073 [opus] Choose format: embedded video (YouTube/Vimeo) OR inline screenshots ⇒ default video
+- [x] T073 [opus] Choose format: embedded video (YouTube/Vimeo) OR inline screenshots ⇒ default video — 002d38f
 - [ ] T074 [opus] 3-minute product walkthrough video embedded ⇒ lazy-loaded
 - [ ] T075 [opus] Below-video: key screens in static cards ⇒ Storybook each
 - [ ] T076 [opus] "Try it with a real session" option: upload `.ibt` or use sample ⇒ CTA to app.lap-coach.racing sample path
