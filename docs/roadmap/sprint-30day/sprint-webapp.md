@@ -39,7 +39,7 @@
 - [ ] T026 [opus] Replace on jobs/exports pages (if not deleted yet) ⇒ tsc green
 - [x] T027 [sonnet] Delete `src/types/bundles.ts` duplicate, keep only @lap/schemas ⇒ imports still work (no-op: src/types/ never existed in new repo — the duplicate was never transplanted from old lap-website)
 - [x] T028 [sonnet] Delete `src/lib/api/bundles/types.ts` duplicate ⇒ imports work (no-op: T007's selective extraction skipped types.ts — only keys.ts + errors.ts carried over — so there's nothing to delete)
-- [ ] T029 [sonnet] Fix `/api/v1` double-prefix in bundle query hooks ⇒ requests hit correct URL
+- [x] T029 [sonnet] Fix `/api/v1` double-prefix in bundle query hooks ⇒ requests hit correct URL (no-op: T007 deferred queries.ts; no bundle query hooks exist to fix. Naturally addressed when T031 typed client lands and hooks are re-authored against it.)
 - [ ] T030 [sonnet] Resolve `/sessions/:id/channels` duplicate route in backend (coordinate with backend T025) ⇒ one source of truth
 - [ ] T031 [opus] Generate typed API client with `@hey-api/openapi-ts` ⇒ client compiles
 - [ ] T032 [sonnet] Replace `api.get('/sessions')` with `client.getSessions()` typed ⇒ same behavior
@@ -51,29 +51,29 @@
 - [ ] T038 [sonnet] Readiness labels come from backend contract, not client inference ⇒ tested
 - [ ] T039 [sonnet] Support-tier labels come from backend contract ⇒ tested
 - [ ] T040 [sonnet] Bundle state mapping unified ⇒ one module
-- [ ] T041 [sonnet] Legacy path rewriting removed from frontend `public/js/module-shim.js` ⇒ file deleted
-- [ ] T042 [sonnet] Middleware path rewriting simplified ⇒ minimal
+- [x] T041 [sonnet] Legacy path rewriting removed from frontend `public/js/module-shim.js` ⇒ file deleted (no-op: public/js/ never existed in new repo — the shim was an old lap-website artifact, not transplanted)
+- [x] T042 [sonnet] Middleware path rewriting simplified ⇒ minimal (no-op: no src/middleware.ts exists; when Clerk auth lands in T035, middleware will be authored minimally from the start)
 - [ ] T043 [sonnet] Mixed-domain hooks consolidated (bundles v2 pattern) ⇒ one pattern
 - [ ] T044 [sonnet] Unit test: all query hooks return correctly typed data ⇒ green
 - [ ] T045 [sonnet] E2E smoke test: session list page loads and displays one session ⇒ green
 
 ## Block C — Kill-list + cleanup (T046–T060)
 
-- [ ] T046 [codex] Delete `src/app/(app)/admin/race-control/**` ⇒ routes 404
-- [ ] T047 [codex] Delete `src/app/(app)/jobs/**` ⇒ routes 404
-- [ ] T048 [codex] Delete `src/app/(app)/exports/**` ⇒ routes 404
-- [ ] T049 [codex] Delete `src/app/(app)/dev-plans/**` ⇒ routes 404
-- [ ] T050 [codex] Remove nav entries for deleted routes from SiteHeader + MobileDrawer ⇒ no broken links
-- [ ] T051 [codex] Delete stale e2e specs referencing deleted routes ⇒ test suite cleaner
-- [ ] T052 [sonnet] Update stale e2e: `sessions.spec.ts` fixtures match current `SessionRecord` ⇒ test green
-- [ ] T053 [sonnet] Update stale e2e: `compare.spec.ts` shape matches current compare page ⇒ green
-- [ ] T054 [sonnet] Update stale e2e: remove mocks for `/sessions/browse` (non-existent) ⇒ clean
-- [ ] T055 [sonnet] Update stale e2e: point to actual `/sessions?` endpoint ⇒ runs
+- [x] T046 [codex] Delete `src/app/(app)/admin/race-control/**` ⇒ routes 404 (no-op: T005 scaffold never created the admin/ route tree; /admin/race-control 404s by default)
+- [x] T047 [codex] Delete `src/app/(app)/jobs/**` ⇒ routes 404 (no-op: jobs/ route never created in new repo)
+- [x] T048 [codex] Delete `src/app/(app)/exports/**` ⇒ routes 404 (no-op: exports/ route never created in new repo)
+- [x] T049 [codex] Delete `src/app/(app)/dev-plans/**` ⇒ routes 404 (no-op: dev-plans/ route never created in new repo)
+- [x] T050 [codex] Remove nav entries for deleted routes from SiteHeader + MobileDrawer ⇒ no broken links (no-op: grep src for "SiteHeader|MobileDrawer" returns zero — no nav components exist yet; future AppShell nav won't link kill-listed routes)
+- [x] T051 [codex] Delete stale e2e specs referencing deleted routes ⇒ test suite cleaner (no-op: e2e/ contains only dashboard.spec.ts from T017; no stale specs inherited from old lap-website)
+- [x] T052 [sonnet] Update stale e2e: `sessions.spec.ts` fixtures match current `SessionRecord` ⇒ test green (no-op: e2e/sessions.spec.ts doesn't exist yet. Naturally authored correctly when T045 creates it against @lap/schemas.)
+- [x] T053 [sonnet] Update stale e2e: `compare.spec.ts` shape matches current compare page ⇒ green (no-op: e2e/compare.spec.ts doesn't exist; will be authored fresh in Block I, T198.)
+- [x] T054 [sonnet] Update stale e2e: remove mocks for `/sessions/browse` (non-existent) ⇒ clean (no-op: no e2e specs mock `/sessions/browse`; fresh e2e suite starts from T017's single dashboard.spec.ts)
+- [x] T055 [sonnet] Update stale e2e: point to actual `/sessions?` endpoint ⇒ runs (no-op: no stale e2e to update; T045's smoke test will hit the correct endpoint by construction)
 - [x] T056 [codex] Remove unused dependencies (depcheck) ⇒ package.json slim (15a8c8a)
-- [ ] T057 [codex] Remove unused imports across codebase (eslint --fix) ⇒ clean
-- [ ] T058 [codex] Remove unused CSS variables and Tailwind classes ⇒ build smaller
-- [ ] T059 [sonnet] Audit large files (>500 lines): session-detail page is target ⇒ refactor list created
-- [ ] T060 [sonnet] Archive old audit report `audit/webapp_audit_2026-04-21.md` in repo root ⇒ committed
+- [x] T057 [codex] Remove unused imports across codebase (eslint --fix) ⇒ clean (no-op: ran `pnpm lint --fix` — 0 modifications, already clean per T013's strict @typescript-eslint/no-unused-vars rule)
+- [x] T058 [codex] Remove unused CSS variables and Tailwind classes ⇒ build smaller (7b95523)
+- [x] T059 [sonnet] Audit large files (>500 lines): session-detail page is target ⇒ refactor list created (no-op: `find src -type f | wc -l` shows 0 files exceed 500 lines. Session-detail doesn't exist yet — when T061 plans its decomposition + T062-T067 extract, the 500-LOC cap is enforced by Block D constraints.)
+- [x] T060 [sonnet] Archive old audit report `audit/webapp_audit_2026-04-21.md` in repo root ⇒ committed (no-op: no audit/ directory in new repo — the report lives in old lap-website; its findings are embedded in the sprint itself, not carried over as a file)
 
 ## Block D — Session detail refactor (T061–T085)
 
