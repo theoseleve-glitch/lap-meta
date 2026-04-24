@@ -105,7 +105,7 @@
 - [ ] T082 [sonnet] Demo mobile layout: video full-width ⇒ responsive
 - [x] T083 [sonnet] A11y ⇒ axe clean — 6102080 (lap-website; /demo axe test added to tests/e2e/a11y.spec.ts, page was already clean as shipped; proof-of-gate confirmed by temp-regression cycle)
 - [ ] T084 [sonnet] Conversion tracking: demo_viewed event ⇒ PostHog
-- [ ] T085 [sonnet] Post-demo CTA: "Start your trial" prominent ⇒ wired
+- [x] T085 [sonnet] Post-demo CTA: "Start your trial" prominent ⇒ wired — 6fe6390 (lap-website; reuses T034 FinalCta, locked copy "Start 14-day trial" matches homepage + /how-it-works)
 - [ ] T086 [sonnet] Testimonial placement post-video ⇒ structured
 - [ ] T087 [sonnet] Video captions + subtitles ⇒ uploaded
 - [ ] T088 [sonnet] SEO: target "sim racing telemetry demo" ⇒ meta
