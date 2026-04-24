@@ -12,7 +12,7 @@
 - [x] T002 [opus] Define `LiveProcessor` ABC in `core/live_processor.py` with slots (on_sample, on_lap_end, on_session_end) ⇒ ABC importable (eb97496)
 - [x] T003 [opus] Rebuild `CoachingLiveProcessor` using existing `live_detectors.py` primitives ⇒ no external missing imports (f3c1cc7)
 - [x] T004 [opus] Rebuild `DashboardLiveProcessor` exposing normalized snapshots ⇒ consumable by VM (fa8ec3e)
-- [ ] T005 [opus] Rebuild `InputDiagnosticsProcessor` for input telemetry surfacing ⇒ compiles
+- [x] T005 [opus] Rebuild `InputDiagnosticsProcessor` for input telemetry surfacing ⇒ compiles (6690165)
 - [ ] T006 [sonnet] Update `live_telemetry_processor.py` to compose the three Processors via the ABC ⇒ no missing imports
 - [ ] T007 [sonnet] Feature flag `LIVE_COACHING_ENABLED` to disable live coaching if needed ⇒ env-driven
 - [ ] T008 [sonnet] Smoke test: run main with sim-disconnected → app boots without crash ⇒ green

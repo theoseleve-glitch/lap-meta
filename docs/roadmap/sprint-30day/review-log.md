@@ -1132,3 +1132,61 @@ Cron-fired 09:52 UTC. Runbook mtime unchanged. No PAUSE markers. Baselines at cy
 - **Also including 3 sprint-file bookkeeping mods** (sprint-backend.md, sprint-desktop.md, sprint-mobile.md) pending from cycles 22-24 sprint-loop activity that hadn't been committed yet. Cycle 23 skipped them per runbook Step 9 strict (review-log + metrics only); this cycle bundles them since the sprint-files are growing stale in working tree and the metrics table references their counts.
 
 ---
+
+## 2026-04-24T10:10:00Z — Cycle #25
+
+Cron-fired 10:07 UTC. No PAUSE. Baselines cycle start: backend=`7b64848`, webapp=`2df91cc`, schemas=`1e20418`, mobile=`291c7f3`, website=`21b7ee1`, datalogger=`fa8ec3e`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 9th consecutive idle cycle at `7b64848`.
+- **lap-webapp**: idle 1 cycle at `2df91cc` after cycle 24 T088.
+- **lap-schemas** — TWO commits captured:
+  - `64505e5 sprint(backend): T028 TelemetrySample model`: ACCEPTED + tagged `reviewed/20260424/lap-schemas/64505e5` + pushed. uv sync OK; **pytest 21 passed** (+3 from T027's 18). Diff: 2 files / 59 ins (telemetry_sample.py 21 lines + test 38 lines).
+  - `124b8c4 sprint(mobile): T027 SessionManifest Kotlin stub` **concurrent-commit capture**: landed in lap-schemas/kotlin/ between my cycle-start snapshot (ahead=1) and my `git push origin HEAD`, so the push fast-forwarded origin to `124b8c4` and I detected the extra commit post-push. Re-ran matrix: Python pytest 21 still green (no Python changes). Cross-repo check: `cd lap-mobile-android && ./gradlew :schemas:build` = BUILD SUCCESSFUL; the 51-line `SessionManifest.kt` + 42-line test compile+pass under mobile's classpath. ACCEPTED + tagged `reviewed/20260424/lap-schemas/124b8c4` + pushed. Diff: 3 files / 94 ins (build.gradle.kts +1 + SessionManifest.kt 51 + SessionManifestTest.kt 42).
+- **lap-mobile-android**: idle 1 cycle at `291c7f3`. But mobile's gradle build WAS re-exercised this cycle as a cross-repo coherence check against the new Kotlin stub in schemas → consistent.
+- **lap-website `152a1d3` T032 compare-to-tools-you-know section**: ACCEPTED + tagged + pushed. typecheck 0/0/0, lint 0/0/0 + Prettier clean, **test 14 files / 90 tests pass** (+8 from T031's 82), build 3 pages 2.19s. Diff: 4 files / 151 ins (ToolComparison.astro 62 lines + test + homepage mount + lockfile).
+- **datalogger `6690165` T005 rebuild InputDiagnosticsProcessor**: ACCEPTED + tagged + pushed. T005-own tests `test_input_diagnostics_processor.py` **5/5 pass**. Diff: 2 files / 145 ins (input_diagnostics_processor.py 70 lines + test 75 lines). Full clean-tree suite not re-run this cycle — per cycle 24 bisect, pre-existing 19 failures are known tech-debt and re-verifying them wastes cycle budget.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas Python grew (`64505e5` TelemetrySample) AND Kotlin grew (`124b8c4` SessionManifest stub) — **this is the first cycle where Python + Kotlin move together in the same cycle**. Webapp `src/generated/` still absent (ADR-017 silent-skip). Mobile picks up Kotlin changes live via `include(":schemas")` wired in cycle 24.
+- **Endpoint drift**: backend unchanged → skip.
+- **Informal contract probe**: `./gradlew :schemas:build` from `lap-mobile-android/` → BUILD SUCCESSFUL = mobile classpath successfully includes the new Kotlin stub. Pseudo-contract-test passes.
+
+### Step 6 — Deploy path
+
+- No deploy configs in any repo. Skip.
+
+### Step 7 — Post-deploy smoke
+
+- N/A.
+
+### Step 10 — Daily strategy email
+
+- Eligible but not in user-prompt scope. Skip (state carries forward).
+
+### Step 11 — Alerts
+
+- No thresholds crossed.
+
+### Baselines cycle 26
+
+- backend=`7b64848` (10 idle), webapp=`2df91cc` (2 idle), schemas=`124b8c4`, mobile=`291c7f3` (2 idle), website=`152a1d3`, datalogger=`6690165`.
+
+### Pause triggers
+
+- Disk 86% stable.
+- All others clear.
+
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 25` + metrics + review-log + 3 pending sprint-file bookkeeping mods (sprint-backend.md, sprint-desktop.md, sprint-mobile.md). Push to origin lap-meta master.
+
+### Runbook process note
+
+- **Concurrent-commit capture pattern**: detected by observing that `git push origin HEAD` advanced origin beyond the single commit I snapshot'd. Fix: always re-run `git -C repo log origin/master^..HEAD` after pushing to catch ride-along commits, match against `sprint(` prefix, and tag-only any that qualify (the push already happened).
+
+---
