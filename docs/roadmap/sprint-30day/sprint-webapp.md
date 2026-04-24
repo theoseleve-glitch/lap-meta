@@ -190,7 +190,7 @@
 - [ ] T162 [sonnet] PostHog: page_view + section_interactions ⇒ tracked [BLOCKED: waiting on T229 (Sentry + PostHog init in app shell) and lap-backend — useDriverProfile T138 data hook. Without PostHog initialised at the shell level there is no client to fire events on, and without the data hook the profile route only renders a PageIntro placeholder so there are no sections to interact with.]
 - [x] T163 [sonnet] Refetch on window focus so data stays fresh ⇒ configured (no-op: already delivered by T129 9293914 — `createQueryClient` sets `refetchOnWindowFocus: true` in the global default options; unit test "refetches queries when the browser window regains focus" pins the behaviour)
 - [ ] T164 [sonnet] Cache invalidation on prescription accept/weakness resolve ⇒ tested [BLOCKED: waiting on lap-backend — prescription-accept and weakness-resolve endpoints. Cannot wire a mutation → invalidate(useDriverProfile) round-trip before the mutation endpoints and the useDriverProfile T138 hook exist.]
-- [ ] T165 [sonnet] Memoize heavy chart components ⇒ no re-renders on unrelated state changes
+- [x] T165 [sonnet] Memoize heavy chart components ⇒ no re-renders on unrelated state changes (5e3c036)
 
 ## Block H — Skill drilldown + weakness detail pages (T166–T185)
 
