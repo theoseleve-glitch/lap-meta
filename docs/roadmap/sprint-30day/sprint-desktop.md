@@ -21,7 +21,7 @@
 - [x] T011 [sonnet] Add regression test: import all VM classes via bootstrap ⇒ green (cdfd017)
 - [x] T012 [sonnet] Add regression test: import all processor classes ⇒ green (934bcd5)
 - [x] T013 [codex] `pyproject.toml`: upgrade to Python 3.12, pin deps ⇒ `uv sync` clean (323fe7f)
-- [ ] T014 [codex] `.pre-commit-config.yaml`: ruff + mypy + pytest on staged ⇒ installed
+- [x] T014 [codex] `.pre-commit-config.yaml`: ruff + mypy + pytest on staged ⇒ installed (b76bdbd)
 - [ ] T015 [codex] GitHub Action: `pytest -q` blocks merge ⇒ workflow green
 - [ ] T016 [codex] GitHub Action: ruff + mypy block merge ⇒ workflow green
 - [ ] T017 [sonnet] Migrate `session_state.py` to typed enum + state machine lib (transitions) ⇒ tests green

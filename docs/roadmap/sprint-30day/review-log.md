@@ -1612,3 +1612,33 @@ Cron-fired 12:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`da3079f`, 
 - `meta: review loop cycle 36` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T13:10:00Z — Cycle #37
+
+Cron-fired 13:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`1dfa795`, schemas=`ef37165`, mobile=`291c7f3`, website=`d94f7a8`, datalogger=`323fe7f`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 21 idle.
+- **lap-webapp**: 1 idle at `1dfa795`.
+- **lap-schemas `d6f89f0` T037 ActionOutcome model**: ACCEPTED + tagged + pushed. pytest 48 (+3). Diff: 2 files / 83 ins (action_outcome.py 23 + test 60). **Kotlin counterpart NOT landed this cycle** — sprint-mobile deferred; P+K lockstep broken after 2-cycle resumption.
+- **lap-mobile-android**: 13 idle.
+- **lap-website `374fb80` T042 /how-it-works route shell**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 125/125** (+5), **build 4 pages** (new /how-it-works page). Diff: 2 files / 77 ins (how-it-works.astro 25 + how-it-works.test.ts 52). Second page on the site; wires T026 secondary CTA destination.
+- **datalogger `b76bdbd` T014 pre-commit config — ruff + mypy + pytest**: ACCEPTED + tagged + pushed. **5/5 pass**. Diff: 2 files / 92 ins (`.pre-commit-config.yaml` 33 lines + test 59 lines). Test validates YAML structure — doesn't install or execute hooks (respects Hard NEVER #1 on review host). Pure-add.
+
+### Step 5-7: schemas Python grew (T037); no Kotlin drift trigger (nothing to compare). Backend idle → no endpoint drift. No deploys, no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 38
+
+- backend=`7b64848` (22 idle), webapp=`1dfa795` (2 idle), schemas=`d6f89f0`, mobile=`291c7f3` (14 idle), website=`374fb80`, datalogger=`b76bdbd`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 37` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

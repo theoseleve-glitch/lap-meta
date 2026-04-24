@@ -58,7 +58,7 @@
 - [x] T034 [opus] Pydantic model `WeaknessEpisode` per ADR-005 §5.2 ⇒ validates — sha: lap-schemas@fe83faf
 - [x] T035 [opus] Pydantic model `SuccessCondition` per ADR-005 §5.3 ⇒ validates — sha: lap-schemas@2846574
 - [x] T036 [opus] Pydantic model `ActionPrescription` per ADR-005 §5.3 ⇒ validates — sha: lap-schemas@0b90b77
-- [ ] T037 [opus] Pydantic model `ActionOutcome` per ADR-005 §5.4 ⇒ validates
+- [x] T037 [opus] Pydantic model `ActionOutcome` per ADR-005 §5.4 ⇒ validates — sha: lap-schemas@d6f89f0
 - [ ] T038 [opus] Pydantic model `DivergencePoint` per ADR-005 §5.5 ⇒ validates
 - [ ] T039 [opus] Pydantic model `TransferLink` per ADR-005 §5.5 ⇒ validates
 - [ ] T040 [opus] Pydantic model `CohortDef` + `DriverBenchmarkProfile` per ADR-005 §5.6 ⇒ validates
