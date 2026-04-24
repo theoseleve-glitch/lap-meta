@@ -195,7 +195,7 @@
 ## Block H — Skill drilldown + weakness detail pages (T166–T185)
 
 - [ ] T166 [design] Mockup: per-skill drilldown page ⇒ approved
-- [ ] T167 [opus] Route `src/app/(app)/profile/skills/[dimension]/page.tsx` ⇒ renders
+- [x] T167 [opus] Route `src/app/(app)/profile/skills/[dimension]/page.tsx` ⇒ renders (f863930)
 - [ ] T168 [opus] Data hook `useSkillDrilldown(dimension)` ⇒ returns trend + sessions + weaknesses
 - [ ] T169 [opus] `SkillTrendChart` component ⇒ Storybook
 - [ ] T170 [opus] `BestSessionsList` component (top 5 by this dimension) ⇒ Storybook
