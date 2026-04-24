@@ -3463,3 +3463,80 @@ Cron-fired 22:22 UTC. No PAUSE. 1 accept, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-25T22:40:00Z — Cycle #75 — **8TH ORM + MOBILE FOREGROUND SERVICE + PRINT STYLES + A11Y**
+
+Cron-fired 22:37 UTC. No PAUSE. 4 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `dd601a7` sprint(backend): T065 ActionPrescription ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 43/43 (+3).
+  - Diff: 3 files / 289 ins (orm.py +40 ActionPrescription + alembic versions/37ea6d08a23e 56 + tests/test_action_prescription_model.py 193 — new record for backend test file).
+  - **8th ORM model**. ADR-005 coaching pattern complete: Session → WeaknessEpisode (c73) + ActionPrescription (c75). The full driver-coaching artifact aggregate is now shaped.
+- **lap-webapp `bd51979` sprint(webapp): T160 print styles on profile layout** — ACCEPT + tag + push.
+  - Full matrix: typecheck + lint OK, 273 tests (+3), build OK.
+  - Diff: 28 ins (smallest webapp diff in recent memory). Tailwind `print:` variants on ProfileLayout: `print:bg-white print:text-black` root, `print:break-inside-avoid` on hero + 3-col row, `print:grid-cols-3`.
+- **lap-schemas**: idle 16 cycles.
+- **lap-mobile-android `94b81b6` sprint(mobile): T063 CaptureForegroundService with persistent notification** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree.
+  - Diff: 243 ins. 6 files:
+    - AndroidManifest.xml +15 (service declaration + FOREGROUND_SERVICE_LOCATION permission)
+    - CaptureForegroundService.kt 80 — Android Service
+    - CaptureForegroundCommand.kt 28 — sealed start/stop commands
+    - CaptureNotification.kt 19 — persistent notification builder
+    - strings.xml +5 — user-visible strings
+    - CaptureForegroundCommandTest.kt 52 — 52 test lines
+  - **First Android Service class**. Required for multi-hour sensor capture (Android kills background apps aggressively). Pairs with T061 LocationCaptureService — Service + capture loop.
+  - 10 consecutive clean mobile accepts.
+- **lap-website `6102080` sprint(marketing): T083 /demo axe clean** — ACCEPT + tag + push.
+  - Full matrix: typecheck + lint OK, 249 tests (+0 from c73 — e2e axe doesn't add vitest), 7-page build.
+  - Diff: 22 ins. Extends existing WCAG 2.1 A/AA axe e2e gate to /demo route. Commit body notes T072 + T073 were already clean at ship.
+  - **Build flake caught**: first `pnpm build` re-run (c75 context) failed with `ELIFECYCLE` + `AsyncLoaderHooksOnLoaderHookWorker` node internal error. Re-re-run succeeded. Not T083-caused. Systematic-debugging accept path. Background task `bf7uqwu1y` (initial verify) had green build; flake was only on manual re-verify. 1st known occurrence — watch.
+- **lap-website T082** implicitly gated on T074 video (documented in T081's commit body c73). Sprint-marketing continues to respect cross-task gating without explicit review-loop intervention.
+- **datalogger**: idle 2 cycles. Merge-marker WIP persists (3rd cycle flagged).
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = backend T065 at 289). Backend test files trending up (T063 74, T064 152, T065 193).
+- Forbidden patterns: clean.
+- Secrets: clean across 4 commits.
+- File-path guardrails: AndroidManifest.xml modified for mobile T063 — expected for a foreground-service task.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- Endpoint drift: backend T065 is 8th ORM, still no `app/routers/`. Backend dependency pressure holds at 3 downstream waiters.
+- Contract test: no active HTTP surface. Skipped.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped (no configs).
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 76
+
+- backend=`dd601a7`, webapp=`bd51979`, schemas=`0dda9cb` (16 idle), mobile=`94b81b6`, website=`6102080`, datalogger=`be38dbe` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **8 ORM models, ADR-005 coaching aggregate complete**. Session spawns coaching artifacts (WeaknessEpisode + ActionPrescription) alongside telemetry (Lap + SessionRecord + TelemetryArtifact). Full data-layer shape.
+- **Mobile capture stack continues**: Service (c75) + LocationCaptureService (c72) + permissions (c73). Infrastructure for long-running capture is now in place.
+- 280 cumulative accepts / 3 reverts / 1.06% revert rate / 75 cycles.
+
+### Runbook process note
+
+- **Build flakes now documented as a category** alongside test flakes. Phase-1 bisect pattern applies identically: re-run before reverting, check parent if re-run fails again. The c75 website build flake was an ESM hiccup from the node runtime, not T083 content.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 75 — 4 accepts, 8th ORM + mobile foreground service + webapp print + website a11y` + metrics + review-log. Push to lap-meta master.
+
+---
+
