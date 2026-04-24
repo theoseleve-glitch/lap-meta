@@ -36,9 +36,9 @@
 - [x] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green — sha: edeb53d
 - [x] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests — sha: 5d31465
 - [x] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works — sha: ef85842
-- [ ] T018 [codex] Dockerfile for backend (multi-stage, python:3.12-slim base) ⇒ `docker build` succeeds
-- [ ] T019 [codex] docker-compose.yml with postgres+redis+backend services for local dev ⇒ `docker compose up` works
-- [ ] T020 [sonnet] Makefile targets: `make dev`, `make test`, `make lint`, `make migrate` ⇒ all run
+- [BLOCKED] T018 [codex] Dockerfile for backend (multi-stage, python:3.12-slim base) ⇒ `docker build` succeeds — BLOCKED: docker not installed in Windows sandbox; acceptance requires local docker runtime to verify build succeeds
+- [BLOCKED] T019 [codex] docker-compose.yml with postgres+redis+backend services for local dev ⇒ `docker compose up` works — BLOCKED: docker compose not available in Windows sandbox; same root cause as T018
+- [x] T020 [sonnet] Makefile targets: `make dev`, `make test`, `make lint`, `make migrate` ⇒ all run — sha: 7b64848
 
 ## Block B — `lap-schemas` foundation (T021–T045)
 

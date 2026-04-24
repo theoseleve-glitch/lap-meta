@@ -797,3 +797,31 @@ Cron-fired 01:07 UTC. Baselines: backend=`5d31465`, webapp=`52e1cce`, schemas=`a
 - `meta: review loop cycle 15` + review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T01:50:00Z — Cycle #16
+
+Cron-fired 01:37 UTC. Baselines: backend=`ef85842`, webapp=`b1bb273`, schemas=`a50d39a`, mobile=`5caa77e`, website=`de66a0a`, datalogger=`eb97496`. Disk 87%. Daily email: skip.
+
+### Per-repo
+- **lap-backend `7b64848` T020 Makefile**: ACCEPTED + tagged. Full matrix green (pytest 16). Diff: 1 file / 14 ins.
+- **lap-webapp `25dbeb1` T017 Vitest+Playwright harness**: ACCEPTED + tagged **+ SCOPE_FLAG**. Full matrix green — **4 vitest tests passed, first real webapp tests**. Diff: **8 files / 1791 ins / 12 del = 1803** (>1500 non-scaffold threshold). ADR-018 Decision 4 worked — @types/node already in devDeps (from sprint-webapp.md T017 note mandating it), so playwright.config.ts has no ts(2580) issues.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `dc887af` T019 Timber logging**: ACCEPTED + tagged. Full matrix green. Diff: 5 files / 72 ins / 1 del.
+- **lap-website `37a19d9` T024 subhead copy locked**: ACCEPTED + tagged. Full matrix green. Diff: 2 files / 41 ins / 5 del.
+- **datalogger**: 12th consecutive quiet cycle.
+
+### Step 5 cross-repo: no drift.
+### Steps 6-7: all skipped.
+### Step 10: daily email skipped (hour<8).
+### Step 11 alerts
+- **scope-blowup fired** @ 2026-04-24T01:50Z (Resend `224fd181-072f-4e43-b21c-278286df2f8b`) for webapp T017 1803-line test-harness bulk. Dedup recorded for 2026-04-24. Previous fire was 2026-04-23 — new UTC day allows refire.
+
+### Baselines cycle 17
+- backend=`7b64848`, webapp=`25dbeb1`, schemas=`a50d39a`, mobile=`dc887af`, website=`37a19d9`, datalogger=`eb97496`.
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 16` + review-log + metrics + sprint-webapp (T017 SCOPE_FLAG annotation) + other sprint-file bookkeeping.
+
+---
