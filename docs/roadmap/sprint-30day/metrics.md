@@ -1,43 +1,42 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T10:10Z (Cycle #25)
+## Last updated: 2026-04-24T10:25Z (Cycle #26)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend | 18 | 212 | 2 | 1 (T013) | 0 | `7b64848` (**9 idle cycles**) |
-| lap-webapp | 41 | 199 | 0 | 0 | 0 | `2df91cc` (idle 1 cycle) |
-| lap-schemas (T021–T055 tracked in sprint-backend) | 8 | — | 0 | 0 | 0 | `124b8c4` (T028 Python + T027 Kotlin stub — pytest 21, gradle BUILD SUCCESSFUL) |
-| lap-mobile-android | 27 | 213 | 0 | 0 | 0 | `291c7f3` (idle 1 cycle) |
-| lap-website (sprint-marketing) | 27 | 193 | 0 | 0 | 1 (T017 inline) | `152a1d3` (T032 compare-to-tools-you-know) |
-| datalogger (sprint-desktop) | 5 | 235 | 0 | 0 | 0 | `6690165` (T005 InputDiagnosticsProcessor — own 5/5 pass) |
+| lap-backend (total sprint-backend.md) | 25 | 212 | 2 | 1 (T013) | 0 | `7b64848` (**10 idle cycles** — schemas-phase) |
+| lap-webapp | 41 | 199 | 0 | 0 | 0 | `f1d0e5e` (T089 PrescriptionCard) |
+| lap-schemas (T021–T055 subset in sprint-backend) | 8 | — | 0 | 0 | 0 | `124b8c4` (idle 1 cycle) |
+| lap-mobile-android | 27 | 213 | 0 | 0 | 0 | `291c7f3` (idle 2 cycles) |
+| lap-website (sprint-marketing) | 27 | 193 | 0 | 0 | 1 (T017 inline) | `152a1d3` (idle 1 cycle) |
+| datalogger (sprint-desktop) | 5 | 235 | 0 | 0 | 0 | `6690165` (idle 1 cycle) |
 
-## This cycle (Cycle #25)
+## This cycle (Cycle #26)
 
-- Verified GREEN: 4 (schemas T028 + sprint(mobile) T027 Kotlin stub, website T032, datalogger T005)
+- Verified GREEN: 1 (webapp T089)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- Concurrent-commit capture: `124b8c4 sprint(mobile): T027 SessionManifest Kotlin stub` landed between snapshot and push — detected post-push, matrix-verified, tagged
+- 5 of 6 repos idle at cycle-25-end baselines
 
-## Cumulative (25 cycles)
+## Cumulative (26 cycles)
 
-- Total reviewed: 101 · Accepted+tagged: 99 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 102 · Accepted+tagged: 100 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 25 notables
+## Cycle 26 notables
 
-- **Schemas Python ↔ Kotlin in lock-step**: T028 lands `TelemetrySample` on Python side (21 pytest, +3), T027 Kotlin stub lands `SessionManifest.kt` (51 lines) on Kotlin side — two parallel sprint loops (sprint-backend, sprint-mobile) writing to `lap-schemas/python/` and `lap-schemas/kotlin/` respectively. Mobile Gradle `:schemas:build` BUILD SUCCESSFUL with the new Kotlin stub → **cross-repo binding healthy**.
-- **Data contract surface grew**: Python Pydantic models (SessionManifest, DataQuality, TelemetrySample, SensorConfigSnapshot, SourceTag, EnvironmentTag, UUID7) now = 7 of the 35 ADR-006/ADR-007 objects. Kotlin mirror = 1 (SessionManifest stub).
-- Datalogger Terminal 3 steady: T003 → T004 → T005 across cycles 22, 24, 25 (T005 added InputDiagnosticsProcessor 70-line module, 5 TDD tests).
-- Website T032 "compare to tools you know" section — 90 tests (+8 from T031's 82). Persona framing aligned with STRATEGIC-DOCTRINE.md §3.
+- Webapp **T089 PrescriptionCard** (65 lines + 74-line test). test count climbed to 5 files / 32 tests (+10 from T088's 22). Coaching-domain component pair T088 (WeaknessEpisodeCard) + T089 (PrescriptionCard) now both live — shaping the "After every session" tiles the website section references.
+- Backend 10 idle cycles: entering double-digits. Natural per ADR — backend T021-T045 run in lap-schemas, and T018/T019 are BLOCKED on docker.
 - Disk usage: **86%** stable.
+- First 100-commit milestone on reviewed+tagged (100 accepts, 1 revert, 1 INFRA_FLAG, 1 SCOPE_FLAG over 26 cycles).
 
 ## Current issues
 
-- **Datalogger pre-existing-failures tech-debt**: 19 failing tests (4 sync_queue + 15 overlay/workspaces/ghost). Predates T003. See cycle 24 bisect detail.
+- Datalogger 19 pre-existing failures (tech-debt; bisect-verified cycle 24).
 - Backend T013 NEEDS_REWORK persistent.
 - Backend T018/T019 Dockerfile + docker-compose BLOCKED (docker not installed).
-- Website T017 SCOPE_FLAG (Lighthouse CI 2267 lines — cycle 11).
-- Step 10 daily-email not fired: `ops/.last_daily_sent`=2026-04-23 stale; out of user-prompt scope.
+- Website T017 SCOPE_FLAG (cycle 11 Lighthouse CI).
+- Step 10 daily-email deferred: `ops/.last_daily_sent`=2026-04-23.
 
-## Cron: next 10:15 UTC (15-min /loop cadence).
+## Cron: next 10:30 UTC.
