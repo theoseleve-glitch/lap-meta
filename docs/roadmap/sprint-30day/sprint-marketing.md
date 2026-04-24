@@ -36,7 +36,7 @@
 - [x] T022 [opus] Hero component: positioning headline + subhead + dual CTA ⇒ Astro component (lap-website@9a0983b; src/components/Hero.astro with typed headline/subhead/primaryCta/secondaryCta props, 7 TDD cases; not yet wired to index — T023-T026 lock copy/hrefs)
 - [x] T023 [opus] Headline options (A/B): "The Driver OS — Train. Race. Improve." / "Every lap, one step better." ⇒ default chosen (lap-website@de66a0a; Option B — "Every lap, one step better." picked; "Driver OS" category lands in T024 subhead instead. Regression test locks the exact string and forbids Option A)
 - [x] T024 [opus] Subhead: one-sentence ecosystem pitch ⇒ copy locked (lap-website@37a19d9; "The cross-platform Driver OS that turns every sim and real-world session into measurable progress." — delivers category + cross-platform + progression in 15 words)
-- [ ] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired
+- [x] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired (lap-website@b20f501; locked at both Vitest + Playwright layers; rel=noopener auto-emitted by Hero.astro and asserted)
 - [ ] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired
 - [ ] T027 [opus] Hero motion: subtle GSAP entrance, reduced-motion respected ⇒ smooth
 - [ ] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp
