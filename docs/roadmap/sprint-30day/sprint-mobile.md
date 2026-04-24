@@ -69,7 +69,7 @@
 - [x] T052 [sonnet] DAO `InsightCacheDao`: upsertBatch, listForSession ⇒ tested — 6d6887e (mobile); real DAO round-trip [PENDING: device-required]
 - [x] T053 [opus] Migration strategy: `fallbackToDestructiveMigration` in dev flavor, strict migrations in prod ⇒ documented — a4c1bd2 (mobile; reworked from f9ab816 after ff0fc60 revert — now iterates migrations via forEach to satisfy detekt SpreadOperator rule)
 - [x] T054 [opus] Journal writer service: heartbeat every 5s during recording, writes via DAO ⇒ tested with fake clock — d698986 (mobile; reworked from 7f34d84 after d38d17b revert — all literals hoisted to private const vals to satisfy detekt MagicNumber)
-- [ ] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested
+- [x] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested — d3f131f (mobile; 6 cases lock strict-`>` semantics + boundary behavior)
 - [ ] T056 [opus] Reconciliation: find orphan temp files ⇒ tested
 - [ ] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested
 - [ ] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview

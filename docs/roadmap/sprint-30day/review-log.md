@@ -2692,3 +2692,79 @@ Cron-fired 19:37 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 63 — 5 accepts, backend API phase starts` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T19:55:00Z — Cycle #64 — **BACKEND API INFRA PAIR + MOBILE LEARNING CONFIRMED**
+
+Cron-fired 19:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `10b3e92` sprint(backend): T057 Alembic async init** — ACCEPT + tag + push.
+  - Full matrix green: uv sync OK, ruff clean, mypy 7 files (+1 from c63), pytest 22/22 (+2).
+  - Diff: 7 files / 350 ins (alembic.ini 149 + env.py 96 + script template 28 + tests 28 + pyproject +1 + uv.lock +47 + alembic/README 1).
+  - 2nd consecutive backend commit — engine (c63 T056) + migrations (c64 T057) are the canonical async-FastAPI stack pair.
+- **lap-webapp `3a094ab` T151 targetEventPickerPath route helper**: ACCEPT + tag + push. 239 tests (+2). Diff: 2 files / 15 ins (routes.ts +4 + routes.test.ts +11). Wires Block G ProfileLayout ReadinessGauge click-path to /profile/readiness via helper.
+- **lap-schemas**: no new commits. Idle 3 cycles since `0dda9cb`. Python parity 35/35 stable.
+- **lap-mobile-android `d3f131f` T055 JournalReconciler (> 60s stale threshold)**: ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree: detekt clean, ktlintCheck clean, assembleDebug BUILD SUCCESSFUL, testDebugUnitTest BUILD SUCCESSFUL.
+  - Diff: 4 files / 176 ins / 17 del (new JournalReconciler.kt 36 + FakeJournalDao.kt 31 extracted from JournalWriterTest + JournalReconcilerTest 109 + JournalWriterTest -17 cleanup).
+  - **Key behavioral signal**: commit body explicitly states "both named constants satisfy detekt MagicNumber from the start. All test literals hoisted to file-scope private const vals too." Sprint-mobile has internalized the c62 MagicNumber lesson proactively. `DEFAULT_STALE_THRESHOLD_SECONDS = 60L` hoisted before code was written, not after review-loop revert.
+  - WIP pollution: only `.claude/` untracked (not sprint files). Stashed + popped cleanly.
+- **lap-website `fb04a89` sprint(marketing): T065 /refund-policy page + /pricing link**: ACCEPT + tag + push. 231 tests (+7). Diff: 186 ins. Tight copy covering EU 14-day withdrawal + grandfathered waitlist lock (§10).
+- **datalogger `3fdc300` sprint(desktop): T034 canonical_time helper — t_source_ns + t_canonical_ns (ADR-007)**: ACCEPT + tag + push.
+  - T034's own-file tests: 6/6 pass.
+  - Full suite: 1468 passed, 19 pre-existing failures (tech-debt since c22), 1 skipped.
+  - Diff: 2 files / 135 ins (canonical_time.py 57 + test 78).
+  - ruff + mypy silently skipped per ADR-017 (no `[tool.ruff]`/`[tool.mypy]` in pyproject).
+  - **Phase-1 investigation (systematic-debugging)**: initial `uv run pytest` failed with `ModuleNotFoundError: pydantic`. Bisected by checking out parent T033 (22de27d) — same error reproduces at parent → NOT caused by T034. Root cause: datalogger's pyproject does not declare pydantic/pyyaml/uuid6 as deps (they're imported transitively via `lap_schemas.v1` pythonpath). `uv sync` pruned them from this Claude-process .venv. Reinstalled manually with `uv pip install pydantic pyyaml uuid6`; then 19 failures remained — the known pre-c22 tech-debt set documented in metrics.md current-issues for 40+ cycles. Accept path per ADR-017 (not caused by this commit) + added to current-issues that pyproject should declare these as dev extras.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = backend T057 at 350).
+- Forbidden patterns: clean (no `--no-verify`, no `# type: ignore`, no unguarded `@pytest.mark.skip`, no new `any` types, no production `print(`).
+- Secrets: clean across all 5 commits.
+- File-path guardrails: no `.github/workflows/*.yml` changes.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas idle → no drift.
+- **Endpoint drift**: backend T057 is alembic migration scaffolding (no `app/routers/` changes yet). No webapp contract impact.
+- **Contract test**: backend T057 = DB migration infra, webapp T151 = FE route helper — no shared surface. Skipped (nothing to contract-test).
+
+### Step 6 — Deploy
+- All skipped. No deploy configs in any repo.
+
+### Step 7 — Post-deploy smoke
+- N/A.
+
+### Step 8 — Metrics
+- See `metrics.md` (rewritten this cycle).
+
+### Step 10 — Daily email
+- Eligible (after 08:00 UTC on 2026-04-24). Deferred per ongoing Step 10 skip noted in current-issues (out of scope until ops/send_email.py wired).
+
+### Step 11 — Alerts
+- Clear this cycle. No scope-blowup, no secret-leak, no schema-drift, no smoke failure.
+
+### Baselines cycle 65
+
+- backend=`10b3e92`, webapp=`3a094ab`, schemas=`0dda9cb` (4 idle), mobile=`d3f131f`, website=`fb04a89`, datalogger=`3fdc300`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **Detekt pre-push gap closing**: c63 T054 rework + c64 T055 both proactively use named constants without a revert cycle. 2 consecutive clean mobile accepts → sprint-mobile has adapted. If c65 holds, drop detekt gap from current-issues watchlist.
+- **2nd consecutive backend commit** since c48 idleness — T056 async SQLAlchemy (c63) + T057 Alembic (c64) establishes the full async-stack scaffold for T058-T065 router work.
+- 244 cumulative accepts / 3 reverts / 1.23% revert rate / 64 cycles.
+
+### Runbook process note
+
+- **Datalogger verification env fragility**: `uv sync` prunes transitive deps not declared in datalogger's pyproject. Each review-loop cycle currently needs `uv pip install pydantic pyyaml uuid6` to run datalogger's full suite. Two fixes possible: (a) sprint-desktop adds them to `[project.optional-dependencies].dev`, or (b) review-loop prep script installs them pre-matrix. Flagged in current-issues; not blocking (known-failures pattern is stable at 19).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 64 — 5 accepts, backend API infra pair` + metrics + review-log. Push to lap-meta master.
+
+---
