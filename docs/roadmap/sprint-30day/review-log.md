@@ -2896,3 +2896,83 @@ Cron-fired 20:22 UTC. No PAUSE. 0 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 66 — IDLE` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T20:40:00Z — Cycle #67 — **SECOND ORM MODEL + 2ND SELF-AWARE BLOCK**
+
+Cron-fired 20:37 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `31fb7b4` sprint(backend): T059 DriverProfile ORM model + migration** — ACCEPT + tag + push.
+  - Full matrix green: uv sync OK, ruff clean, mypy 7 files, pytest 26/26 (+2).
+  - Diff: 3 files / 139 ins / 1 del (infra/orm.py +18 DriverProfile class + alembic versions/3d41041193b9 42 + tests/test_driver_profile_model.py 79).
+  - Pairs with c65 T058 User. Foreign key to User — first relational link in the ORM layer.
+- **lap-webapp `fc7d610` sprint(webapp): T153 ProfileError state with retry** — ACCEPT + tag + push.
+  - Full matrix green: typecheck + lint OK, 250 tests (+6 from 244), build OK.
+  - Diff: 96 ins. Error boundary with retry CTA. Profile UI state trifecta now complete: ProfileSkeleton (T152 c65) + ProfileError (T153 c67) + ProfileLayout (T146).
+- **lap-schemas**: no new commits. Idle 8 cycles since `0dda9cb`. Python parity 35/35 stable.
+- **lap-mobile-android `03d180f` sprint(mobile): T057 CrashedSessionReconciler (recording/finalizing → recovery)** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree: detekt clean, ktlintCheck clean, assembleDebug + testDebugUnitTest BUILD SUCCESSFUL.
+  - Diff: 179 ins. Direction opposite T056 (DB row without file, not file without DB row). State literals hoisted to private const vals (detekt-clean from start). Commit body forward-references T075 SessionState enum as the typed consolidation.
+  - **4 consecutive clean mobile accepts** (c63+c64+c65 + c66 idle + c67). Detekt pre-push gap remains closed.
+- **lap-website `3549ebd` sprint(marketing): T068 /pricing a11y + responsive clean** — ACCEPT + tag + push.
+  - Full matrix green: typecheck, lint, 232 tests, 6-page build.
+  - Diff: 69 ins. Extends T038/T053 e2e gates to /pricing — axe scan (WCAG 2.1 A/AA) + mobile-layout spec. Page is static (no GSAP), no opacity-wait needed so axe failures are genuine.
+- **Website T067 SELF-BLOCKED** by sprint-marketing — note this in metrics Current-Issues. Sprint wrote a detailed `[BLOCKED: deliberate defer, sprint explicitly marks optional. All ship paths conflict with site constraints: (a) static Astro build can't server-detect geo without edge compute; (b) Cloudflare Pages edge functions require T008; (c) client-side JS conflicts with 100-kB gzip budget T037 locks; (d) USD would be a daily-maintained approximation. Doctrine §8 commits EUR canonical; §3 primary persona (EU sim racers) + §3.2 secondary (EU track-day) are already EUR-native. Unblock path: once T008 Cloudflare Pages + T009 DNS land, a Pages edge function can inject display currency from request.cf.country. Only worth when ≥10% US PostHog /pricing sessions justifies exchange-rate maintenance. T068-T070 independently tractable.]`. **2nd self-aware block this sprint** (desktop T035 c65 was 1st). This is strong sprint-loop behavior — no review-loop intervention required.
+- **datalogger `a146064` sprint(desktop): T037 integration — interrupted finalize preserves prior bundles** — ACCEPT + tag + push.
+  - Diff: 1 file / 77 ins (extends tests/test_finalizer_accepts_manifest.py; now 33 cases on that file, +2 from c65).
+  - Full suite: 1472 passed (+2), 19 pre-existing failures stable, 1 skipped.
+  - Applied c64 workaround: `uv pip install pydantic pyyaml uuid6` pre-install worked clean.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = mobile T057 at 179).
+- Forbidden patterns: clean.
+- Secrets: clean across all 5 commits (`grep -cE 'sk_live_|sk_test_|AIzaSy|ghp_|gho_|xoxb-|Bearer ey|BEGIN (RSA|PRIVATE)'` returned 0 each).
+- File-path guardrails: no workflow .yml changes.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas idle → no drift.
+- **Endpoint drift**: backend T059 DriverProfile ORM — no `app/routers/` changes. No webapp contract impact.
+- **Contract test**: backend T059 DB model, webapp T153 error UI — no shared surface. Skipped.
+
+### Step 6 — Deploy
+- All skipped. No deploy configs.
+
+### Step 7 — Post-deploy smoke
+- N/A.
+
+### Step 8 — Metrics
+- See `metrics.md` (rewritten).
+
+### Step 10 — Daily email
+- Eligible; deferred.
+
+### Step 11 — Alerts
+- Clear.
+
+### Baselines cycle 68
+
+- backend=`31fb7b4`, webapp=`fc7d610`, schemas=`0dda9cb` (9 idle), mobile=`03d180f`, website=`3549ebd`, datalogger=`a146064`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **Second ORM model** (DriverProfile) — FK to User makes the first relational link.
+- **Mobile detekt gap remains closed**: 4 consecutive clean accepts across c63-c67 (c66 idle).
+- **Two concurrent self-aware BLOCKs** (desktop T035 backend-gated, website T067 Cloudflare-gated). Both have precise unblock conditions written into the sprint file — excellent sprint-loop behavior and zero review-loop intervention needed.
+- **c66 predictions all confirmed**: predicted backend T059 + mobile T057 reverse-reconciler + desktop T037 interrupted finalize + webapp T153 next Block G component — all landed exactly as expected. Idle-cycle observability is working.
+- 254 cumulative accepts / 3 reverts / 1.17% revert rate / 67 cycles.
+
+### Runbook process note
+
+- **Self-aware BLOCKs are review-loop neutral**: they're tracked in sprint files with full context, so the review loop doesn't need to flag or intervene. They implicitly narrow the `sprint(` commit stream — no signal loss, full reasoning preserved. Best state.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 67 — 5 accepts, second ORM model + 2nd self-aware block` + metrics + review-log. Push to lap-meta master.
+
+---

@@ -71,7 +71,7 @@
 - [x] T054 [opus] Journal writer service: heartbeat every 5s during recording, writes via DAO ⇒ tested with fake clock — d698986 (mobile; reworked from 7f34d84 after d38d17b revert — all literals hoisted to private const vals to satisfy detekt MagicNumber)
 - [x] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested — d3f131f (mobile; 6 cases lock strict-`>` semantics + boundary behavior)
 - [x] T056 [opus] Reconciliation: find orphan temp files ⇒ tested — 29fc1ee (mobile; TempFileInventory abstracts disk, 4 cases)
-- [ ] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested
+- [x] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested — 03d180f (mobile; 5 cases lock recoverable vs terminal vs pre-capture states)
 - [ ] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview
 - [ ] T059 [sonnet] Recovery → Finalize-from-journal path ⇒ works for test fixture
 - [ ] T060 [sonnet] Journal retention: rows >7 days auto-clean after user confirms ⇒ tested
