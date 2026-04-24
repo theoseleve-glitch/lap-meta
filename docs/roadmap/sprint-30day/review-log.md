@@ -1798,3 +1798,35 @@ Cron-fired 14:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`455a6b4`, 
 - `meta: review loop cycle 41` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T14:25:00Z — Cycle #42
+
+Cron-fired 14:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`455a6b4`, schemas=`5bb57e8`, mobile=`291c7f3`, website=`ce6706d`, datalogger=`b49d989`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 26 idle.
+- **lap-webapp `61d4e8f` T126 TimelineSkeleton loading state**: ACCEPTED + tagged + pushed. **tests 124/124** (+6). Diff: 3 files / 99 ins.
+- **lap-schemas**: 1 idle at `5bb57e8`.
+- **lap-mobile-android**: 18 idle.
+- **lap-website**: 1 idle at `ce6706d`.
+- **datalogger `76d39dc` T017 migrate SessionStateMachine to transitions lib**: ACCEPTED + tagged + pushed. **Substantial refactor**: pyproject.toml +1 (adds `transitions` dependency) + session_state.py +93/-20 + new test file 53 lines. Total 127 ins / 20 del across 3 files.
+  
+  **Refactor verification** (per cycle-27 pattern for datalogger T006): T017's own new test `test_session_state_transitions_backend.py` 4/4 pass. Downstream tests importing `SessionStateMachine` (found via `grep -l 'session_state\|SessionStateMachine' tests/*.py`): test_evaluation_gate + test_release_readiness + test_session_coordinator + test_session_state + test_session_state_transitions_backend = **116/116 pass**. Refactor preserves API contract.
+
+### Step 5-7: no drift beyond datalogger internal refactor (no API change); no deploys; no smoke.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear.
+
+### Baselines cycle 43
+
+- backend=`7b64848` (27 idle), webapp=`61d4e8f`, schemas=`5bb57e8` (2 idle), mobile=`291c7f3` (19 idle), website=`ce6706d` (2 idle), datalogger=`76d39dc`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 42` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
+
+---
