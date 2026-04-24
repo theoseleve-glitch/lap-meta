@@ -140,7 +140,7 @@
 - [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
 - [x] T116 [sonnet] Group by week header ⇒ correct headers (f03f703)
 - [x] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count (6b34ca9)
-- [ ] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct
+- [x] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct (38433aa)
 - [ ] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct
 - [ ] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works
 - [ ] T121 [sonnet] Filter chip: track ⇒ works
