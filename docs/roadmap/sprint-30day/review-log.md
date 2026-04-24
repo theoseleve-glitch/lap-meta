@@ -3397,3 +3397,69 @@ Cron-fired 22:07 UTC. No PAUSE. 4 accepts (1 scheduled + 3 mid-cycle), 0 reverts
 
 ---
 
+## 2026-04-25T22:25:00Z — Cycle #74 — **WEBAPP A11Y + 2 NEW SELF-AWARE BLOCKS**
+
+Cron-fired 22:22 UTC. No PAUSE. 1 accept, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: idle at `9eb760c` (1 cycle).
+- **lap-webapp `9b170fa` sprint(webapp): T159 chart text descriptions** — ACCEPT + tag + push.
+  - Full matrix: typecheck + lint OK, 270 tests (+7 from 263), build OK.
+  - Diff: 113 ins. aria-describedby wired on 4 profile charts:
+    - SkillRadarChart — embedded `<desc>` summarising strongest/weakest
+    - DriverScoreCard — sr-only `<p>` with trend range
+    - ReadinessGauge — sr-only `<p>` with event context
+    - RecentSessionsSparkline — sr-only `<p>` with best/slowest lap
+  - Sprint-webapp also **self-BLOCKED** T157 + T158 this cycle (see below).
+- **Webapp T157 [BLOCKED]**: `E2E: profile page loads, navigate to skill drilldown ⇒ green [BLOCKED: waiting on lap-backend — driver profile endpoint (unblocks useDriverProfile T138). Profile page currently renders only PageIntro placeholder; without the data hook the SkillRadarChart isn't wired in and there's no skill dimension link to click. Target drilldown page T167 is also unbuilt and blocked on the same backend dependency.]`
+- **Webapp T158 [BLOCKED]**: `LCP <2s on profile ⇒ Lighthouse passes [BLOCKED: waiting on lap-backend — useDriverProfile T138 data hook (driver profile endpoint). Profile page renders only PageIntro placeholder today; measuring LCP against near-empty content is not representative. Lighthouse CI integration itself belongs to T231 in Block K.]`
+- **Self-aware behavior escalation** — webapp T157/T158 blocks are the **5th and 6th self-aware sprint events** documented in this sprint across 4 loops (desktop, website, webapp-no-op, webapp-block). Depth of reasoning climbed — T158 identifies both the data gap AND the infra-scope misplacement (T231 vs T158).
+- **lap-schemas**: idle 15 cycles.
+- **lap-mobile-android**: idle at `e9f505e` (1 cycle).
+- **lap-website**: idle at `64ab068` (1 cycle).
+- **datalogger**: idle at `be38dbe` (1 cycle). **Merge-marker WIP pollution in finalizer.py persists** (2nd cycle flagged).
+
+### Step 4 guardrails
+
+- Diff-size: 113 LOC (webapp T159).
+- Forbidden patterns: clean.
+- Secrets: clean.
+
+### Step 5 — Cross-repo coherence
+
+- **Backend dependency pressure rising**: 3 downstream waiters on backend endpoints — desktop T035 (ingestion), webapp T157 + T158 (driver profile). When sprint-backend's upcoming router phase lands (post-T064 ORM chain), these unblock simultaneously. The coming router surface will be the first real cross-repo contract test opportunity.
+- No schema drift; no app/routers/ changes yet.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped (no configs).
+
+### Step 8 — Metrics
+- Rewritten.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 75
+
+- backend=`9eb760c` (2 idle), webapp=`9b170fa`, schemas=`0dda9cb` (15 idle), mobile=`e9f505e` (2 idle), website=`64ab068` (2 idle), datalogger=`be38dbe` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **6 self-aware sprint behavior events across 4 loops** — sprint loops are demonstrably reading their own context (dep graph, cross-task refs, scope placement) before committing. Sprint design is paying off.
+- **Backend is the choke point**: 3 concurrent blocks waiting on backend routers. Sprint-backend's pace through T065-T080 will determine c75-c80 throughput across 2 other sprint loops.
+- 276 cumulative accepts / 3 reverts / 1.07% revert rate / 74 cycles.
+
+### Runbook process note
+
+- **Dep-convergence signal**: when multiple blocks cite the same upstream (backend driver profile endpoint ← T157 + T158, backend ingestion ← T035), that's a prioritization signal for sprint-backend. The review loop doesn't act on it, but exposing it in metrics + review-log lets the user see what to un-gate.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 74 — 1 accept + 2 new blocks, webapp a11y + self-aware escalation` + metrics + review-log. Push to lap-meta master.
+
+---
+
