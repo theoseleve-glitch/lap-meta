@@ -74,7 +74,7 @@
 - [x] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested — 03d180f (mobile; 5 cases lock recoverable vs terminal vs pre-capture states)
 - [x] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview — 8fc1087 (mobile; 3 @Preview fixtures — single, multiple, empty) [PENDING: visual-check-on-device]
 - [x] T059 [sonnet] Recovery → Finalize-from-journal path ⇒ works for test fixture — e9bd309 (mobile; BundleFinalizer interface + 5 orchestration cases)
-- [ ] T060 [sonnet] Journal retention: rows >7 days auto-clean after user confirms ⇒ tested
+- [x] T060 [sonnet] Journal retention: rows >7 days auto-clean after user confirms ⇒ tested — 88d4f37 (mobile; JournalRetention use case + 6 cases — strict-`<` boundary + confirmation gate)
 
 ## Block D — Location + motion capture (T061–T085)
 

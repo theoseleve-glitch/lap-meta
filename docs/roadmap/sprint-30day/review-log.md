@@ -3164,3 +3164,78 @@ Cron-fired 21:22 UTC. No PAUSE. 0 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 70 — IDLE (2nd all-idle)` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T21:40:00Z — Cycle #71 — **5TH ORM + MOBILE RETENTION + WEBSITE BLOCK E BEGINS**
+
+Cron-fired 21:37 UTC. No PAUSE. 3 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `9882ce2` sprint(backend): T062 TelemetryArtifact ORM + migration** — ACCEPT + tag + push.
+  - Full matrix green: ruff clean, mypy 7 files, pytest 33/33 (+3).
+  - Diff: 3 files / 180 ins / 1 del (orm.py +23 TelemetryArtifact + migration d75cea9a5fe1 44 + tests 114 — largest backend test file yet).
+  - **5th ORM model**. FK to Session. Aggregate shape: User → DriverProfile → Session → {SessionRecord, TelemetryArtifact} — first branching entity.
+- **lap-webapp**: no new commits. Idle 3 cycles.
+- **lap-schemas**: idle 12 cycles.
+- **lap-mobile-android `88d4f37` sprint(mobile): T060 JournalRetention 7-day cleanup gated by user confirm** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree.
+  - Diff: 201 ins (JournalDao +3 stale-query + JournalRetention.kt 38 + FakeJournalDao +6 + FixedClock new 18 + JournalRetentionTest 129 + JournalReconcilerTest -7 cleanup).
+  - User-confirm gate prevents silent deletion. Clock-injected pure logic testable with FixedClock.
+  - **7 consecutive clean mobile accepts** (c63/64/65/67/68/69/71).
+- **lap-website `a05663c` sprint(marketing): T072 /demo shell — renders** — ACCEPT + tag + push.
+  - Full matrix: typecheck + lint OK, 239 tests (+5 from 234), **7-page build** (+1 new page).
+  - Diff: 90 ins. New /demo route. 5 new demo.test.ts: main landmark, H1 exact-locked "See LAP in action.", 3 more.
+  - **Block E begins** (demo + product tour, T071-T090). T072 ships the shell as anchor for T073-T090 follow-on tasks.
+- **lap-website T071 skipped with design-gate reasoning**: T071 line in sprint-marketing.md is `[design] Figma: demo page with interactive or video walkthrough ⇒ approved` — a non-code design task. Sprint loop correctly recognized it as not-AI-executable and jumped to T072. **4th self-aware sprint behavior**:
+  1. desktop T035 BLOCKED (backend ingestion)
+  2. website T067 BLOCKED (Cloudflare + edge function)
+  3. webapp T155 no-op (T145 already covers)
+  4. website T071 design-gate skip (not code)
+- **datalogger**: no new commits. Idle 1 cycle.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = mobile T060 at 201).
+- Forbidden patterns: clean.
+- Secrets: clean across 3 commits.
+- File-path guardrails: no workflow .yml changes.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas idle → no drift.
+- Endpoint drift: backend T062 is ORM + migration. No `app/routers/` yet.
+- Contract test: no shared API surface yet. Skipped.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped (no configs).
+
+### Step 8 — Metrics
+- See `metrics.md`.
+
+### Step 10 / 11 — Email / alerts
+- Deferred / clear.
+
+### Baselines cycle 72
+
+- backend=`9882ce2`, webapp=`78eb856` (4 idle), schemas=`0dda9cb` (12 idle), mobile=`88d4f37`, website=`a05663c`, datalogger=`ea4b34a` (2 idle).
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **5 ORM models + 2-branch aggregate**. First fanout in the schema (Session has two child entities). Backend data layer is ADR-005-shaped.
+- **Mobile retention layer** rounds out the recovery story: detect (c64-c67) → modal (c68) → use case (c69) → scheduled cleanup (c71). Full session lifecycle now persisted + recoverable + pruned.
+- **Website Block E begins** (demo pages). Biggest visual-surface change since the initial Block A-D homepage cascade.
+- **4th self-aware sprint behavior** across different sprint loops — the pattern is contagious, good.
+- 266 cumulative accepts / 3 reverts / 1.11% revert rate / 71 cycles.
+
+### Runbook process note
+
+- **Design-gate tasks** (e.g., `[design] Figma:...`) belong to human review, not AI sprint loops. The sprint file syntax uses plain `[ ]` for them; the sprint loop's skip is implicit (it can't commit Figma approvals). When the user reviews and approves, they'll flip to `[x]` manually. The review loop sees neither the skip nor the approval as a sprint-commit, so they don't enter the review queue. Correct by construction.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 71 — 3 accepts, 5th ORM + mobile retention + Block E begins` + metrics + review-log. Push to lap-meta master.
+
+---

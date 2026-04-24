@@ -89,7 +89,7 @@
 - [x] T059 [opus] ORM model `DriverProfile` (id, user_id, display_name, skill_level, cohort_opt_in) ⇒ migration applied — sha: 31fb7b4
 - [x] T060 [opus] ORM model `Session` (id, driver_id, manifest jsonb, created_at, status) ⇒ migration applied — sha: 3de44d4
 - [x] T061 [opus] ORM model `SessionRecord` (id, session_id, processed payload jsonb) ⇒ migration applied — sha: 9a6a35b
-- [ ] T062 [opus] ORM model `TelemetryArtifact` (id, session_id, s3_key, sha256, size_bytes) ⇒ migration applied
+- [x] T062 [opus] ORM model `TelemetryArtifact` (id, session_id, s3_key, sha256, size_bytes) ⇒ migration applied — sha: 9882ce2
 - [ ] T063 [opus] ORM model `Lap` (id, session_id, lap_number, time_ms, sector_times, valid) ⇒ migration applied
 - [ ] T064 [opus] ORM model `WeaknessEpisode` matching Pydantic shape ⇒ migration applied
 - [ ] T065 [opus] ORM model `ActionPrescription` matching Pydantic shape ⇒ migration applied
