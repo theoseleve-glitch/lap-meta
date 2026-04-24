@@ -2768,3 +2768,81 @@ Cron-fired 19:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 64 — 5 accepts, backend API infra pair` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T20:10:00Z — Cycle #65 — **FIRST BACKEND ORM MODEL + MOBILE RECONCILER PAIR**
+
+Cron-fired 20:07 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend `76d6046` sprint(backend): T058 User ORM model + migration** — ACCEPT + tag + push.
+  - Full matrix green: uv sync OK, ruff clean, mypy 7 files, pytest 24/24 (+2).
+  - Diff: 5 files / 147 ins / 3 del (infra/orm.py 27 + alembic versions/a486bfbde9e9 44 + tests/test_user_model.py 69 + alembic/env.py +3 + pyproject +1).
+  - First ORM entity in the async stack. ADR-005 shape: id UUIDv7, clerk_user_id, email, created_at, subscription_status, is_admin. T059-T065 (DriverProfile, Session, etc.) now unblocked.
+- **lap-webapp `cc32108` sprint(webapp): T152 ProfileSkeleton per-section placeholder** — ACCEPT + tag + push.
+  - Mid-cycle commit: initial sync showed baseline=3a094ab; during verification window webapp sprint loop pushed cc32108 (T152). Re-fetched and verified.
+  - Full matrix green: typecheck OK, lint clean, 244 tests (+5), build OK.
+  - Diff: 94 ins. ProfileSkeleton component + 5 unit tests + 1 Storybook variant. Layout grid matches ProfileLayout so skeleton↔content swap doesn't shift.
+- **lap-schemas**: no new commits. Idle 5 cycles since `0dda9cb`. Python parity 35/35 stable.
+- **lap-mobile-android `29fc1ee` sprint(mobile): T056 OrphanTempFileReconciler (file on disk, no DB row)** — ACCEPT + tag + push.
+  - Full gradle matrix green on stashed tree: detekt clean, ktlintCheck clean, assembleDebug + testDebugUnitTest BUILD SUCCESSFUL.
+  - Diff: 147 ins. One-way disk→DB reconciler partnering with T055 JournalReconciler. Filesystem abstracted behind TempFileInventory so unit tests drive 4 cases without disk.
+  - WIP pollution: only `.claude/` untracked. Stashed + popped cleanly.
+  - **3 consecutive clean mobile accepts** (c63 T054 rework + c64 T055 + c65 T056) — all proactively use named constants without review-loop revert. Detekt gap closed.
+- **lap-website `f4808c3` sprint(marketing): T066 /pricing contact-sales mailto link**: ACCEPT + tag + push. 232 tests (+1). Diff: 18 ins. Pragmatic over-Calendly: zero external dep, works everywhere, subject-line pre-fill for single-thread triage.
+- **datalogger `f0f2855` sprint(desktop): T036 integration test — CSV fallback bundle**: ACCEPT + tag + push.
+  - Applied c64 workaround: `uv pip install pydantic pyyaml uuid6` pre-installed. Test file 31/31 passed. Full suite: 1470 passed (+2), 19 pre-existing failures (stable).
+  - Diff: 1 file / 93 ins (new test-only — extends existing test_finalizer_accepts_manifest.py).
+  - **Sprint-desktop self-gated T035**: marked `[BLOCKED: backend ingestion endpoint not live — cannot validate manifest server-side]` and jumped to T036. Cross-repo-aware sprint-loop ordering — no review-loop intervention required.
+
+### Step 4 guardrails
+
+- Diff-size: all under 1500 LOC (largest = backend T058 at 147).
+- Forbidden patterns: clean.
+- Secrets: clean across all 5 commits (grep -cE returned 0 for every secret pattern).
+- File-path guardrails: no workflow .yml changes.
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: lap-schemas idle → no drift.
+- **Endpoint drift**: backend T058 is ORM + migration (no `app/routers/` yet). No webapp contract impact.
+- **Contract test**: backend T058 DB model, webapp T152 UI skeleton component — no shared surface. Skipped.
+
+### Step 6 — Deploy
+- All skipped. No deploy configs in any repo.
+
+### Step 7 — Post-deploy smoke
+- N/A.
+
+### Step 8 — Metrics
+- See `metrics.md` (rewritten).
+
+### Step 10 — Daily email
+- Eligible; deferred per ongoing Step 10 skip.
+
+### Step 11 — Alerts
+- Clear. No scope-blowup, no secret-leak, no schema-drift, no smoke failure.
+
+### Baselines cycle 66
+
+- backend=`76d6046`, webapp=`cc32108`, schemas=`0dda9cb` (6 idle), mobile=`29fc1ee`, website=`f4808c3`, datalogger=`f0f2855`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **First backend ORM model landed** (T058 User). Complete async scaffold now: engine (c63) + migrations (c64) + first model (c65). T059-T065 data models unblocked.
+- **Mobile detekt gap OFFICIALLY CLOSED**: 3 consecutive clean accepts (c63+c64+c65) — dropped from current-issues watchlist.
+- **Sprint-desktop cross-repo-aware gating**: T035 BLOCKED + jump to T036 is ideal sprint-loop behavior (no review-loop intervention required to reorder).
+- 249 cumulative accepts / 3 reverts / 1.19% revert rate / 65 cycles.
+
+### Runbook process note
+
+- **Mid-cycle commits**: webapp T152 landed between initial sync (HEAD=3a094ab T151 at 20:07) and verification window (22:07-22:09). Re-fetch + verify-at-new-HEAD caught it. If mid-cycle commit rate rises, consider re-fetching after each per-repo verify before moving to next — currently ok at 1 event.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 65 — 5 accepts, first backend ORM + detekt gap closed` + metrics + review-log. Push to lap-meta master.
+
+---

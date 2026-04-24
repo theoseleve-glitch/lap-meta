@@ -85,7 +85,7 @@
 
 - [x] T056 [opus] SQLAlchemy 2.0 setup: `infra/db.py` with async engine + session factory ⇒ connection works — sha: a82c4f0
 - [x] T057 [sonnet] Alembic init: `alembic.ini` + `alembic/env.py` configured for async ⇒ `alembic upgrade head` works on empty DB — sha: 10b3e92
-- [ ] T058 [opus] ORM model `User` (id UUIDv7, clerk_user_id, email, created_at, subscription_status, is_admin) ⇒ migration applied
+- [x] T058 [opus] ORM model `User` (id UUIDv7, clerk_user_id, email, created_at, subscription_status, is_admin) ⇒ migration applied — sha: 76d6046
 - [ ] T059 [opus] ORM model `DriverProfile` (id, user_id, display_name, skill_level, cohort_opt_in) ⇒ migration applied
 - [ ] T060 [opus] ORM model `Session` (id, driver_id, manifest jsonb, created_at, status) ⇒ migration applied
 - [ ] T061 [opus] ORM model `SessionRecord` (id, session_id, processed payload jsonb) ⇒ migration applied

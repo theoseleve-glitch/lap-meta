@@ -45,8 +45,8 @@
 - [x] T032 [sonnet] `SessionFinalizer` step 8: write `SensorConfigSnapshot` with adapter info ⇒ populated (b248656)
 - [x] T033 [sonnet] `SessionFinalizer` step 9: write `DataQuality` score with all sub-metrics ⇒ populated (22de27d)
 - [x] T034 [sonnet] `SessionFinalizer` step 10: timestamps include both t_source_ns + t_canonical_ns per ADR-007 ⇒ tested (3fdc300)
-- [ ] T035 [sonnet] Integration test: finalize an archived Sebring session → manifest validates server-side ⇒ green
-- [ ] T036 [sonnet] Integration test: finalize with CSV fallback (no pyarrow) ⇒ works
+- [BLOCKED: backend ingestion endpoint not live — cannot validate manifest server-side] T035 [sonnet] Integration test: finalize an archived Sebring session → manifest validates server-side ⇒ green
+- [x] T036 [sonnet] Integration test: finalize with CSV fallback (no pyarrow) ⇒ works (f0f2855)
 - [ ] T037 [sonnet] Integration test: interrupted finalize doesn't corrupt prior bundles ⇒ green
 - [ ] T038 [sonnet] Backward compat shim: read old v1 bundles, re-serialize as v2 on demand ⇒ reprocess path works
 - [ ] T039 [sonnet] Update `bundle_schema.py` to emit v2-only ⇒ v1 writer removed
