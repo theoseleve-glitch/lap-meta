@@ -935,3 +935,31 @@ Cron-fired 03:37 UTC. Baselines: backend=`7b64848`, webapp=`b901f68`, schemas=`f
 - `meta: review loop cycle 20` + review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T04:20:00Z — Cycle #21
+
+Cron-fired 04:07 UTC. Baselines: backend=`7b64848`, webapp=`15a8c8a`, schemas=`9bffb16`, mobile=`ff7732f`, website=`af60964`, datalogger=`eb97496`. **Disk 89%** (up 2%, 95% pause threshold still comfortable). Daily email: skip.
+
+### Per-repo
+- **lap-backend**: 5th idle cycle (T021-T045 in schemas repo — natural).
+- **lap-webapp**: idle this cycle at `15a8c8a`.
+- **lap-schemas `17d7580` T025 SensorConfigSnapshot model**: ACCEPTED + tagged. pytest **12** (+3 from T024's 9). Diff: 2 files / 48 ins. Frozen + extra=forbid Pydantic models.
+- **lap-mobile-android `2054fd3` T024 Routes sealed class**: ACCEPTED + tagged. Full matrix green. Diff: 3 files / 77 ins / 4 del.
+- **lap-website `8d34fee` T029 "After every session" section**: ACCEPTED + tagged. Full matrix green. Diff: 4 files / 131 ins.
+- **datalogger**: 17th quiet cycle.
+
+### Steps 5-7, 10-11: no drift, all skipped, no alerts.
+
+### Baselines cycle 22
+- backend=`7b64848` (5 idle), webapp=`15a8c8a` (1 idle), schemas=`17d7580`, mobile=`2054fd3`, website=`8d34fee`, datalogger=`eb97496` (17 quiet).
+
+### Pause triggers
+- Disk: 89% / threshold 95% — within headroom (3 cycles watched trend: 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, **89**). Will monitor closely.
+- All other triggers clear.
+
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 21` + review-log + metrics + sprint-file bookkeeping.
+
+---

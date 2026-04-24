@@ -10,7 +10,7 @@
 
 - [x] T001 [opus] Audit `live_telemetry_processor.py` imports, list every missing module reference ⇒ doc comment (4cd3623)
 - [x] T002 [opus] Define `LiveProcessor` ABC in `core/live_processor.py` with slots (on_sample, on_lap_end, on_session_end) ⇒ ABC importable (eb97496)
-- [ ] T003 [opus] Rebuild `CoachingLiveProcessor` using existing `live_detectors.py` primitives ⇒ no external missing imports
+- [x] T003 [opus] Rebuild `CoachingLiveProcessor` using existing `live_detectors.py` primitives ⇒ no external missing imports (f3c1cc7)
 - [ ] T004 [opus] Rebuild `DashboardLiveProcessor` exposing normalized snapshots ⇒ consumable by VM
 - [ ] T005 [opus] Rebuild `InputDiagnosticsProcessor` for input telemetry surfacing ⇒ compiles
 - [ ] T006 [sonnet] Update `live_telemetry_processor.py` to compose the three Processors via the ABC ⇒ no missing imports
