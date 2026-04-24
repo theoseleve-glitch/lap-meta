@@ -164,7 +164,7 @@
 - [ ] T136 [design] Figma mockup: Driver Profile layout, skill radar, open weaknesses ⇒ approved
 - [x] T137 [opus] Route `src/app/(app)/profile/page.tsx` with shell ⇒ renders (ed63d1c)
 - [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached
-- [ ] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook
+- [x] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook (cb5285e)
 - [ ] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook
 - [ ] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook
 - [ ] T142 [opus] `ActivePrescriptionsList` component: open prescriptions ⇒ Storybook
