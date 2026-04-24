@@ -34,7 +34,7 @@
 
 - [ ] T021 [design] Figma: new homepage hero + 4-5 scroll sections ⇒ approved [BLOCKED: Figma design work is external to the loop environment. Unblock: user opens Figma (or Figma Make per 11-AI-PLAYBOOK.md), produces hero + 4-5 scroll section layouts, marks as approved. T022's component is already built with doctrine-aligned defaults; visual refinement lands in T027 once Figma lands.]
 - [x] T022 [opus] Hero component: positioning headline + subhead + dual CTA ⇒ Astro component (lap-website@9a0983b; src/components/Hero.astro with typed headline/subhead/primaryCta/secondaryCta props, 7 TDD cases; not yet wired to index — T023-T026 lock copy/hrefs)
-- [ ] T023 [opus] Headline options (A/B): "The Driver OS — Train. Race. Improve." / "Every lap, one step better." ⇒ default chosen
+- [x] T023 [opus] Headline options (A/B): "The Driver OS — Train. Race. Improve." / "Every lap, one step better." ⇒ default chosen (lap-website@de66a0a; Option B — "Every lap, one step better." picked; "Driver OS" category lands in T024 subhead instead. Regression test locks the exact string and forbids Option A)
 - [ ] T024 [opus] Subhead: one-sentence ecosystem pitch ⇒ copy locked
 - [ ] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired
 - [ ] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired
