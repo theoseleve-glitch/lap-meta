@@ -138,7 +138,7 @@
 - [ ] T113 [opus] Timeline data hook `useTimeline(cursor)` ⇒ paginates
 - [x] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook (470ecde)
 - [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
-- [ ] T116 [sonnet] Group by week header ⇒ correct headers
+- [x] T116 [sonnet] Group by week header ⇒ correct headers (f03f703)
 - [ ] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count
 - [ ] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct
 - [ ] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct
