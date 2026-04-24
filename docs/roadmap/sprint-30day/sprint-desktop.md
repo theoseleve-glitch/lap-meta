@@ -15,7 +15,7 @@
 - [x] T005 [opus] Rebuild `InputDiagnosticsProcessor` for input telemetry surfacing ⇒ compiles (6690165)
 - [x] T006 [sonnet] Update `live_telemetry_processor.py` to compose the three Processors via the ABC ⇒ no missing imports (64893ec)
 - [x] T007 [sonnet] Feature flag `LIVE_COACHING_ENABLED` to disable live coaching if needed ⇒ env-driven (c36b134)
-- [ ] T008 [sonnet] Smoke test: run main with sim-disconnected → app boots without crash ⇒ green
+- [x] T008 [sonnet] Smoke test: run main with sim-disconnected → app boots without crash ⇒ green (b6754ee)
 - [ ] T009 [sonnet] Smoke test: run main with iRacing mock → live processor runs ⇒ green
 - [ ] T010 [sonnet] Fix `tests/test_qml_bootstrap.py` TypeError (property collision) ⇒ collection green
 - [ ] T011 [sonnet] Add regression test: import all VM classes via bootstrap ⇒ green

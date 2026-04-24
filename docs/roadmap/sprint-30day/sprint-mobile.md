@@ -41,7 +41,7 @@
 - [x] T027 [sonnet] Reference `SessionManifest` Kotlin type (generated or hand-typed stub until codegen ready) ⇒ imports — 124b8c4 (schemas)
 - [x] T028 [sonnet] `TelemetrySample` Kotlin data class ⇒ compiles — e3277f1 (schemas)
 - [x] T029 [sonnet] `SourceTag` enum ⇒ compiles — 2b17115 (schemas)
-- [ ] T030 [sonnet] `EnvironmentTag` enum ⇒ compiles
+- [x] T030 [sonnet] `EnvironmentTag` enum ⇒ compiles — 3ffbbc9 (schemas)
 - [ ] T031 [sonnet] `DataQuality` data class ⇒ compiles
 - [ ] T032 [sonnet] `SensorConfigSnapshot` data class ⇒ compiles
 - [ ] T033 [sonnet] `LapRecord` data class ⇒ compiles

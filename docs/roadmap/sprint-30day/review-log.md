@@ -1321,3 +1321,41 @@ Cron-fired 10:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`dc2fc0a`, 
 - `meta: review loop cycle 28` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T11:10:00Z — Cycle #29
+
+Cron-fired 11:07 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`75f5e3b`, schemas=`2b17115`, mobile=`291c7f3`, website=`6f733b1`, datalogger=`c36b134`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 13 idle.
+- **lap-webapp**: 1 idle at `75f5e3b`.
+- **lap-schemas** two commits:
+  - `37dba87 sprint(backend): T031 SkillDimension model`: ACCEPTED + tagged + pushed. pytest 30 (+3). Diff: 2 files / 59 ins (skill_dimension.py 17 + test 42).
+  - `3ffbbc9 sprint(mobile): T030 EnvironmentTag enum + rewire SessionManifest` — Kotlin refactor. ACCEPTED + tagged + pushed. `./gradlew :schemas:test :schemas:build --rerun-tasks` → BUILD SUCCESSFUL with 4 executed (not UP-TO-DATE — cache bypassed). Diff: 4 files / 71 ins / 5 del (EnvironmentTagTest.kt 40 + SourceTagTest.kt 2+ + SessionManifestTest.kt rewire -5/+2 + kotlin source adds).
+- **lap-mobile-android**: 5 idle.
+- **lap-website**: 1 idle at `6f733b1`. Sprint-marketing loop added a [x] without a code commit (+1 from 29→30) — likely a decision/copy/review task that needs no code. Not in review scope.
+- **datalogger `b6754ee` T008 smoke test — sim-disconnected boot**: ACCEPTED + tagged + pushed. Pure-add commit (new test file only, 0 modifications). **4/4 pass** in the new `tests/test_boot_sim_disconnected.py`. Diff: 1 file / 64 ins. First user-journey test after 5 processor builds.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas Python + Kotlin both grew again (third consecutive lockstep cycle). `:schemas:build` + `:schemas:test` (forced rerun) = green → mobile classpath consistent.
+- Backend idle → no endpoint drift.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 30
+
+- backend=`7b64848` (14 idle), webapp=`75f5e3b` (2 idle), schemas=`3ffbbc9`, mobile=`291c7f3` (6 idle), website=`6f733b1` (2 idle), datalogger=`b6754ee`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 29` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
