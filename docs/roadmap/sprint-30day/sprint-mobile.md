@@ -25,7 +25,7 @@
 - [x] T014 [sonnet] ProGuard/R8 rules file with defaults + Hilt+Room+Retrofit keep rules ⇒ release build works — 8577f35
 - [x] T015 [sonnet] Signing configs: debug default, release placeholder reading from `keystore.properties` ⇒ compiles both — 2208d57
 - [x] T016 [sonnet] Flavor setup: `dev`, `staging`, `prod` with different API endpoints ⇒ all three build — d706c03
-- [ ] T017 [sonnet] BuildConfig fields: API_BASE_URL, CLERK_PUBLISHABLE_KEY, SENTRY_DSN, POSTHOG_KEY ⇒ populated per flavor
+- [x] T017 [sonnet] BuildConfig fields: API_BASE_URL, CLERK_PUBLISHABLE_KEY, SENTRY_DSN, POSTHOG_KEY ⇒ populated per flavor — 3529361
 - [ ] T018 [sonnet] Package layout: `capture/`, `ingest/`, `coaching/`, `ui/`, `data/`, `di/`, `core/` ⇒ packages exist with `.gitkeep`
 - [ ] T019 [sonnet] Logging: Timber integrated, tree config per build type ⇒ logs appear
 - [ ] T020 [sonnet] Coroutines: default dispatchers provider for testing (`DispatcherProvider`) ⇒ injectable

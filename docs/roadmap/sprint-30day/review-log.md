@@ -742,3 +742,29 @@ Baselines: backend=`6018966`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`2208d
 - `meta: review loop cycle 13` + review-log + metrics + any sprint-file bookkeeping. Push to lap-meta.
 
 ---
+
+## 2026-04-24T00:50:00Z — Cycle #14
+
+Cron-fired 00:37 UTC. Baselines: backend=`edeb53d`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`d706c03`, website=`6add4af`, datalogger=`eb97496`. Disk 87%. Daily email: skip (hour<8 UTC on new day).
+
+### Per-repo
+- **lap-backend `5d31465` T016 request-id middleware**: ACCEPTED + tagged + pushed. Full matrix green; **pytest 13 passed** (+3 from T015's 10). Diff: 3 files / 61 ins. X-Request-Id middleware with uuid4 fallback + structlog contextvar bind + response-header stamp.
+- **lap-webapp**: 6th consecutive idle cycle.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `3529361` T017 BuildConfig fields per flavor**: ACCEPTED + tagged + pushed. Full matrix green. Diff: 2 files / 14 ins / 4 del. Adds API_BASE_URL + other fields per dev/staging/prod flavor.
+- **lap-website `9a0983b` T022 Hero component** (Block B — Homepage begins): ACCEPTED + tagged + pushed. Full matrix green. Diff: 3 files / 101 ins. T021 (Figma design) BLOCKED external; sprint loop jumped to T022 Hero as code task.
+- **datalogger**: 10th consecutive quiet cycle.
+
+### Step 5 cross-repo: no drift.
+### Steps 6-7: all skipped.
+### Steps 10-11: daily email dedup-skipped; no alerts.
+
+### Baselines cycle 15
+- backend=`5d31465`, webapp=`52e1cce` (6 idle), schemas=`a50d39a`, mobile=`3529361`, website=`9a0983b`, datalogger=`eb97496` (10 quiet)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 14` + review-log + metrics + sprint-file bookkeeping.
+
+---
