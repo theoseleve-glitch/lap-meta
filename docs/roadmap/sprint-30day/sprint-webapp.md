@@ -169,7 +169,7 @@
 - [x] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook (53ff994)
 - [x] T142 [opus] `ActivePrescriptionsList` component: open prescriptions ⇒ Storybook (7a5bb70)
 - [x] T143 [opus] `ReadinessGauge` component: next-event readiness score ⇒ Storybook (77c0267)
-- [ ] T144 [opus] `RecentSessionsSparkline` component: last 20 sessions lap-time trend ⇒ Storybook
+- [x] T144 [opus] `RecentSessionsSparkline` component: last 20 sessions lap-time trend ⇒ Storybook (a4c978c)
 - [ ] T145 [opus] `ArchetypeBadge` component: show when cohort unlocked ⇒ Storybook
 - [ ] T146 [sonnet] Layout: hero (score+trend) + radar + 3 columns (weaknesses, prescriptions, readiness) ⇒ approved
 - [ ] T147 [sonnet] Responsive: stacks on mobile ⇒ tested
