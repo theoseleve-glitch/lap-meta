@@ -2481,3 +2481,59 @@ Cron-fired 18:37 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`5dbd53a`, 
 - `meta: review loop cycle 59` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T18:55:00Z — Cycle #60 — **REVERT EVENT**
+
+Cron-fired 18:52 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`625d2a8`, schemas=`774094e`, mobile=`6d6887e`, website=`ffae773`, datalogger=`9bb1227`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 12 idle.
+- **lap-webapp `2c5ed02` T148 skill-radar click to drilldown**: ACCEPTED + tagged + pushed. **tests 227/227** (+7). Diff: 4 files / 80 ins / 14 del (routes.ts +7 + test +24 + SkillRadarChart wire).
+- **lap-schemas `6b8e80d` sprint(backend): T054 document regen workflow in README**: ACCEPTED + tagged + pushed. pytest 74. Diff: 1 file / 91 ins / 16 del (README.md +75 net). Documents how to regenerate the 3 codegen targets (TS/Kotlin/Swift).
+- **lap-mobile-android `f9ab816` T053 MigrationPolicy — REVERTED** via `ff0fc60`:
+  
+  **systematic-debugging Phase 1**: `./gradlew detekt` failed with `MigrationPolicy.kt:31:30: In most cases using a spread operator causes a full copy of the array to be created before calling a method. [SpreadOperator]` — 1 weighted issue → analysis fails build → only 1 actionable gradle task ran before short-circuit.
+  
+  **Recent changes**: T053 is the first mobile commit to use spread operator (`builder.addMigrations(*migrations.toTypedArray())`). Detekt's `SpreadOperator` rule is part of the default performance rule set; this is a genuine first-hit, not a rule regression.
+  
+  **Decision — REVERT per runbook Step 3 Revert-vs-flag matrix** ("Applicable command fails (test red, compile error, lint error, type error on real code) → REVERT"). Hard NEVER rules reviewed: rule 1 (author = theos ✓ revertable), rule 2 (prefix `sprint(mobile):` not in hotfix/manual/meta/revert protected set ✓ revertable), rule 7 (use `git revert`, no reset/force ✓).
+  
+  **Revert execution**:
+  1. `git revert --no-edit f9ab816` → commit `ff0fc60` created, removes MigrationPolicy.kt + MigrationPolicyTest.kt (111 deletions).
+  2. `./gradlew detekt` at revert HEAD → BUILD SUCCESSFUL (clean).
+  3. `git push origin HEAD` → pushes both `f9ab816` (broken) and `ff0fc60` (revert) to origin `6d6887e..ff0fc60` — honest history.
+  4. `sprint-mobile.md` T053 marker changed from `[x] ... — f9ab816` to `[NEEDS_REWORK] ... — failed review: detekt SpreadOperator rule fired on MigrationPolicy.kt:31:30 ..., reverted in ff0fc60. Next iteration should use @Suppress("SpreadOperator") or iterate migrations in a loop.`
+  5. No attempt to fix: next sprint-mobile iteration will re-pick T053 with adapted approach.
+  
+- **lap-website `b50ef92` T062 /pricing B2B inbound teaser**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 217/217** (+6), build 5 pages. Diff: 4 files / 107 ins (PricingB2bTeaser.astro 41 + mount + tests).
+- **datalogger `dff270c` T031 lock atomic temp→final rename (no partial bundles)**: ACCEPTED + tagged + pushed. 23/23 (+3). Diff: 1 file / 56 ins (test-only). Contract test asserts SessionFinalizer writes to `.tmp` then atomic rename to final path — prevents partial-bundle observability.
+
+### Step 5 — Cross-repo coherence
+
+- Schemas README T054 documents the regen workflow for all codegen targets — developer-facing complement to T052 CI hard-gate + T053 githook soft-warn.
+- Datalogger SessionFinalizer now has 7 steps (cycles 52-60): accept manifest → v2 manifest.json → parquet/CSV fallback → laps.parquet round-trip → events.json contract → sha256 checksums → atomic temp→final rename.
+- Mobile revert temporarily reduces active DAO count to 4 (InsightCache still latest). T053 re-pick next cycle.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: no alerts fired this cycle. Revert event is `NEEDS_REWORK` not `ci-broken` — doesn't meet the 6h threshold. Documented in review-log (this entry).
+
+### Baselines cycle 61
+
+- backend=`772dc3d` (13 idle), webapp=`2c5ed02`, schemas=`6b8e80d`, mobile=`ff0fc60` (post-revert), website=`b50ef92`, datalogger=`dff270c`.
+
+### Pause triggers: disk 86% stable; revert-count 1-this-cycle is well below the >3-per-cycle threshold; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **2nd revert in 60 cycles** (0.86% revert rate — still below the 1% historical low).
+- **Second instance of systematic-debugging skill proving value**: detekt error message carried the exact solution pointer (`SpreadOperator` at specific file:line). No bisect needed — the rule name told me what to look for.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 60 — 4 accepts, 1 REVERT` + metrics + review-log + sprint-mobile.md. Push to lap-meta master.
+
+---

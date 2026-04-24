@@ -78,7 +78,7 @@
 - [x] T051 [sonnet] Kotlin codegen (for Android later): `openapi-generator-cli` config for kotlin ⇒ produces `.kt` — sha: lap-schemas@b25a469
 - [x] T052 [codex] CI rule: job `schema-sync-check` fails if `.d.ts` or `.swift` files are stale vs openapi.json ⇒ green when synced — sha: lap-schemas@7efa477
 - [x] T053 [codex] Git hook: post-commit warns if Pydantic model changed without regen ⇒ warns correctly — sha: lap-schemas@774094e
-- [ ] T054 [sonnet] Docs: `lap-schemas/README.md` explaining regen workflow ⇒ written
+- [x] T054 [sonnet] Docs: `lap-schemas/README.md` explaining regen workflow ⇒ written — sha: lap-schemas@6b8e80d
 - [ ] T055 [sonnet] Version strategy: `lap-schemas` follows calver `YYYY.MM.N`, bump on breaking change ⇒ documented
 
 ## Block D — Database + SQLAlchemy (T056–T080)

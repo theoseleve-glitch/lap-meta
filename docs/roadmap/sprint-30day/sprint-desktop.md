@@ -41,7 +41,7 @@
 - [x] T028 [opus] `SessionFinalizer` step 4: write laps.parquet with LapRecord shape ⇒ round-trip valid (c4cd898)
 - [x] T029 [opus] `SessionFinalizer` step 5: write events.json (sector/lap/flag events) ⇒ valid JSON (07329a9)
 - [x] T030 [opus] `SessionFinalizer` step 6: compute sha256 per file, write manifest checksums ⇒ match on re-read (9bb1227)
-- [ ] T031 [opus] `SessionFinalizer` step 7: atomic temp→final rename retained ⇒ no partial bundles
+- [x] T031 [opus] `SessionFinalizer` step 7: atomic temp→final rename retained ⇒ no partial bundles (dff270c)
 - [ ] T032 [sonnet] `SessionFinalizer` step 8: write `SensorConfigSnapshot` with adapter info ⇒ populated
 - [ ] T033 [sonnet] `SessionFinalizer` step 9: write `DataQuality` score with all sub-metrics ⇒ populated
 - [ ] T034 [sonnet] `SessionFinalizer` step 10: timestamps include both t_source_ns + t_canonical_ns per ADR-007 ⇒ tested

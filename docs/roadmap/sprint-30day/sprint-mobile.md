@@ -67,7 +67,7 @@
 - [x] T050 [sonnet] DAO `JournalDao`: upsertHeartbeat, listStale ⇒ tested — dd36dcf (mobile) / 4916bc0 (schemas; exclude workaround); real DAO round-trip [PENDING: device-required]
 - [x] T051 [sonnet] DAO `UploadQueueDao`: enqueue, dequeueNext, updateAttempt ⇒ tested — 3856589 (mobile; UUIDv7 natural FIFO); real DAO round-trip [PENDING: device-required]
 - [x] T052 [sonnet] DAO `InsightCacheDao`: upsertBatch, listForSession ⇒ tested — 6d6887e (mobile); real DAO round-trip [PENDING: device-required]
-- [ ] T053 [opus] Migration strategy: `fallbackToDestructiveMigration` in dev flavor, strict migrations in prod ⇒ documented
+- [NEEDS_REWORK] T053 [opus] Migration strategy: `fallbackToDestructiveMigration` in dev flavor, strict migrations in prod ⇒ documented — failed review: detekt SpreadOperator rule fired on MigrationPolicy.kt:31:30 `builder.addMigrations(*migrations.toTypedArray())`, reverted in ff0fc60. Next iteration should use @Suppress("SpreadOperator") or iterate migrations in a loop.
 - [ ] T054 [opus] Journal writer service: heartbeat every 5s during recording, writes via DAO ⇒ tested with fake clock
 - [ ] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested
 - [ ] T056 [opus] Reconciliation: find orphan temp files ⇒ tested
