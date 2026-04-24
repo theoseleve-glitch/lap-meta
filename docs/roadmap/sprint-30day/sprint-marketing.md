@@ -92,7 +92,7 @@
 ## Block E — Demo + product tour page (T071–T090)
 
 - [ ] T071 [design] Figma: demo page with interactive or video walkthrough ⇒ approved
-- [ ] T072 [opus] Route `/demo` shell ⇒ renders
+- [x] T072 [opus] Route `/demo` shell ⇒ renders — a05663c
 - [ ] T073 [opus] Choose format: embedded video (YouTube/Vimeo) OR inline screenshots ⇒ default video
 - [ ] T074 [opus] 3-minute product walkthrough video embedded ⇒ lazy-loaded
 - [ ] T075 [opus] Below-video: key screens in static cards ⇒ Storybook each
