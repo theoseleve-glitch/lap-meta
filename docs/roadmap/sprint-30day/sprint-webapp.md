@@ -139,7 +139,7 @@
 - [x] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook (470ecde)
 - [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
 - [x] T116 [sonnet] Group by week header ⇒ correct headers (f03f703)
-- [ ] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count
+- [x] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count (6b34ca9)
 - [ ] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct
 - [ ] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct
 - [ ] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works
