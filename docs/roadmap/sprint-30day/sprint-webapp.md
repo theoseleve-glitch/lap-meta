@@ -108,7 +108,7 @@
 - [ ] T086 [opus] Replace SessionDebrief client heuristic with `GET /sessions/:id/next_actions` fetch ⇒ tested
 - [ ] T087 [opus] Remove `src/lib/debrief/*` heuristic modules ⇒ zero client-side coaching logic
 - [x] T088 [opus] `WeaknessEpisodeCard` component: shows title, severity, confidence, evidence ⇒ Storybook renders (2df91cc)
-- [ ] T089 [opus] `PrescriptionCard` component: title, rationale, drill link, accept/skip buttons ⇒ Storybook
+- [x] T089 [opus] `PrescriptionCard` component: title, rationale, drill link, accept/skip buttons ⇒ Storybook (f1d0e5e)
 - [ ] T090 [opus] `OutcomeBadge` component: shows if prescription met success ⇒ Storybook
 - [ ] T091 [sonnet] SessionCoachingTab lists new WeaknessEpisodes this session ⇒ tested
 - [ ] T092 [sonnet] SessionCoachingTab lists escalated WeaknessEpisodes ⇒ tested
