@@ -165,7 +165,7 @@
 - [x] T137 [opus] Route `src/app/(app)/profile/page.tsx` with shell ⇒ renders (ed63d1c)
 - [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached
 - [x] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook (cb5285e)
-- [ ] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook
+- [x] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook (c2bf3d3)
 - [ ] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook
 - [ ] T142 [opus] `ActivePrescriptionsList` component: open prescriptions ⇒ Storybook
 - [ ] T143 [opus] `ReadinessGauge` component: next-event readiness score ⇒ Storybook
