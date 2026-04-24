@@ -1,42 +1,42 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T10:25Z (Cycle #26)
+## Last updated: 2026-04-24T10:40Z (Cycle #27)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend (total sprint-backend.md) | 25 | 212 | 2 | 1 (T013) | 0 | `7b64848` (**10 idle cycles** — schemas-phase) |
-| lap-webapp | 41 | 199 | 0 | 0 | 0 | `f1d0e5e` (T089 PrescriptionCard) |
-| lap-schemas (T021–T055 subset in sprint-backend) | 8 | — | 0 | 0 | 0 | `124b8c4` (idle 1 cycle) |
-| lap-mobile-android | 27 | 213 | 0 | 0 | 0 | `291c7f3` (idle 2 cycles) |
-| lap-website (sprint-marketing) | 27 | 193 | 0 | 0 | 1 (T017 inline) | `152a1d3` (idle 1 cycle) |
-| datalogger (sprint-desktop) | 5 | 235 | 0 | 0 | 0 | `6690165` (idle 1 cycle) |
+| lap-backend (total sprint-backend.md) | 26 | 211 | 2 | 1 (T013) | 0 | `7b64848` (**11 idle cycles**) |
+| lap-webapp | 42 | 198 | 0 | 0 | 0 | `dc2fc0a` (T090 OutcomeBadge) |
+| lap-schemas (T021–T055 subset) | 9 | — | 0 | 0 | 0 | `e3277f1` (T029 SessionRecord + T028 Kotlin stub; pytest 24) |
+| lap-mobile-android | 28 | 212 | 0 | 0 | 0 | `291c7f3` (idle 3 cycles) |
+| lap-website (sprint-marketing) | 28 | 192 | 0 | 0 | 1 (T017 inline) | `a35e7e0` (T033 not-for-you-if anti-persona) |
+| datalogger (sprint-desktop) | 6 | 234 | 0 | 0 | 0 | `64893ec` (T006 LiveTelemetryProcessor composition) |
 
-## This cycle (Cycle #26)
+## This cycle (Cycle #27)
 
-- Verified GREEN: 1 (webapp T089)
+- Verified GREEN: 5 (webapp T090, schemas T029 + T028-kt stub, website T033, datalogger T006)
 - Reverted: 0 | SCOPE_FLAG: 0 new
-- 5 of 6 repos idle at cycle-25-end baselines
 
-## Cumulative (26 cycles)
+## Cumulative (27 cycles)
 
-- Total reviewed: 102 · Accepted+tagged: 100 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 107 · Accepted+tagged: 105 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 26 notables
+## Cycle 27 notables
 
-- Webapp **T089 PrescriptionCard** (65 lines + 74-line test). test count climbed to 5 files / 32 tests (+10 from T088's 22). Coaching-domain component pair T088 (WeaknessEpisodeCard) + T089 (PrescriptionCard) now both live — shaping the "After every session" tiles the website section references.
-- Backend 10 idle cycles: entering double-digits. Natural per ADR — backend T021-T045 run in lap-schemas, and T018/T019 are BLOCKED on docker.
-- Disk usage: **86%** stable.
-- First 100-commit milestone on reviewed+tagged (100 accepts, 1 revert, 1 INFRA_FLAG, 1 SCOPE_FLAG over 26 cycles).
+- **Datalogger T006 is first REFACTOR commit** (net -24 lines: 153 ins / 177 del in live_telemetry_processor.py). Unlike T003/T004/T005 which only added new files, T006 modifies existing code. Regression-tested by running `test_signal_plumbing.py` (existing downstream consumer of live_telemetry_processor) → 32/32 pass. T006's own 5 composition tests pass. No regressions.
+- **Coaching tile component set complete**: webapp T088 (WeaknessEpisodeCard) + T089 (PrescriptionCard) + T090 (OutcomeBadge) — all 3 tiles of the "After every session" section now have typed React components. 5 test files / 40 tests pass (+8 from T089's 32).
+- **Schemas Python ↔ Kotlin lockstep continues**: T029 SessionRecord (Python, 24 pytest) + T028 TelemetrySample Kotlin stub both land. Mobile `:schemas:build` BUILD SUCCESSFUL.
+- Website T033 anti-persona "not for you if" disclosure — 98 tests (+8 from T032's 90). Persona filtering doctrine landed.
+- Disk usage: **86%** stable for 4 cycles.
 
 ## Current issues
 
-- Datalogger 19 pre-existing failures (tech-debt; bisect-verified cycle 24).
+- Datalogger 19 pre-existing test failures (tech-debt; see cycle 24 bisect).
 - Backend T013 NEEDS_REWORK persistent.
-- Backend T018/T019 Dockerfile + docker-compose BLOCKED (docker not installed).
+- Backend T018/T019 Dockerfile + docker-compose BLOCKED.
 - Website T017 SCOPE_FLAG (cycle 11 Lighthouse CI).
-- Step 10 daily-email deferred: `ops/.last_daily_sent`=2026-04-23.
+- Step 10 daily-email: deferred, out of user-prompt scope.
 
-## Cron: next 10:30 UTC.
+## Cron: next 10:45 UTC.

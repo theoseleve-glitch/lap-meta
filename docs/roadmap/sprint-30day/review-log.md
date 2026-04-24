@@ -1237,3 +1237,45 @@ Cron-fired 10:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`2df91cc`, 
 - Cumulative reviewed+accepted crosses **100 commits** this cycle (99 → 100) over 26 cycles. Revert rate = 1/101 (≈1%). Flag rate = 2/101 (1 INFRA cycle-4, 1 SCOPE cycle-11-T017). Pause triggers fired = 0.
 
 ---
+
+## 2026-04-24T10:40:00Z — Cycle #27
+
+Cron-fired 10:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`f1d0e5e`, schemas=`124b8c4`, mobile=`291c7f3`, website=`152a1d3`, datalogger=`6690165`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 11th idle cycle.
+- **lap-webapp `dc2fc0a` T090 OutcomeBadge component**: ACCEPTED + tagged + pushed. typecheck clean, lint clean, **test 40/40 pass** (+8 from T089's 32), build static. Diff: 3 files / 113 ins (OutcomeBadge.tsx 34 lines + test 45 lines + homepage wire). Completes the coaching-tile trio T088+T089+T090.
+- **lap-schemas** TWO commits:
+  - `4d0cb40 sprint(backend): T029 SessionRecord model`: ACCEPTED + tagged + pushed. Python pytest 24 (+3 from T028's 21). Diff: 2 files / 119 ins (session_record.py 24 lines + test 95 lines).
+  - `e3277f1 sprint(mobile): T028 TelemetrySample Kotlin stub`: ACCEPTED + tagged + pushed (both commits pushed in single `git push origin HEAD` — second tag applies to `Everything up-to-date` since already on origin). Gradle `:schemas:build` from mobile dir BUILD SUCCESSFUL. Diff: 2 files / 61 ins (TelemetrySample.kt 25 lines + test 36 lines).
+- **lap-mobile-android**: 3rd idle cycle at `291c7f3`. Build re-exercised for cross-repo coherence against schemas kotlin growth.
+- **lap-website `a35e7e0` T033 not-for-you-if anti-persona disclosure**: ACCEPTED + tagged + pushed. typecheck 0/0/0, lint + Prettier clean, **tests 98 pass** (+8 from T032's 90), build 3 pages. Diff: 4 files / 152 ins (NotForYouIf.astro 62 lines + test + homepage mount + lockfile).
+- **datalogger `64893ec` T006 compose LiveTelemetryProcessor via LiveProcessor ABC** — **first refactor commit in datalogger** (net -24 lines: 153 ins / 177 del). ACCEPTED + tagged + pushed. 
+  - T006 own 5 composition tests: pass.
+  - Regression check on `test_signal_plumbing.py` (existing downstream consumer): **32/32 pass** → no regression from refactor.
+  - Scope: live_telemetry_processor.py deletions are correct (the old monolithic impl is being replaced by ABC-based composition from T002-T005 processors).
+
+### Step 5 — Cross-repo coherence
+
+- **Schema drift**: Python grew (`4d0cb40` SessionRecord) + Kotlin grew (`e3277f1` TelemetrySample stub). `:schemas:build` green → classpath binding healthy. Generated-code drift check not applicable (codegen pipeline not built yet, per ADR-017).
+- **Endpoint drift**: backend idle → skip.
+- **Informal contract**: Gradle `:schemas:build` BUILD SUCCESSFUL from mobile-android dir.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 28
+
+- backend=`7b64848` (12 idle), webapp=`dc2fc0a`, schemas=`e3277f1`, mobile=`291c7f3` (4 idle), website=`a35e7e0`, datalogger=`64893ec`.
+
+### Pause triggers: disk 86% stable, all clear.
+### Forced checkpoints: none hit.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 27` + metrics + review-log + 3 pending sprint-file bookkeeping mods (backend/desktop/mobile). Push to lap-meta master.
+
+---
