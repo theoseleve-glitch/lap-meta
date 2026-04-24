@@ -162,7 +162,7 @@
 ## Block G — Driver Profile page (T136–T165)
 
 - [ ] T136 [design] Figma mockup: Driver Profile layout, skill radar, open weaknesses ⇒ approved
-- [ ] T137 [opus] Route `src/app/(app)/profile/page.tsx` with shell ⇒ renders
+- [x] T137 [opus] Route `src/app/(app)/profile/page.tsx` with shell ⇒ renders (ed63d1c)
 - [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached
 - [ ] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook
 - [ ] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook
