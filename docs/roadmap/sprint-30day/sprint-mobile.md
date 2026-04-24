@@ -73,7 +73,7 @@
 - [x] T056 [opus] Reconciliation: find orphan temp files ⇒ tested — 29fc1ee (mobile; TempFileInventory abstracts disk, 4 cases)
 - [x] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested — 03d180f (mobile; 5 cases lock recoverable vs terminal vs pre-capture states)
 - [x] T058 [sonnet] Recovery modal composable: renders stale session list with actions ⇒ Compose preview — 8fc1087 (mobile; 3 @Preview fixtures — single, multiple, empty) [PENDING: visual-check-on-device]
-- [ ] T059 [sonnet] Recovery → Finalize-from-journal path ⇒ works for test fixture
+- [x] T059 [sonnet] Recovery → Finalize-from-journal path ⇒ works for test fixture — e9bd309 (mobile; BundleFinalizer interface + 5 orchestration cases)
 - [ ] T060 [sonnet] Journal retention: rows >7 days auto-clean after user confirms ⇒ tested
 
 ## Block D — Location + motion capture (T061–T085)

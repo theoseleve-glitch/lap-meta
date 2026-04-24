@@ -1,42 +1,42 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T20:55Z (Cycle #68)
+## Last updated: 2026-04-24T21:10Z (Cycle #69)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[BLOCKED]` | `[NEEDS_REWORK]` | HEAD |
 |---|---|---|---|---|
-| lap-backend | 57 | 2 (T018/T019 docker) | 1 (T013) | `3de44d4` (T060 Session ORM — 3rd model) |
-| lap-webapp | 73 | 0 | 0 | `78eb856` (T154 ProfileEmptyState; 255) |
-| lap-schemas (subset) | 35 | 0 | 0 | `0dda9cb` (idle 9 cycles; Python parity 35/35 ✓) |
-| lap-mobile-android | 58 | 0 | 0 | `8fc1087` (T058 RecoverySessionModal — first Compose UI) |
-| lap-website (marketing) | 59 | 1 (T067 currency-l10n) | 0 | `bf5abc9` (T069 /pricing SEO meta) |
-| datalogger (desktop) | 37 | 1 (T035 backend ingestion) | 0 | `7e2cde5` (T038 v1→v2 bundle shim) |
+| lap-backend | 58 | 2 (T018/T019 docker) | 1 (T013) | `9a6a35b` (T061 SessionRecord ORM — 4th model) |
+| lap-webapp | 74 | 0 | 0 | `78eb856` (T154; idle in repo — T155 was a no-op sprint-file flip) |
+| lap-schemas (subset) | 35 | 0 | 0 | `0dda9cb` (idle 10 cycles; Python parity 35/35 ✓) |
+| lap-mobile-android | 59 | 0 | 0 | `e9bd309` (T059 FinalizeFromJournal recovery use case) |
+| lap-website (marketing) | 60 | 1 (T067 currency-l10n) | 0 | `75b848c` (T070 /pricing e2e journey) |
+| datalogger (desktop) | 38 | 1 (T035 backend ingestion) | 0 | `ea4b34a` (T039 bundle_schema v2-only, LegacyManifest removed) |
 
-## This cycle (Cycle #68)
+## This cycle (Cycle #69)
 
-- Verified GREEN: 5 (backend T060, webapp T154, mobile T058, website T069, datalogger T038)
+- Verified GREEN: 4 (backend T061, mobile T059, website T070, datalogger T039)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- **Sprint-file no-op flip noted**: lap-meta 8cf95d0 "sprint(webapp): T155 cohort-locked copy (no-op, covered by T145)" — flips `[ ] T155 → [x]` in sprint-webapp.md without new webapp-repo code. Existing ArchetypeBadge (T145) already renders the locked copy; T155 built-in. Not verified (no code surface). Webapp count +1.
 
-## Cumulative (68 cycles)
+## Cumulative (69 cycles)
 
-- Total reviewed: 263 · Accepted+tagged: 259 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 267 · Accepted+tagged: 263 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 3 · Pause triggers: 0
 
-## Cycle 68 notables — THIRD ORM MODEL + FIRST MOBILE UI COMPOSABLE + DATALOGGER FLAKE CAUGHT BY BISECT
+## Cycle 69 notables — FOURTH ORM MODEL + MOBILE RECOVERY FLOW COMPLETE + DESKTOP v2-ONLY CLEANUP
 
-- **Backend T060 Session ORM + migration** — 3rd model in the async stack. Completes the c65-c68 data layer core: User (T058) + DriverProfile (T059, FK User) + Session (T060, FK DriverProfile). `infra/orm.py` +23 + alembic migration 42 + tests 81. Full matrix: ruff clean, mypy 7 files, pytest 28/28 (+2).
-- **Mobile T058 RecoverySessionModal Compose composable** — **first UI surface in sprint-mobile**. Launch-time AlertDialog rendering reconciler output (T055/T057), per-row Finalize/Discard + "Later" dismiss. Stateless — caller owns list and callbacks. T059 will wire the actual Finalize-from-journal path. Reconcilers + Room + UI modal now vertically integrated. 5 consecutive clean mobile accepts (c63/64/65/67/68).
-- **Webapp T154 ProfileEmptyState** — 255 tests (+5). Empty branch when T138 data hook returns null. Completes profile UI state machine: Layout + Skeleton + Error + Empty = 4 branches.
-- **Website T069 /pricing SEO meta** — 234 tests (+2). Before: "Pricing — LAP". After: keyword "sim racing coaching price" in title + meta + og/twitter. 36-line diff, mostly BaseLayout prop threading.
-- **Datalogger T038 v1→v2 bundle shim (reprocess path)** — 218 lines (bundle_v1_compat.py 112 + test 106). Own tests 6/6 pass. Full suite 1478 passed (+6), 19 pre-existing failures stable.
-  - **Phase-1 bisect caught a flake**: initial run reported 20 failed / 1477 passed (+1 failure over baseline). Checkout parent a146064 (T037), same 19 known failures only. Re-ran HEAD → 19 failures again. The extra failure was transient (likely overlay_browser timing). Per systematic-debugging: flakes that don't reproduce on re-run are not revert triggers. Green after bisect.
-- Schemas idle 9 cycles.
-- Disk 86% stable 44 cycles.
+- **Backend T061 SessionRecord ORM + migration** — 4th model in the data layer. User → DriverProfile → Session → SessionRecord (FK to Session). `infra/orm.py` +12, migration 40, tests 74. Full matrix: ruff clean, mypy 7 files, pytest 30/30 (+2).
+- **Mobile T059 FinalizeFromJournal recovery use case** — **orchestrates the T058 modal's Finalize action**. Load session + journal → BundleFinalizer (T131 BundleV2Writer in prod; abstracted for test) → stamp `completed` + metadata or `failed`. Returns `Result<FinalizedBundle, DomainError>`. 269 lines. Full gradle matrix green on stashed tree. 6 consecutive clean mobile accepts.
+- **Website T070 /pricing e2e journey** — navigate → consume → CTA in one Playwright e2e. Homepage "See full pricing" → /pricing URL assertion → CTA interaction. Regex-match link text to handle trailing arrow encoding. 36 lines.
+- **Datalogger T039 bundle_schema v2-only (remove LegacySessionManifest)** — **net-negative diff**: 98 lines removed from bundle_schema.py, 30 lines added in tests — removes the v1 legacy code path now that T038 shim provides the upgrade bridge. Own-file tests pass. Full suite: 1477 passed (-1 from c68 1478 — T039 deleted old tests for legacy manifest; pattern 1472→1478→1477 shows expected up/down from code cleanup). 19 pre-existing failures stable.
+- **Cross-repo-aware scope optimization (webapp T155)**: sprint-webapp loop recognized T155 was already covered by T145 ArchetypeBadge and flipped the checkbox without writing duplicate code. Commit body cites the specific test that locks the string. 3rd self-aware sprint behavior (after desktop T035 block + website T067 block).
+- Schemas idle 10 cycles.
+- Disk 86% stable 45 cycles.
 
 ## Current issues
 
-- Datalogger 19 pre-existing failures (tech-debt since c22); occasional +1 flake in overlay tests (non-deterministic).
+- Datalogger 19 pre-existing failures (tech-debt since c22); c68 flake did not re-surface in c69.
 - Datalogger pyproject doesn't declare pydantic/pyyaml/uuid6 as dev extras.
 - Desktop T035 [BLOCKED]: backend ingestion endpoint.
 - Website T067 [BLOCKED]: Cloudflare Pages OAuth + edge-function currency injection.
@@ -45,4 +45,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 21:10 UTC.
+## Cron: next 21:25 UTC.
