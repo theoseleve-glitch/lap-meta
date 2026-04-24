@@ -152,7 +152,7 @@
 - [x] T127 [sonnet] Error: retry ⇒ works (32b3640)
 - [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works
 - [x] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured (9293914)
-- [ ] T130 [sonnet] Click entry → navigate to session detail ⇒ works
+- [x] T130 [sonnet] Click entry → navigate to session detail ⇒ works (a500e17)
 - [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes
 - [ ] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean
 - [ ] T133 [sonnet] Mobile: horizontal swipe tabs for filters ⇒ responsive
