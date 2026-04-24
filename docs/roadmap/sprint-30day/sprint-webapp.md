@@ -146,7 +146,7 @@
 - [ ] T121 [sonnet] Filter chip: track ⇒ works
 - [ ] T122 [sonnet] Filter chip: car ⇒ works
 - [x] T123 [sonnet] Filter chip: date range picker ⇒ works (8dac3bc)
-- [ ] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs
+- [x] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs (538b89d)
 - [ ] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered
 - [ ] T126 [sonnet] Loading: skeleton cards ⇒ shows
 - [ ] T127 [sonnet] Error: retry ⇒ works
