@@ -44,7 +44,7 @@
 - [x] T030 [sonnet] `EnvironmentTag` enum ⇒ compiles — 3ffbbc9 (schemas)
 - [x] T031 [sonnet] `DataQuality` data class ⇒ compiles — 8af8655 (schemas)
 - [x] T032 [sonnet] `SensorConfigSnapshot` data class ⇒ compiles — 2e9717c (schemas)
-- [ ] T033 [sonnet] `LapRecord` data class ⇒ compiles
+- [x] T033 [sonnet] `LapRecord` data class ⇒ compiles — b6ce2ed (schemas)
 - [ ] T034 [sonnet] `WeaknessEpisode` data class (consumer-side) ⇒ compiles
 - [ ] T035 [sonnet] `ActionPrescription` data class ⇒ compiles
 - [ ] T036 [sonnet] `CoachingInsight` data class ⇒ compiles

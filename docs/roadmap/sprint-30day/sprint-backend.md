@@ -55,7 +55,7 @@
 - [x] T031 [opus] Pydantic model `SkillDimension` per ADR-005 §5.1 ⇒ validates — sha: lap-schemas@37dba87
 - [x] T032 [opus] Pydantic model `DriverProgressSnapshot` per ADR-005 §5.1 ⇒ validates, example fixture — sha: lap-schemas@bf37c5b
 - [x] T033 [opus] Pydantic enum `WeaknessCategory` per ADR-005 §5.2 ⇒ frozen — sha: lap-schemas@12b1685
-- [ ] T034 [opus] Pydantic model `WeaknessEpisode` per ADR-005 §5.2 ⇒ validates
+- [x] T034 [opus] Pydantic model `WeaknessEpisode` per ADR-005 §5.2 ⇒ validates — sha: lap-schemas@fe83faf
 - [ ] T035 [opus] Pydantic model `SuccessCondition` per ADR-005 §5.3 ⇒ validates
 - [ ] T036 [opus] Pydantic model `ActionPrescription` per ADR-005 §5.3 ⇒ validates
 - [ ] T037 [opus] Pydantic model `ActionOutcome` per ADR-005 §5.4 ⇒ validates
