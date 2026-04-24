@@ -40,7 +40,7 @@
 - [x] T026 [sonnet] Install `@lap/schemas` Kotlin types as local module (`lap-schemas/kotlin/`) ⇒ Gradle includes — 291c7f3 (mobile) / 1e20418 (schemas)
 - [x] T027 [sonnet] Reference `SessionManifest` Kotlin type (generated or hand-typed stub until codegen ready) ⇒ imports — 124b8c4 (schemas)
 - [x] T028 [sonnet] `TelemetrySample` Kotlin data class ⇒ compiles — e3277f1 (schemas)
-- [ ] T029 [sonnet] `SourceTag` enum ⇒ compiles
+- [x] T029 [sonnet] `SourceTag` enum ⇒ compiles — 2b17115 (schemas)
 - [ ] T030 [sonnet] `EnvironmentTag` enum ⇒ compiles
 - [ ] T031 [sonnet] `DataQuality` data class ⇒ compiles
 - [ ] T032 [sonnet] `SensorConfigSnapshot` data class ⇒ compiles

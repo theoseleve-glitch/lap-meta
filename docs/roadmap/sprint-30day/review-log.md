@@ -1279,3 +1279,45 @@ Cron-fired 10:37 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`f1d0e5e`, 
 - `meta: review loop cycle 27` + metrics + review-log + 3 pending sprint-file bookkeeping mods (backend/desktop/mobile). Push to lap-meta master.
 
 ---
+
+## 2026-04-24T10:55:00Z — Cycle #28
+
+Cron-fired 10:52 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`dc2fc0a`, schemas=`e3277f1`, mobile=`291c7f3`, website=`a35e7e0`, datalogger=`64893ec`. Disk 86% stable.
+
+### Per-repo
+
+- **lap-backend**: 12th idle cycle.
+- **lap-webapp `75f5e3b` T112 timeline route shell**: ACCEPTED + tagged + pushed. Full matrix green; **test 42/42** (+2 from T090's 40). Diff: 2 files / 29 ins (`src/app/(app)/timeline/page.tsx` 14 lines + test 15 lines). Sprint-webapp jumped T091-T111 (explicit skip window, probably priority reshuffling — not a concern at review level).
+- **lap-schemas** TWO commits:
+  - `f602965 sprint(backend): T030 LapRecord model`: ACCEPTED + tagged + pushed. pytest 27 (+3). Diff: 2 files / 61 ins (lap_record.py 15 lines + test 46 lines).
+  - `2b17115 sprint(mobile): T029 SourceTag enum + rewire SessionManifest` — **Kotlin refactor** (touches SessionManifestTest.kt -5/+2 lines + adds SourceTag enum + SourceTagTest.kt 33 lines). ACCEPTED + tagged + pushed. Verification: `./gradlew :schemas:test --rerun-tasks` (NOT just default — default shows UP-TO-DATE from Gradle cache) → BUILD SUCCESSFUL with `:schemas:test` actually executed (4 executed, not cached). This is the correct pattern for Kotlin refactor commits.
+- **lap-mobile-android**: 4th idle cycle. Build re-exercised cross-repo against schemas Kotlin refactor.
+- **lap-website `6f733b1` T034 final-cta pricing snippet + trial**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 107/107** (+9), build 3 pages. Diff: 4 files / 148 ins (FinalCta.astro 54 lines + test + homepage mount + lockfile).
+- **datalogger `c36b134` T007 LIVE_COACHING_ENABLED feature flag** — **2nd modification commit in datalogger series** (coaching_live_processor.py +26/-2). ACCEPTED + tagged + pushed. T007 own feature-flag test file + existing test_native_bridge_contracts.py (downstream importer of coaching_live_processor) → 15/15 pass. No regression in downstream importers. Diff: 2 files / 84 ins (test new 60 lines + processor edits 24 ins/2 del).
+
+### Step 5 — Cross-repo coherence
+
+- Schema Python grew (T030 LapRecord) + Kotlin refactored (T029 SourceTag + SessionManifest rewire). `:schemas:test --rerun-tasks` BUILD SUCCESSFUL = Kotlin side healthy. `:schemas:build` green = mobile classpath consistent.
+- Backend idle → no endpoint drift.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 29
+
+- backend=`7b64848` (13 idle), webapp=`75f5e3b`, schemas=`2b17115`, mobile=`291c7f3` (5 idle), website=`6f733b1`, datalogger=`c36b134`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Runbook process note
+
+- **Gradle UP-TO-DATE is NOT proof of execution**: cycle 28 observed `:schemas:test UP-TO-DATE` on initial run despite T029 being a Kotlin refactor. UP-TO-DATE means inputs hash matches a prior successful run — the cache served the result. For refactor commits (especially when bisect-verifying), use `./gradlew :task --rerun-tasks` to force actual execution. Saved to review-loop process memory.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 28` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---

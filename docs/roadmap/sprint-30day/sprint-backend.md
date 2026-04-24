@@ -51,7 +51,7 @@
 - [x] T027 [opus] Pydantic model `SessionManifest` per ADR-006 ⇒ validates, round-trip JSON test — sha: lap-schemas@6eb295e
 - [x] T028 [opus] Pydantic model `TelemetrySample` per ADR-007 (dual timestamps) ⇒ validates — sha: lap-schemas@64505e5
 - [x] T029 [opus] Pydantic model `SessionRecord` (canonical post-ingestion shape) ⇒ validates — sha: lap-schemas@4d0cb40
-- [ ] T030 [opus] Pydantic model `LapRecord` (lap splits, sector times, flags) ⇒ validates
+- [x] T030 [opus] Pydantic model `LapRecord` (lap splits, sector times, flags) ⇒ validates — sha: lap-schemas@f602965
 - [ ] T031 [opus] Pydantic model `SkillDimension` per ADR-005 §5.1 ⇒ validates
 - [ ] T032 [opus] Pydantic model `DriverProgressSnapshot` per ADR-005 §5.1 ⇒ validates, example fixture
 - [ ] T033 [opus] Pydantic enum `WeaknessCategory` per ADR-005 §5.2 ⇒ frozen
