@@ -28,7 +28,7 @@
 - [x] T017 [sonnet] BuildConfig fields: API_BASE_URL, CLERK_PUBLISHABLE_KEY, SENTRY_DSN, POSTHOG_KEY ⇒ populated per flavor — 3529361
 - [x] T018 [sonnet] Package layout: `capture/`, `ingest/`, `coaching/`, `ui/`, `data/`, `di/`, `core/` ⇒ packages exist with `.gitkeep` — 5caa77e
 - [x] T019 [sonnet] Logging: Timber integrated, tree config per build type ⇒ logs appear — dc887af [PENDING: logs-visible-on-device]
-- [ ] T020 [sonnet] Coroutines: default dispatchers provider for testing (`DispatcherProvider`) ⇒ injectable
+- [x] T020 [sonnet] Coroutines: default dispatchers provider for testing (`DispatcherProvider`) ⇒ injectable — ea2eb5e
 - [ ] T021 [sonnet] Serialization: `kotlinx-serialization-json` dep + `SerializersModule` with polymorphic tags ⇒ serializes test class
 - [ ] T022 [sonnet] Error model: `sealed class DomainError` + `Result<T, E>` alias ⇒ unit tests round-trip
 - [ ] T023 [sonnet] DI module: `@Module @InstallIn(SingletonComponent::class)` for app-level providers ⇒ Hilt compiles

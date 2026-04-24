@@ -42,7 +42,7 @@
 
 ## Block B — `lap-schemas` foundation (T021–T045)
 
-- [ ] T021 [opus] Create `lap-schemas/` package with `python/src/lap_schemas/v1/__init__.py` ⇒ importable
+- [x] T021 [opus] Create `lap-schemas/` package with `python/src/lap_schemas/v1/__init__.py` ⇒ importable — sha: lap-schemas@08e6354
 - [ ] T022 [opus] Define `UUID7` type alias + validator using `uuid6` library ⇒ unit test generates valid v7
 - [ ] T023 [opus] Define `EnvironmentTag` enum (sim_practice, sim_race, real_track_day, real_race, real_karting, drill, test) ⇒ enum values frozen
 - [ ] T024 [opus] Define `SourceTag` literal (iracing, acc, ac, ams2, rf2, lmu, rennsport, f1_game, real) ⇒ typed

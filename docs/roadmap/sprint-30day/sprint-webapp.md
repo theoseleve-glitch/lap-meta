@@ -25,7 +25,7 @@
 - [x] T015 [codex] Husky + lint-staged for pre-commit ⇒ blocks bad commits (ef716a1)
 - [x] T016 [codex] GitHub Actions: typecheck + lint + test on PR ⇒ workflow green (b1bb273)
 - [x] T017 [sonnet] Vitest setup for unit tests, Playwright for e2e ⇒ sample tests run. **Per ADR-018: `pnpm add -D @types/node` BEFORE writing any playwright.config.ts or test that uses `process.env`/`fs`/`path`. Non-optional.** (25dbeb1) [SCOPE_FLAG] diff=1803 lines, reviewer-triggered cycle 16 (test-harness not scaffold-tagged per ADR-018 Dec 2). scope-blowup alert fired 2026-04-24T01:50Z (Resend 224fd181).
-- [ ] T018 [sonnet] Storybook setup for component docs ⇒ `pnpm storybook` boots
+- [x] T018 [sonnet] Storybook setup for component docs ⇒ `pnpm storybook` boots (c352c1f) [SCOPE_FLAG] diff=8722 lines, reviewer-triggered cycle 17 (exceeds 1500 non-scaffold AND 8000 scaffold thresholds; framework config + addon generated files). scope-blowup alert dedup-suppressed for 2026-04-24 (already fired cycle 16 for T017).
 - [ ] T019 [sonnet] Cloudflare Pages deployment via OpenNext ⇒ preview URL works
 - [ ] T020 [sonnet] Domain routing: `app.lap-coach.racing` → webapp, `lap-coach.racing` → marketing ⇒ DNS configured
 

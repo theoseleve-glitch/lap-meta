@@ -825,3 +825,34 @@ Cron-fired 01:37 UTC. Baselines: backend=`ef85842`, webapp=`b1bb273`, schemas=`a
 - `meta: review loop cycle 16` + review-log + metrics + sprint-webapp (T017 SCOPE_FLAG annotation) + other sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T02:20:00Z — Cycle #17
+
+Cron-fired 02:07 UTC. Baselines: backend=`7b64848`, webapp=`25dbeb1`, schemas=`a50d39a`, mobile=`dc887af`, website=`37a19d9`, datalogger=`eb97496`. Disk 87%. Daily email: skip (hour<8).
+
+### Per-repo
+- **lap-backend**: idle this cycle. No new commits past `7b64848`.
+- **lap-webapp `c352c1f` T018 Storybook component docs**: ACCEPTED + tagged **+ [SCOPE_FLAG]**. Full matrix green. Diff: **6 files / 6611 ins / 2111 del = 8722 total** — exceeds 1500 non-scaffold AND 8000 scaffold thresholds per ADR-018 Dec 2. Storybook config + .storybook/ scaffold + addon-generated infrastructure. scope-blowup alert dedup-suppressed for 2026-04-24 (T017 already fired cycle 16).
+- **lap-schemas `08e6354` T021 lap-schemas v1 package scaffold**: ACCEPTED + tagged. **First sprint commit for lap-schemas.** Matrix: all 5 steps silent-skipped per ADR-017 applicability — no pyproject.toml yet (T044 lands editable install); no [tool.ruff]/[tool.mypy]; no tests/; no Makefile codegen-check target. Diff: 2 files / 0 ins / 0 del — two empty `__init__.py` files creating the `python/src/lap_schemas/` + `python/src/lap_schemas/v1/` tree. Legitimate scaffold progression.
+- **lap-mobile-android `ea2eb5e` T020 DispatcherProvider**: ACCEPTED + tagged. Full matrix green. Diff: 4 files / 67 ins. Injectable DispatcherProvider + kotlinx-coroutines-android 1.9.0.
+- **lap-website `b20f501` T025 primary CTA wired**: ACCEPTED + tagged. Full matrix green. Diff: 3 files / 29 ins / 2 del.
+- **datalogger**: 13th consecutive quiet cycle.
+
+### Step 5 cross-repo
+- Schema drift: n/a (schemas is bootstrapping package tree, not yet emitting types).
+- **Cross-repo coherence coming**: webapp T010 BLOCKED on schemas TS codegen (`waiting on lap-backend T045`). Schemas T021 is beginning of unblock path. T022-T043 will fill in models; T046-T052 TS codegen. Once that lands, webapp T010+ can unblock.
+- Contract test: skipped (no API surface changes).
+
+### Steps 6-7: all skipped.
+### Step 10: daily email skipped (hour<8).
+### Step 11: no alerts fired (scope-blowup dedup-suppressed).
+
+### Baselines cycle 18
+- backend=`7b64848` (unchanged, idle), webapp=`c352c1f`, schemas=`08e6354`, mobile=`ea2eb5e`, website=`b20f501`, datalogger=`eb97496` (13 quiet)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 17` + review-log + metrics + sprint-webapp (T018 SCOPE_FLAG annotation) + other sprint-file bookkeeping.
+
+---
