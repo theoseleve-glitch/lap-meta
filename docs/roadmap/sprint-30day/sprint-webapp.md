@@ -149,7 +149,7 @@
 - [x] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs (538b89d)
 - [x] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered (455a6b4)
 - [x] T126 [sonnet] Loading: skeleton cards ⇒ shows (61d4e8f)
-- [ ] T127 [sonnet] Error: retry ⇒ works
+- [x] T127 [sonnet] Error: retry ⇒ works (32b3640)
 - [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works
 - [ ] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured
 - [ ] T130 [sonnet] Click entry → navigate to session detail ⇒ works
