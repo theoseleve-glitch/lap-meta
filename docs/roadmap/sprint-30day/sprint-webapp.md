@@ -173,7 +173,7 @@
 - [x] T145 [opus] `ArchetypeBadge` component: show when cohort unlocked ⇒ Storybook (0d650c9)
 - [x] T146 [sonnet] Layout: hero (score+trend) + radar + 3 columns (weaknesses, prescriptions, readiness) ⇒ approved (5dbd53a)
 - [x] T147 [sonnet] Responsive: stacks on mobile ⇒ tested (625d2a8)
-- [ ] T148 [sonnet] Click skill dimension → navigate to skill drilldown (Block H) ⇒ works
+- [x] T148 [sonnet] Click skill dimension → navigate to skill drilldown (Block H) ⇒ works (2c5ed02)
 - [ ] T149 [sonnet] Click weakness → navigate to weakness detail ⇒ works
 - [ ] T150 [sonnet] Click prescription → navigate to prescription detail ⇒ works
 - [ ] T151 [sonnet] Click readiness → navigate to target event picker ⇒ works
