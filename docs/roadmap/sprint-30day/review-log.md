@@ -2846,3 +2846,53 @@ Cron-fired 20:07 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 - `meta: review loop cycle 65 — 5 accepts, first backend ORM + detekt gap closed` + metrics + review-log. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T20:25:00Z — Cycle #66 — **IDLE (first all-idle after c63-c65 burst)**
+
+Cron-fired 20:22 UTC. No PAUSE. 0 accepts, 0 reverts. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: idle at `76d6046` (T058).
+- **lap-webapp**: idle at `cc32108` (T152).
+- **lap-schemas**: idle 7 cycles at `0dda9cb`. Python parity 35/35 stable.
+- **lap-mobile-android**: idle at `29fc1ee` (T056).
+- **lap-website**: idle at `f4808c3` (T066).
+- **datalogger**: idle at `f0f2855` (T036).
+
+### Step 4 guardrails
+- Nothing to check — no new commits.
+
+### Step 5 — Cross-repo coherence
+- Schemas idle (7), no drift. No new endpoint/contract surfaces. Skipped.
+
+### Step 6 / 7 — Deploy / smoke
+- All skipped. No new commits and no deploy configs.
+
+### Step 8 — Metrics
+- See `metrics.md` (updated — idle cycle, per-repo counts unchanged from c65).
+
+### Step 10 / 11 — Email / alerts
+- No alerts. Daily deferred.
+
+### Baselines cycle 67
+
+- backend=`76d6046`, webapp=`cc32108`, schemas=`0dda9cb` (7 idle), mobile=`29fc1ee`, website=`f4808c3`, datalogger=`f0f2855`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Observation
+
+- **First all-idle cycle since c63-c65 burst** (15 accepts in 3 cycles). Sprint loops in between-task implementation windows. This is structurally expected — TDD red-green-refactor takes longer than the 15-minute review interval for non-trivial tasks. The review loop doesn't "fail" on idleness; it just has nothing to do.
+- **No runbook change needed**. Cycle runs cleanly with nothing-to-verify: fetch + diff-vs-baseline + empty-range-per-repo + idle metrics + log entry.
+
+### Runbook process note
+
+- Idle cycles still write metrics + review-log to keep the chain complete. Skipping the log on idle would break the ability to reconstruct "how many idle cycles did we have between T058 and T059" — the timeline is load-bearing for cadence analysis.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 66 — IDLE` + metrics + review-log. Push to lap-meta master.
+
+---
