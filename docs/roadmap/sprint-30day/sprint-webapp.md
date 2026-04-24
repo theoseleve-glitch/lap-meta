@@ -179,7 +179,7 @@
 - [x] T151 [sonnet] Click readiness → navigate to target event picker ⇒ works (3a094ab)
 - [x] T152 [sonnet] Loading skeletons per section ⇒ shows (cc32108)
 - [x] T153 [sonnet] Error states per section ⇒ handled (fc7d610)
-- [ ] T154 [sonnet] Empty state (new user, no data): onboarding CTA ⇒ shown
+- [x] T154 [sonnet] Empty state (new user, no data): onboarding CTA ⇒ shown (78eb856)
 - [ ] T155 [sonnet] Cohort-locked state: "Unlocks at 20 drivers" copy ⇒ rendered
 - [ ] T156 [sonnet] Storybook stories for full page with 3 data states ⇒ renders
 - [ ] T157 [sonnet] E2E: profile page loads, navigate to skill drilldown ⇒ green
