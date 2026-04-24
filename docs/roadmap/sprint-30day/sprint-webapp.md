@@ -186,7 +186,7 @@
 - [ ] T158 [sonnet] LCP <2s on profile ⇒ Lighthouse passes [BLOCKED: waiting on lap-backend — useDriverProfile T138 data hook (driver profile endpoint). Profile page renders only PageIntro placeholder today; measuring LCP against near-empty content is not representative. Lighthouse CI integration itself belongs to T231 in Block K.]
 - [x] T159 [sonnet] A11y: all charts have text descriptions ⇒ axe clean (9b170fa)
 - [x] T160 [sonnet] Print styles: profile page printable for coaching review ⇒ works (bd51979)
-- [ ] T161 [sonnet] Share action: generate profile share link (public or private) ⇒ works
+- [ ] T161 [sonnet] Share action: generate profile share link (public or private) ⇒ works [BLOCKED: waiting on lap-backend — profile share endpoint (POST /profile/share or equivalent) that mints a signed share token + URL. No client code can be exercised end-to-end without a server to POST to, and the public-vs-private toggle semantics must be owned server-side for auth reasons.]
 - [ ] T162 [sonnet] PostHog: page_view + section_interactions ⇒ tracked
 - [ ] T163 [sonnet] Refetch on window focus so data stays fresh ⇒ configured
 - [ ] T164 [sonnet] Cache invalidation on prescription accept/weakness resolve ⇒ tested
