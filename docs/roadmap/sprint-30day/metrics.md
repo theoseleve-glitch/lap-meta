@@ -1,33 +1,37 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T18:25Z (Cycle #58)
+## Last updated: 2026-04-24T18:40Z (Cycle #59)
 
 ## Per-repo status
 
 | Repo | `[x]` | HEAD |
 |---|---|---|
-| lap-backend | 49 | `772dc3d` (idle 10 cycles) |
-| lap-webapp | 65 | `5dbd53a` (T146 ProfileLayout composition; 217 tests) |
-| lap-schemas (subset) | 32 | `7efa477` (idle 1 cycle; pytest 72) |
-| lap-mobile-android | 51 | `3856589` (idle 1 cycle) |
-| lap-website (marketing) | 51 | `a60b55c` (idle 1 cycle) |
-| datalogger (desktop) | 29 | `07329a9` (idle 1 cycle) |
+| lap-backend | 50 | `772dc3d` (idle 11 cycles) |
+| lap-webapp | 66 | `625d2a8` (T147 ProfileLayout responsive tests; 220) |
+| lap-schemas (subset) | 33 | `774094e` (T053 post-commit Pydantic drift warning; pytest 74) |
+| lap-mobile-android | 52 | `6d6887e` (T052 InsightCacheDao — 4th DAO) |
+| lap-website (marketing) | 52 | `ffae773` (T061 /pricing FAQ 10 Qs) |
+| datalogger (desktop) | 30 | `9bb1227` (T030 SessionFinalizer step 6 — sha256 checksums) |
 
-## This cycle (Cycle #58)
+## This cycle (Cycle #59)
 
-- Verified GREEN: 1 (webapp T146)
+- Verified GREEN: 5 (webapp T147, schemas T053, mobile T052, website T061, datalogger T030)
 - Reverted: 0 | SCOPE_FLAG: 0 new
 
-## Cumulative (58 cycles)
+## Cumulative (59 cycles)
 
-- Total reviewed: 222 · Accepted+tagged: 220 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 227 · Accepted+tagged: 225 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
 
-## Cycle 58 notables
+## Cycle 59 notables
 
-- **Webapp ProfileLayout** (T146 ProfileLayout.tsx 47 + test 63 + index = 182 lines). **217 tests** (+8). Composes the profile route shell — now that all profile components exist (T137 shell, T139 DriverScoreCard, T140 SkillRadarChart, T141 OpenWeaknessesList, T142 ActivePrescriptionsList, T143 ReadinessGauge, T144 RecentSessionsSparkline, T145 ArchetypeBadge), T146 arranges them.
-- Backend 10 idle cycles.
-- Disk 86% stable 35 cycles.
+- **Mobile 4th DAO** (InsightCacheDao) — upsertBatch (one HTTP roundtrip → many inserts in single transaction) + listForSession (dashboard offline list per T195). 4/7 entities covered; 3 remain (PrescriptionCache, TrackCache, RuleBundle).
+- **Schemas T053 post-commit Pydantic drift warning** — adds `.githooks/post-commit` (33 lines) + 65-line contract test. Dev-local warning when Pydantic schema changes aren't matched by codegen updates. Complements T052 CI enforcement with a faster local signal.
+- Datalogger T030 **sha256 manifest checksums** (step 6 in SessionFinalizer pipeline). finalizer.py +29 / -2 + test file +78 lines = 20/20 tests. Checksums now computed for written outputs; integrity verifiable at ingestion.
+- Website T061 /pricing FAQ — 10 questions native `<details>/<summary>` (117-line PricingFaq.astro). 211 tests (+9).
+- Webapp T147 ProfileLayout responsive-stacking tests (+29 test lines + 9/-3 src) — 220 tests (+3).
+- Backend 11 idle.
+- Disk 86% stable 36 cycles.
 
 ## Current issues
 
@@ -37,4 +41,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 18:30 UTC.
+## Cron: next 18:45 UTC.
