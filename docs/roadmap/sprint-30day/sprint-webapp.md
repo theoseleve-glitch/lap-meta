@@ -187,7 +187,7 @@
 - [x] T159 [sonnet] A11y: all charts have text descriptions ⇒ axe clean (9b170fa)
 - [x] T160 [sonnet] Print styles: profile page printable for coaching review ⇒ works (bd51979)
 - [ ] T161 [sonnet] Share action: generate profile share link (public or private) ⇒ works [BLOCKED: waiting on lap-backend — profile share endpoint (POST /profile/share or equivalent) that mints a signed share token + URL. No client code can be exercised end-to-end without a server to POST to, and the public-vs-private toggle semantics must be owned server-side for auth reasons.]
-- [ ] T162 [sonnet] PostHog: page_view + section_interactions ⇒ tracked
+- [ ] T162 [sonnet] PostHog: page_view + section_interactions ⇒ tracked [BLOCKED: waiting on T229 (Sentry + PostHog init in app shell) and lap-backend — useDriverProfile T138 data hook. Without PostHog initialised at the shell level there is no client to fire events on, and without the data hook the profile route only renders a PageIntro placeholder so there are no sections to interact with.]
 - [ ] T163 [sonnet] Refetch on window focus so data stays fresh ⇒ configured
 - [ ] T164 [sonnet] Cache invalidation on prescription accept/weakness resolve ⇒ tested
 - [ ] T165 [sonnet] Memoize heavy chart components ⇒ no re-renders on unrelated state changes
