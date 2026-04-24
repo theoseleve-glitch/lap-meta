@@ -768,3 +768,32 @@ Cron-fired 00:37 UTC. Baselines: backend=`edeb53d`, webapp=`52e1cce`, schemas=`a
 - `meta: review loop cycle 14` + review-log + metrics + sprint-file bookkeeping.
 
 ---
+
+## 2026-04-24T01:20:00Z — Cycle #15
+
+Cron-fired 01:07 UTC. Baselines: backend=`5d31465`, webapp=`52e1cce`, schemas=`a50d39a`, mobile=`3529361`, website=`9a0983b`, datalogger=`eb97496`. Disk 87%. Daily email: skip (hour<8 UTC).
+
+### Per-repo
+- **lap-backend `ef85842` T017 rate-limit middleware skeleton**: ACCEPTED + tagged + pushed. Full matrix green — **pytest 16 passed** (+3). Diff: 3 files / 52 ins. No-op primitives for now.
+- **lap-webapp** (**RESUMED after 6 idle cycles**):
+  - `ef716a1 sprint(webapp): T015 Husky + lint-staged pre-commit` — ACCEPTED + tagged. Diff: 3 files / 322 ins / 1 del (under 1500).
+  - `b1bb273 sprint(webapp): T016 GitHub Actions CI workflow` — ACCEPTED + tagged. Diff: 1 file / 42 ins.
+  - Full matrix at HEAD green.
+- **lap-schemas**: no commits.
+- **lap-mobile-android `5caa77e` T018 package layout**: ACCEPTED + tagged. Full matrix green. Diff: 6 files / 0 ins / 0 del — just `.gitkeep` files for 6 bounded-context packages (capture/ingest/coaching/ui/data/di/core).
+- **lap-website `de66a0a` T023 headline default Option B**: ACCEPTED + tagged. Full matrix green; build still 3 pages. Diff: 3 files / 62 ins / 6 del. Default copy = "Every lap, one step better."
+- **datalogger**: 11th consecutive quiet cycle.
+
+### Step 5 cross-repo: no drift.
+### Steps 6-7: all skipped.
+### Steps 10-11: daily email dedup-skipped; no alerts.
+
+### Baselines cycle 16
+- backend=`ef85842`, webapp=`b1bb273`, schemas=`a50d39a`, mobile=`5caa77e`, website=`de66a0a`, datalogger=`eb97496` (unchanged, 11 quiet)
+
+### Pause triggers / forced checkpoints: none hit.
+
+### Step 9 commit + push
+- `meta: review loop cycle 15` + review-log + metrics + sprint-file bookkeeping.
+
+---

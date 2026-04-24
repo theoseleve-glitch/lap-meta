@@ -35,7 +35,7 @@
 - [x] T014 [sonnet] Dependency injection: `app/deps.py` with `get_config`, `get_db`, `get_current_user` stubs ⇒ imports work — sha: 6018966
 - [x] T015 [sonnet] Add CORS middleware configured for `app.lap-coach.racing` origins only ⇒ preflight test green — sha: edeb53d
 - [x] T016 [sonnet] Add request-id middleware, propagate to logs + response header ⇒ header present in tests — sha: 5d31465
-- [ ] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works
+- [x] T017 [sonnet] Add rate-limit middleware skeleton (SlowAPI or custom) — no enforcement yet ⇒ decorator works — sha: ef85842
 - [ ] T018 [codex] Dockerfile for backend (multi-stage, python:3.12-slim base) ⇒ `docker build` succeeds
 - [ ] T019 [codex] docker-compose.yml with postgres+redis+backend services for local dev ⇒ `docker compose up` works
 - [ ] T020 [sonnet] Makefile targets: `make dev`, `make test`, `make lint`, `make migrate` ⇒ all run

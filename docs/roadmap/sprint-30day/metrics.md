@@ -1,37 +1,41 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T00:50Z (Cycle #14)
+## Last updated: 2026-04-24T01:20Z (Cycle #15)
 
 ## Per-repo status
 
 | Repo | `[x]` | `[ ]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | HEAD |
 |---|---|---|---|---|---|---|
-| lap-backend | 15 | 225 | 0 | 1 (T013) | 0 | `5d31465` (T016 request-id) |
-| lap-webapp | 11 | 229 | 0 | 0 | 0 | `52e1cce` (**6 idle cycles**) |
+| lap-backend | 16 | 224 | 0 | 1 (T013) | 0 | `ef85842` (T017 rate-limit skeleton) |
+| lap-webapp | 13 | 227 | 0 | 0 | 0 | `b1bb273` (T016 CI — **webapp back after 6 idle**) |
 | lap-schemas | 0 | — | 0 | 0 | 0 | `a50d39a` |
-| lap-mobile-android | 17 | 223 | 0 | 0 | 0 | `3529361` (T017 BuildConfig) |
-| lap-website | 17 | 5 BLOCKED (T008-T010, T018, T021) | 5 | 0 | 1 (T017) | `9a0983b` (T022 Hero component) |
-| datalogger | 2 | 238 | 0 | 0 | 0 | `eb97496` (**10th quiet cycle**) |
+| lap-mobile-android | 18 | 222 | 0 | 0 | 0 | `5caa77e` (T018 package layout) |
+| lap-website | 18 | 5 BLOCKED | 5 | 0 | 1 (T017) | `de66a0a` (T023 headline Option B) |
+| datalogger | 2 | 238 | 0 | 0 | 0 | `eb97496` (11th quiet cycle) |
 
-## This cycle (Cycle #14)
+## This cycle (Cycle #15)
 
-- Verified GREEN: 3 (backend T016 request-id — 13 pytest; mobile T017 BuildConfig; website T022 Hero — Block B starts)
+- Verified GREEN: **5** commits (backend T017; webapp T015+T016 — 2 at once after 6-cycle idle; mobile T018; website T023)
 - Reverted: 0 | NEEDS_REWORK: 0 new | SCOPE_FLAG: 0 new
 
-**Website enters Block B (Homepage)** — T021 design BLOCKED (Figma external account), T022 Hero component delivered.
+**Milestone**: webapp sprint loop **resumed after 6 idle cycles** with a 2-commit burst (T015 Husky + T016 CI workflow). Terminal 2 is confirmed alive. Webapp T015 is large (3 files / 322+1- — mostly Husky + lint-staged configs + .husky/ directory scaffold; under 1500 threshold).
 
-## Cumulative (14 cycles)
+## Cumulative (15 cycles)
 
-- Total reviewed: 59 · Accepted+tagged: 57 (1 INFRA_FLAG c4)
+- Total reviewed: 64 · Accepted+tagged: 62 (1 INFRA_FLAG c4)
 - Reverted: 1 (T013)
 - Pause triggers: 0
 
+## Cycle 15 notables
+
+- Webapp alive! 2 commits after 6-cycle idle.
+- Datalogger 11th quiet cycle (~5.5h) — Terminal 3 almost certainly stopped; worth user check.
+- Backend pytest 16 (was 13 in T016).
+
 ## Current issues
 
-- Webapp Terminal 2 idle 6 cycles
-- Datalogger Terminal 3 quiet 10 cycles (5h+ — very likely stopped)
-- Backend T013 NEEDS_REWORK carried
-- Website T017 SCOPE_FLAG carried
-- Daily email next eligible ~08:07 UTC (~15 cycles / 7h15min from now)
+- Datalogger T002 stuck at `eb97496` for 11 cycles.
+- Backend T013 NEEDS_REWORK (persistent; sprint-loop skipped it).
+- Website T017 SCOPE_FLAG (persistent, informational).
 
-## Cron: next fire 01:07 UTC.
+## Cron: next 01:37 UTC.

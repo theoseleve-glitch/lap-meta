@@ -26,7 +26,7 @@
 - [x] T015 [sonnet] Signing configs: debug default, release placeholder reading from `keystore.properties` ⇒ compiles both — 2208d57
 - [x] T016 [sonnet] Flavor setup: `dev`, `staging`, `prod` with different API endpoints ⇒ all three build — d706c03
 - [x] T017 [sonnet] BuildConfig fields: API_BASE_URL, CLERK_PUBLISHABLE_KEY, SENTRY_DSN, POSTHOG_KEY ⇒ populated per flavor — 3529361
-- [ ] T018 [sonnet] Package layout: `capture/`, `ingest/`, `coaching/`, `ui/`, `data/`, `di/`, `core/` ⇒ packages exist with `.gitkeep`
+- [x] T018 [sonnet] Package layout: `capture/`, `ingest/`, `coaching/`, `ui/`, `data/`, `di/`, `core/` ⇒ packages exist with `.gitkeep` — 5caa77e
 - [ ] T019 [sonnet] Logging: Timber integrated, tree config per build type ⇒ logs appear
 - [ ] T020 [sonnet] Coroutines: default dispatchers provider for testing (`DispatcherProvider`) ⇒ injectable
 - [ ] T021 [sonnet] Serialization: `kotlinx-serialization-json` dep + `SerializersModule` with polymorphic tags ⇒ serializes test class
