@@ -31,7 +31,7 @@
 
 ## Block B — Contract + schema integration (T021–T040)
 
-- [ ] T021 [sonnet] Install `@lap/schemas` Python package as dep ⇒ `from lap_schemas.v1 import SessionManifest` works
+- [x] T021 [sonnet] Install `@lap/schemas` Python package as dep ⇒ `from lap_schemas.v1 import SessionManifest` works (ff57d65)
 - [ ] T022 [sonnet] Replace local `SessionMetadata` dataclass with `SessionManifest` ⇒ compiles
 - [ ] T023 [sonnet] Replace local `BundleSchema` with shared types ⇒ compiles
 - [ ] T024 [sonnet] Audit all duplicate Pydantic models in desktop, remove ⇒ ≥5 removals

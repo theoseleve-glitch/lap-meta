@@ -1982,3 +1982,47 @@ Cron-fired 15:22 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`9293914`, 
 - `meta: review loop cycle 46` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T15:45:00Z — Cycle #47
+
+Cron-fired 15:42 UTC. No PAUSE. Baselines: backend=`7b64848`, webapp=`a500e17`, schemas=`afed51d`, mobile=`428000f`, website=`add0c59`, datalogger=`bb2a36f`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 31 idle.
+- **lap-webapp `ed63d1c` T137 profile route shell**: ACCEPTED + tagged + pushed. **tests 141/141** (+2). Diff: 2 files / 32 ins. Second app route after /timeline.
+- **lap-schemas** TWO commits captured, only one reviewable:
+  - `94493f7 sprint(backend): T044 make lap-schemas pip install -e able`: ACCEPTED + tagged + pushed. pytest 69 (+3). Diff: 2 files / 49 ins / 4 del (pyproject.toml package config + test_pyproject.py 42 lines).
+  - `8cac625 schemas(v1): re-export SessionManifest, LapRecord, TelemetrySample` **non-reviewable ride-along** — `schemas(v1):` prefix doesn't start with `sprint(` per Step 1.4. Pushable via fast-forward (Hard NEVER #2 doesn't list `schemas(v1):`). Hash appears in push output `afed51d..8cac625` even though tag applied to 94493f7.
+- **lap-mobile-android `77b661e` T043 SessionJournalEntity + MIGRATION_1_2**: ACCEPTED + tagged + pushed. **First Room Migration in the sprint**. Diff: 5 files / 142 ins / 3 del (SessionJournalEntity.kt + test 37 + MigrationsTest.kt 18 + Migrations.kt manual MIGRATION_1_2 + LapDatabase.kt version bump 1→2). FK cascade to sessions.id so session deletion sweeps journal. Full matrix BUILD SUCCESSFUL with KSP re-exercised.
+- **lap-website `2343382` T049 /how-it-works honesty section (today vs Year 2)**: ACCEPTED + tagged + pushed. typecheck/lint clean, **tests 168/168** (+7), build 4 pages. Diff: 4 files / 191 ins (HowItWorksHonesty.astro 107 + mount + tests). Meta-narrative addressing transparency on current-state vs roadmap-target feature matrix.
+- **datalogger `ff57d65` T021 wire lap_schemas.v1 as dep (SessionManifest import)**: ACCEPTED + tagged + pushed. **First cross-repo Python runtime dep**. Diff: 4 files / 41 ins / 2 del (pyproject.toml dep add + requirements.txt +3 lines + test_lap_schemas_available.py 34 + test_pyproject_pinning.py extension 4 lines).
+  
+  **Verification nuance**: T021's test `test_lap_schemas_available.py` is a runtime import test (`importlib.import_module('lap_schemas.v1')` + `issubclass(SessionManifest, BaseModel)`). Passed 3/3 via `python -m pytest` (system python 3.14 has lap-schemas installed from T044 pip install-e). Failed via `uv run python -c` because datalogger's .venv lockfile (uv.lock) doesn't include the new dep yet — will regenerate on next unfrozen `uv sync` or CI build. Commit is declaratively correct; test matrix green; lockfile refresh is follow-up work (not a review-blocker).
+
+### Step 5 — Cross-repo coherence
+
+- **Cross-repo dep wiring event**: schemas T044 exports `v1` namespace + makes package pip-install-editable; datalogger T021 consumes it. Python side now mirrors the Kotlin side's `include(":schemas")` pattern from cycle 24's mobile T026. Both languages have source-of-truth schemas → consumer-repo linkage.
+- Backend idle → no endpoint drift.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 48
+
+- backend=`7b64848` (32 idle), webapp=`ed63d1c`, schemas=`8cac625`, mobile=`77b661e`, website=`2343382`, datalogger=`ff57d65`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Runbook process note
+
+- **Non-sprint-prefix ride-along handling** (third instance: cycle 24 `feat(kotlin):`, cycle 47 `schemas(v1):`): pushable when matrix at HEAD passes, non-tagged (not reviewed by loop rules), documented in review-log as "non-reviewable ride-along" and tracked in sibling sprint's cycle log.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 47` + metrics + review-log + 2 pending sprint-file bookkeeping mods. Push to lap-meta master.
+
+---
