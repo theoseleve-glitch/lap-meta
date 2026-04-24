@@ -74,7 +74,7 @@
 ## Block D — Pricing + trial CTA (T056–T070)
 
 - [ ] T056 [design] Figma: pricing page (one tier, monthly + yearly) ⇒ approved
-- [ ] T057 [opus] Route `/pricing` shell ⇒ renders
+- [x] T057 [opus] Route `/pricing` shell ⇒ renders (lap-website@e3732a4; minimal BaseLayout + main landmark + H1 "One tier. Clear price." + intro paragraph. Title/description lock the €15 + 14-day trial anchors for SERP. Build emits dist/pricing/index.html (7.35 kB). T034/T052 "See full pricing →" links now resolve. T058+ land the tier card, FAQ, founder offer, B2B teaser. 6 TDD cases, 177 unit green)
 - [ ] T058 [opus] Tier card: €15/mo or €150/yr (save €30) + "14-day free trial" badge ⇒ Storybook
 - [ ] T059 [opus] "What's included" checklist ⇒ 12 bullets
 - [ ] T060 [opus] Founder-waitlist offer section: "Signed up before launch? €12/mo for 12 months" ⇒ rendered
