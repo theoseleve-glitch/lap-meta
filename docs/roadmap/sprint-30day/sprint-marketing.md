@@ -103,7 +103,7 @@
 - [ ] T080 [sonnet] Video controls: keyboard accessible ⇒ tested
 - [x] T081 [sonnet] Demo page LCP <2s (video lazy) ⇒ achieved — 64ab068 (LHCI assertMatrix: /demo LCP ≤ 2000ms, homepage keeps 1500ms; upstream T074-T080/T082/T084/T087 remain blocked on the actually-shipped video + webapp screens, so T081 ships the budget gate first)
 - [ ] T082 [sonnet] Demo mobile layout: video full-width ⇒ responsive
-- [ ] T083 [sonnet] A11y ⇒ axe clean
+- [x] T083 [sonnet] A11y ⇒ axe clean — 6102080 (lap-website; /demo axe test added to tests/e2e/a11y.spec.ts, page was already clean as shipped; proof-of-gate confirmed by temp-regression cycle)
 - [ ] T084 [sonnet] Conversion tracking: demo_viewed event ⇒ PostHog
 - [ ] T085 [sonnet] Post-demo CTA: "Start your trial" prominent ⇒ wired
 - [ ] T086 [sonnet] Testimonial placement post-video ⇒ structured
