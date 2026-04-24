@@ -56,7 +56,7 @@
 ## Block C — "How LAP works" ecosystem page (T041–T055)
 
 - [ ] T041 [design] Figma: ecosystem architecture diagram (desktop / mobile / webapp / bridge) ⇒ approved
-- [ ] T042 [opus] Route `/how-it-works` shell ⇒ renders
+- [x] T042 [opus] Route `/how-it-works` shell ⇒ renders (lap-website@374fb80; minimal shell with BaseLayout + main landmark + H1 "How LAP works" + intro paragraph naming the three page pillars (coaching loop / bridge / data model). T026 secondary CTA now resolves. Build emits dist/how-it-works/index.html (7.5 kB). T043 will land the full hero; T055 will e2e the flow. 5 TDD cases, 125 unit + 13 e2e green)
 - [ ] T043 [opus] Hero: "The whole driver improvement loop, in one place" ⇒ renders
 - [ ] T044 [opus] Diagram component: annotated SVG showing data flow ⇒ accessible text alt
 - [ ] T045 [opus] Section "1. Capture" — desktop + mobile capture explained ⇒ renders
