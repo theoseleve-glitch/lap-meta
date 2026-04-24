@@ -43,7 +43,7 @@
 - [x] T030 [opus] `SessionFinalizer` step 6: compute sha256 per file, write manifest checksums ⇒ match on re-read (9bb1227)
 - [x] T031 [opus] `SessionFinalizer` step 7: atomic temp→final rename retained ⇒ no partial bundles (dff270c)
 - [x] T032 [sonnet] `SessionFinalizer` step 8: write `SensorConfigSnapshot` with adapter info ⇒ populated (b248656)
-- [ ] T033 [sonnet] `SessionFinalizer` step 9: write `DataQuality` score with all sub-metrics ⇒ populated
+- [x] T033 [sonnet] `SessionFinalizer` step 9: write `DataQuality` score with all sub-metrics ⇒ populated (22de27d)
 - [ ] T034 [sonnet] `SessionFinalizer` step 10: timestamps include both t_source_ns + t_canonical_ns per ADR-007 ⇒ tested
 - [ ] T035 [sonnet] Integration test: finalize an archived Sebring session → manifest validates server-side ⇒ green
 - [ ] T036 [sonnet] Integration test: finalize with CSV fallback (no pyarrow) ⇒ works
