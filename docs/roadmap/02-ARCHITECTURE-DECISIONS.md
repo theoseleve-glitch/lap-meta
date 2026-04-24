@@ -606,16 +606,39 @@ Sprint tasks that scaffold a TS project are updated to include `pnpm add -D @typ
 
 **Why not LOOSER TS config (e.g., `skipLibCheck: true`)?** Masks other real errors. `@types/node` is 2MB in devDependencies — trivial cost.
 
-### Decision 2 — Scaffold-tagged tasks get higher SCOPE_FLAG threshold
+### Decision 2 — Tiered SCOPE_FLAG thresholds (updated 2026-04-24)
 
-Update `loop-review.md` Step 4 scope-check rules:
+Update `loop-review.md` Step 4 scope-check rules. Three tiers instead of two:
 
-- **Default threshold** (unchanged): 1500 insertions+deletions → `[SCOPE_FLAG]`
-- **Scaffold-tagged tasks (new)**: 8000 insertions+deletions threshold
-- Between 1500 and 8000 on scaffold tasks: silently accept, tag `[SCAFFOLD_BULK]` (informational, not alerting)
-- Above 8000 on scaffold tasks: still `[SCOPE_FLAG]` + alert (something genuinely overreaching)
+- **Tier A — Default** (implementation tasks): 1500 insertions+deletions → `[SCOPE_FLAG]` (alerting)
+- **Tier B — Scaffold-tagged**: 8000 threshold. Below 8000 → `[SCAFFOLD_BULK]` silent-accept. Above 8000 → `[SCOPE_FLAG]` alerting.
+- **Tier C — Framework-init-tagged** (new): **15000 threshold**. Below 15000 → `[SCAFFOLD_BULK]` silent-accept. Above 15000 → `[SCOPE_FLAG]` alerting.
 
-**Scaffold-tagged** = task title matches `T001` OR contains `scaffold`, `init`, `bootstrap`, `seed`, or `boilerplate`. These legitimately bulk-create framework-standard files.
+**Tier B — Scaffold-tagged** = task title matches ANY of:
+- `T001` (always)
+- Contains one of: `scaffold`, `init`, `bootstrap`, `seed`, `boilerplate`
+- **Test-harness setup**: contains any of `vitest`, `playwright`, `jest`, `cypress`, `pytest`, `test-infra`, `testing library`
+- **Installer / packaging**: contains any of `pyinstaller`, `inno setup`, `fastlane`, `gradle wrapper`, `release workflow`
+- **Toolchain setup**: contains any of `eslint`, `prettier`, `ruff`, `mypy`, `husky`, `lint-staged`, `pre-commit`
+- **CI/CD setup**: contains any of `github actions`, `ci workflow`, `deploy workflow`
+- **Codegen setup**: contains `openapi codegen`, `ts codegen`, `swift codegen`, `kotlin codegen`, `schema registry`
+
+**Tier C — Framework-init-tagged** = known-extreme-bulky framework installs where the tool itself creates thousands of lines of generated config/stories/addons:
+- `storybook` (Storybook init with default addon bundle routinely 8K-12K LOC)
+- `nx workspace`, `turbo setup`, `lerna init` (monorepo init)
+- `django-admin startproject`, `rails new` (opinionated mega-scaffolds)
+- `expo init`, `create-react-native-app` (RN boilerplate)
+- `shadcn/ui init` (registers dozens of components at once)
+- `hilt + room + serialization` combined setup (Android)
+
+**Precedents:**
+- 2026-04-23 — `lap-website T001` (Astro scaffold) — 4068 LOC → Tier B [SCAFFOLD_BULK]
+- 2026-04-24 — `lap-webapp T017` (Vitest + Playwright harness) — 1803 LOC → Tier B [SCAFFOLD_BULK] (reclassified; initially flagged Tier A before expansion)
+- 2026-04-24 — `lap-webapp T018` (Storybook setup) — 8722 LOC → Tier C [SCAFFOLD_BULK] (reclassified; initially flagged Tier B)
+
+**Rationale for Tier C**: applying Tier B's 8000 ceiling to Storybook-class tools creates a structural false-positive because the tool's own `init` command generates the bulk. The agent isn't being wasteful — the tool is. Alerting here wastes quota without surfacing actionable scope.
+
+**Never disable scope-checking entirely.** Even Tier C has an upper bound because a genuinely misbehaving agent that `init`s a project and then scaffolds 50 unrelated components in the same commit SHOULD flag.
 
 ### Decision 3 — Resolution for current in-flight blocker
 
