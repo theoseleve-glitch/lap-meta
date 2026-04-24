@@ -75,7 +75,7 @@
 - [x] T048 [sonnet] TS codegen: wrap into `@lap/schemas` npm package (private workspace) ⇒ importable — sha: lap-schemas@33111e6
 - [x] T049 [sonnet] Swift codegen: `openapi-generator-cli` config for Swift5 ⇒ produces `.swift` files — sha: lap-schemas@add2745
 - [x] T050 [sonnet] Swift codegen script: `make swift-codegen` ⇒ output in `lap-mobile/Generated/` — sha: lap-schemas@712b974
-- [ ] T051 [sonnet] Kotlin codegen (for Android later): `openapi-generator-cli` config for kotlin ⇒ produces `.kt`
+- [x] T051 [sonnet] Kotlin codegen (for Android later): `openapi-generator-cli` config for kotlin ⇒ produces `.kt` — sha: lap-schemas@b25a469
 - [ ] T052 [codex] CI rule: job `schema-sync-check` fails if `.d.ts` or `.swift` files are stale vs openapi.json ⇒ green when synced
 - [ ] T053 [codex] Git hook: post-commit warns if Pydantic model changed without regen ⇒ warns correctly
 - [ ] T054 [sonnet] Docs: `lap-schemas/README.md` explaining regen workflow ⇒ written

@@ -1,38 +1,37 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-24T17:40Z (Cycle #55)
+## Last updated: 2026-04-24T17:55Z (Cycle #56)
 
 ## Per-repo status
 
 | Repo | `[x]` | HEAD |
 |---|---|---|
-| lap-backend | 47 | `772dc3d` (idle 7 cycles) |
-| lap-webapp | 63 | `a4c978c` (T144 RecentSessionsSparkline — **200 tests** milestone) |
-| lap-schemas (subset) | 30 | `712b974` (T050 swift-codegen Make target; pytest 69) |
-| lap-mobile-android | 49 | `92e1ff3` (T049 SessionDao — **first DAO on Room**) |
-| lap-website (marketing) | 49 | `f40baec` (T058 pricing tier card — €15/€150/14-day trial) |
-| datalogger (desktop) | 27 | `7a37169` (T027 parquet primary + CSV fallback) |
+| lap-backend | 48 | `772dc3d` (idle 8 cycles) |
+| lap-webapp | 64 | `0d650c9` (T145 ArchetypeBadge; 209 tests) |
+| lap-schemas (subset) | 31 | `4916bc0` (T051 Kotlin codegen + chore exclude generated/; pytest 69) |
+| lap-mobile-android | 50 | `dd36dcf` (T050 JournalDao — 2nd DAO; mobile [x]=50 milestone) |
+| lap-website (marketing) | 50 | `4f3aa37` (T059 /pricing "What's included" checklist) |
+| datalogger (desktop) | 28 | `c4cd898` (T028 SessionFinalizer step 4 — laps.parquet write) |
 
-## This cycle (Cycle #55)
+## This cycle (Cycle #56)
 
-- Verified GREEN: 5 (webapp T144, schemas T050, mobile T049, website T058, datalogger T027)
+- Verified GREEN: 5 (webapp T145, schemas T051, mobile T050, website T059, datalogger T028)
 - Reverted: 0 | SCOPE_FLAG: 0 new
+- Non-sprint ride-along accepted: schemas `4916bc0 chore(kotlin): exclude generated/ pending BigDecimal serializer`
 
-## Cumulative (55 cycles)
+## Cumulative (56 cycles)
 
-- Total reviewed: 212 · Accepted+tagged: 210 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Total reviewed: 217 · Accepted+tagged: 215 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
 - Reverted: 1 · Pause triggers: 0
-- Schemas subset 30/35 (~86%) ADR objects Python-side complete
 
-## Cycle 55 notables
+## Cycle 56 notables
 
-- **Webapp test count crosses 200 milestone** this cycle (T144 RecentSessionsSparkline pushed it to exactly 200). Profile-page component suite growing rapidly: DriverScoreCard + SkillRadarChart + OpenWeaknessesList + ActivePrescriptionsList + ReadinessGauge + RecentSessionsSparkline = 6 profile components in 7 cycles.
-- **Mobile T049 first DAO** on top of the 7-entity Room layer. `@Dao SessionDao` with 5 contract methods: upsert (initial + state transitions), update, listByStatus (snapshot), observeByStatus (reactive Flow for SessionList + Uploads screens), findById (reconciler lookups). Full gradle matrix BUILD SUCCESSFUL.
-- **Website pricing reveals numbers**: T058 adds PricingTierCard.astro (62 lines) with €15/€150/14-day-trial structure. 186 tests (+9). Pricing tier is now publicly known on the marketing site.
-- Schemas T050 adds `make swift-codegen` target (16 lines Makefile). Swift pipeline: scaffold (T049) → Make target (T050). Ready for invocation.
-- Datalogger T027 extends test_finalizer_accepts_manifest.py (+56 lines = 10 pass total, up from 7). Locks parquet primary + CSV fallback behavior at SessionFinalizer.
-- Backend 7 idle.
-- Disk 86% stable 32 cycles.
+- **Mobile 2nd DAO** (JournalDao). DAO layer 2/7 entities covered.
+- **Mobile [x]=50 milestone** (50/240 = 20.8%).
+- **Schemas Kotlin codegen config** at parity with Swift + TS. Only Python source-of-truth; three codegen targets ready.
+- Webapp T145 ArchetypeBadge — 209 tests (+9).
+- Website T059 pricing "What's included" checklist — 195 tests (+9).
+- Datalogger T028 SessionFinalizer now writes laps.parquet with round-trip validation. 4-step pipeline complete: accept manifest → write v2 manifest.json → parquet primary/CSV fallback → write laps.parquet.
 
 ## Current issues
 
@@ -42,4 +41,4 @@
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 17:45 UTC.
+## Cron: next 18:00 UTC.

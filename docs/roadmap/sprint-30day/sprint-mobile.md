@@ -64,7 +64,7 @@
 - [x] T047 [opus] Entity `TrackCacheEntity` (offline sector splits) ⇒ migration — 94e76a3 (mobile; JSON-payload envelope for sectors, global catalog)
 - [x] T048 [opus] Entity `RuleBundleEntity` (compiled coaching-rules bundle + fetched_at) ⇒ migration — fa8ad18 (mobile; JSON-payload envelope + signature column)
 - [x] T049 [sonnet] DAO `SessionDao`: insert, update, list by status, observe as Flow ⇒ tested — 92e1ff3 (mobile; JVM sig tests, KSP validates queries; real DAO round-trip [PENDING: device-required])
-- [ ] T050 [sonnet] DAO `JournalDao`: upsertHeartbeat, listStale ⇒ tested
+- [x] T050 [sonnet] DAO `JournalDao`: upsertHeartbeat, listStale ⇒ tested — dd36dcf (mobile) / 4916bc0 (schemas; exclude workaround); real DAO round-trip [PENDING: device-required]
 - [ ] T051 [sonnet] DAO `UploadQueueDao`: enqueue, dequeueNext, updateAttempt ⇒ tested
 - [ ] T052 [sonnet] DAO `InsightCacheDao`: upsertBatch, listForSession ⇒ tested
 - [ ] T053 [opus] Migration strategy: `fallbackToDestructiveMigration` in dev flavor, strict migrations in prod ⇒ documented

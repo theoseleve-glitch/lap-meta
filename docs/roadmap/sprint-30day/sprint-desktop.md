@@ -38,7 +38,7 @@
 - [x] T025 [opus] `SessionFinalizer` rewrite step 1: accept `SessionManifest` instead of ad-hoc dict ⇒ tests green (8c91bf2)
 - [x] T026 [opus] `SessionFinalizer` step 2: write manifest.json in Bundle v2 format ⇒ format matches spec (a7d327f)
 - [x] T027 [opus] `SessionFinalizer` step 3: write telemetry as parquet (pyarrow) or CSV fallback ⇒ file present (7a37169)
-- [ ] T028 [opus] `SessionFinalizer` step 4: write laps.parquet with LapRecord shape ⇒ round-trip valid
+- [x] T028 [opus] `SessionFinalizer` step 4: write laps.parquet with LapRecord shape ⇒ round-trip valid (c4cd898)
 - [ ] T029 [opus] `SessionFinalizer` step 5: write events.json (sector/lap/flag events) ⇒ valid JSON
 - [ ] T030 [opus] `SessionFinalizer` step 6: compute sha256 per file, write manifest checksums ⇒ match on re-read
 - [ ] T031 [opus] `SessionFinalizer` step 7: atomic temp→final rename retained ⇒ no partial bundles
