@@ -166,7 +166,7 @@
 - [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached
 - [x] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook (cb5285e)
 - [x] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook (c2bf3d3)
-- [ ] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook
+- [x] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook (53ff994)
 - [ ] T142 [opus] `ActivePrescriptionsList` component: open prescriptions ⇒ Storybook
 - [ ] T143 [opus] `ReadinessGauge` component: next-event readiness score ⇒ Storybook
 - [ ] T144 [opus] `RecentSessionsSparkline` component: last 20 sessions lap-time trend ⇒ Storybook
