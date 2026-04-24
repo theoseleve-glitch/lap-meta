@@ -39,7 +39,7 @@
 - [x] T025 [opus] Primary CTA: "Start 14-day trial" → `/signup` (app.lap-coach.racing handoff) ⇒ wired (lap-website@b20f501; locked at both Vitest + Playwright layers; rel=noopener auto-emitted by Hero.astro and asserted)
 - [x] T026 [opus] Secondary CTA: "See how it works" → `/how-it-works` ⇒ wired (lap-website@0c170b3; locked at Vitest + Playwright layers; same-origin → no rel=noopener asserted. /how-it-works route lands in T042)
 - [x] T027 [opus] Hero motion: subtle GSAP entrance, reduced-motion respected ⇒ smooth (lap-website@3f653a1; gsap 3.15.0 code-split to Hero chunk — 27.86 kB gzip — with prefers-reduced-motion early-return. Homepage 90.13 kB gzip total, error pages stay at 62.33 kB)
-- [ ] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp
+- [x] T028 [opus] Hero visual: product screenshot (Driver Profile page, mocked) ⇒ renders crisp (lap-website@af60964; HTML/CSS mock — vector-sharp at every DPR, no raster asset, ADR-005 §5.1 shape, figure[role=img]+aria-label for a11y, zero runtime JS)
 - [ ] T029 [opus] Section "After every session" — 3 tile grid (weakness detected / prescription / outcome tracked) ⇒ renders
 - [ ] T030 [opus] Section "Sim and real, one driver profile" — bridge narrative ⇒ renders
 - [ ] T031 [opus] Section "Built for serious sim racers" — persona fit bullets ⇒ renders
