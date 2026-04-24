@@ -68,7 +68,7 @@
 - [x] T051 [sonnet] DAO `UploadQueueDao`: enqueue, dequeueNext, updateAttempt ⇒ tested — 3856589 (mobile; UUIDv7 natural FIFO); real DAO round-trip [PENDING: device-required]
 - [x] T052 [sonnet] DAO `InsightCacheDao`: upsertBatch, listForSession ⇒ tested — 6d6887e (mobile); real DAO round-trip [PENDING: device-required]
 - [x] T053 [opus] Migration strategy: `fallbackToDestructiveMigration` in dev flavor, strict migrations in prod ⇒ documented — a4c1bd2 (mobile; reworked from f9ab816 after ff0fc60 revert — now iterates migrations via forEach to satisfy detekt SpreadOperator rule)
-- [x] T054 [opus] Journal writer service: heartbeat every 5s during recording, writes via DAO ⇒ tested with fake clock — 7f34d84 (mobile; 5 runTest virtual-time cases green)
+- [NEEDS_REWORK] T054 [opus] Journal writer service: heartbeat every 5s during recording, writes via DAO ⇒ tested with fake clock — failed review: detekt MagicNumber rule fired on JournalWriter.kt:32:66 (literal `5` for heartbeatInterval), reverted in d38d17b. Next iteration should extract `5L` to a `private const val HEARTBEAT_INTERVAL_SECONDS = 5L` or similar named constant.
 - [ ] T055 [opus] Journal startup reconciliation: find stale journal rows (heartbeat > 60s gap) ⇒ tested
 - [ ] T056 [opus] Reconciliation: find orphan temp files ⇒ tested
 - [ ] T057 [opus] Reconciliation: find sessions in `recording`/`finalizing` → offer recovery ⇒ tested

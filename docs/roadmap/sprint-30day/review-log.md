@@ -2590,3 +2590,56 @@ Cron-fired 19:07 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`2c5ed02`, 
 - `meta: review loop cycle 61 — 5 accepts, T053 recovery` + metrics + review-log + 3 pending sprint-file bookkeeping mods. Push to lap-meta master.
 
 ---
+
+## 2026-04-24T19:25:00Z — Cycle #62 — **REVERT EVENT (mobile T054)**
+
+Cron-fired 19:22 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`a9c6043`, schemas=`0dda9cb`, mobile=`a4c1bd2`, website=`fff0d89`, datalogger=`b248656`. Disk 86%. Only 1 sprint commit this cycle — mobile T054.
+
+### Per-repo
+
+- **lap-backend**: 14 idle.
+- **lap-webapp + schemas + website + datalogger**: all 1 idle.
+- **lap-mobile-android `7f34d84` T054 JournalWriter — REVERTED** via `d38d17b`:
+  
+  **systematic-debugging Phase 1**: `./gradlew detekt --info` revealed `JournalWriter.kt:32:66: This expression contains a magic number. Consider defining it to a well named constant. [MagicNumber]`. Report XML + text confirms rule + location + signature (`JournalWriter.kt$JournalWriter$5`). The magic number is literal `5` (heartbeat interval in seconds).
+  
+  **Decision — REVERT per runbook Step 3**: applicable command (detekt, per ADR-017) fails with lint error on real code. Hard NEVER rules reviewed: `sprint(mobile):` prefix not protected, author theos (revertable), no destructive ops needed.
+  
+  **Revert execution**:
+  1. `git revert --no-edit 7f34d84` → `d38d17b` removes JournalWriter.kt + test (213 deletions).
+  2. `./gradlew detekt` at revert HEAD → BUILD SUCCESSFUL (cache hit).
+  3. `git push origin HEAD` → `a4c1bd2..d38d17b` — both T054 + revert on origin.
+  4. sprint-mobile.md T054 → `[NEEDS_REWORK] ... detekt MagicNumber rule fired on JournalWriter.kt:32:66 (literal 5 for heartbeatInterval), reverted in d38d17b. Next iteration should extract 5L to a private const val HEARTBEAT_INTERVAL_SECONDS = 5L or similar named constant.`
+
+### Step 5-7: no accepts → no deploys, no smoke. Datalogger/webapp/website/schemas Python-side idle.
+### Step 10: eligible, out of scope, skip.
+### Step 11: clear. Revert count cycle = 1 (below >3-per-cycle Pause threshold).
+
+### Baselines cycle 63
+
+- backend=`772dc3d` (15 idle), webapp=`a9c6043` (2 idle), schemas=`0dda9cb` (2 idle), mobile=`d38d17b` (post-revert), website=`fff0d89` (2 idle), datalogger=`b248656` (2 idle).
+
+### Pause triggers: disk 86% stable; 1-revert cycle well below threshold; all clear.
+### Forced checkpoints: none hit.
+
+### Pattern observation — sprint-mobile detekt trip repeat
+
+**Third detekt-trip in mobile over 3 recent cycles**:
+- c60 T053 revert: detekt.SpreadOperator on `addMigrations(*...)` 
+- c61 T053 rework: accepted after stash-and-rerun (WIP pollution)
+- c62 T054 revert: detekt.MagicNumber on literal `5`
+
+**Pattern**: sprint-mobile appears to not run `./gradlew detekt` pre-push. This creates a revert-rework cycle each time (extra loop iteration + slight history noise from revert+rework commits). Worth flagging to the user if the pattern continues — adding `detekt` to a pre-commit hook in lap-mobile-android would prevent future instances.
+
+**Not a Pause Trigger**: runbook triggers require >3 commits fail in a single cycle, or contract-test fails, or secrets detected. This is a slow-burn process-gap, not an emergency.
+
+### Milestones
+
+- **3rd revert in 62 cycles** (1.26%). All 3 from different repos+tasks (datalogger early-state, mobile T053, mobile T054). No revert on the same task yet.
+- **234 cumulative accepts** unchanged from c61 (zero accepts this cycle).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 62 — 0 accepts, 1 REVERT (mobile T054)` + metrics + review-log + sprint-mobile.md + any pending sprint-file mods. Push to lap-meta master.
+
+---
