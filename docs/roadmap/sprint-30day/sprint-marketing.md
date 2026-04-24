@@ -108,7 +108,7 @@
 - [x] T085 [sonnet] Post-demo CTA: "Start your trial" prominent ⇒ wired — 6fe6390 (lap-website; reuses T034 FinalCta, locked copy "Start 14-day trial" matches homepage + /how-it-works)
 - [x] T086 [sonnet] Testimonial placement post-video ⇒ structured — 7f2e426 (lap-website; reuses T035 SocialProof — "no testimonials until beta" stays in one component; /demo flow is walkthrough → social proof → CTA)
 - [ ] T087 [sonnet] Video captions + subtitles ⇒ uploaded
-- [ ] T088 [sonnet] SEO: target "sim racing telemetry demo" ⇒ meta
+- [x] T088 [sonnet] SEO: target "sim racing telemetry demo" ⇒ meta — 38a447c (lap-website; title "Sim racing telemetry demo — LAP", description pairs phrase with walkthrough scent; T072 session + no-signup anchors preserved)
 - [ ] T089 [sonnet] Related links: how-it-works, pricing ⇒ placed
 - [ ] T090 [sonnet] E2E: demo page → CTA → signup ⇒ green
 
