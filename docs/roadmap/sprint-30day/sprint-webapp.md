@@ -69,7 +69,7 @@
 - [ ] T053 [sonnet] Update stale e2e: `compare.spec.ts` shape matches current compare page ⇒ green
 - [ ] T054 [sonnet] Update stale e2e: remove mocks for `/sessions/browse` (non-existent) ⇒ clean
 - [ ] T055 [sonnet] Update stale e2e: point to actual `/sessions?` endpoint ⇒ runs
-- [ ] T056 [codex] Remove unused dependencies (depcheck) ⇒ package.json slim
+- [x] T056 [codex] Remove unused dependencies (depcheck) ⇒ package.json slim (15a8c8a)
 - [ ] T057 [codex] Remove unused imports across codebase (eslint --fix) ⇒ clean
 - [ ] T058 [codex] Remove unused CSS variables and Tailwind classes ⇒ build smaller
 - [ ] T059 [sonnet] Audit large files (>500 lines): session-detail page is target ⇒ refactor list created

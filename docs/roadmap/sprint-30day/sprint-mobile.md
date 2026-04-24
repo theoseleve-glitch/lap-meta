@@ -31,7 +31,7 @@
 - [x] T020 [sonnet] Coroutines: default dispatchers provider for testing (`DispatcherProvider`) ⇒ injectable — ea2eb5e
 - [x] T021 [sonnet] Serialization: `kotlinx-serialization-json` dep + `SerializersModule` with polymorphic tags ⇒ serializes test class — d4b1b78
 - [x] T022 [sonnet] Error model: `sealed class DomainError` + `Result<T, E>` alias ⇒ unit tests round-trip — 9fa22ba
-- [ ] T023 [sonnet] DI module: `@Module @InstallIn(SingletonComponent::class)` for app-level providers ⇒ Hilt compiles
+- [x] T023 [sonnet] DI module: `@Module @InstallIn(SingletonComponent::class)` for app-level providers ⇒ Hilt compiles — ff7732f
 - [ ] T024 [sonnet] Navigation routes enum: `Routes.Login`, `Routes.SessionList`, `Routes.Dashboard`, etc. ⇒ all defined
 - [ ] T025 [sonnet] First integration test: launch app, land on login/list ⇒ green via `androidTest`
 
