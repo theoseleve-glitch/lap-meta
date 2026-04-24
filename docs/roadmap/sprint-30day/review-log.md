@@ -2106,3 +2106,43 @@ Cron-fired 16:07 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`cb5285e`, 
 - Previous turn's `loop-report-c48.md` sits untracked in `docs/roadmap/sprint-30day/`. Not committed by this cycle since Step 9 scope is review-log + metrics + sprint-file bookkeeping only. User can decide whether to commit the report separately.
 
 ---
+
+## 2026-04-24T16:25:00Z — Cycle #50
+
+Cron-fired 16:22 UTC. No PAUSE. Baselines: backend=`772dc3d`, webapp=`cb5285e`, schemas=`4f84bc8`, mobile=`233e538`, website=`ca94b17`, datalogger=`b78fdb5`. Disk 86%.
+
+### Per-repo
+
+- **lap-backend**: 2 idle at `772dc3d`.
+- **lap-webapp `c2bf3d3` T140 SkillRadarChart component**: ACCEPTED + tagged + pushed. **tests 162/162** (+8). Diff: 3 files / 269 ins (SkillRadarChart.tsx 126 + test 95 + index).
+- **lap-schemas**: 1 idle at `4f84bc8`.
+- **lap-mobile-android**: 1 idle at `233e538`.
+- **lap-website**: 1 idle at `ca94b17`.
+- **datalogger `4f26585` T023 replace local LapRecord with shared v1 type**: ACCEPTED + tagged + pushed. Diff: 7 files / 51 ins / 14 del. Mirrors cycle-48 T022 pattern (was SessionManifest, now LapRecord). Touched src files: lap_analysis.py (+4/-1), session_coordinator.py (+5/-1), bundle_schema.py (+23/-X), finalizer.py (+2/-1). **27 downstream tests pass** across test_bundle_schema_uses_shared_manifest + test_session_bundle + test_session_quality. Three Python consumers now all use shared `lap_schemas.v1.LapRecord`.
+
+### Step 5 — Cross-repo coherence
+
+- **Second cross-repo type substitution** this week: T022 SessionManifest + T023 LapRecord both pulled from local datalogger definitions into shared v1. Contract surface compaction progressing.
+- Backend + webapp + mobile + schemas + website: 1-2 idle each, cooling after cycles 46-48 burst.
+
+### Step 6 — Deploy: no configs, skip.
+### Step 7 — Smoke: N/A.
+### Step 10 — Daily email: eligible, out of scope, skip.
+### Step 11 — Alerts: clear.
+
+### Baselines cycle 51
+
+- backend=`772dc3d` (3 idle), webapp=`c2bf3d3`, schemas=`4f84bc8` (2 idle), mobile=`233e538` (2 idle), website=`ca94b17` (2 idle), datalogger=`4f26585`.
+
+### Pause triggers: disk 86% stable; all clear.
+### Forced checkpoints: none hit.
+
+### Milestone
+
+- **50 cycles complete** / ~25 hours continuous loop runtime. 190 cumulative accepts / 1 revert (cycle 4) / 2 flags. Revert rate 0.52%.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 50` + metrics + review-log + 1 pending sprint-file bookkeeping mod. Push to lap-meta master.
+
+---

@@ -33,7 +33,7 @@
 
 - [x] T021 [sonnet] Install `@lap/schemas` Python package as dep ⇒ `from lap_schemas.v1 import SessionManifest` works (ff57d65)
 - [x] T022 [sonnet] Replace local `SessionMetadata` dataclass with `SessionManifest` ⇒ compiles (b78fdb5)
-- [ ] T023 [sonnet] Replace local `BundleSchema` with shared types ⇒ compiles
+- [x] T023 [sonnet] Replace local `BundleSchema` with shared types ⇒ compiles (4f26585)
 - [ ] T024 [sonnet] Audit all duplicate Pydantic models in desktop, remove ⇒ ≥5 removals
 - [ ] T025 [opus] `SessionFinalizer` rewrite step 1: accept `SessionManifest` instead of ad-hoc dict ⇒ tests green
 - [ ] T026 [opus] `SessionFinalizer` step 2: write manifest.json in Bundle v2 format ⇒ format matches spec
