@@ -37,8 +37,8 @@
 - [ ] T024 [opus] Replace on driver pages (progression, style, history) ⇒ tsc green
 - [ ] T025 [opus] Replace on bundles list/detail ⇒ tsc green
 - [ ] T026 [opus] Replace on jobs/exports pages (if not deleted yet) ⇒ tsc green
-- [ ] T027 [sonnet] Delete `src/types/bundles.ts` duplicate, keep only @lap/schemas ⇒ imports still work
-- [ ] T028 [sonnet] Delete `src/lib/api/bundles/types.ts` duplicate ⇒ imports work
+- [x] T027 [sonnet] Delete `src/types/bundles.ts` duplicate, keep only @lap/schemas ⇒ imports still work (no-op: src/types/ never existed in new repo — the duplicate was never transplanted from old lap-website)
+- [x] T028 [sonnet] Delete `src/lib/api/bundles/types.ts` duplicate ⇒ imports work (no-op: T007's selective extraction skipped types.ts — only keys.ts + errors.ts carried over — so there's nothing to delete)
 - [ ] T029 [sonnet] Fix `/api/v1` double-prefix in bundle query hooks ⇒ requests hit correct URL
 - [ ] T030 [sonnet] Resolve `/sessions/:id/channels` duplicate route in backend (coordinate with backend T025) ⇒ one source of truth
 - [ ] T031 [opus] Generate typed API client with `@hey-api/openapi-ts` ⇒ client compiles
@@ -46,7 +46,7 @@
 - [ ] T033 [sonnet] Replace all raw `api.get<any>` calls throughout codebase (~20 files) ⇒ no `any` remains
 - [x] T034 [sonnet] Error envelope typed: `ApiError` class with `code/message/field_errors` ⇒ consistent (d9a0343)
 - [ ] T035 [sonnet] 401 handler retains: silent refresh via Clerk ⇒ behavior preserved
-- [ ] T036 [sonnet] TanStack Query key factory `query-keys.ts` exhaustive per domain ⇒ used everywhere
+- [x] T036 [sonnet] TanStack Query key factory `query-keys.ts` exhaustive per domain ⇒ used everywhere (b901f68)
 - [ ] T037 [sonnet] Remove duplicate taxonomy enums (session type, status) — import from @lap/schemas ⇒ no duplicates
 - [ ] T038 [sonnet] Readiness labels come from backend contract, not client inference ⇒ tested
 - [ ] T039 [sonnet] Support-tier labels come from backend contract ⇒ tested
