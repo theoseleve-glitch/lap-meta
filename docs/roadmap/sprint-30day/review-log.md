@@ -4933,3 +4933,23 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-26T18:40:00Z — Cycle #147 — **🟢 1 accept (mobile T175) with strict `&&` gating + backend hold 16**
+
+### lap-backend (HEAD 352d778; held 16) — CASCADE
+- 16 ahead, +1 from c146. Cascade unchanged.
+
+### lap-mobile-android (HEAD f95c14a) — T175 ACCEPTED with PROPER GATING
+- 1 commit `f95c14a sprint(mobile): T175 LogoutUseCase orchestrates cancel-tokens-DB`.
+- **Applied c146 lesson**: ran each gradle task individually with explicit `&&` between each, and tag+push gated on the chain succeeding. detekt OK → ktlintCheck OK → assembleDebug OK → testDebugUnitTest OK → tag + push.
+- Per-task evidence collection works: now any individual task failure would show its specific error AND block the tag/push.
+
+### IDLE: webapp, schemas, website, datalogger.
+
+### Cycle 147 totals: 1 accept, 0 reverts, 0 alerts. Backend hold = 16.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 147 — 1 accept (mobile T175) with strict per-task && gating; backend hold 16` + review-log.md only.
+
+---
+
