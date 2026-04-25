@@ -115,7 +115,7 @@
 ## Block F — Waitlist + email capture (T091–T105)
 
 - [x] T091 [opus] Waitlist form component: email only, consent-compliant ⇒ submits — f95979c (lap-website; WaitlistForm.astro + /waitlist route; POST /api/waitlist (T092 Worker target), required type=email + required consent, inline GDPR-compliant disclosure, locked button copy "Join the waitlist", €12 founder-rate anchor in the page lead; /waitlist axe-clean)
-- [ ] T092 [opus] Backend for form: Cloudflare Worker → forwards to Resend "waitlist" audience ⇒ tested
+- [x] T092 [opus] Backend for form: Cloudflare Worker → forwards to Resend "waitlist" audience ⇒ tested — 9284c30 (lap-website; functions/api/waitlist.ts Cloudflare Pages Function — validates email + GDPR consent, forwards to Resend audience contacts API, 303 redirects on success, 502 on Resend 5xx, 500 on missing secrets; 8 unit tests cover all branches with stubbed fetch. DEPLOY DEPENDENCIES: blocked on T008 Pages project + Resend account/audience-id — code lands in repo today, runtime activation lights up when T008 unblocks)
 - [ ] T093 [opus] Spam protection: Cloudflare Turnstile ⇒ tested
 - [ ] T094 [opus] Double-opt-in email: "Confirm your email to join the LAP waitlist" ⇒ sent via Resend
 - [ ] T095 [opus] Post-confirm redirect to a personal welcome page ⇒ renders
