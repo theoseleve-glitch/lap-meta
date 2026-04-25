@@ -110,7 +110,7 @@
 - [ ] T087 [sonnet] Video captions + subtitles ⇒ uploaded
 - [x] T088 [sonnet] SEO: target "sim racing telemetry demo" ⇒ meta — 38a447c (lap-website; title "Sim racing telemetry demo — LAP", description pairs phrase with walkthrough scent; T072 session + no-signup anchors preserved)
 - [x] T089 [sonnet] Related links: how-it-works, pricing ⇒ placed — 0b6d1ca (lap-website; <footer> inside /demo main, mirrors /pricing footer visual grammar; after FinalCta so the CTA stays focal)
-- [ ] T090 [sonnet] E2E: demo page → CTA → signup ⇒ green
+- [x] T090 [sonnet] E2E: demo page → CTA → signup ⇒ green — 2c091d4 (lap-website; models the cold-SERP journey: /demo → H1 + walkthrough H2 + testimonials H2 → FinalCta → stubbed /signup; red-green verified by temp FinalCta removal)
 
 ## Block F — Waitlist + email capture (T091–T105)
 
