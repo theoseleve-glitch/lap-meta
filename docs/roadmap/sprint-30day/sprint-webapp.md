@@ -206,7 +206,7 @@
 - [x] T175 [opus] Weakness detail route `src/app/(app)/weaknesses/[id]/page.tsx` ⇒ renders (68ab251)
 - [x] T176 [opus] `WeaknessHeader` component: category, severity, status ⇒ Storybook (7d78712)
 - [x] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook (d6a97cc)
-- [ ] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook
+- [x] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook (c7c2ab8)
 - [ ] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook
 - [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works
 - [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested
