@@ -1,24 +1,17 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T00:10Z (Cycle #81 — **PAUSE_FOR_HUMAN_REVIEW**)
+## Last updated: 2026-04-26T13:00Z (USER RESUME — PAUSE_FOR_HUMAN_REVIEW lifted)
 
-## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE
+## ✅ PAUSE_FOR_HUMAN_REVIEW RESOLVED
 
-**Trigger**: Runbook forced-checkpoint — "Backend ADR-005 objects all land (post-backend T070): user reviews data model + DB schema."
+**Resolution**: ADR-005 forced checkpoint cleared by the user at 2026-04-26T13:00Z after a two-layer audit (ORM in lap-backend + Pydantic in lap-schemas).
 
-Backend T070 DriverReadinessState ORM (acaf396) is the **13th and final** ADR-005 model landed in the c65-c81 sequence. Per runbook: loop pauses until user manually removes the PAUSE marker from review-log.md.
+**Findings:**
+- ORM layer: 2 missing ForeignKey constraints fixed at T112 (`a831422`, lap-backend, unpushed). 336/336 pytest, mypy/ruff clean.
+- Pydantic layer: 0 CRITICAL, 7 MINOR findings (full report: `docs/roadmap/sprint-30day/loop-report-c50-consumer-drift.md`). All 7 ADR-005 canonical objects faithfully implemented; Pydantic chose tighter shapes than ADR mandated (frozen tuples, validated bounds).
+- ADR-005 amended in this commit to add `SessionContext` (§5.3), `CohortDef` (§5.6), `TargetEvent` (§5.7) field-specs and remove the ambiguous `# or corner tag` comment in §5.5 DivergencePoint.
 
-**What to review** (user):
-- `lap-backend/infra/orm.py` (13 models, ~290 lines)
-- `lap-backend/alembic/versions/*.py` (13 migration files, one per model)
-- `lap-backend/tests/test_*_model.py` (13 model test files, 44-193 lines each)
-- ADR-005 conformance — did the 13 models cover the intended aggregate + snapshot + cohort patterns correctly?
-
-**What happened this cycle before pausing** (accepted + tagged):
-- backend T070 DriverReadinessState ORM (acaf396) — 54/54 pytest, mypy 7 files, ruff clean
-- webapp T171 WorstSessionsList (c01b3c0) mid-cycle — 312 tests (+10 from 302)
-- mobile T068 MotionCaptureService 50Hz (d064529) mid-cycle — first motion sensor, 15 consecutive clean mobile accepts
-- website T090 e2e /demo → CTA → signup (2c091d4) — 258 tests, 7-page build
+**Loop may resume normal review at next cron fire** (c133+). See `review-log.md` end-of-file RESUME entry for detail. Backlog: ~366 unpushed commits across 6 repos, to be cleared via verify-at-HEAD-of-unreviewed-range per ADR-018 Decision 5.
 
 ## Per-repo status
 

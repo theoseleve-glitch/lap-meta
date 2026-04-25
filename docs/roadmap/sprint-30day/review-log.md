@@ -3871,15 +3871,15 @@ Cron-fired 23:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 
 Cron-fired 00:07 UTC. 4 accepts (verified + tagged before pause), 0 reverts. Disk 86%.
 
-## 🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE
+## ✅ PAUSE_FOR_HUMAN_REVIEW RESOLVED — USER RESUME 2026-04-26T13:00Z
 
 **Runbook trigger fired** (from `loop-review.md` Forced human-review checkpoints section):
 
 > Backend `ADR-005` objects all land (post-backend T070): user reviews data model + DB schema.
 
-Backend T070 DriverReadinessState ORM (acaf396) landed this cycle. This is the **13th and final ADR-005 model** — the runbook specifies a mandatory human review checkpoint at this moment before any downstream router work exposes these tables via HTTP.
+Backend T070 DriverReadinessState ORM (acaf396) landed this cycle. This was the **13th and final ADR-005 model** — the runbook required a mandatory human review checkpoint before any downstream router work exposes these tables via HTTP.
 
-**The loop will not proceed until the user manually removes this PAUSE marker** from review-log.md (or from metrics.md). Next cron fire will detect the marker and skip.
+**RESOLVED at c133** — see end-of-file RESUME entry. ORM + Pydantic + ADR-005 audit complete (0 CRITICAL findings; 2 missing FKs fixed at T112; ADR amended to close 4 doc gaps). Loop may resume normal operation at next cron fire.
 
 ### What the user should review before resuming
 
@@ -4365,6 +4365,56 @@ c81 markers still active. No review. 50 paused cycles = 12.5h elapsed since c81 
 ## 2026-04-26T12:55:00Z — Cycle #132 — **🛑 PAUSE PERSISTS (cycle 51)**
 
 c81 markers still active. No review. 51 paused cycles = 12.75h elapsed since c81 forced checkpoint.
+
+---
+
+## 2026-04-26T13:00:00Z — **✅ USER RESUME — c81 PAUSE_FOR_HUMAN_REVIEW LIFTED**
+
+Markers removed by user from `review-log.md` (line 3874) and `metrics.md` (line 5).
+
+### Context for resumption
+
+**Two-layer ADR-005 audit completed during the paused window:**
+1. **ORM layer** (`lap-backend/infra/orm.py`) — c124 reviewer-side audit found 2 missing FKs (drift class: AI-self-consistent, where same loop wrote schema + tests so internal verification couldn't catch it). Fixed at **T112** (`a831422`, lap-backend, unpushed) — added `action_prescriptions.outcome_id` → `action_outcomes.id` and `transfer_links.generated_report_id` → `coaching_insights.id`, both `ON DELETE SET NULL`. Migration uses `batch_alter_table` for SQLite/PG portability. 336/336 pytest, ruff + mypy clean.
+2. **Pydantic layer** (`lap-schemas/python/src/lap_schemas/v1/`) — c130 sidecar audit found **0 CRITICAL, 7 MINOR** (full report at `docs/roadmap/sprint-30day/loop-report-c50-consumer-drift.md`). All 7 ADR-005 canonical objects + nested types match spec. Pydantic was actually *tighter* than ADR (added `Field(ge=, le=)` bounds, frozen tuples, capped lengths).
+
+### ADR-005 amendments landed in this commit
+
+To close 4 doc gaps surfaced by the Pydantic audit (M2/M3/M4/M6):
+- §5.3 — added `SessionContext` field-spec subsection
+- §5.6 — added `CohortDef` field-spec subsection
+- §5.7 — added `TargetEvent` field-spec subsection
+- §5.5 — removed ambiguous `# or corner tag` comment from `DivergencePoint.track_distance_m`
+
+Pydantic models match the amended spec exactly. No code regeneration needed.
+
+### Backlog the resumed loop will need to process
+
+- **lap-backend**: 64 unpushed commits (T071-T121 sequence, plus T112 manual fix at `a831422`).
+- **lap-webapp**: 40 unpushed (T172-T234).
+- **lap-website**: 54 unpushed (T091-T136).
+- **lap-mobile-android**: 108 unpushed (T069-T167).
+- **datalogger**: 93 unpushed (cycle backlog from c81).
+- **lap-schemas**: 7 unpushed (T098-T104).
+
+Per ADR-018 Decision 5 ("verify at HEAD of unreviewed range"), the resumed loop should run the verification matrix once at HEAD per repo, not per-commit. Total ~366 commits across 6 repos can clear in a single resumed cycle if matrices stay green.
+
+### What the loop should do next cycle (c133)
+
+1. Sync each repo (`git fetch origin && git pull --ff-only`).
+2. Identify unreviewed range per repo (commits since baseline at c81 final state).
+3. Run verification matrix at HEAD per repo (ADR-018 Decision 5).
+4. Accept + tag the range if green; flag/revert per Step 3 if red.
+5. Push each repo's HEAD + tags to origin.
+6. Run Step 5 cross-repo coherence (schemas → backend/webapp/mobile codegen sweep).
+
+### Working-tree state on review host (informational)
+
+The following repos have uncommitted in-flight sprint work that the loop should NOT attempt to commit. The sprint loops will pick these up and commit them at next sprint-loop fire:
+- `lap-backend`: `infra/celery_app.py` (M), `tests/test_session_record_persistence.py` (??)
+- `lap-webapp`: `lighthouserc.json` (M), `src/lib/lighthouse-budget.test.ts` (M)
+- `lap-mobile-android`: `.claude/` (??), `app/src/test/kotlin/com/lap/mobile/upload/ForceKillResumeUploadTest.kt` (??)
+- `datalogger`: 3 modifications + 2 untracked
 
 ---
 

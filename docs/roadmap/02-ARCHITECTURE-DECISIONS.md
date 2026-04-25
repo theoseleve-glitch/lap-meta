@@ -196,6 +196,16 @@ class SuccessCondition(BaseModel):
     comparison: Literal["gte", "lte", "within_pct"]
     target_pct: Optional[float]
     measurement_window: Literal["next_session", "next_3_sessions", "next_7_days"]
+
+class SessionContext(BaseModel):
+    # The {car, track, conditions} a prescription is intended to be executed in.
+    # Used by the next-session planner to decide whether the prescription is
+    # currently actionable (correct car loaded, track booked, conditions match).
+    car_id: UUID7
+    track_id: UUID7
+    track_layout: str                    # circuit variant, e.g., "GP", "Short", "Combined"
+    environment_tag: Optional[EnvironmentTag]   # sim_practice, real_track_day, etc.
+    conditions: Optional[str]            # human-readable, e.g., "wet, cold, rolling start"
 ```
 
 ### 5.4 `ActionOutcome`
@@ -245,7 +255,7 @@ class TransferLink(BaseModel):
     generated_report_id: Optional[UUID7]  # CoachingInsight summarizing the link
 
 class DivergencePoint(BaseModel):
-    track_distance_m: float              # or corner tag
+    track_distance_m: float              # >= 0; meters along the track from start/finish
     metric: str                          # "brake_pressure_peak"
     sim_value: float
     real_value: float
@@ -271,6 +281,16 @@ class DriverBenchmarkProfile(BaseModel):
     archetype: Optional[Literal["late_braker", "smooth_flow", "aggressive_exit",
                                 "consistent_executor", "adaptive_racecraft"]]
     # archetype only set when enough evidence across dimensions
+
+class CohortDef(BaseModel):
+    # Filter spec defining the cohort against which a driver is benchmarked.
+    # Any None field = unrestricted on that axis. min_sessions filters out cohort
+    # members with insufficient data.
+    skill_level: Optional[str]           # "beginner" | "intermediate" | "advanced" | None
+    car_class: Optional[str]             # "GT3" | "LMP2" | None for all
+    track_id: Optional[UUID7]            # narrow to one track or None for all
+    environment_tag: Optional[EnvironmentTag]
+    min_sessions: int                    # default 5; cohort member must have ≥ this many sessions
 ```
 
 ### 5.7 `DriverReadinessState`
@@ -299,7 +319,27 @@ class DriverReadinessState(BaseModel):
     limiting_factor: str                 # which input is lowest
     likely_gain_area: str                # which weakness, if resolved, moves score most
     recommended_sessions_before_event: int
+
+class TargetEvent(BaseModel):
+    # An upcoming sim event or real-life track day/race the driver is preparing for.
+    # readiness_score and event_pressure_input depend on the kind + competitive_weight.
+    id: UUID7
+    name: str                            # "iRacing 24h Daytona qualifier", "Spa club race"
+    kind: Literal["sim_event", "real_track_day", "real_race", "real_test"]
+    starts_at: datetime
+    ends_at: Optional[datetime]
+    track_id: Optional[UUID7]
+    car_id: Optional[UUID7]
+    competitive_weight: float            # 0-1; drives event_pressure_input in readiness calc
+    notes: Optional[str]
 ```
+
+**Amendments (2026-04-26):** §5.3 `SessionContext`, §5.5 `DivergencePoint.track_distance_m`
+comment, §5.6 `CohortDef`, and §5.7 `TargetEvent` were added/clarified to close 4
+documentation gaps surfaced by the c130 lap-schemas Pydantic conformance audit. No
+field shapes changed — these subsections elevate previously implicit Pydantic implementations
+into the binding spec, so the source-of-truth (`lap-schemas/python/src/lap_schemas/v1/*.py`)
+and ADR are now in full alignment.
 
 **Status:** locked. Field additions allowed; removals require a new ADR.
 
