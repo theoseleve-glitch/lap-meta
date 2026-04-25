@@ -206,7 +206,7 @@
 - [x] T172 [sonnet] Global degraded banner: "offline — local only" ⇒ visible when no network (77fa936)
 - [x] T173 [sonnet] Settings persistence: debounce saves (save every 2s max) ⇒ tested (4b4d54d)
 - [x] T174 [sonnet] Settings persistence: rollback if save fails ⇒ user sees error (d1d9b55)
-- [ ] T175 [sonnet] Settings persistence: repeated saves don't corrupt config.json ⇒ tested
+- [x] T175 [sonnet] Settings persistence: repeated saves don't corrupt config.json ⇒ tested (86777fc)
 
 ## Block J — Packaging + release (T176–T200)
 
