@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T19:49Z (Cycle #163 — IDLE 9th consecutive + backend hold 47)
+## Last updated: 2026-04-25T20:01Z (Cycle #164 — IDLE 10th consecutive + backend hold 48; 10-cycle idle streak)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 1f0d286 (T168) | f005d57 (T122 pre-cascade) | **HELD 47 commits** awaiting T104 schemas cascade resolution; T155-T165 billing CLOSED (forced-checkpoint pending); T166-T168 observability (Sentry init + sampling + release tags) |
+| lap-backend | 7f753c0 (T169) | f005d57 (T122 pre-cascade) | **HELD 48 commits** awaiting T104 schemas cascade resolution; T155-T165 billing CLOSED (forced-checkpoint pending); T166-T169 observability (Sentry T166-T168 + PostHog T169) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -51,7 +51,8 @@
 - **c160**: IDLE 6th consecutive; backend hold +2 to 42; 160-cycle milestone.
 - **c161**: IDLE 7th consecutive; backend hold +2 to 44 (T164 + T165 e2e billing test).
 - **c162**: IDLE 8th consecutive; backend hold +1 to 45 (T166 Sentry SDK init); billing batch T155-T165 closed.
-- **c163 (this cycle)**: IDLE 9th consecutive; backend hold +2 to 47 (T167 Sentry trace sampling + T168 Sentry release tags). Observability batch building.
+- **c163**: IDLE 9th consecutive; backend hold +2 to 47 (T167+T168 Sentry).
+- **c164 (this cycle)**: IDLE 10th consecutive; backend hold +1 to 48 (T169 PostHog SDK init). 10-cycle idle streak for review repos (~150 min wall-clock).
 
 ## Review loop state
 

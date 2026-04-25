@@ -5342,3 +5342,21 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T20:01:00Z — Cycle #164 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 48 + 10-cycle idle streak**
+
+### lap-backend (HEAD 7f753c0 local; held 48) — CASCADE +1
+- 48 ahead, +1 since c163: T169 (PostHog SDK init via factory, 7f753c0). Continued observability/analytics surface (Sentry T166-T168 + PostHog T169).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 164 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 48.
+
+### Notes
+- **10-cycle idle streak** for review repos (c155-c164, ~150 min wall-clock). Backend continues to advance steadily — no concern about sprint loop health on backend side. The other 4 sprint loops (webapp/mobile/website/datalogger) remaining quiescent for this long is the visible-but-not-actionable signal. The review loop's role is to gate quality, not orchestrate sprint pickup; idle is just idle.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 164 — IDLE (10th consecutive) + backend hold 48 (T169 PostHog SDK init)` + review-log.md + metrics.md (header only).
+
+---
+
