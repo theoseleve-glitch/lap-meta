@@ -242,7 +242,7 @@
 
 - [ ] T206 [design] Mockup: onboarding wizard (4 steps) ⇒ approved
 - [x] T207 [opus] `OnboardingProvider` context + step tracker ⇒ state persisted (5e3969f)
-- [ ] T208 [opus] Step 1: Welcome — what LAP does in 15s ⇒ renders
+- [x] T208 [opus] Step 1: Welcome — what LAP does in 15s ⇒ renders (fd5bb57)
 - [ ] T209 [opus] Step 2: Sample session loader — upload curated .ibt fixture ⇒ works
 - [ ] T210 [opus] Step 3: Install link for desktop (or mobile) ⇒ correct link per OS
 - [ ] T211 [opus] Step 4: Accept first prescription ⇒ activation event fires
