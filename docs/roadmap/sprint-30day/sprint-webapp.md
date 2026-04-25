@@ -221,7 +221,7 @@
 - [x] T187 [opus] Route `src/app/(app)/compare/page.tsx` lists saved cases ⇒ renders (8aa6c17)
 - [x] T188 [opus] Route `src/app/(app)/compare/[caseId]/page.tsx` shows one case ⇒ renders (1ff586a)
 - [ ] T189 [opus] Data hooks: useCompareCases, useCompareCase(id) ⇒ cached [BLOCKED: waiting on lap-backend — needs `/compare/cases` (list) and `/compare/cases/:id` (detail) endpoints plus the `@lap/schemas`-generated typed client (not yet a dependency in this package). Webapp doctrine forbids `api.get<any>()` and local DTO duplicates, so the hooks cannot be wired through the typed client without these.]
-- [ ] T190 [opus] `CompareCaseCreateModal` with rationale text field ⇒ Storybook
+- [x] T190 [opus] `CompareCaseCreateModal` with rationale text field ⇒ Storybook (fcd03aa)
 - [ ] T191 [sonnet] New compare flow: select 2+ sessions from Timeline → "Save as compare case" ⇒ works
 - [ ] T192 [sonnet] Compare case detail layout: sessions side-by-side + rationale + outcome section ⇒ renders
 - [ ] T193 [sonnet] Auto-updating outcome: on re-processing of referenced sessions, refetch ⇒ works
