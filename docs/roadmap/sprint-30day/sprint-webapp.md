@@ -207,7 +207,7 @@
 - [x] T176 [opus] `WeaknessHeader` component: category, severity, status ⇒ Storybook (7d78712)
 - [x] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook (d6a97cc)
 - [x] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook (c7c2ab8)
-- [ ] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook
+- [x] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook (c2a0a75)
 - [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works
 - [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested
 - [ ] T182 [sonnet] Loading/error/empty states ⇒ handled
