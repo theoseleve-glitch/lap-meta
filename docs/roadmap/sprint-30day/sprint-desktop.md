@@ -172,7 +172,7 @@
 - [x] T141 [sonnet] Pit-armed UI: overlay color change + pit indicator ⇒ visible (9e4f77f)
 - [x] T142 [sonnet] Pit-armed audio cue ⇒ optional (c0cc85a)
 - [x] T143 [sonnet] Manual arm override: user can arm/disarm ⇒ works (93d8e08)
-- [ ] T144 [sonnet] Strategy plan serialized into bundle per Q102 ⇒ tested
+- [x] T144 [sonnet] Strategy plan serialized into bundle per Q102 ⇒ tested (cbf7cbe)
 - [ ] T145 [sonnet] Actual pit events captured (sim events or user-annotated) ⇒ stored
 - [ ] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable
 - [ ] T147 [sonnet] Strategy view in desktop review: compact summary ⇒ UI visible
