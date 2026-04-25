@@ -40,7 +40,7 @@
 - [x] T027 [sonnet] Delete `src/types/bundles.ts` duplicate, keep only @lap/schemas ⇒ imports still work (no-op: src/types/ never existed in new repo — the duplicate was never transplanted from old lap-website)
 - [x] T028 [sonnet] Delete `src/lib/api/bundles/types.ts` duplicate ⇒ imports work (no-op: T007's selective extraction skipped types.ts — only keys.ts + errors.ts carried over — so there's nothing to delete)
 - [x] T029 [sonnet] Fix `/api/v1` double-prefix in bundle query hooks ⇒ requests hit correct URL (no-op: T007 deferred queries.ts; no bundle query hooks exist to fix. Naturally addressed when T031 typed client lands and hooks are re-authored against it.)
-- [ ] T030 [sonnet] Resolve `/sessions/:id/channels` duplicate route in backend (coordinate with backend T025) ⇒ one source of truth
+- [ ] T030 [sonnet] Resolve `/sessions/:id/channels` duplicate route in backend (coordinate with backend T025) ⇒ one source of truth [BLOCKED: waiting on lap-backend T025 — the duplicate-route resolution lives server-side. Grep across `lap-webapp/src` for `channels`/`/sessions/:id/channels`/`useChannels` returns zero matches; the webapp has no client of either route to migrate. Once lap-backend T025 picks the canonical path and emits OpenAPI, the @lap/schemas-generated client (T031) will surface a single typed accessor automatically — no webapp-side resolution needed.]
 - [ ] T031 [opus] Generate typed API client with `@hey-api/openapi-ts` ⇒ client compiles
 - [ ] T032 [sonnet] Replace `api.get('/sessions')` with `client.getSessions()` typed ⇒ same behavior
 - [ ] T033 [sonnet] Replace all raw `api.get<any>` calls throughout codebase (~20 files) ⇒ no `any` remains
