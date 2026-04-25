@@ -59,7 +59,7 @@
 - [x] T043 [opus] `Idempotency-Key` = session UUIDv7, added to headers ⇒ tested (a6a40c7)
 - [x] T044 [opus] Chunk streaming: upload telemetry file in 5MB chunks ⇒ works (864e1c7)
 - [x] T045 [opus] Resume-on-interrupt: chunk cursor persisted, resumes from last ⇒ tested (a241f86)
-- [ ] T046 [sonnet] SSE consumer: poll `/jobs/:id/events` for progress ⇒ emits Qt signal
+- [x] T046 [sonnet] SSE consumer: poll `/jobs/:id/events` for progress ⇒ emits Qt signal (4c12d18)
 - [ ] T047 [sonnet] Progress dial on Finalize/Upload screen reflects SSE ⇒ visible
 - [ ] T048 [sonnet] Network failure handling: retry with exponential backoff ⇒ works
 - [ ] T049 [sonnet] Auth token refresh: Clerk token refresh on 401 ⇒ silent

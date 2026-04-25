@@ -85,7 +85,7 @@
 - [x] T065 [opus] `LocationSample` mapped to `TelemetrySample` shape with `t_source_clock="gnss"` ⇒ tested — 590d4ca (mobile; toTelemetrySample() extension + LocationChannels wire-name lock; tCanonicalNs==tSourceNs per ADR-007 client-no-pre-fuse; 8 cases)
 - [x] T066 [opus] Horizontal accuracy, speed, bearing fields populated ⇒ validated — b100bb8 (mobile; LocationSampleValidator + LocationFieldViolation enum; 18 cases — physical bounds only, half-open [0,360) bearing, accuracy>0; T091 keeps the per-track accuracy threshold gate separate)
 - [x] T067 [sonnet] Location error handling: loss of fix surfaced via UiState ⇒ tested — dacf4d7 (mobile; LocationFixMonitor folds Flow<LocationSample> into Flow<LocationFixState> using transformLatest watchdog; 6 virtual-time cases — Searching→Acquired→Lost→Acquired recovery + boundary case)
-- [ ] T068 [sonnet] `MotionCaptureService`: SensorManager accelerometer + gyroscope at 50Hz ⇒ samples stream
+- [x] T068 [sonnet] `MotionCaptureService`: SensorManager accelerometer + gyroscope at 50Hz ⇒ samples stream — d064529 (mobile; sealed MotionSample.Accelerometer/Gyroscope + MotionDataSource seam + SensorManagerMotionDataSource impl with callbackFlow + MotionCaptureConfig.FIFTY_HERTZ=20_000µs; 7 JVM cases) [PENDING: device-required for live SensorManager stream — T083]
 - [ ] T069 [sonnet] Motion samples mapped to TelemetrySample with `t_source_clock="device_monotonic"` (using `SensorEvent.timestamp` in nanos) ⇒ tested
 - [ ] T070 [sonnet] Low-pass filter option on accelerometer (configurable) ⇒ tested
 - [ ] T071 [opus] `CaptureOrchestrator`: combines location + motion + BLE into single `Flow<TelemetrySample>` ⇒ tested

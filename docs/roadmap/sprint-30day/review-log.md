@@ -3867,3 +3867,103 @@ Cron-fired 23:52 UTC. No PAUSE. 5 accepts, 0 reverts. Disk 86%.
 
 ---
 
+## 2026-04-26T00:10:00Z — Cycle #81 — **🛑 PAUSE_FOR_HUMAN_REVIEW — POST-BACKEND-T070 FORCED CHECKPOINT**
+
+Cron-fired 00:07 UTC. 4 accepts (verified + tagged before pause), 0 reverts. Disk 86%.
+
+## 🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE
+
+**Runbook trigger fired** (from `loop-review.md` Forced human-review checkpoints section):
+
+> Backend `ADR-005` objects all land (post-backend T070): user reviews data model + DB schema.
+
+Backend T070 DriverReadinessState ORM (acaf396) landed this cycle. This is the **13th and final ADR-005 model** — the runbook specifies a mandatory human review checkpoint at this moment before any downstream router work exposes these tables via HTTP.
+
+**The loop will not proceed until the user manually removes this PAUSE marker** from review-log.md (or from metrics.md). Next cron fire will detect the marker and skip.
+
+### What the user should review before resuming
+
+1. **`lap-backend/infra/orm.py`** — 13 SQLAlchemy model classes (~290 lines total). Check FK relationships, column types, constraints, cascade rules.
+2. **`lap-backend/alembic/versions/*.py`** — 13 migration files, one per model. Check migration order, reversibility, default values.
+3. **`lap-backend/tests/test_*_model.py`** — 13 model test files (44-193 lines each). Check that tests cover ADR-005 invariants, not just CRUD.
+4. **ADR-005 conformance** — does the landed shape match the document? Any missing tables, missing columns, missing relationships?
+5. **Router-readiness** — any model shapes that should have been refactored before exposing via HTTP (e.g., sensitive columns, auth-coupling, denormalization for read-path)?
+
+### Model inventory (in order landed, by cycle)
+
+| # | Cycle | Model | Sha | FK |
+|---|-------|-------|-----|-----|
+| 1 | c65 | User | 76d6046 | — |
+| 2 | c67 | DriverProfile | 31fb7b4 | User |
+| 3 | c68 | Session | 3de44d4 | DriverProfile |
+| 4 | c69 | SessionRecord | 9a6a35b | Session |
+| 5 | c71 | TelemetryArtifact | 9882ce2 | Session |
+| 6 | c72 | Lap | 40eeed0 | Session |
+| 7 | c73 | WeaknessEpisode | 9eb760c | Session |
+| 8 | c75 | ActionPrescription | dd601a7 | Session |
+| 9 | c76 | ActionOutcome | 4622063 | ActionPrescription |
+| 10 | c77 | DriverProgressSnapshot | 3eb2f5d | DriverProfile |
+| 11 | c79 | TransferLink | 512892a | (share pattern) |
+| 12 | c80 | DriverBenchmarkProfile | 32999fb | DriverProfile |
+| 13 | c81 | DriverReadinessState | acaf396 | DriverProfile |
+
+### This cycle's review work completed before pause
+
+- **lap-backend `acaf396` sprint(backend): T070 DriverReadinessState ORM + migration** — ACCEPT + tag + push.
+  - Full matrix: ruff clean, mypy 7 files, pytest 54/54 (+2).
+  - Diff: 208 ins (orm.py +25 + migration 53 + tests 130).
+  - **13th and final ADR-005 model**. Forced checkpoint triggers immediately after this accept.
+- **lap-webapp `c01b3c0` sprint(webapp): T171 WorstSessionsList component** — ACCEPT + tag + push (mid-cycle).
+  - Full matrix: 312 tests (+10 from 302). Symmetric to T170 BestSessionsList but safety-red score badge for weakest sessions.
+  - **Block G profile list trio complete** (T169 SkillTrend + T170 Best + T171 Worst).
+- **lap-mobile-android `d064529` sprint(mobile): T068 MotionCaptureService over SensorManager at 50Hz** — ACCEPT + tag + push (mid-cycle).
+  - Full gradle matrix green on stashed tree.
+  - Diff: 339 ins. 4 new files: MotionCaptureConfig (25) + MotionCaptureService (22) + MotionDataSource interface (14) + MotionSample (35) + test (243).
+  - **Second sensor modality** on mobile (alongside GPS). 15 consecutive clean mobile accepts.
+- **lap-website `2c091d4` sprint(marketing): T090 e2e /demo → CTA → signup** — ACCEPT + tag + push.
+  - Full matrix: 258 tests (Playwright e2e, no new vitest), 7-page build.
+  - Diff: 32 ins. Completes Block E /demo surface (T072-T090, 8 cycles of demo work).
+
+### Step 4 guardrails — all 4 commits clean.
+
+### Step 5 — Cross-repo coherence (pre-pause)
+
+- Schemas idle → no drift.
+- **Backend data model complete** — with 13 ORMs + 13 migrations, the schema is defined. No routers yet. Datalogger IngestClient (5 commits, c73-c80) still waits for matching backend router.
+
+### Step 6 / 7 — Deploy / smoke
+- Skipped.
+
+### Step 8 — Metrics
+- Rewritten with PAUSE_FOR_HUMAN_REVIEW marker.
+
+### Step 10 / 11 — Alert emails
+
+- **`human-review-required` alert should be fired** per runbook (Step 11 table: "Forced human-review checkpoint hits → `human-review-required`"). Tooling note: `ops/send_alert.py human-review-required` is the command. **Deferred per ongoing Step 10/11 ops scope** (ops/send_alert.py not wired this session) — flagging here for user visibility via review-log/metrics instead.
+
+### Baselines cycle 82 (but loop is paused)
+
+- backend=`acaf396`, webapp=`c01b3c0`, schemas=`0dda9cb` (22 idle), mobile=`d064529`, website=`2c091d4`, datalogger=`a241f86` (1 idle).
+
+### Pause triggers: **1 active** (post-backend-T070 forced checkpoint). Disk 86% stable.
+### Forced checkpoints: **HIT** (this entry).
+
+### Milestone
+
+- **ADR-005 complete**: 13 ORM models + 13 migrations in 17 cycles (c65-c81). Zero reverts. Zero ADR drift. Sprint-backend is the most disciplined of the 5 sprint loops by pure numbers.
+- **Block E (website /demo) complete** at T090. 8 commits over c71-c81.
+- **Block G profile data-state trio complete** on webapp (T169+T170+T171).
+- **Mobile capture stack at 7 layers + 2 sensors** (location + motion).
+- 304 cumulative accepts / 3 reverts / 0.99% revert rate / 81 cycles.
+
+### Runbook process note
+
+- **Forced checkpoint works as designed**. The trigger ("post-backend T070") landed exactly when T070 landed. Writing the PAUSE entry, not proceeding with further Steps, waiting for user manual gate. Next cron fire should detect the PAUSE marker and skip; if it doesn't (because c82 auto-fires), I'll need to detect the marker myself and refuse to verify.
+- **Next-cycle PAUSE detection pattern** (for c82+): read review-log.md, check for most-recent `🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE` marker that is NOT followed by a user "RESUME" line. If active, skip all review steps and log an idle entry noting the pause persists.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 81 — 4 accepts + PAUSE_FOR_HUMAN_REVIEW post-T070 forced checkpoint` + metrics + review-log. Push to lap-meta master. Then STOP.
+
+---
+

@@ -1,49 +1,79 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T23:55Z (Cycle #80)
+## Last updated: 2026-04-26T00:10Z (Cycle #81 — **PAUSE_FOR_HUMAN_REVIEW**)
+
+## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE
+
+**Trigger**: Runbook forced-checkpoint — "Backend ADR-005 objects all land (post-backend T070): user reviews data model + DB schema."
+
+Backend T070 DriverReadinessState ORM (acaf396) is the **13th and final** ADR-005 model landed in the c65-c81 sequence. Per runbook: loop pauses until user manually removes the PAUSE marker from review-log.md.
+
+**What to review** (user):
+- `lap-backend/infra/orm.py` (13 models, ~290 lines)
+- `lap-backend/alembic/versions/*.py` (13 migration files, one per model)
+- `lap-backend/tests/test_*_model.py` (13 model test files, 44-193 lines each)
+- ADR-005 conformance — did the 13 models cover the intended aggregate + snapshot + cohort patterns correctly?
+
+**What happened this cycle before pausing** (accepted + tagged):
+- backend T070 DriverReadinessState ORM (acaf396) — 54/54 pytest, mypy 7 files, ruff clean
+- webapp T171 WorstSessionsList (c01b3c0) mid-cycle — 312 tests (+10 from 302)
+- mobile T068 MotionCaptureService 50Hz (d064529) mid-cycle — first motion sensor, 15 consecutive clean mobile accepts
+- website T090 e2e /demo → CTA → signup (2c091d4) — 258 tests, 7-page build
 
 ## Per-repo status
 
 | Repo | `[x]` | `[BLOCKED]` | `[NEEDS_REWORK]` | HEAD |
 |---|---|---|---|---|
-| lap-backend | 66 | 2 (T018/T019) | 1 (T013) | `32999fb` (T069 DriverBenchmarkProfile — 12th model) |
-| lap-webapp | 82 | 5 (T157/T158/T161/T162/T164) | 0 | `8cd9d3e` (T170 BestSessionsList; 302) |
-| lap-schemas (subset) | 35 | 0 | 0 | `0dda9cb` (idle 21 cycles; Python parity 35/35 ✓) |
-| lap-mobile-android | 67 | 0 | 0 | `dacf4d7` (T067 LocationFixMonitor loss-of-fix UiState) |
-| lap-website (marketing) | 68 | 1 (T067) + implicit (T082/T084/T087) | 0 | `0b6d1ca` (T089 /demo related links) |
-| datalogger (desktop) | 44 | 1 (T035) | 0 | `a241f86` (T045 completion cursor persistence) |
+| lap-backend | 67 | 2 (T018/T019) | 1 (T013) | `acaf396` (T070 DriverReadinessState — **13th and final ADR-005 model**) |
+| lap-webapp | 83 | 5 (T157/T158/T161/T162/T164) | 0 | `c01b3c0` (T171 WorstSessionsList; 312) |
+| lap-schemas (subset) | 35 | 0 | 0 | `0dda9cb` (idle 22 cycles; Python parity 35/35 ✓) |
+| lap-mobile-android | 68 | 0 | 0 | `d064529` (T068 MotionCaptureService — first motion sensor) |
+| lap-website (marketing) | 69 | 1 (T067) + implicit (T082/T084/T087) | 0 | `2c091d4` (T090 /demo→CTA→signup e2e — Block E complete) |
+| datalogger (desktop) | 44 | 1 (T035) | 0 | `a241f86` (idle 1; T045 completion cursor) |
 
-## This cycle (Cycle #80)
+## Cumulative (81 cycles)
 
-- Verified GREEN: 5 (backend T069, webapp T170, mobile T067, website T089, datalogger T045)
-- Reverted: 0 | SCOPE_FLAG: 0 new
+- Total reviewed: 308 · Accepted+tagged: 304 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
+- Reverted: 3 · Pause triggers: **1 active (forced checkpoint)**
 
-## Cumulative (80 cycles)
+## Cycle 81 notables — 13TH/FINAL ORM + BLOCK E E2E CAPS + PAUSE_FOR_HUMAN_REVIEW
 
-- Total reviewed: 304 · Accepted+tagged: 300 🎯 (1 INFRA_FLAG c4, 1 SCOPE_FLAG c11-T017)
-- Reverted: 3 · Pause triggers: 0
-- **Milestone**: 300 cumulative accepts reached (295 → 300 this cycle). 80 review cycles. 97.4% first-pass rate.
+- **Backend T070 DriverReadinessState ORM + migration** — 13th and final model per runbook forced-checkpoint. orm.py +25, migration 53, tests 130. Pytest 54/54 (+2). With T058-T070 complete, ADR-005 data model is shippable.
+- **Complete ADR-005 ORM set** (13 models across c65-c81, zero reverts):
+  1. User (T058, c65)
+  2. DriverProfile (T059, c67)
+  3. Session (T060, c68)
+  4. SessionRecord (T061, c69)
+  5. TelemetryArtifact (T062, c71)
+  6. Lap (T063, c72)
+  7. WeaknessEpisode (T064, c73)
+  8. ActionPrescription (T065, c75)
+  9. ActionOutcome (T066, c76)
+  10. DriverProgressSnapshot (T067, c77)
+  11. TransferLink (T068, c79)
+  12. DriverBenchmarkProfile (T069, c80)
+  13. DriverReadinessState (T070, c81)
+- **Webapp Block G profile list trio complete** — BestSessionsList (T170) + WorstSessionsList (T171) + SkillTrendChart (T169). 312 tests.
+- **Mobile T068 MotionCaptureService** (mid-cycle) — first motion sensor (SensorManager 50Hz). 15 consecutive clean mobile accepts. Capture stack gains a 2nd sensor modality alongside GPS.
+- **Website Block E capped** — T090 e2e completes /demo conversion journey. Block E: T072 shell → T073 video → T081 LCP budget → T083 axe → T085 CTA → T086 testimonials → T088 SEO → T089 links → T090 e2e. 8 commits over c71-c81.
+- Schemas idle 22 cycles.
+- Disk 86% stable 57 cycles.
 
-## Cycle 80 notables — 12TH ORM + BESTSESSIONS LIST + FIX MONITOR + RELATED LINKS + CURSOR RESUMPTION
+## Review loop state after c81
 
-- **Backend T069 DriverBenchmarkProfile ORM + migration** — 12th model. 52/52 (+2). orm.py +21, migration 45, tests 104. Benchmark profile likely holds cohort-relative metrics (driver X vs cohort Y).
-- **Webapp T170 BestSessionsList component** — 260 ins / **+10 tests** (292→302). Best-of surfacing on profile. data-session-id wired from T169 paves the drill-through.
-- **Mobile T067 LocationFixMonitor surfaces loss-of-fix via UiState** — 254 ins. LocationFixMonitor 49 + LocationFixState 23 + test 182. 7th layer of mobile capture stack. Surfaces GPS loss-of-fix to UI so user knows they're not in a dead zone unconsciously. **14 consecutive clean mobile accepts**.
-- **Website T089 /demo related links** — 55 ins. Small footer inside /demo with caption-styled links to /how-it-works + /pricing. Post-FinalCta fallback path for users who skipped primary CTA. 258 tests (+3).
-- **Datalogger T045 persist completion cursor** — 225 ins. Writes `.ingest_cursor.json` with 202-response fields on success. Subsequent upload calls read cursor, match manifest's session_id → return cached `IngestResult` without re-POSTing. Resumability + idempotency.
-- Schemas idle 21 cycles.
-- Disk 86% stable 56 cycles.
+- **Loop is PAUSED**. Next cron fire will detect the PAUSE marker in review-log.md and skip.
+- To resume: user manually removes `PAUSE_FOR_HUMAN_REVIEW ACTIVE` marker from review-log.md.
 
-## Current issues
+## Current issues (unchanged pre-pause)
 
-- Datalogger 19 stable failures + occasional 20th flake (known since c22/c68).
+- Datalogger 19 stable failures + occasional 20th flake.
 - Datalogger pyproject missing dev extras.
 - Desktop T035 [BLOCKED]: backend ingestion endpoint.
-- Webapp 5 [BLOCKED] on backend: T157, T158, T161, T162, T164.
+- Webapp 5 [BLOCKED] on backend.
 - Website T067 [BLOCKED]: Cloudflare OAuth.
 - Backend T013 NEEDS_REWORK persistent.
 - Backend T018/T019 BLOCKED on docker.
 - Website T017 SCOPE_FLAG.
 - Step 10 daily-email deferred.
 
-## Cron: next 00:10 UTC.
+## Cron: paused. Next resumption is user-gated.

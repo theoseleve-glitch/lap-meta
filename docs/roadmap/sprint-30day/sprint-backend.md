@@ -97,7 +97,7 @@
 - [x] T067 [opus] ORM model `DriverProgressSnapshot` ⇒ migration applied — sha: 3eb2f5d
 - [x] T068 [opus] ORM model `TransferLink` ⇒ migration applied — sha: 512892a
 - [x] T069 [opus] ORM model `DriverBenchmarkProfile` ⇒ migration applied — sha: 32999fb
-- [ ] T070 [opus] ORM model `DriverReadinessState` ⇒ migration applied
+- [x] T070 [opus] ORM model `DriverReadinessState` ⇒ migration applied — sha: acaf396
 - [ ] T071 [opus] ORM model `TrackLayout`, `CarModel`, `TrackEquivalence`, `CarEquivalence` ⇒ migrations applied
 - [ ] T072 [opus] ORM model `CoachingInsight` (per-session outputs) ⇒ migration applied
 - [ ] T073 [opus] ORM model `UploadQueueItem` (mirrors mobile's SQLite schema, for audit trail) ⇒ migration applied
