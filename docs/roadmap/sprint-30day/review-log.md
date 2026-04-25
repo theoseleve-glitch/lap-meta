@@ -5508,3 +5508,24 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T22:42:00Z — Cycle #174 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 72 + braking-rules library expanding**
+
+### lap-backend (HEAD df427f8 local; held 72) — CASCADE +5
+- 72 ahead, +5 since c173: T189-T193 author 5 more braking-pillar coaching rules:
+  - T189 (`br.early_braking.entry_speed_loss`, 91c945d)
+  - T190 (`br.abrupt_release.load_transfer_mismatch`, 8439a65)
+  - T191 (`br.inconsistent_pressure.sector_variance`, f92612e)
+  - T192 (`br.lockup.pattern_detection`, f9aa476)
+  - T193 (`br.cold_brakes.first_lap_deficit`, df427f8)
+- Combined with T188 (`br.late_braking.apex_speed_loss`), the **braking pillar** now has 6 rules covering: timing (early/late), force application (abrupt release, lockup), consistency (inconsistent pressure across sectors), and warmup state (cold brakes first lap). Coherent diagnostic taxonomy.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 174 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 72 (+5).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 174 — IDLE (20th consecutive) + backend hold 72 (T189-T193 braking-pillar coaching rules — 6 rules total)` + review-log.md + metrics.md (header only).
+
+---
+

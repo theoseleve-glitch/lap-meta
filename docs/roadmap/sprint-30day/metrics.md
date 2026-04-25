@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T22:30Z (Cycle #173 — IDLE 19th consecutive + backend hold 67; coaching engine kernel complete + first rule)
+## Last updated: 2026-04-25T22:42Z (Cycle #174 — IDLE 20th consecutive + backend hold 72; braking-pillar coaching rules building)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 975d427 (T188) | f005d57 (T122 pre-cascade) | **HELD 67 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T179 obs/analytics (14 normal), T180-T188 coaching rules engine (9 normal: kernel complete + first rule `br.late_braking.apex_speed_loss`, AST condition compiler security-sensitive) |
+| lap-backend | df427f8 (T193) | f005d57 (T122 pre-cascade) | **HELD 72 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T179 obs/analytics (14 normal), T180-T193 coaching rules engine + braking-pillar (14 normal: kernel + 6 br.* rules covering timing/force/consistency/warmup) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -61,7 +61,8 @@
 - **c170**: IDLE 16th consecutive; backend hold +1 to 57 (T178 admin /api/v1/admin/kpis); 170-cycle mark.
 - **c171**: IDLE 17th consecutive; backend hold +1 to 58 (T179 weekly Slack KPI cron).
 - **c172**: IDLE 18th consecutive; backend hold +4 to 62 (T180 audit cron + T181-T183 coaching engine kernel start); surface shift to coaching rules engine.
-- **c173 (this cycle)**: IDLE 19th consecutive; backend hold +5 to 67 (T184 feature namespace + T185 rule runner + T186 versioning + T187 confidence gating + T188 first rule `br.late_braking.apex_speed_loss`). Engine kernel complete; rule library starting.
+- **c173**: IDLE 19th consecutive; backend hold +5 to 67 (T184-T188 engine kernel complete + first rule).
+- **c174 (this cycle)**: IDLE 20th consecutive; backend hold +5 to 72 (T189-T193: 5 more braking-pillar rules — entry_speed_loss, abrupt_release, inconsistent_pressure, lockup, cold_brakes). Braking pillar now 6 rules.
 
 ## Review loop state
 
