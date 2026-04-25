@@ -114,7 +114,7 @@
 
 ## Block F — Waitlist + email capture (T091–T105)
 
-- [ ] T091 [opus] Waitlist form component: email only, consent-compliant ⇒ submits
+- [x] T091 [opus] Waitlist form component: email only, consent-compliant ⇒ submits — f95979c (lap-website; WaitlistForm.astro + /waitlist route; POST /api/waitlist (T092 Worker target), required type=email + required consent, inline GDPR-compliant disclosure, locked button copy "Join the waitlist", €12 founder-rate anchor in the page lead; /waitlist axe-clean)
 - [ ] T092 [opus] Backend for form: Cloudflare Worker → forwards to Resend "waitlist" audience ⇒ tested
 - [ ] T093 [opus] Spam protection: Cloudflare Turnstile ⇒ tested
 - [ ] T094 [opus] Double-opt-in email: "Confirm your email to join the LAP waitlist" ⇒ sent via Resend
