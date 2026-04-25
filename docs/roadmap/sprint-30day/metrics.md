@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T20:25Z (Cycle #166 — IDLE 12th consecutive + backend hold 52)
+## Last updated: 2026-04-25T20:37Z (Cycle #167 — IDLE 13th consecutive + backend hold 53)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 23f62f4 (T173) | f005d57 (T122 pre-cascade) | **HELD 52 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T173 obs/analytics (8 normal) |
+| lap-backend | 13f494b (T174) | f005d57 (T122 pre-cascade) | **HELD 53 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T174 obs/analytics (9 normal) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -54,7 +54,8 @@
 - **c163**: IDLE 9th consecutive; backend hold +2 to 47 (T167+T168 Sentry).
 - **c164**: IDLE 10th consecutive; backend hold +1 to 48 (T169 PostHog SDK init).
 - **c165**: IDLE 11th consecutive; backend hold +2 to 50 (T170+T171 PostHog events); half-century milestone.
-- **c166 (this cycle)**: IDLE 12th consecutive; backend hold +2 to 52 (T172 prescription_accepted + T173 weakness_resolved PostHog events).
+- **c166**: IDLE 12th consecutive; backend hold +2 to 52 (T172+T173 PostHog events).
+- **c167 (this cycle)**: IDLE 13th consecutive; backend hold +1 to 53 (T174 PostHog identify on first-login — user-identification completes analytics tracking surface).
 
 ## Review loop state
 
