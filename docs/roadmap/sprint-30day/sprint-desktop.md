@@ -60,107 +60,107 @@
 - [x] T044 [opus] Chunk streaming: upload telemetry file in 5MB chunks ⇒ works (864e1c7)
 - [x] T045 [opus] Resume-on-interrupt: chunk cursor persisted, resumes from last ⇒ tested (a241f86)
 - [x] T046 [sonnet] SSE consumer: poll `/jobs/:id/events` for progress ⇒ emits Qt signal (4c12d18)
-- [ ] T047 [sonnet] Progress dial on Finalize/Upload screen reflects SSE ⇒ visible
-- [ ] T048 [sonnet] Network failure handling: retry with exponential backoff ⇒ works
-- [ ] T049 [sonnet] Auth token refresh: Clerk token refresh on 401 ⇒ silent
-- [ ] T050 [sonnet] Auth token storage: OS keychain via `keyring` library ⇒ secure
-- [ ] T051 [sonnet] Pairing flow: scan QR (camera or manual entry) → redeem → store tokens ⇒ works
-- [ ] T052 [sonnet] "Not paired" empty state in UI with CTA to open webapp for pairing QR ⇒ visible
-- [ ] T053 [sonnet] Multi-account support: not needed in M1, scaffolded for later ⇒ single-account works
-- [ ] T054 [sonnet] Unit test: IngestClient happy path, 4xx, 5xx, network error ⇒ all paths
-- [ ] T055 [sonnet] Integration test: end-to-end capture → finalize → upload → server confirms ⇒ green
+- [x] T047 [sonnet] Progress dial on Finalize/Upload screen reflects SSE ⇒ visible (df3d548)
+- [x] T048 [sonnet] Network failure handling: retry with exponential backoff ⇒ works (4ffb380)
+- [x] T049 [sonnet] Auth token refresh: Clerk token refresh on 401 ⇒ silent (a1456f5)
+- [x] T050 [sonnet] Auth token storage: OS keychain via `keyring` library ⇒ secure (53b81f5)
+- [x] T051 [sonnet] Pairing flow: scan QR (camera or manual entry) → redeem → store tokens ⇒ works (d26edf9)
+- [x] T052 [sonnet] "Not paired" empty state in UI with CTA to open webapp for pairing QR ⇒ visible (bf98715)
+- [x] T053 [sonnet] Multi-account support: not needed in M1, scaffolded for later ⇒ single-account works (f07154d)
+- [x] T054 [sonnet] Unit test: IngestClient happy path, 4xx, 5xx, network error ⇒ all paths (2e2c0e0)
+- [x] T055 [sonnet] Integration test: end-to-end capture → finalize → upload → server confirms ⇒ green (0289e38)
 
 ## Block D — Observability (T056–T065)
 
-- [ ] T056 [sonnet] Sentry Python SDK integrated in bootstrap ⇒ 500 error reports
-- [ ] T057 [sonnet] Sentry Qt integration: capture QML errors ⇒ QML throws appear in Sentry
-- [ ] T058 [sonnet] Sentry release tagging from version.py ⇒ tagged
-- [ ] T059 [sonnet] PostHog Python SDK integrated ⇒ ready
-- [ ] T060 [sonnet] PostHog event: `desktop_app_started` ⇒ visible
-- [ ] T061 [sonnet] PostHog event: `session_captured` with sim/track/car props ⇒ visible
-- [ ] T062 [sonnet] PostHog event: `overlay_toggled` with widget id ⇒ visible
-- [ ] T063 [sonnet] PostHog event: `mode_switched` (after mode engine ships) ⇒ stub in place
-- [ ] T064 [sonnet] PostHog event: `coaching_insight_viewed` ⇒ stub
-- [ ] T065 [sonnet] Opt-out flag in Settings for telemetry collection ⇒ respected
+- [x] T056 [sonnet] Sentry Python SDK integrated in bootstrap ⇒ 500 error reports (d524fc1)
+- [x] T057 [sonnet] Sentry Qt integration: capture QML errors ⇒ QML throws appear in Sentry (e87fee7)
+- [x] T058 [sonnet] Sentry release tagging from version.py ⇒ tagged (b97fc67)
+- [x] T059 [sonnet] PostHog Python SDK integrated ⇒ ready (e610084)
+- [x] T060 [sonnet] PostHog event: `desktop_app_started` ⇒ visible (44c9e57)
+- [x] T061 [sonnet] PostHog event: `session_captured` with sim/track/car props ⇒ visible (c22bea7)
+- [x] T062 [sonnet] PostHog event: `overlay_toggled` with widget id ⇒ visible (bb1a132)
+- [x] T063 [sonnet] PostHog event: `mode_switched` (after mode engine ships) ⇒ stub in place (357348b)
+- [x] T064 [sonnet] PostHog event: `coaching_insight_viewed` ⇒ stub (ab058b1)
+- [x] T065 [sonnet] Opt-out flag in Settings for telemetry collection ⇒ respected (cff051c)
 
 ## Block E — Session review placeholder cleanup (T066–T075)
 
-- [ ] T066 [sonnet] Audit review page for "to be wired later" placeholders ⇒ list in commit msg
-- [ ] T067 [sonnet] Wire Re-process button → backend `/sessions/:id/reprocess` ⇒ works
-- [ ] T068 [sonnet] Wire Open Folder button (already works) → ensure cross-platform ⇒ tested
-- [ ] T069 [sonnet] Wire Delete button with confirm ⇒ works
-- [ ] T070 [sonnet] Hide Export button on desktop (push user to webapp per Q95) ⇒ replaced with "View in webapp" link
-- [ ] T071 [sonnet] Review page: show only compact summary (laps, best, consistency, DQ) ⇒ tight UI
-- [ ] T072 [sonnet] Review page: "See full analysis in webapp" primary CTA ⇒ prominent
-- [ ] T073 [sonnet] Review page: remove deep-analysis tabs (telemetry, setup, engineering) ⇒ simpler
-- [ ] T074 [sonnet] Fix field contract mismatch: `quality_grade`, `best_lap_formatted` come from loader ⇒ correct
-- [ ] T075 [sonnet] Integration test: review page loads for archived session without errors ⇒ green
+- [x] T066 [sonnet] Audit review page for "to be wired later" placeholders ⇒ list in commit msg (2b4c389)
+- [BLOCKED: backend reprocess endpoint not live] T067 [sonnet] Wire Re-process button → backend `/sessions/:id/reprocess` ⇒ works
+- [x] T068 [sonnet] Wire Open Folder button (already works) → ensure cross-platform ⇒ tested (84a8142)
+- [x] T069 [sonnet] Wire Delete button with confirm ⇒ works (aa900e0)
+- [x] T070 [sonnet] Hide Export button on desktop (push user to webapp per Q95) ⇒ replaced with "View in webapp" link (29c18a5)
+- [x] T071 [sonnet] Review page: show only compact summary (laps, best, consistency, DQ) ⇒ tight UI (fa625f6)
+- [x] T072 [sonnet] Review page: "See full analysis in webapp" primary CTA ⇒ prominent (56095d3)
+- [x] T073 [sonnet] Review page: remove deep-analysis tabs (telemetry, setup, engineering) ⇒ simpler (2c7ff6e)
+- [x] T074 [sonnet] Fix field contract mismatch: `quality_grade`, `best_lap_formatted` come from loader ⇒ correct (c16fb27)
+- [x] T075 [sonnet] Integration test: review page loads for archived session without errors ⇒ green (e541074)
 
 ## Block F — Rules engine client (T076–T105)
 
-- [ ] T076 [opus] Rules engine client: `coaching/rules_engine.py` loads compiled JSON bundle ⇒ parses
-- [ ] T077 [opus] Compiled rule bundle loader: fetch from server at login, cache to disk ⇒ works
-- [ ] T078 [opus] Cache TTL 7 days, signature-verified ⇒ tested
-- [ ] T079 [opus] Rules engine: evaluate a rule's condition against a session-feature dict ⇒ unit-tested
-- [ ] T080 [opus] Rules engine: run all rules over an in-progress session window ⇒ emits insights
-- [ ] T081 [opus] Performance: <1ms overhead per sample ⇒ benchmark passes
-- [ ] T082 [opus] Thread safety: rules run on sample thread, insights queued to VM thread ⇒ tested
-- [ ] T083 [sonnet] Rules engine integration: `LiveTelemetryProcessor` invokes it per lap-end ⇒ tested
-- [ ] T084 [sonnet] Test harness: inject a fake session, verify insights match expected ⇒ green
-- [ ] T085 [sonnet] Test: late-braking detection with fixture matching rule br.late_braking ⇒ fires
-- [ ] T086 [sonnet] Test: early-release detection ⇒ fires
-- [ ] T087 [sonnet] Test: apex-speed-loss detection ⇒ fires
-- [ ] T088 [sonnet] Test: rule false-positive gating (only fires with N corroborating laps) ⇒ tested
-- [ ] T089 [sonnet] Offline fallback: if cache expired and offline, use last-known rules + banner ⇒ tested
-- [ ] T090 [sonnet] Rule update check on app start: if server has newer bundle, fetch ⇒ works
-- [ ] T091 [opus] Overlay VM: `CoachingCardViewModel` consumes insight stream ⇒ QML binds
-- [ ] T092 [opus] Overlay VM: insights queue with cooldown (no spam) ⇒ tested
-- [ ] T093 [opus] Overlay VM: explanation variant selected by user skill level ⇒ tested
-- [ ] T094 [sonnet] QML: CoachingCard widget renders one insight at a time ⇒ visually validated
-- [ ] T095 [sonnet] QML: CoachingCard fade in/out animation ⇒ smooth
-- [ ] T096 [sonnet] Coaching card audio cue option (voice) ⇒ configurable
-- [ ] T097 [sonnet] Coaching card "dismiss" button ⇒ works
-- [ ] T098 [sonnet] Coaching card "flag as wrong" button → POST to backend ⇒ works
-- [ ] T099 [sonnet] Bundle serializer includes live-generated insights (tagged client-side) ⇒ tested
-- [ ] T100 [sonnet] Rules engine unit coverage ≥ 80% ⇒ report
-- [ ] T101 [sonnet] Rules engine load test: 1000 samples/sec sustained ⇒ no backup
-- [ ] T102 [sonnet] Rules engine memory: <100MB residue during 2h session ⇒ profiled
-- [ ] T103 [sonnet] Coaching view integration: disable if feature flag off ⇒ tested
-- [ ] T104 [sonnet] Coaching view fallback text: "insights available post-session in webapp" ⇒ correct copy
-- [ ] T105 [sonnet] Bundle upload includes flag showing which rules fired ⇒ server can audit
+- [x] T076 [opus] Rules engine client: `coaching/rules_engine.py` loads compiled JSON bundle ⇒ parses (fdd08ec)
+- [x] T077 [opus] Compiled rule bundle loader: fetch from server at login, cache to disk ⇒ works (241d19f)
+- [x] T078 [opus] Cache TTL 7 days, signature-verified ⇒ tested (a2d5250)
+- [x] T079 [opus] Rules engine: evaluate a rule's condition against a session-feature dict ⇒ unit-tested (d2e867c)
+- [x] T080 [opus] Rules engine: run all rules over an in-progress session window ⇒ emits insights (4a7cddc)
+- [x] T081 [opus] Performance: <1ms overhead per sample ⇒ benchmark passes (59d51ab)
+- [x] T082 [opus] Thread safety: rules run on sample thread, insights queued to VM thread ⇒ tested (635bf9b)
+- [x] T083 [sonnet] Rules engine integration: `LiveTelemetryProcessor` invokes it per lap-end ⇒ tested (64171cf)
+- [x] T084 [sonnet] Test harness: inject a fake session, verify insights match expected ⇒ green (54ce8c0)
+- [x] T085 [sonnet] Test: late-braking detection with fixture matching rule br.late_braking ⇒ fires (72cf11b)
+- [x] T086 [sonnet] Test: early-release detection ⇒ fires (4b6e191)
+- [x] T087 [sonnet] Test: apex-speed-loss detection ⇒ fires (0c052eb)
+- [x] T088 [sonnet] Test: rule false-positive gating (only fires with N corroborating laps) ⇒ tested (c79dc58)
+- [x] T089 [sonnet] Offline fallback: if cache expired and offline, use last-known rules + banner ⇒ tested (1f3adf0)
+- [x] T090 [sonnet] Rule update check on app start: if server has newer bundle, fetch ⇒ works (dac917c)
+- [x] T091 [opus] Overlay VM: `CoachingCardViewModel` consumes insight stream ⇒ QML binds (7b375c1)
+- [x] T092 [opus] Overlay VM: insights queue with cooldown (no spam) ⇒ tested (d236f9a)
+- [x] T093 [opus] Overlay VM: explanation variant selected by user skill level ⇒ tested (fd63841)
+- [x] T094 [sonnet] QML: CoachingCard widget renders one insight at a time ⇒ visually validated (3721f9c)
+- [x] T095 [sonnet] QML: CoachingCard fade in/out animation ⇒ smooth (5b44f32)
+- [x] T096 [sonnet] Coaching card audio cue option (voice) ⇒ configurable (1f0b08e)
+- [x] T097 [sonnet] Coaching card "dismiss" button ⇒ works (3ce9600)
+- [x] T098 [sonnet] Coaching card "flag as wrong" button → POST to backend ⇒ works (93cb05a)
+- [x] T099 [sonnet] Bundle serializer includes live-generated insights (tagged client-side) ⇒ tested (7ddd00a)
+- [x] T100 [sonnet] Rules engine unit coverage ≥ 80% ⇒ report (9492d10) [94%]
+- [x] T101 [sonnet] Rules engine load test: 1000 samples/sec sustained ⇒ no backup (9a2f8ec)
+- [x] T102 [sonnet] Rules engine memory: <100MB residue during 2h session ⇒ profiled (1023098)
+- [x] T103 [sonnet] Coaching view integration: disable if feature flag off ⇒ tested (e2e1f19)
+- [x] T104 [sonnet] Coaching view fallback text: "insights available post-session in webapp" ⇒ correct copy (00b5c24)
+- [x] T105 [sonnet] Bundle upload includes flag showing which rules fired ⇒ server can audit (34f3c75)
 
 ## Block G — Mode engine (T106–T135)
 
-- [ ] T106 [opus] `Mode` ABC in `core/modes/base.py` ⇒ compiles
-- [ ] T107 [opus] `PracticeMode` subclass: verbose coaching, minimal strategy ⇒ tests
-- [ ] T108 [opus] `SprintMode` subclass: race coaching, simplified strategy ⇒ tests
-- [ ] T109 [opus] `EnduranceMode` subclass: long-run focus, stint awareness ⇒ tests
-- [ ] T110 [opus] `ReviewMode` subclass: no live coaching, readiness guidance ⇒ tests
-- [ ] T111 [opus] `ModeEngine`: runtime mode selection + transition rules ⇒ unit-tested
-- [ ] T112 [opus] Mode binds overlay preset: each mode has its widget set ⇒ switching works
-- [ ] T113 [opus] Mode binds coaching cadence: verbosity per mode ⇒ tested
-- [ ] T114 [opus] Mode binds strategy assumptions: safety margins per mode ⇒ tested
-- [ ] T115 [opus] Mode tagging: finalized session carries `environment_tag` ⇒ correct
-- [ ] T116 [opus] Mode switch UI: dropdown in main toolbar ⇒ visible
-- [ ] T117 [sonnet] Mode switch persists across app restarts ⇒ tested
-- [ ] T118 [sonnet] Mode auto-detect from sim hint: iRacing Race session → SprintMode default ⇒ optional
-- [ ] T119 [sonnet] Mode switch during recording: allowed but logged, mid-session tag split ⇒ handled
-- [ ] T120 [sonnet] Mode E2E test: switch Practice→Sprint, verify overlay changes ⇒ green
-- [ ] T121 [opus] Overlay preset system refactor: preset = list of widget ids + positions ⇒ tested
-- [ ] T122 [opus] "Race-minimal" preset: 8-10 core widgets (lap delta, fuel, tires, coach, position, flags, sector color, gap) ⇒ defined
-- [ ] T123 [opus] "Practice" preset: 12 widgets (adds inputs, g-g, live trace) ⇒ defined
-- [ ] T124 [opus] "Endurance" preset: 10 widgets (adds stint timer, tire life, long-run pace) ⇒ defined
-- [ ] T125 [opus] "Streamer" preset: separate from above, 15 widgets ⇒ defined
-- [ ] T126 [sonnet] Default preset on first install: race-minimal ⇒ tested
-- [ ] T127 [sonnet] Preset picker in Settings ⇒ works
-- [ ] T128 [sonnet] Widget categorization in QML: "Race", "Practice", "Endurance", "Streamer", "Advanced" ⇒ tagged
-- [ ] T129 [sonnet] Streamer widgets grouped behind "Show advanced" toggle ⇒ hidden by default
-- [ ] T130 [sonnet] Widget search in overlay manager ⇒ works
-- [ ] T131 [sonnet] Widget preview thumbnail in manager ⇒ visible
-- [ ] T132 [sonnet] Export preset JSON ⇒ works
-- [ ] T133 [sonnet] Import preset JSON ⇒ works
-- [ ] T134 [sonnet] Preset versioning ⇒ tracked
-- [ ] T135 [sonnet] E2E: install → default preset → switch to Practice mode → preset changes ⇒ green
+- [x] T106 [opus] `Mode` ABC in `core/modes/base.py` ⇒ compiles (6210310)
+- [x] T107 [opus] `PracticeMode` subclass: verbose coaching, minimal strategy ⇒ tests (229cc0e)
+- [x] T108 [opus] `SprintMode` subclass: race coaching, simplified strategy ⇒ tests (d4c603a)
+- [x] T109 [opus] `EnduranceMode` subclass: long-run focus, stint awareness ⇒ tests (369d585)
+- [x] T110 [opus] `ReviewMode` subclass: no live coaching, readiness guidance ⇒ tests (64f2135)
+- [x] T111 [opus] `ModeEngine`: runtime mode selection + transition rules ⇒ unit-tested (da1dfdb)
+- [x] T112 [opus] Mode binds overlay preset: each mode has its widget set ⇒ switching works (9237c73)
+- [x] T113 [opus] Mode binds coaching cadence: verbosity per mode ⇒ tested (15d33e6)
+- [x] T114 [opus] Mode binds strategy assumptions: safety margins per mode ⇒ tested (c25a1a7)
+- [x] T115 [opus] Mode tagging: finalized session carries `environment_tag` ⇒ correct (f6e309a)
+- [x] T116 [opus] Mode switch UI: dropdown in main toolbar ⇒ visible (9d53efc)
+- [x] T117 [sonnet] Mode switch persists across app restarts ⇒ tested (ee9e589)
+- [x] T118 [sonnet] Mode auto-detect from sim hint: iRacing Race session → SprintMode default ⇒ optional (4e26be3)
+- [x] T119 [sonnet] Mode switch during recording: allowed but logged, mid-session tag split ⇒ handled (b9fdebf)
+- [x] T120 [sonnet] Mode E2E test: switch Practice→Sprint, verify overlay changes ⇒ green (2c6ca65)
+- [x] T121 [opus] Overlay preset system refactor: preset = list of widget ids + positions ⇒ tested (0af7799)
+- [x] T122 [opus] "Race-minimal" preset: 8-10 core widgets (lap delta, fuel, tires, coach, position, flags, sector color, gap) ⇒ defined (ff8fabc)
+- [x] T123 [opus] "Practice" preset: 12 widgets (adds inputs, g-g, live trace) ⇒ defined (db7442d)
+- [x] T124 [opus] "Endurance" preset: 10 widgets (adds stint timer, tire life, long-run pace) ⇒ defined (ef0f5a6)
+- [x] T125 [opus] "Streamer" preset: separate from above, 15 widgets ⇒ defined (c72a7e5)
+- [x] T126 [sonnet] Default preset on first install: race-minimal ⇒ tested (10c676a)
+- [x] T127 [sonnet] Preset picker in Settings ⇒ works (a106de1)
+- [x] T128 [sonnet] Widget categorization in QML: "Race", "Practice", "Endurance", "Streamer", "Advanced" ⇒ tagged (fb1e813)
+- [x] T129 [sonnet] Streamer widgets grouped behind "Show advanced" toggle ⇒ hidden by default (98104d2)
+- [x] T130 [sonnet] Widget search in overlay manager ⇒ works (9f450ab)
+- [x] T131 [sonnet] Widget preview thumbnail in manager ⇒ visible (d0c243f)
+- [x] T132 [sonnet] Export preset JSON ⇒ works (0246bff)
+- [x] T133 [sonnet] Import preset JSON ⇒ works (83cd3e3)
+- [x] T134 [sonnet] Preset versioning ⇒ tracked (37799fe)
+- [x] T135 [sonnet] E2E: install → default preset → switch to Practice mode → preset changes ⇒ green (6c3c975)
 
 ## Block H — Strategy + pit-armed (T136–T155)
 
