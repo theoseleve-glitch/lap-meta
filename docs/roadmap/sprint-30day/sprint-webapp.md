@@ -270,7 +270,7 @@
 
 - [x] T231 [sonnet] Lighthouse CI integrated into PR: fail if LCP > 2.5s on any top-level page ⇒ green (385eb47)
 - [x] T232 [sonnet] Image optimization re-enabled per audit finding ⇒ images served as webp/avif (d30e203)
-- [NEEDS_REWORK] T233 [sonnet] Font subsetting: ship only used glyphs ⇒ font files smaller (0b60e20) — failed review (c133): pnpm build → "Unexpected spread" in src/app/layout.tsx (next/font macros require literal arrays, not spread). Reverted in 612b18f. Sprint local verification missed this because `next build` is the only place the spread constraint is checked — typecheck/lint/test all pass. Re-implementation hint: keep weights/subsets inline at the call site (literal `["latin"]`, `["400"]`, etc.); font-config.ts can stay as a documentation/regression-test source but not be spread into Inter()/Space_Grotesk()/Space_Mono() arguments.
+- [x] T233 [sonnet] Font subsetting: ship only used glyphs ⇒ font files smaller (e0f6494)
 - [x] T234 [sonnet] Bundle analysis: no route > 200KB gzip JS ⇒ verified (b8b957e)
 - [ ] T235 [sonnet] Unused CSS purged ⇒ verified
 - [ ] T236 [sonnet] A11y audit pass: axe across all top-level pages ⇒ no violations
