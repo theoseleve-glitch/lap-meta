@@ -210,7 +210,7 @@
 
 ## Block J — Packaging + release (T176–T200)
 
-- [ ] T176 [sonnet] PyInstaller spec file updated for new dependencies ⇒ builds
+- [x] T176 [sonnet] PyInstaller spec file updated for new dependencies ⇒ builds (960c18b)
 - [ ] T177 [sonnet] PyInstaller produces single-folder distribution ⇒ folder valid
 - [ ] T178 [sonnet] Inno Setup script updated for new executable ⇒ installer builds
 - [ ] T179 [sonnet] Inno Setup: code signing with your cert (or self-signed for alpha) ⇒ signed
