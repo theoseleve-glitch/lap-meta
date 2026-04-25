@@ -4316,3 +4316,11 @@ Step 11 alert firing should be a hard requirement at the moment of forced-checkp
 
 ---
 
+## 2026-04-26T11:10:00Z — Cycle #125 — **🛑 PAUSE PERSISTS (cycle 44)**
+
+c81 markers still active. No review. 44 paused cycles = 11.0h elapsed since c81 forced checkpoint.
+
+In-conversation: completed reviewer-side ADR-005 conformance check on user request. Findings: orm.py faithfully implements ADR-005's 7 canonical coaching objects + 6 prerequisite foundational tables; FK CASCADE rules correct; indexes appropriate; 3 minor non-blocking follow-ups noted. Awaiting user-manual marker removal per runbook ("do not proceed until user manually removes the PAUSE marker").
+
+---
+
