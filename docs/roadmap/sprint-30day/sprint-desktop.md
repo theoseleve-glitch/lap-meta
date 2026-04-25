@@ -221,7 +221,7 @@
 - [x] T184 [sonnet] RELEASE_CHECKLIST.md versioned ⇒ in-sync with code (4d960a6)
 - [x] T185 [sonnet] Auto-update mechanism: check for newer version on app start ⇒ check runs (6b33afe)
 - [x] T186 [sonnet] Auto-update: download to temp, verify signature, apply on next launch ⇒ tested (e68551b)
-- [ ] T187 [sonnet] Auto-update: opt-out in Settings ⇒ respected
+- [x] T187 [sonnet] Auto-update: opt-out in Settings ⇒ respected (117dbab)
 - [ ] T188 [sonnet] Auto-update: rollback if new version crashes ⇒ bail-out logic
 - [ ] T189 [sonnet] Crash dump capture: minidump on crash, offer to upload ⇒ works
 - [ ] T190 [sonnet] First-launch wizard: welcome, sim detection, pairing QR prompt ⇒ renders
