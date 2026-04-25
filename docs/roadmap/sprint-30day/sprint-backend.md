@@ -137,7 +137,7 @@
 - [x] T101 [opus] Compute sha256 per chunk during streaming ⇒ matches manifest — sha: 784caf6
 - [x] T102 [opus] Create `Session` row with `status=uploaded` + `TelemetryArtifact` rows ⇒ DB rows present — sha: 0ad532f
 - [x] T103 [opus] Dispatch Celery task `process_session_ingest(session_id)` ⇒ task queued — sha: 1a8c058
-- [NEEDS_REWORK] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches — sha: 8d37def. Schemas-side commit (lap-schemas 40a8105 "schemas: T104 expand SessionIngestAccepted") added the 3 new required fields to the Pydantic model but did NOT update `tests/test_session_ingest.py` — pytest red on `test_session_ingest_accepted_builds`. Reverted in lap-schemas cab48ad (c133). Backend route shape may still be correct; schema needs to ship with default values OR update test. Re-implementation: when adding required fields to a v1 schema, update all tests that build that schema in the same commit, OR make the new fields optional with defaults.
+- [NEEDS_REWORK] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches — sha: 8d37def. **Reverted twice** (c133 cab48ad + c134 dc6cad2) — sprint loop reapplied T104 (39e3b7c) without updating `tests/test_session_ingest.py`, same root failure. **Cross-repo cascade**: lap-backend `app/routers/sessions.py` constructs `SessionIngestAccepted(ingest_job_id=..., status_stream_url=...)` but those fields don't exist in the reverted Pydantic model. lap-backend HEAD (e16cfa0+) is also red against the current lap-schemas master (3 mypy "Unexpected keyword argument" + 31 pytest fails). **Re-implementation requirements**: (a) write the schema change AND `test_session_ingest.py` update in the **same commit**, OR (b) make the 3 fields `Optional[T] = None` with sensible defaults so old test fixtures still validate, AND (c) verify lap-backend pytest stays green after the schema lands by running it in the same /loop iteration. Until this lands properly, lap-backend ingest tests remain red against shipped lap-schemas master.
 - [x] T105 [sonnet] Cloudflare R2 client integration: `infra/storage.py` with put/get/sign-url ⇒ integration test — sha: 4c17a8e
 - [x] T106 [sonnet] Swap local fs → R2 in ingestion endpoint ⇒ works with R2 creds — sha: 7f1613a
 - [x] T107 [sonnet] Celery worker setup: `celery -A app.infra.celery worker -l info` ⇒ starts clean — sha: a7846d9
@@ -157,7 +157,7 @@
 - [x] T121 [opus] Canonical timestamp alignment per ADR-007 ⇒ dual timestamps present on every sample — sha: f6d630c
 - [x] T122 [sonnet] Persist `SessionRecord` after processing ⇒ row present — sha: f005d57
 - [x] T123 [sonnet] Update `Session.status=ready` when done ⇒ visible via GET /sessions/:id — sha: e16cfa0
-- [ ] T124 [sonnet] Processing pipeline integration test with archived Sebring session ⇒ end-to-end green
+- [x] T124 [sonnet] Processing pipeline integration test with archived Sebring session ⇒ end-to-end green — sha: b5a4ce4
 - [ ] T125 [sonnet] Processing pipeline integration test with archived RaceBox session ⇒ end-to-end green
 
 ## Block G — Track + car catalog (T126–T145)

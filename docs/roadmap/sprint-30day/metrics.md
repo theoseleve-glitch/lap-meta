@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T15:10Z (Cycle #133 — RESUMED, full backlog cleared at HEAD)
+## Last updated: 2026-04-26T15:25Z (Cycle #134 — 5 accepts + 1 revert + 1 cross-repo cascade hold)
 
 ## Per-repo status
 
@@ -49,3 +49,14 @@
 - Step 10 daily-email deferred.
 
 ## Cron: ACTIVE (15-min interval). Next fire processes mid-cycle commits.
+
+## Cycle 134 delta
+
+- backend: T123 verified red at e16cfa0 (cross-repo cascade from c133 schemas T104 revert; 31 tests fail). NOT pushed. Origin held at f005d57 (also red against current schemas master). T104 sprint marker strengthened in sprint-backend.md L140.
+- webapp: T233 reworked at e0f6494 (sprint loop used inline literals per c133 hint). 602 tests + build green. Tagged + pushed.
+- schemas: T104 reapplied at 39e3b7c with same test bug; reverted in dc6cad2. T123 (6b15072 SessionDetail) tagged + pushed.
+- mobile: T169 (23ee7ab BackoffSchedule retry) tagged + pushed.
+- website: T137 + T138 (pillar 1 cross-links) tagged + pushed. 722 tests.
+- datalogger: idle.
+- Cumulative reverts: **6** (1.1% over 134 cycles).
+- **Cross-repo cascade** active and blocking: lap-backend ingest path will stay red until lap-schemas T104 re-lands with proper test + lap-backend pytest verified green in same iteration.

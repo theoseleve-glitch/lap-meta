@@ -4512,3 +4512,86 @@ First active cycle since c81. Pause window c81-c132 lasted 12.5h / 51 cycles. Re
 
 ---
 
+## 2026-04-26T15:25:00Z — Cycle #134 — **🟢 ACTIVE — 5 accepts + 1 revert + 1 cross-repo cascade flag**
+
+Mid-cycle drift from c133 absorbed; sprint loops re-implementing reverted tasks.
+
+### lap-backend (HEAD e16cfa0; origin f005d57; **NOT PUSHED**) — CROSS-REPO CASCADE
+
+- Unreviewed: 1 commit `e16cfa0 sprint(backend): T123 mark Session ready + GET /sessions/:id`.
+- Stash 3 dirty (M celery_app.py, ?? pipeline.py, ?? test_pipeline_sebring_integration.py) + matrix at e16cfa0.
+- ruff: clean.
+- mypy: **3 errors** in `app/routers/sessions.py:160` — "Unexpected keyword argument `ingest_job_id` for SessionIngestAccepted" + "Unexpected keyword argument `status_stream_url`".
+- pytest: **31 failed / 379 passed** including 4 `test_sessions_ingest_response_shape` failures.
+- **Root cause**: c133 lap-schemas T104 revert removed `ingest_job_id` + `status_stream_url` fields from `SessionIngestAccepted`. lap-backend was already accepted with backend T104 (`8d37def`) using those fields. Mutual cross-repo state-of-the-world is broken.
+- **Decision**: Per ADR-017 spirit (ambiguous attribution), DO NOT revert `e16cfa0` — T123 is innocent (only adds GET endpoint). The breakage exists at HEAD~1 too. Backend HEAD held at e16cfa0 locally; origin still at c133-pushed f005d57 (also red against current schemas master, but unchangeable without code fix). T104 in sprint-backend.md re-marked NEEDS_REWORK with stronger guidance: "schema change AND test update MUST be in same commit, OR fields must be Optional with defaults".
+- **CROSS_REPO_FLAG raised**: lap-backend ingest path stays red until lap-schemas T104 lands properly (with test).
+
+### lap-webapp (HEAD e0f6494) — T233 REWORK ACCEPTED
+
+- Unreviewed: 1 commit `e0f6494 sprint(webapp): T233 font subsetting (rework, inline literals)`.
+- Sprint loop re-implemented per c133 NEEDS_REWORK hint — used inline literals at call sites instead of spread.
+- typecheck OK, lint OK, **602/602 tests pass** (+7 from post-revert 595), build green.
+- Tagged `reviewed/20260426/lap-webapp/e0f6494`. Pushed origin/master + tag.
+- T233 in sprint-webapp.md auto-flipped to `[x]` by sprint loop with new sha e0f6494.
+
+### lap-schemas (HEAD 39e3b7c → revert dc6cad2) — T104 REAPPLY REVERTED AGAIN
+
+- Unreviewed: 2 commits `6b15072 schemas: T123 add SessionDetail read model` (innocent) + `39e3b7c Reapply "schemas: T104 expand SessionIngestAccepted..."` (offending).
+- Bisected at 6b15072 alone: **106/106 pytest pass** ✓.
+- Pytest at 39e3b7c HEAD: **same `test_session_ingest_accepted_builds` ValidationError** as c133 — sprint loop reapplied T104 without updating the test.
+- **2nd identical failure** of T104 schema-side. Reverted in `dc6cad2`. T123 (6b15072) tagged + pushed.
+- Sprint-backend.md T104 NEEDS_REWORK note strengthened with "Reverted twice (c133 cab48ad + c134 dc6cad2)" + explicit re-implementation requirements (a/b/c) including verification of lap-backend pytest staying green in the same /loop iteration.
+
+### lap-mobile-android (HEAD 23ee7ab) — T169 ACCEPTED
+
+- Unreviewed: 1 commit `23ee7ab sprint(mobile): T169 wire BackoffSchedule + 502→retry→success scenario test`.
+- Stash `.claude/` + gradle matrix all green: detekt OK, ktlintCheck OK, assembleDebug OK, testDebugUnitTest OK in 28s.
+- Tagged `reviewed/20260426/lap-mobile-android/23ee7ab`. Pushed origin/master + tag. Stash popped.
+
+### lap-website (HEAD 9cabdfa → 0ec469a mid-cycle)
+
+- 2 commits in range: `9cabdfa T137 pillar 1 editing pass` + mid-cycle `0ec469a T138 pillar 1 internal cross-links`.
+- typecheck 0/0, **722/722 tests pass** (+15 from 707), build 18 pages.
+- Tagged both. Pushed origin/master + tags.
+
+### datalogger (HEAD 9f450ab) — IDLE
+
+- ahead=0, behind=0, HEAD = origin. No work this cycle. Sprint loop didn't fire on datalogger between c133 and c134 (15-min window).
+
+### Step 5 — Cross-repo coherence
+
+- **Schema → backend cascade still active** (the ongoing T104 issue documented above).
+- **Schema → webapp/mobile codegen**: not re-run this cycle. Note: lap-schemas T123 added `SessionDetail` read model, which is a NEW shape — webapp/mobile codegen *would* need to regenerate to consume it. Flag.
+
+### Step 6/7 — Deploy / smoke
+
+- Skipped (no deploy configs landed).
+
+### Step 8 — Metrics
+
+- Will rewrite metrics.md with c134 state and the cross-repo cascade callout.
+
+### Cycle 134 totals
+
+- Sprint accepts+tags: **5** (webapp e0f6494 + schemas 6b15072 + mobile 23ee7ab + website 9cabdfa + 0ec469a).
+- Backend hold: 1 (e16cfa0 verified red at HEAD due to cross-repo cascade; not pushed).
+- Reverts: **1** (lap-schemas T104 reapply 39e3b7c → dc6cad2).
+- Cross-repo flags: 2 (T104 backend cascade; codegen not re-run).
+- Cumulative reverts: **6** total over 134 cycles (1.1% rate).
+
+### Baselines for cycle 135
+
+- backend=`f005d57` on origin (held at e16cfa0 locally; cascade pending T104 redo).
+- webapp=`e0f6494`.
+- schemas=`dc6cad2` (revert HEAD).
+- mobile=`23ee7ab`.
+- website=`0ec469a`.
+- datalogger=`9f450ab`.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 134 — 5 accepts + 1 revert (schemas T104 reapply) + 1 cross-repo cascade hold (backend T104)` + sprint-backend.md (T104 strengthened) + metrics.md + review-log.md. Push to lap-meta master.
+
+---
+
