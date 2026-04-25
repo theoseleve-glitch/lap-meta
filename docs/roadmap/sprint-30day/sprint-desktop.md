@@ -175,7 +175,7 @@
 - [x] T144 [sonnet] Strategy plan serialized into bundle per Q102 ⇒ tested (cbf7cbe)
 - [x] T145 [sonnet] Actual pit events captured (sim events or user-annotated) ⇒ stored (703dac8)
 - [x] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable (27decd4)
-- [ ] T147 [sonnet] Strategy view in desktop review: compact summary ⇒ UI visible
+- [x] T147 [sonnet] Strategy view in desktop review: compact summary ⇒ UI visible (f29475d)
 - [ ] T148 [sonnet] Strategy guidance: push/manage label based on fuel + tire ⇒ displayed
 - [ ] T149 [opus] Divergence alerts: safety car detection (from iRacing SDK) + strategy recalc ⇒ tested
 - [ ] T150 [opus] Divergence alerts: FCY detection + strategy recalc ⇒ tested
