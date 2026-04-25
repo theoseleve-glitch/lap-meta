@@ -5327,3 +5327,18 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T19:49:00Z — Cycle #163 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 47**
+
+### lap-backend (HEAD 1f0d286 local; held 47) — CASCADE +2
+- 47 ahead, +2 since c162: T167 (sample 10% of Sentry traces, ffc34e3) + T168 (tag Sentry releases as lap-backend@<version>, 1f0d286). Continued observability surface, no forced-checkpoint material.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 163 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 47.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 163 — IDLE (9th consecutive) + backend hold 47 (T167-T168 Sentry tracing+release tags)` + review-log.md + metrics.md (header only).
+
+---
+
