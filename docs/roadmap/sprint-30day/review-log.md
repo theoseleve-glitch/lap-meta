@@ -4183,3 +4183,9 @@ Note: 6.0h equals the runbook `ci-broken` alert threshold (Step 11). No alert fi
 
 ---
 
+## 2026-04-26T06:25:00Z — Cycle #106 — **🛑 PAUSE PERSISTS (cycle 25)**
+
+c81 markers still active. No review. 25 paused cycles = 6.25h elapsed since c81 forced checkpoint.
+
+---
+
