@@ -200,7 +200,7 @@
 - [x] T169 [opus] `SkillTrendChart` component ⇒ Storybook (59453d2)
 - [x] T170 [opus] `BestSessionsList` component (top 5 by this dimension) ⇒ Storybook (8cd9d3e)
 - [x] T171 [opus] `WorstSessionsList` component ⇒ Storybook (c01b3c0)
-- [ ] T172 [opus] `RelatedWeaknessesList` component ⇒ Storybook
+- [x] T172 [opus] `RelatedWeaknessesList` component ⇒ Storybook (e8c622a)
 - [ ] T173 [sonnet] Interactive trend: click point → navigate to that session ⇒ works
 - [ ] T174 [sonnet] A11y, responsive, E2E same pattern as Profile ⇒ green
 - [ ] T175 [opus] Weakness detail route `src/app/(app)/weaknesses/[id]/page.tsx` ⇒ renders
