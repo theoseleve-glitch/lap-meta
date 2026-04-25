@@ -1,22 +1,22 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T17:52Z (Cycle #153 — 4 accepts + 0 reverts + backend hold 30)
+## Last updated: 2026-04-25T18:01Z (Cycle #154 — 4 accepts + 0 reverts + backend hold 31 + 20-flake 4th)
 
-## Per-repo status (HEAD as of c153 push)
+## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | b80838f (T151) | f005d57 (T122 pre-cascade) | **HELD 30 commits** awaiting T104 schemas cascade resolution |
+| lap-backend | f90708d (T152) | f005d57 (T122 pre-cascade) | **HELD 31 commits** awaiting T104 schemas cascade resolution |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
-| lap-schemas | a837d89 (Billing wire) | a837d89 | 3rd consecutive clean schemas commit since T104 BLOCKED |
-| lap-mobile-android | 64a88e4 (T183 sprint drift) | bd241f6 (T182) | T182 reviewed in c153; T183 will be picked up in c154 |
-| lap-website | 1e34d87 (T152 sprint drift) | 2d1560a (T151) | Pillar 3 outline accepted; lint baseline flag (10 files) |
-| datalogger | b23fbdf (T150 sprint drift) | 9b1b00c (T149) | T148+T149 reviewed in c153; 19-stable-failure baseline holds |
+| lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
+| lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
+| lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
+| datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (153 cycles)
+## Cumulative (154 cycles)
 
-- Total reviewed: ~750+ sprint commits across 6 repos
-- Reverts (cumulative): **7** (~0.9% rate over 153 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos
+- Reverts (cumulative): **7** (~0.9% rate over 154 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -24,7 +24,7 @@
   - c136 systematic-malfunction `pause-triggered` after T104 3rd revert (Resend `50090743-0584-49b4-a72d-7da1b4c8905b`)
 - Active cross-repo cascades: **1** (T104 → backend held 30 commits)
 - Forced-checkpoint pauses lifted: **1** (c81 → c133 ADR-005 review)
-- 20-failure datalogger flake recurrences: **3** (c139, c149, c151) — overlay_browser timing tech-debt; baseline 19 between
+- 20-failure datalogger flake recurrences: **4** (c139, c149, c151, c154) — overlay_browser timing tech-debt; baseline 19 between
 
 ## Cycle 153 notables — 4 accepts, 0 reverts
 
@@ -41,7 +41,8 @@
 - **c146-c148**: Gradle false-positive resolved (chained-task BUILD FAILED → strict per-task && gating). Pipe-masking bug noted for datalogger.
 - **c149-c150**: lap-schemas resumes clean wire commits (TrackCatalog, CarCatalog, Billing) demonstrating the loop CAN land schemas changes when test+model land together. 150-cycle milestone.
 - **c151-c152**: 20-flake 3rd recurrence on datalogger; mobile T181; backend hold 25→26.
-- **c153 (this cycle)**: 4 accepts; backend hold +4 to 30.
+- **c153**: 4 accepts (mobile T182 + website T151 + datalogger T148+T149); backend hold +4 to 30.
+- **c154 (this cycle)**: 4 accepts (mobile T183 + website T152 + datalogger T150+T151); backend hold +1 to 31; 20-flake 4th recurrence (re-run dropped to 19-baseline confirming overlay_browser timing); `set -o pipefail` mitigation worked on mobile (no false-positive).
 
 ## Review loop state
 

@@ -5126,3 +5126,42 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T18:01:00Z — Cycle #154 — **🟢 4 accepts (mobile T183 + website T152 + datalogger T150+T151) + backend hold 31 + 20-flake 4th recurrence**
+
+### lap-backend (HEAD f90708d local; origin pinned f005d57; held 31) — CASCADE +1
+- 31 ahead, +1 since c153 (T152 webhook handler subscription.created→trialing). Cascade unchanged. Held.
+
+### lap-mobile-android (HEAD 64a88e4) — T183 ACCEPTED + 1 @Suppress FLAG
+- `64a88e4 sprint(mobile): T183 OfflineCapturePolicy locks captures-pile-up-locally`. 100 insertions / 0 secrets.
+- Strict per-task gating with `set -o pipefail`: detekt + ktlintCheck + assembleDebug + testDebugUnitTest all BUILD SUCCESSFUL, all exit 0. **No false-positive this cycle** — pipefail caught real exit codes.
+- **FLAG**: 1 `@Suppress("UnusedParameter", "FunctionOnlyReturningConstant")` annotation on a contract stub. Targeted (named rules), not blanket — same accept-with-flag pattern as datalogger's specific-error-code type:ignore.
+- Tagged `reviewed/20260425/lap-mobile-android/64a88e4`. Pushed.
+
+### lap-website (HEAD 1e34d87) — T152 ACCEPTED + LINT-BASELINE-FLAG (10 files unchanged)
+- `1e34d87 sprint(marketing): T152 pillar 3 section 2 — what each app does well`. 213 insertions across 2 files: `docs/pillar-articles/telemetry-apps-comparison/section-02-strengths.md` (article body) + `src/__tests__/pillar-3-section-02-strengths.test.ts` (contract). 0 forbidden / 0 secrets.
+- typecheck + test (846 passing) + build (20 pages) all green.
+- **LINT-BASELINE-FLAG (unchanged)**: `pnpm lint` reports prettier issues in the same 10 baseline files from c153 (`blog-sim-to-real-transfer`, `blog-what-is-trail-braking`, `pillar-1-cross-links`, `pillar-1-faq`, `pillar-2-article`, `pillar-2-cross-links`, `pillar-2-faq`, `pillar-2-section-06-examples`, `sim-to-real-transfer.astro`, `what-is-trail-braking.astro`). **T152's new test file `pillar-3-section-02-strengths.test.ts` is CLEAN** — passes prettier checks, demonstrating T152 follows the (correct) prettier convention while baseline files still use the old style. Recommendation: standalone `chore(website): prettier --write` cleanup task remains unchanged.
+- Tagged `reviewed/20260425/lap-website/1e34d87`. Pushed.
+
+### datalogger (HEAD b23fbdf) — T150+T151 ACCEPTED + 20-FLAKE 4th + 1 type:ignore FLAG
+- 2 commits: `1c1cb4b sprint(desktop): T150 FCY detection + strategy recalc` (269+1 insertions) + `b23fbdf sprint(desktop): T151 driver decision prompts` (473 insertions).
+- **20-flake (4th recurrence)**: First pytest run gave **20 failed / 2519 passed / 1 skipped**. Investigation per superpowers:systematic-debugging Phase 1: re-ran pytest, second run gave **19 failed / 2519+ passed / 1 skipped** = stable baseline. The 20th transient is the documented `test_overlay_browser_*` timing flake (recurrence pattern: c139, c149, c151, c154 — every ~10 cycles on average). Same 19-baseline files as prior cycles: `test_desktop_workspaces.py` (×2) + `test_ghost_widget.py` (×1) + `test_overlay_browser_frontend.py` (×8) + `test_overlay_window_manager.py` (×4) + `test_sync_queue.py` (×4) = 19. No new failure modes introduced by T150 or T151.
+- **FLAG**: 1 `# type: ignore[arg-type]` on `service.compute_pre_race(**inputs)` (added in T150). Specific error code, kwargs-unpack workaround — same pattern as c153, accept-with-flag per Step 4.
+- Tagged both. Pushed.
+
+### IDLE: lap-webapp, lap-schemas.
+
+### Cycle 154 totals: 4 push-tag accepts, 0 reverts, 0 alerts, 1 baseline lint flag, 1 detekt-suppress flag, 1 type:ignore flag, 1 20-flake recurrence (transient overlay_browser timing). Backend hold = 31.
+
+### Diagnostics + carry-forwards
+
+- **`set -o pipefail` mitigation worked on mobile**: this cycle's gradle gating used `cmd 2>&1 | tail -2; D=$?` so I read the real exit code, not tail's. No false-positive recurrence on mobile (compare to c153 where chained `&&` with masked exits showed BUILD FAILED in 5s for testDebugUnitTest, requiring --rerun-tasks investigation). Recommend codifying `set -o pipefail` + per-task `${PIPESTATUS[0]}` reads in the runbook's verification template.
+- **20-flake 4th occurrence on datalogger**: documented timing tech-debt; investigation via re-run confirmed pattern. systematic-debugging Phase 1 → "no root cause within scope" conclusion (Phase analysis): timing-dependent in QtWebEngine overlay rendering; resolved by re-running. Not blocking any new sprint commits, just noisy.
+- **Backend cascade hold +1 to 31**: T152 (webhook handler) accumulated locally. Cascade resolution still pending.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 154 — 4 accepts (mobile T183 + website T152 + datalogger T150+T151) + backend hold 31 + 20-flake 4th recurrence` + review-log.md + metrics.md.
+
+---
+
