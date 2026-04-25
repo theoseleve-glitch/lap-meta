@@ -200,7 +200,7 @@
 - [x] T166 [sonnet] Widget position: degraded state ⇒ rendered (d7495bc)
 - [x] T167 [sonnet] Widget gap: degraded state ⇒ rendered (2ef5d43)
 - [x] T168 [sonnet] Widget stint-timer (endurance): degraded ⇒ rendered (be1d913)
-- [ ] T169 [sonnet] Widget tire-life: degraded ⇒ rendered
+- [x] T169 [sonnet] Widget tire-life: degraded ⇒ rendered (8f6a441)
 - [ ] T170 [sonnet] Widget long-run-pace: degraded ⇒ rendered
 - [ ] T171 [sonnet] Global degraded banner: "coaching disabled — check backend" ⇒ visible when off
 - [ ] T172 [sonnet] Global degraded banner: "offline — local only" ⇒ visible when no network
