@@ -273,7 +273,7 @@
 - [x] T233 [sonnet] Font subsetting: ship only used glyphs ⇒ font files smaller (e0f6494)
 - [x] T234 [sonnet] Bundle analysis: no route > 200KB gzip JS ⇒ verified (b8b957e)
 - [x] T235 [sonnet] Unused CSS purged ⇒ verified (77d6cb4)
-- [ ] T236 [sonnet] A11y audit pass: axe across all top-level pages ⇒ no violations
+- [x] T236 [sonnet] A11y audit pass: axe across all top-level pages ⇒ no violations (1ac2574)
 - [ ] T237 [sonnet] Keyboard-only navigation works on all pages ⇒ manual test passes
 - [ ] T238 [sonnet] Screen reader test on session detail ⇒ announces structure
 - [ ] T239 [sonnet] Color contrast audit ⇒ all AA or better
