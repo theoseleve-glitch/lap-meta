@@ -252,7 +252,7 @@
 - [ ] T215 [sonnet] Activation event sent to PostHog ⇒ visible [BLOCKED: waiting on lap-backend — the activation event fires only on T211 (accept-prescription success); without the backend mutation completing, there's no on-success hook to dispatch the PostHog event from. Firing client-side without backend confirmation would mean false positives in the funnel.]
 - [ ] T216 [sonnet] Time-to-first-value measured via PostHog funnel ⇒ reported [BLOCKED: waiting on lap-backend — the funnel needs both the entry event (onboarding-start) and the activation event (T215, also blocked) emitting from real backend transitions; the funnel itself is built in PostHog UI, but it can only "report" once those events are firing.]
 - [x] T217 [opus] `BillingPage` route + UI: current plan, trial status, billing portal button ⇒ renders (73e0ca6)
-- [ ] T218 [sonnet] Checkout button → POST /billing/checkout → redirect to Stripe ⇒ works
+- [ ] T218 [sonnet] Checkout button → POST /billing/checkout → redirect to Stripe ⇒ works [BLOCKED: waiting on lap-backend — needs POST `/billing/checkout` (returns Stripe Checkout session URL) plus the `@lap/schemas` typed client; the client-side redirect to Stripe is trivial once the URL is minted server-side.]
 - [ ] T219 [sonnet] Billing portal button → Stripe Billing Portal ⇒ works
 - [ ] T220 [sonnet] Trial expiry banner on app shell (48h soft block) ⇒ visible when near
 - [ ] T221 [sonnet] Hard gate on expired trial: blocks all app pages with checkout CTA ⇒ works
