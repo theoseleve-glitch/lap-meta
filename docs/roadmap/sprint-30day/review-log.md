@@ -5249,3 +5249,22 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T19:01:00Z — Cycle #159 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 40**
+
+### lap-backend (HEAD def44e6 local; held 40) — CASCADE +1
+- 40 ahead, +1 since c158: T161 (admin endpoint POST /admin/billing/sync/:user_id, def44e6). Continues billing surface (T155-T161 = 7 commits).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 159 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 40.
+
+### Notes
+- 5th consecutive idle cycle. Review repos quiescent ~75 min. No alert criteria triggered (not red, just no new commits) — the runbook's `ci-broken >6h` rule applies to red state, not idle.
+- Backend hold reached **40** — single highest sprint accumulation in the loop's history. T104 cascade resolution becoming more urgent in proportion to the work waiting behind it.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 159 — IDLE (5th consecutive) + backend hold 40 (T161 admin sync endpoint)` + review-log.md + metrics.md (header only).
+
+---
+

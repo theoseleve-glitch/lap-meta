@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T18:49Z (Cycle #158 — IDLE 4th consecutive + backend hold 39 + billing-surface forced-checkpoint pending)
+## Last updated: 2026-04-25T19:01Z (Cycle #159 — IDLE 5th consecutive + backend hold 40, single-highest in loop history)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | c5e67f1 (T160) | f005d57 (T122 pre-cascade) | **HELD 39 commits** awaiting T104 schemas cascade resolution; T155-T160 billing surface (6 commits, forced-checkpoint will trigger on unblock) |
+| lap-backend | def44e6 (T161) | f005d57 (T122 pre-cascade) | **HELD 40 commits** awaiting T104 schemas cascade resolution; T155-T161 billing surface (7 commits incl admin /sync endpoint, forced-checkpoint will trigger on unblock) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -46,7 +46,8 @@
 - **c155**: IDLE; backend hold +2 to 33 (T153+T154 webhook handlers).
 - **c156**: IDLE 2nd consecutive; backend hold +1 to 34 (T155 invoice.payment_failed handler).
 - **c157**: IDLE 3rd consecutive; backend hold +3 to 37 (T156-T158 billing/Stripe webhook + portal + promo).
-- **c158 (this cycle)**: IDLE 4th consecutive; backend hold +2 to 39 (T159 WAITLIST_FOUNDER promo at checkout + T160 daily Stripe<->DB reconciliation). Billing surface = T155-T160 (6 commits).
+- **c158**: IDLE 4th consecutive; backend hold +2 to 39 (T159 + T160).
+- **c159 (this cycle)**: IDLE 5th consecutive; backend hold +1 to 40 (T161 admin /billing/sync endpoint). Single-highest hold in loop history; review repos quiescent ~75 min.
 
 ## Review loop state
 
