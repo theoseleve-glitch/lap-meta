@@ -213,7 +213,7 @@
 - [x] T176 [sonnet] PyInstaller spec file updated for new dependencies ⇒ builds (960c18b)
 - [x] T177 [sonnet] PyInstaller produces single-folder distribution ⇒ folder valid (d659da3)
 - [x] T178 [sonnet] Inno Setup script updated for new executable ⇒ installer builds (9592b0f)
-- [ ] T179 [sonnet] Inno Setup: code signing with your cert (or self-signed for alpha) ⇒ signed
+- [x] T179 [sonnet] Inno Setup: code signing with your cert (or self-signed for alpha) ⇒ signed (9dbdb70)
 - [ ] T180 [sonnet] Inno Setup: custom install dir, desktop shortcut, start-menu entry ⇒ tested
 - [ ] T181 [sonnet] Inno Setup: uninstaller cleans all files + registry entries ⇒ tested
 - [ ] T182 [sonnet] Version string from single source (pyproject.toml → compile-time) ⇒ consistent
