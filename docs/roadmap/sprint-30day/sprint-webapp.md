@@ -78,7 +78,7 @@
 ## Block D — Session detail refactor (T061–T085)
 
 - [x] T061 [opus] Plan: decompose `src/app/(app)/sessions/[id]/page.tsx` into shell + tabs ⇒ plan doc in comment (c5728f5)
-- [ ] T062 [opus] Extract `SessionDetailShell` (layout, header, breadcrumbs) ⇒ ≤150 LOC
+- [x] T062 [opus] Extract `SessionDetailShell` (layout, header, breadcrumbs) ⇒ ≤150 LOC (c3abe14)
 - [ ] T063 [opus] Extract `SessionOverviewTab` component ⇒ ≤250 LOC
 - [ ] T064 [opus] Extract `SessionLapsTab` component ⇒ ≤250 LOC
 - [ ] T065 [opus] Extract `SessionTelemetryTab` component ⇒ ≤300 LOC
