@@ -246,7 +246,7 @@
 - [ ] T209 [opus] Step 2: Sample session loader — upload curated .ibt fixture ⇒ works [BLOCKED: waiting on lap-backend — needs the session-ingest POST endpoint and the `@lap/schemas` typed client to wire the upload, plus a bundled curated .ibt fixture artifact (not currently present in webapp public/). Front-end-only loader UI without a real ingest target would be premature scope.]
 - [x] T210 [opus] Step 3: Install link for desktop (or mobile) ⇒ correct link per OS (96508e6)
 - [ ] T211 [opus] Step 4: Accept first prescription ⇒ activation event fires [BLOCKED: waiting on lap-backend — needs the accept-prescription POST endpoint and the typed-client wiring; the activation event must fire only on successful mutation, so a client-only fire would be incorrect.]
-- [ ] T212 [sonnet] Skippable at each step ⇒ works
+- [x] T212 [sonnet] Skippable at each step ⇒ works (2ebc7f9)
 - [ ] T213 [sonnet] Resumable: user can leave and return ⇒ tested
 - [ ] T214 [sonnet] Onboarding triggered only once per user ⇒ flag set on completion
 - [ ] T215 [sonnet] Activation event sent to PostHog ⇒ visible
