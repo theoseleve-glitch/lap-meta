@@ -229,7 +229,7 @@
 - [ ] T195 [sonnet] Delete compare case ⇒ works [BLOCKED: waiting on lap-backend — needs DELETE `/compare/cases/:id` endpoint and the `@lap/schemas` typed client.]
 - [ ] T196 [sonnet] Compare list: filter by session/track/car ⇒ works [BLOCKED: waiting on lap-backend — needs the live compare-cases list (T189 hooks, also blocked) before a filter UI can be wired end-to-end; a stand-alone filter widget without the list to filter would be premature scope.]
 - [x] T197 [sonnet] Loading/error/empty states ⇒ handled (674e6c6)
-- [ ] T198 [sonnet] E2E: create compare case → view → edit → delete ⇒ green
+- [ ] T198 [sonnet] E2E: create compare case → view → edit → delete ⇒ green [BLOCKED: waiting on lap-backend — every step of the E2E (create T191, edit T194, delete T195, plus the underlying T189 hooks) is backend-blocked; cannot drive the flow until those endpoints land.]
 - [ ] T199 [sonnet] Legacy URL-param compare: redirect to "save as case" prompt ⇒ works
 - [ ] T200 [sonnet] Storybook stories ⇒ complete
 - [ ] T201 [sonnet] Unit tests ⇒ green
