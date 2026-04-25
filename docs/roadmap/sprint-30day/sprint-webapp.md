@@ -32,7 +32,7 @@
 ## Block B — Contracts migration (T021–T045)
 
 - [x] T021 [opus] Replace local `interface Session` in session-list with `SessionRecord` from @lap/schemas ⇒ tsc green (no-op: no local `interface Session` was ever transplanted into this repo — T007's selective extraction skipped `types.ts`, and the session-list surface at `/timeline/page.tsx` is currently a placeholder `PageIntro` with no data binding. tsc is already green. Naturally addressed when T010 unblocks @lap/schemas + the timeline data hook lands and a real list ships against the typed `SessionRecord`.)
-- [ ] T022 [opus] Replace local interfaces on session-detail page ⇒ tsc green
+- [x] T022 [opus] Replace local interfaces on session-detail page ⇒ tsc green (no-op: session-detail page at `src/app/(app)/sessions/[id]/page.tsx` doesn't exist in this repo — T007's extraction never transplanted it. Block D (T061–T067) plans the shell + tabs decomposition; when those ship after T010 unblocks @lap/schemas, every component will be authored TDD-first against `SessionRecord`/lap-detail/telemetry types directly. tsc is already green. There is no local interface to replace because the surface to host it has never existed in lap-webapp.)
 - [ ] T023 [opus] Replace on session-compare page ⇒ tsc green
 - [ ] T024 [opus] Replace on driver pages (progression, style, history) ⇒ tsc green
 - [ ] T025 [opus] Replace on bundles list/detail ⇒ tsc green
