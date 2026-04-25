@@ -5577,3 +5577,22 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T23:30:00Z — Cycle #178 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 84 + T204 SIGNED-BUNDLE forced-checkpoint flagged**
+
+### lap-backend (HEAD a9ab1ae local; held 84) — CASCADE +3 — FORCED-CHECKPOINT FLAGGED
+- 84 ahead, +3 since c177:
+  - T203 (compile YAML rules to portable JSON, edcf79f) — normal review
+  - **T204** (GET /api/v1/coaching/rules/bundle **signed JSON**, 583834d) — **forced-checkpoint per runbook line 343-348** ("Any diff touching cryptographic code, token handling, or payment flow"). Signed-bundle distribution implies signing key + verification flow + key-rotation strategy. When cascade unblocks, this commit requires explicit human review.
+  - T205 (POST coaching insights flag endpoint, a9ab1ae) — normal review (user-feedback signal, no crypto).
+- **Forced-checkpoint surface now expands**: T155-T165 billing (11 commits, original) + T204 signed-bundle (1 new). Total checkpoint review on unblock = 12 commits within the 84-commit hold.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 178 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 84 (+3, including 1 newly-flagged forced-checkpoint commit T204).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 178 — IDLE (24th consecutive) + backend hold 84 (T203-T205, T204 signed-bundle forced-checkpoint flagged)` + review-log.md + metrics.md.
+
+---
+
