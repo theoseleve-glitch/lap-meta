@@ -205,7 +205,7 @@
 - [ ] T174 [sonnet] A11y, responsive, E2E same pattern as Profile ⇒ green [BLOCKED: waiting on lap-backend — useSkillDrilldown T168 (driver skill drilldown endpoint). Without a data hook the route at /profile/skills/[dimension] only renders a PageIntro placeholder; there's no SkillTrendChart/Best/Worst/RelatedWeaknesses composition to E2E or measure responsively, and the per-component a11y tests already pass at the unit level.]
 - [x] T175 [opus] Weakness detail route `src/app/(app)/weaknesses/[id]/page.tsx` ⇒ renders (68ab251)
 - [x] T176 [opus] `WeaknessHeader` component: category, severity, status ⇒ Storybook (7d78712)
-- [ ] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook
+- [x] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook (d6a97cc)
 - [ ] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook
 - [ ] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook
 - [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works
