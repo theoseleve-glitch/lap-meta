@@ -5491,3 +5491,20 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T22:30:00Z — Cycle #173 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 67 + coaching rules engine accelerating**
+
+### lap-backend (HEAD 975d427 local; held 67) — CASCADE +5
+- 67 ahead, +5 since c172: T184 (feature namespace PIPELINE vs REFERENCE, 6511fe9) + T185 (rule runner integrates schema/compiler/templates, 4a76546) + T186 (propagate rule version onto CoachingInsight for traceability, 6edf9f4) + T187 (confidence gating FULL vs TENTATIVE, 9cfa1f6) + T188 (**first concrete rule** `br.late_braking.apex_speed_loss`, 975d427).
+- **Engine kernel complete + first rule authored**. T180-T187 = 8 commits of infrastructure (cron + schema + loader + compiler + namespace + runner + versioning + confidence). T188 starts the rule library.
+- Coaching rules engine surface = T180-T188 (9 commits — already 17 ahead of backend's previous "billing batch" 11-commit boundary).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 173 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 67 (+5).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 173 — IDLE (19th consecutive) + backend hold 67 (T184-T188 coaching engine kernel complete + first rule authored)` + review-log.md + metrics.md (header only).
+
+---
+
