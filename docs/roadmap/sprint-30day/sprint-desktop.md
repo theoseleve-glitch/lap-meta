@@ -164,7 +164,7 @@
 
 ## Block H — Strategy + pit-armed (T136–T155)
 
-- [ ] T136 [opus] Refactor `core/race_strategy.py`: move logic out of OverlayViewModel ⇒ domain service
+- [x] T136 [opus] Refactor `core/race_strategy.py`: move logic out of OverlayViewModel ⇒ domain service (ff147d5)
 - [ ] T137 [opus] Strategy service: pre-race calculation API ⇒ tested
 - [ ] T138 [opus] Strategy service: live recalculation API ⇒ tested
 - [ ] T139 [opus] Strategy service: `armed` state field ⇒ tested
