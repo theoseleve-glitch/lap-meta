@@ -257,7 +257,7 @@
 - [x] T220 [sonnet] Trial expiry banner on app shell (48h soft block) ⇒ visible when near (7df9c7d)
 - [x] T221 [sonnet] Hard gate on expired trial: blocks all app pages with checkout CTA ⇒ works (8490384)
 - [x] T222 [sonnet] Settings route with tabs: profile / preferences / integrations / data ⇒ renders (b585bd7)
-- [ ] T223 [sonnet] Profile: display name, skill level, avatar upload ⇒ works
+- [ ] T223 [sonnet] Profile: display name, skill level, avatar upload ⇒ works [BLOCKED: waiting on lap-backend — needs PATCH `/me` (or equivalent profile-update endpoint) plus a multipart avatar-upload endpoint, and the `@lap/schemas` typed client (not currently a dependency in this webapp). Webapp doctrine forbids untyped fetch and local DTO duplicates, so the form cannot be wired through a typed mutation without these. The settings shell at /settings (T222) is in place; T223's persisting form just needs the backend contract.]
 - [ ] T224 [sonnet] Preferences: coaching tone (premium/blunt), unit system, language ⇒ works
 - [ ] T225 [sonnet] Integrations: list paired devices, revoke button ⇒ works
 - [ ] T226 [sonnet] Data: cohort opt-in toggle, export-all button (GDPR), delete-account button ⇒ works
