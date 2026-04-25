@@ -211,7 +211,7 @@
 - [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works [BLOCKED: waiting on lap-backend — POST /weaknesses/:id/resolve (or equivalent) endpoint. The button + confirm modal can be sketched but cannot be wired through a typed mutation without the endpoint and the @lap/schemas-generated client.]
 - [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested [BLOCKED: waiting on lap-backend — depends on T180 resolve endpoint and on T138 useDriverProfile hook (also backend-blocked); cannot test mutation→profile invalidation chain without both.]
 - [x] T182 [sonnet] Loading/error/empty states ⇒ handled (cb6a579)
-- [ ] T183 [sonnet] E2E: navigate from Profile → Weakness Detail → mark resolved ⇒ green
+- [ ] T183 [sonnet] E2E: navigate from Profile → Weakness Detail → mark resolved ⇒ green [BLOCKED: waiting on lap-backend — depends on T180 (resolve endpoint) and on T138 useDriverProfile (also backend-blocked); E2E cannot click a "Mark resolved" button that does not yet exist or assert post-mutation profile refetch.]
 - [x] T184 [sonnet] Tests for all sub-components ⇒ green (no-op: each Block H sub-component shipped TDD-first — WeaknessHeader 7d78712, WeaknessTrendChart d6a97cc, EvidenceSessionsList c7c2ab8, LinkedPrescriptionsList c2a0a75, WeaknessSkeleton/Error/NotFound cb6a579 — 7 files, 56 tests green)
 - [ ] T185 [sonnet] Analytics events on weakness interactions ⇒ tracked
 
