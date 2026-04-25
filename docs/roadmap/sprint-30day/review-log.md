@@ -5436,3 +5436,26 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T21:13:00Z — Cycle #170 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 57 · 170-cycle mark**
+
+### lap-backend (HEAD 893310f local; held 57) — CASCADE +1
+- 57 ahead, +1 since c169: T178 (admin KPI endpoint /api/v1/admin/kpis, 893310f). Admin endpoint surfacing observability data — bridges Prometheus collection to admin-facing dashboard consumption.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 170 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 57.
+
+### 170-cycle cumulative
+
+- Total reviewed: ~754+ sprint commits (no change since c154 — 16-cycle idle streak)
+- Reverts: **7** (~0.85% over 170 cycles, decreasing as denominator grows)
+- Active cascades: **1** (T104 → backend held 57)
+- Idle streak: **16 consecutive** for review repos (~240 min wall-clock = 4 hours)
+- Backend during idle: still actively accumulating (T123-T178 = 56 commits in 4 hours)
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 170 — IDLE (16th consecutive) + backend hold 57 (T178 admin KPI endpoint) · 170-cycle mark` + review-log.md + metrics.md.
+
+---
+

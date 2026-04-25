@@ -1,22 +1,22 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T21:01Z (Cycle #169 — IDLE 15th consecutive + backend hold 56)
+## Last updated: 2026-04-25T21:13Z (Cycle #170 — IDLE 16th consecutive + backend hold 57; 170-cycle mark)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | f1600c7 (T177) | f005d57 (T122 pre-cascade) | **HELD 56 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T177 obs/analytics (12 normal incl Sentry+PostHog+Prometheus domain metrics) |
+| lap-backend | 893310f (T178) | f005d57 (T122 pre-cascade) | **HELD 57 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T178 obs/analytics+admin (13 normal) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
 | lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
 | datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (160 cycles)
+## Cumulative (170 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos
-- Reverts (cumulative): **7** (~0.9% rate over 160 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (16-cycle idle streak — no new reviews since c154)
+- Reverts (cumulative): **7** (~0.85% rate over 170 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -57,7 +57,8 @@
 - **c166**: IDLE 12th consecutive; backend hold +2 to 52 (T172+T173 PostHog events).
 - **c167**: IDLE 13th consecutive; backend hold +1 to 53 (T174 PostHog identify on first-login).
 - **c168**: IDLE 14th consecutive; backend hold +1 to 54 (T175 Prometheus /metrics endpoint).
-- **c169 (this cycle)**: IDLE 15th consecutive; backend hold +2 to 56 (T176 sessions_ingested + ingest_duration + T177 prescriptions_created + episodes gauge). Prometheus domain-metrics surface taking shape.
+- **c169**: IDLE 15th consecutive; backend hold +2 to 56 (T176+T177 Prometheus domain metrics).
+- **c170 (this cycle)**: IDLE 16th consecutive; backend hold +1 to 57 (T178 admin /api/v1/admin/kpis endpoint). 170-cycle mark; idle streak now 4-hour wall-clock.
 
 ## Review loop state
 
