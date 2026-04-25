@@ -5193,3 +5193,21 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T18:25:00Z — Cycle #156 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 34**
+
+### lap-backend (HEAD e39e8ed local; held 34) — CASCADE +1
+- 34 ahead, +1 since c155: T155 (invoice.payment_failed handler + notification queue, e39e8ed). Cascade unchanged.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 156 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 34 (+1 invoice.payment_failed handler).
+
+### Notes
+- 2nd consecutive idle cycle. Only backend sprint loop is producing commits (held). Other 4 sprint loops (webapp, mobile, website, datalogger) have been quiescent for ≥15 min — likely between sprint task pickups or in their own internal cooldowns. Not a concern for the review loop; surface here for visibility.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 156 — IDLE (2nd consecutive) + backend hold 34 (T155 invoice.payment_failed)` + review-log.md + metrics.md (header only).
+
+---
+
