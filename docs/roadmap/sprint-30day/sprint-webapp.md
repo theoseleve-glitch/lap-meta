@@ -247,7 +247,7 @@
 - [x] T210 [opus] Step 3: Install link for desktop (or mobile) ⇒ correct link per OS (96508e6)
 - [ ] T211 [opus] Step 4: Accept first prescription ⇒ activation event fires [BLOCKED: waiting on lap-backend — needs the accept-prescription POST endpoint and the typed-client wiring; the activation event must fire only on successful mutation, so a client-only fire would be incorrect.]
 - [x] T212 [sonnet] Skippable at each step ⇒ works (2ebc7f9)
-- [ ] T213 [sonnet] Resumable: user can leave and return ⇒ tested
+- [x] T213 [sonnet] Resumable: user can leave and return ⇒ tested (no-op: T207 5e3969f shipped localStorage persistence with both halves of the leave/return cycle covered — "persists state changes to localStorage" writes on every transition, "loads state from localStorage on mount" restores on re-mount, plus "ignores corrupt localStorage payloads" and "ignores out-of-range step values" defend against tampered persistence; 19 OnboardingProvider tests green)
 - [ ] T214 [sonnet] Onboarding triggered only once per user ⇒ flag set on completion
 - [ ] T215 [sonnet] Activation event sent to PostHog ⇒ visible
 - [ ] T216 [sonnet] Time-to-first-value measured via PostHog funnel ⇒ reported
