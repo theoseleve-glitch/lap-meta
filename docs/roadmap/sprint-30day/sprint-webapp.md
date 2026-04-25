@@ -84,7 +84,7 @@
 - [x] T065 [opus] Extract `SessionTelemetryTab` component ⇒ ≤300 LOC (cfd7c86)
 - [x] T066 [opus] Extract `SessionCoachingTab` component (new) ⇒ stub ready for T086 (8c5584b)
 - [x] T067 [opus] Extract `SessionActionsBar` (delete, re-process, share) ⇒ ≤150 LOC (27bc541)
-- [ ] T068 [opus] Wire tabs via URL query param `?tab=overview|laps|telemetry|coaching` ⇒ navigation works
+- [x] T068 [opus] Wire tabs via URL query param `?tab=overview|laps|telemetry|coaching` ⇒ navigation works (40f772e)
 - [ ] T069 [sonnet] Each tab fetches with its own `useQuery` key ⇒ no prop drilling for data
 - [ ] T070 [sonnet] Session header: show source tag (sim/real), track, car, date ⇒ correct
 - [ ] T071 [sonnet] Session header: show data_quality score badge with tooltip ⇒ renders
