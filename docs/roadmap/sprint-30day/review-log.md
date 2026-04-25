@@ -4595,3 +4595,34 @@ Mid-cycle drift from c133 absorbed; sprint loops re-implementing reverted tasks.
 
 ---
 
+## 2026-04-26T15:40:00Z — Cycle #135 — **🟡 IDLE except backend cascade hold**
+
+5 of 6 repos idle (no new commits since c134). lap-backend produced 1 new commit `b5a4ce4 sprint(backend): T124 pipeline integration test (Sebring)`.
+
+### lap-backend (HEAD b5a4ce4 — local; origin still f005d57)
+
+- Range now: T123 (e16cfa0) + T124 (b5a4ce4). 2 commits ahead of held origin.
+- Matrix at b5a4ce4: ruff clean, mypy still **3 errors** in sessions.py:160 (same `ingest_job_id` + `status_stream_url` "Unexpected keyword argument" — cross-repo cascade unchanged), pytest **31 failed / 387 passed** (387 = 379 + 8 new from T124, same 31 cascade fails).
+- T124 added 8 new tests (Sebring pipeline integration); they pass. T124 itself is innocent.
+- **Cascade still pending lap-schemas T104 proper re-land**. Holding HEAD locally; not pushing.
+
+### lap-webapp / lap-schemas / lap-mobile-android / lap-website / datalogger
+
+- All idle this cycle (ahead=0 across the board). Sprint loops didn't fire on these between c134 and c135.
+
+### Step 5 — Cross-repo coherence
+
+- T104 cascade remains the only cross-repo issue. Adding c135 to "cycles waiting for proper T104 re-land" counter (cycles 133→134→135 = 3 cycles since the original schemas-side revert; 1 failed reapply at c134).
+
+### Cycle 135 totals
+
+- Sprint accepts+tags: **0**.
+- Holds: 1 (backend, 2-commit range).
+- Reverts: 0.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 135 — backend cascade hold persists (T123+T124 unpushed); other 5 repos idle` + review-log.md only. Push to lap-meta master.
+
+---
+
