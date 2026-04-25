@@ -218,7 +218,7 @@
 - [x] T181 [sonnet] Inno Setup: uninstaller cleans all files + registry entries ⇒ tested (03a2e7e)
 - [x] T182 [sonnet] Version string from single source (pyproject.toml → compile-time) ⇒ consistent (d4b7992)
 - [x] T183 [sonnet] Release checklist: auto-generated from git log between tags ⇒ script works (8dabc91)
-- [ ] T184 [sonnet] RELEASE_CHECKLIST.md versioned ⇒ in-sync with code
+- [x] T184 [sonnet] RELEASE_CHECKLIST.md versioned ⇒ in-sync with code (4d960a6)
 - [ ] T185 [sonnet] Auto-update mechanism: check for newer version on app start ⇒ check runs
 - [ ] T186 [sonnet] Auto-update: download to temp, verify signature, apply on next launch ⇒ tested
 - [ ] T187 [sonnet] Auto-update: opt-out in Settings ⇒ respected
