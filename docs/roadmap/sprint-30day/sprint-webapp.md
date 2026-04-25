@@ -227,7 +227,7 @@
 - [ ] T193 [sonnet] Auto-updating outcome: on re-processing of referenced sessions, refetch ⇒ works [BLOCKED: waiting on lap-backend — depends on T189 hooks (also blocked) plus a backend invalidation/refetch trigger when referenced sessions are re-processed; cannot test outcome auto-update without the live data hook.]
 - [ ] T194 [sonnet] Edit rationale ⇒ PATCH works [BLOCKED: waiting on lap-backend — needs PATCH `/compare/cases/:id` endpoint and the `@lap/schemas` typed client; webapp doctrine forbids untyped fetch and local DTO duplicates.]
 - [ ] T195 [sonnet] Delete compare case ⇒ works [BLOCKED: waiting on lap-backend — needs DELETE `/compare/cases/:id` endpoint and the `@lap/schemas` typed client.]
-- [ ] T196 [sonnet] Compare list: filter by session/track/car ⇒ works
+- [ ] T196 [sonnet] Compare list: filter by session/track/car ⇒ works [BLOCKED: waiting on lap-backend — needs the live compare-cases list (T189 hooks, also blocked) before a filter UI can be wired end-to-end; a stand-alone filter widget without the list to filter would be premature scope.]
 - [ ] T197 [sonnet] Loading/error/empty states ⇒ handled
 - [ ] T198 [sonnet] E2E: create compare case → view → edit → delete ⇒ green
 - [ ] T199 [sonnet] Legacy URL-param compare: redirect to "save as case" prompt ⇒ works
