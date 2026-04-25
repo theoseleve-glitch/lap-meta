@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T19:25Z (Cycle #161 — IDLE 7th consecutive + backend hold 44)
+## Last updated: 2026-04-25T19:37Z (Cycle #162 — IDLE 8th consecutive + backend hold 45 + billing batch T155-T165 closed)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 9adfc4f (T165) | f005d57 (T122 pre-cascade) | **HELD 44 commits** awaiting T104 schemas cascade resolution; T155-T165 billing+subscription-gating surface (11 commits incl admin refund + e2e integration test, forced-checkpoint will trigger on unblock) |
+| lap-backend | 742da08 (T166) | f005d57 (T122 pre-cascade) | **HELD 45 commits** awaiting T104 schemas cascade resolution; T155-T165 billing batch CLOSED (11 commits, forced-checkpoint pending); T166+ observability (no checkpoint) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -49,7 +49,8 @@
 - **c158**: IDLE 4th consecutive; backend hold +2 to 39 (T159 + T160).
 - **c159**: IDLE 5th consecutive; backend hold +1 to 40 (T161 admin /billing/sync endpoint).
 - **c160**: IDLE 6th consecutive; backend hold +2 to 42; 160-cycle milestone.
-- **c161 (this cycle)**: IDLE 7th consecutive; backend hold +2 to 44 (T164 admin refund + T165 e2e billing flow integration test). T165 e2e suggests T155-T165 may be a closed billing-feature batch.
+- **c161**: IDLE 7th consecutive; backend hold +2 to 44 (T164 + T165 e2e billing test).
+- **c162 (this cycle)**: IDLE 8th consecutive; backend hold +1 to 45 (T166 Sentry SDK init). **Billing batch T155-T165 closed at 11 commits** — sprint loop shifted to observability surface; new commits past T165 won't trigger forced-checkpoint individually.
 
 ## Review loop state
 
