@@ -98,65 +98,65 @@
 - [x] T068 [opus] ORM model `TransferLink` ⇒ migration applied — sha: 512892a
 - [x] T069 [opus] ORM model `DriverBenchmarkProfile` ⇒ migration applied — sha: 32999fb
 - [x] T070 [opus] ORM model `DriverReadinessState` ⇒ migration applied — sha: acaf396
-- [ ] T071 [opus] ORM model `TrackLayout`, `CarModel`, `TrackEquivalence`, `CarEquivalence` ⇒ migrations applied
-- [ ] T072 [opus] ORM model `CoachingInsight` (per-session outputs) ⇒ migration applied
-- [ ] T073 [opus] ORM model `UploadQueueItem` (mirrors mobile's SQLite schema, for audit trail) ⇒ migration applied
-- [ ] T074 [opus] RLS policy: users can only SELECT their own sessions ⇒ integration test proves isolation
-- [ ] T075 [opus] RLS policy: same for weakness_episodes, prescriptions, outcomes, snapshots, transfer_links ⇒ tests
-- [ ] T076 [sonnet] Repo layer: `SessionRepo` with `get`, `list_by_driver`, `create`, `update_status` ⇒ unit-tested
-- [ ] T077 [sonnet] Repo layer: `DriverRepo` with `get`, `create`, `update_settings` ⇒ unit-tested
-- [ ] T078 [sonnet] Repo layer: `WeaknessRepo` with `open`, `update_confidence`, `resolve` ⇒ unit-tested
-- [ ] T079 [sonnet] Repo layer: `PrescriptionRepo` + `OutcomeRepo` ⇒ unit-tested
-- [ ] T080 [sonnet] DB session dependency: `get_db()` yields async session ⇒ FastAPI routes can use Depends(get_db)
+- [x] T071 [opus] ORM model `TrackLayout`, `CarModel`, `TrackEquivalence`, `CarEquivalence` ⇒ migrations applied — sha: bc103f2
+- [x] T072 [opus] ORM model `CoachingInsight` (per-session outputs) ⇒ migration applied — sha: e776d20
+- [x] T073 [opus] ORM model `UploadQueueItem` (mirrors mobile's SQLite schema, for audit trail) ⇒ migration applied — sha: d2fbe0f
+- [BLOCKED: needs Postgres test infra (asyncpg + testcontainers or pgserver); current test stack is sqlite-only and RLS is PG-specific. Unblock together with T075 in a dedicated infra fire.] T074 [opus] RLS policy: users can only SELECT their own sessions ⇒ integration test proves isolation
+- [BLOCKED: same PG infra blocker as T074 — RLS policies are Postgres-only; sqlite test stack cannot prove isolation. Unblock with asyncpg + testcontainers fixture, then ship T074 + T075 together.] T075 [opus] RLS policy: same for weakness_episodes, prescriptions, outcomes, snapshots, transfer_links ⇒ tests
+- [x] T076 [sonnet] Repo layer: `SessionRepo` with `get`, `list_by_driver`, `create`, `update_status` ⇒ unit-tested — sha: 5d3b853
+- [x] T077 [sonnet] Repo layer: `DriverRepo` with `get`, `create`, `update_settings` ⇒ unit-tested — sha: 134f643
+- [x] T078 [sonnet] Repo layer: `WeaknessRepo` with `open`, `update_confidence`, `resolve` ⇒ unit-tested — sha: 295fe59
+- [x] T079 [sonnet] Repo layer: `PrescriptionRepo` + `OutcomeRepo` ⇒ unit-tested — sha: 8475678
+- [x] T080 [sonnet] DB session dependency: `get_db()` yields async session ⇒ FastAPI routes can use Depends(get_db) — sha: 25f0523
 
 ## Block E — Auth (Clerk) (T081–T095)
 
-- [ ] T081 [opus] Clerk integration: `infra/clerk.py` with JWKS fetch + cache ⇒ JWKS loads
-- [ ] T082 [sonnet] Auth middleware: validate JWT from `Authorization: Bearer <>` header ⇒ 401 on invalid
-- [ ] T083 [sonnet] Dependency `get_current_user` → returns User row, auto-provision on first call ⇒ tested
-- [ ] T084 [sonnet] Endpoint `GET /api/v1/me` returning current user ⇒ 200 with payload
-- [ ] T085 [sonnet] Endpoint `PATCH /api/v1/me` for profile updates ⇒ updates DB
-- [ ] T086 [sonnet] Clerk webhook receiver: `POST /api/v1/auth/webhooks` handling user.created, user.deleted ⇒ syncs DB
-- [ ] T087 [sonnet] Clerk webhook: validate Svix signature ⇒ rejects tampered
-- [ ] T088 [sonnet] Admin guard: `require_admin` dependency checks `is_admin=true` ⇒ 403 for non-admin
-- [ ] T089 [sonnet] Magic QR pairing endpoint: `POST /api/v1/auth/pairing/create` returns short-lived token ⇒ token in response
-- [ ] T090 [sonnet] Magic QR redeem: `POST /api/v1/auth/pairing/redeem` exchanges token for refresh ⇒ refresh in response
-- [ ] T091 [sonnet] Pairing token TTL: 5 minutes, single-use, stored in Redis ⇒ integration test
-- [ ] T092 [sonnet] Device session table + endpoint `GET /api/v1/auth/devices` lists paired devices ⇒ 200
-- [ ] T093 [sonnet] Device revoke: `DELETE /api/v1/auth/devices/:id` revokes ⇒ future requests 401
-- [ ] T094 [sonnet] Rate-limit auth endpoints (10 req/min/IP) ⇒ 429 after threshold
-- [ ] T095 [sonnet] Integration test: full happy path signup→me→pair→upload with auth ⇒ green
+- [x] T081 [opus] Clerk integration: `infra/clerk.py` with JWKS fetch + cache ⇒ JWKS loads — sha: 122aa98
+- [x] T082 [sonnet] Auth middleware: validate JWT from `Authorization: Bearer <>` header ⇒ 401 on invalid — sha: 48ece72
+- [x] T083 [sonnet] Dependency `get_current_user` → returns User row, auto-provision on first call ⇒ tested — sha: 73fc57c
+- [x] T084 [sonnet] Endpoint `GET /api/v1/me` returning current user ⇒ 200 with payload — sha: db76f79
+- [x] T085 [sonnet] Endpoint `PATCH /api/v1/me` for profile updates ⇒ updates DB — sha: 32e903f
+- [x] T086 [sonnet] Clerk webhook receiver: `POST /api/v1/auth/webhooks` handling user.created, user.deleted ⇒ syncs DB — sha: 3b707f3
+- [x] T087 [sonnet] Clerk webhook: validate Svix signature ⇒ rejects tampered — sha: 177880b
+- [x] T088 [sonnet] Admin guard: `require_admin` dependency checks `is_admin=true` ⇒ 403 for non-admin — sha: 7c09994
+- [x] T089 [sonnet] Magic QR pairing endpoint: `POST /api/v1/auth/pairing/create` returns short-lived token ⇒ token in response — sha: a33fe76
+- [x] T090 [sonnet] Magic QR redeem: `POST /api/v1/auth/pairing/redeem` exchanges token for refresh ⇒ refresh in response — sha: ea9801c
+- [x] T091 [sonnet] Pairing token TTL: 5 minutes, single-use, stored in Redis ⇒ integration test — sha: dbee03e
+- [x] T092 [sonnet] Device session table + endpoint `GET /api/v1/auth/devices` lists paired devices ⇒ 200 — sha: 8b63593
+- [x] T093 [sonnet] Device revoke: `DELETE /api/v1/auth/devices/:id` revokes ⇒ future requests 401 — sha: dd9c0b1
+- [x] T094 [sonnet] Rate-limit auth endpoints (10 req/min/IP) ⇒ 429 after threshold — sha: 3517eb0
+- [x] T095 [sonnet] Integration test: full happy path signup→me→pair→upload with auth ⇒ green — sha: 3a55748
 
 ## Block F — Ingestion pipeline (T096–T125)
 
-- [ ] T096 [opus] Ingestion endpoint: `POST /api/v1/sessions/ingest` accepts multipart ⇒ smoke test green
-- [ ] T097 [opus] Parse `manifest` form field as `SessionManifest`, 422 on invalid ⇒ tested
-- [ ] T098 [opus] Validate idempotency-key header present, 400 if missing ⇒ tested
-- [ ] T099 [opus] Idempotency cache: Redis-backed, 24h TTL, returns prior response on key hit ⇒ tested
-- [ ] T100 [opus] Stream chunks to object storage (local fs first, R2/S3 later) ⇒ file persists
-- [ ] T101 [opus] Compute sha256 per chunk during streaming ⇒ matches manifest
-- [ ] T102 [opus] Create `Session` row with `status=uploaded` + `TelemetryArtifact` rows ⇒ DB rows present
-- [ ] T103 [opus] Dispatch Celery task `process_session_ingest(session_id)` ⇒ task queued
-- [ ] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches
-- [ ] T105 [sonnet] Cloudflare R2 client integration: `infra/storage.py` with put/get/sign-url ⇒ integration test
-- [ ] T106 [sonnet] Swap local fs → R2 in ingestion endpoint ⇒ works with R2 creds
-- [ ] T107 [sonnet] Celery worker setup: `celery -A app.infra.celery worker -l info` ⇒ starts clean
-- [ ] T108 [sonnet] Celery Redis broker + result backend wired ⇒ task completes visible
-- [ ] T109 [sonnet] Celery `process_session_ingest` skeleton: read manifest, mark `processing`, log ⇒ status updates
-- [ ] T110 [sonnet] Celery task retry policy: exponential backoff, max 3 attempts ⇒ tested with failing task
-- [ ] T111 [sonnet] Celery failure handler: on final failure, mark session `failed` with reason ⇒ visible in UI
-- [ ] T112 [opus] SSE endpoint `GET /api/v1/jobs/:id/events` ⇒ stream stays alive
-- [ ] T113 [sonnet] SSE events: queued, processing, stage:<N>, completed, failed ⇒ events received in order
-- [ ] T114 [sonnet] SSE Last-Event-ID reconnection support ⇒ resumes from cursor
-- [ ] T115 [opus] Bundle parser: unpack the Bundle v2 format into normalized sample stream ⇒ tested with fixture
-- [ ] T116 [opus] Checksum validator: verify each chunk's sha256 matches manifest ⇒ tested
-- [ ] T117 [opus] Lap detection: given samples + `TrackLayout`, emit `Lap` rows ⇒ matches archived session laps
-- [ ] T118 [opus] Sector splits: compute sector times from track layout checkpoints ⇒ validated against known sessions
-- [ ] T119 [opus] Session metric extraction: best lap, avg lap, consistency, peak speed ⇒ persisted
-- [ ] T120 [opus] DataQuality scorer: compute from sample completeness, gaps, rate stability ⇒ score 0-100
-- [ ] T121 [opus] Canonical timestamp alignment per ADR-007 ⇒ dual timestamps present on every sample
-- [ ] T122 [sonnet] Persist `SessionRecord` after processing ⇒ row present
-- [ ] T123 [sonnet] Update `Session.status=ready` when done ⇒ visible via GET /sessions/:id
+- [x] T096 [opus] Ingestion endpoint: `POST /api/v1/sessions/ingest` accepts multipart ⇒ smoke test green — sha: 4a19ae6
+- [x] T097 [opus] Parse `manifest` form field as `SessionManifest`, 422 on invalid ⇒ tested — sha: 2a57fe0
+- [x] T098 [opus] Validate idempotency-key header present, 400 if missing ⇒ tested — sha: 9d64399
+- [x] T099 [opus] Idempotency cache: Redis-backed, 24h TTL, returns prior response on key hit ⇒ tested — sha: 9d6e222
+- [x] T100 [opus] Stream chunks to object storage (local fs first, R2/S3 later) ⇒ file persists — sha: d2ae531
+- [x] T101 [opus] Compute sha256 per chunk during streaming ⇒ matches manifest — sha: 784caf6
+- [x] T102 [opus] Create `Session` row with `status=uploaded` + `TelemetryArtifact` rows ⇒ DB rows present — sha: 0ad532f
+- [x] T103 [opus] Dispatch Celery task `process_session_ingest(session_id)` ⇒ task queued — sha: 1a8c058
+- [NEEDS_REWORK] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches — sha: 8d37def. Schemas-side commit (lap-schemas 40a8105 "schemas: T104 expand SessionIngestAccepted") added the 3 new required fields to the Pydantic model but did NOT update `tests/test_session_ingest.py` — pytest red on `test_session_ingest_accepted_builds`. Reverted in lap-schemas cab48ad (c133). Backend route shape may still be correct; schema needs to ship with default values OR update test. Re-implementation: when adding required fields to a v1 schema, update all tests that build that schema in the same commit, OR make the new fields optional with defaults.
+- [x] T105 [sonnet] Cloudflare R2 client integration: `infra/storage.py` with put/get/sign-url ⇒ integration test — sha: 4c17a8e
+- [x] T106 [sonnet] Swap local fs → R2 in ingestion endpoint ⇒ works with R2 creds — sha: 7f1613a
+- [x] T107 [sonnet] Celery worker setup: `celery -A app.infra.celery worker -l info` ⇒ starts clean — sha: a7846d9
+- [x] T108 [sonnet] Celery Redis broker + result backend wired ⇒ task completes visible — sha: 8ffafa5
+- [x] T109 [sonnet] Celery `process_session_ingest` skeleton: read manifest, mark `processing`, log ⇒ status updates — sha: f143af1
+- [x] T110 [sonnet] Celery task retry policy: exponential backoff, max 3 attempts ⇒ tested with failing task — sha: 0c3b4a7
+- [x] T111 [sonnet] Celery failure handler: on final failure, mark session `failed` with reason ⇒ visible in UI — sha: 3e1075c
+- [x] T112 [opus] SSE endpoint `GET /api/v1/jobs/:id/events` ⇒ stream stays alive — sha: 6809662
+- [x] T113 [sonnet] SSE events: queued, processing, stage:<N>, completed, failed ⇒ events received in order — sha: 0875a76
+- [x] T114 [sonnet] SSE Last-Event-ID reconnection support ⇒ resumes from cursor — sha: 57b7336
+- [x] T115 [opus] Bundle parser: unpack the Bundle v2 format into normalized sample stream ⇒ tested with fixture — sha: 26c9df3
+- [x] T116 [opus] Checksum validator: verify each chunk's sha256 matches manifest ⇒ tested — sha: 7730699
+- [x] T117 [opus] Lap detection: given samples + `TrackLayout`, emit `Lap` rows ⇒ matches archived session laps — sha: aeaa090
+- [x] T118 [opus] Sector splits: compute sector times from track layout checkpoints ⇒ validated against known sessions — sha: bc7eb4b
+- [x] T119 [opus] Session metric extraction: best lap, avg lap, consistency, peak speed ⇒ persisted — sha: bfb5be3
+- [x] T120 [opus] DataQuality scorer: compute from sample completeness, gaps, rate stability ⇒ score 0-100 — sha: 020f81b
+- [x] T121 [opus] Canonical timestamp alignment per ADR-007 ⇒ dual timestamps present on every sample — sha: f6d630c
+- [x] T122 [sonnet] Persist `SessionRecord` after processing ⇒ row present — sha: f005d57
+- [x] T123 [sonnet] Update `Session.status=ready` when done ⇒ visible via GET /sessions/:id — sha: e16cfa0
 - [ ] T124 [sonnet] Processing pipeline integration test with archived Sebring session ⇒ end-to-end green
 - [ ] T125 [sonnet] Processing pipeline integration test with archived RaceBox session ⇒ end-to-end green
 

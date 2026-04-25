@@ -4418,3 +4418,97 @@ The following repos have uncommitted in-flight sprint work that the loop should 
 
 ---
 
+## 2026-04-26T15:10:00Z — Cycle #133 — **🟢 ACTIVE — RESUMED, 364-COMMIT BACKLOG CLEARED, 2 REVERTS**
+
+First active cycle since c81. Pause window c81-c132 lasted 12.5h / 51 cycles. Resumed at 13:00Z by user manual marker removal + the two-layer ADR-005 audit landing in lap-meta.
+
+### lap-backend (HEAD f005d57 → after mid-cycle drift e16cfa0)
+
+- 64 sprint commits T071-T122 + T112 manual fix (a831422, missing-FK).
+- Stash + matrix at f005d57: ruff clean, mypy 22 files clean, **pytest 401/401 (+65 from c81 baseline 336)**, app.main importable.
+- Tagged 64 sprint commits as `reviewed/20260426/lap-backend/<sha>`. Pushed origin/master + tags.
+- Mid-cycle drift: HEAD advanced f005d57 → e16cfa0 during pytest 148s run; new commits absorb on next cycle.
+
+### lap-webapp (HEAD b8b957e → revert 612b18f)
+
+- 41 unreviewed: 40 sprint + 1 (count anomaly, not relevant).
+- Matrix at b8b957e: typecheck OK, lint OK, **599/599 tests pass — but `pnpm build` FAILED**.
+- **Revert path** (Step 3): `pnpm build` → "Unexpected spread" in `src/app/layout.tsx`. T233 (`0b60e20` "font subsetting — ship only used weights") introduced `subsets: [...FONT_SUBSETS]` and `weight: [...FONT_BODY_WEIGHTS]` spread expressions inside `Inter()`/`Space_Grotesk()`/`Space_Mono()` calls. next/font/google macros require literal arrays — they can't accept spread because they do compile-time analysis.
+- Sprint loop missed this because typecheck + lint + vitest test all pass; only `next build` exercises the constraint. Sprint local verification doesn't run `next build`.
+- T234 (b8b957e, 200KB gzip JS budget) only modifies `lighthouserc.json` — separate file, kept post-revert.
+- Reverted in `612b18f`. Post-revert: build green (87.4 kB First Load JS shared), 595/595 tests pass (4 fewer than 599 because font-config.test.ts was deleted with the revert).
+- Tagged 39 sprint commits (40 sprint - T233). Pushed origin/master + tags.
+- T233 marked `[NEEDS_REWORK]` in sprint-webapp.md L273 with re-implementation hint: keep weights/subsets inline at call sites; font-config.ts can document but not be spread.
+
+### lap-schemas (HEAD 40a8105 → revert cab48ad → mid-cycle 6b15072)
+
+- 7 schema commits (T098-T104).
+- Matrix at 40a8105: uv sync OK, **pytest 105/106 — 1 FAILED**: `test_session_ingest_accepted_builds`.
+- **Revert path**: T104 "schemas: T104 expand SessionIngestAccepted with session_id, ingest_job_id, status_stream_url" added 3 required fields to the Pydantic model but did NOT update `tests/test_session_ingest.py`. Test still constructs the model with old shape → ValidationError on missing fields.
+- Reverted in `cab48ad`. Post-revert: 106/106 pytest pass.
+- Note: ruff/mypy `program not found` in datalogger venv pattern (lap-schemas doesn't have ruff/mypy in dev extras either) — INFRA_FLAG, not revert. Pytest was the gating signal.
+- Tagged 6 schema commits (T098-T103, excluding T104). Pushed origin/master + tags.
+- T104 marked `[NEEDS_REWORK]` in sprint-backend.md L140 (the parent backend task this schemas commit supports).
+
+### lap-mobile-android (HEAD fda018b)
+
+- 108 unreviewed sprint commits T069-T168.
+- Stash `.claude/` (untracked) + matrix at fda018b: detekt SUCCESS, ktlintCheck SUCCESS, app:assembleDebug SUCCESS (UP-TO-DATE), app:testDebugUnitTest SUCCESS in 17s.
+- Tagged 108 commits. Pushed origin/master + tags. Stash popped clean.
+
+### lap-website (HEAD bc6465a → mid-cycle drift 9cabdfa)
+
+- 54 sprint commits T091-T136.
+- Matrix at bc6465a: typecheck 0 warn 0 hint, prettier clean, **707/707 tests pass**, build 18 pages.
+- Tagged 53 sprint commits (1 mid-cycle slipped after my fetch). Pushed origin/master + tags.
+
+### datalogger (HEAD 98104d2 → mid-cycle drift 9f450ab)
+
+- 94 sprint commits.
+- Stash 4 dirty files (M config.sample.json, M lap_coach_logger.spec, M requirements.txt, ?? .coverage) + matrix at 98104d2.
+- **INFRA_FLAG**: pytest, ruff, mypy not installed by `uv sync` (datalogger pyproject has no `[project.optional-dependencies.dev]`). Pre-installed pydantic/pyyaml/uuid6 + numpy + pytest/ruff/mypy on this run.
+- Pytest after dep install: **2287 passed, 19 failed, 1 skipped** — matches the documented stable-19 baseline (overlay_browser/overlay_window_manager/sync_queue tech-debt since c22). No new failures.
+- ruff: 145 errors. mypy: 425 errors in 60 files. **NOT NEW CYCLE-133 DRIFT** — these are latent because sprint loops can't run the tools (not in pyproject). Recommend separately: add ruff/mypy/pytest to pyproject's `[project.optional-dependencies.dev]`, then sprint loops can self-verify and existing drift becomes addressable.
+- Per ADR-017 "never revert on INFRA_FLAG" — accept HEAD + push.
+- Tagged 94 sprint commits. Pushed origin/master + tags. Stash popped (with one file `app/routers/sessions.py` appearing modified — sprint-loop race during my long pytest run; not my problem to commit).
+
+### Step 5 — Cross-repo coherence
+
+- **Schema-drift check**: lap-schemas changed (7 commits). Spot-checked: no `lap-webapp/src/generated/` dir exists (TS codegen lives inside `lap-schemas/typescript/`, not consumer-side). No `lap-mobile-android/.../generated/` dir found. Schema regen not directly verifiable via codegen-out-dir presence; the lap-schemas-internal codegen targets in `lap-schemas/typescript/`, `lap-schemas/swift/`, `lap-schemas/kotlin/` exist but their post-T104-revert state was not re-run this cycle. **Flag**: re-run `make codegen` in lap-schemas at next cycle to confirm post-revert codegen still valid.
+- **Endpoint drift check**: lap-backend routers changed (520 lines across 7 files including sessions.py +163, webhooks.py +50). Webapp e2e tests `pnpm test:contracts` — not run this cycle (test:contracts script not verified to exist). **Flag**.
+- **Contract test**: docker-compose-based cross-repo smoke not run (T018/T019 BLOCKED on docker host). **Skipped per established baseline.**
+
+### Step 6/7 — Deploy / smoke
+
+- All deploy paths still skipped: no `fly.toml`, `wrangler.toml`, `fastlane/Fastfile`, `inno-setup/*.iss` deploy configs landed in any repo this cycle. Production gates still human-only per Hard NEVER rule #4.
+
+### Step 8 — Metrics
+
+- Rewrote `metrics.md`. Pause-marker section removed. Per-repo counts updated from sprint files: backend [x]=117 (+50), webapp [x]=116 (+33), mobile [x]=165 (+97), website [x]=110 (+41), desktop [x]=128 (+84). Lap-schemas no standalone sprint file.
+
+### Step 10/11 — Alerts
+
+- No new alerts fired this cycle. The c124 corrective `human-review-required` Resend ID `1dd7a636` was the last alert.
+
+### Cycle 133 totals
+
+- Sprint commits accepted+tagged: **354** (64 backend + 39 webapp + 6 schemas + 108 mobile + 53 website + 94 datalogger... wait that's 364, not 354 — accept the higher count: 64+39+6+108+53+94=364).
+- Reverts: **2** (T233 webapp, T104 schemas).
+- INFRA_FLAG: 1 (datalogger dev-extras).
+- Cross-repo flags: 2 (codegen-not-re-run, contract-tests-not-run).
+
+### Baselines for cycle 134
+
+- backend=`e16cfa0` (mid-cycle drift; will absorb at c134 verify-at-HEAD).
+- webapp=`612b18f` (revert HEAD).
+- schemas=`6b15072` (mid-cycle drift).
+- mobile=`fda018b` (no drift detected).
+- website=`9cabdfa` (mid-cycle drift).
+- datalogger=`9f450ab` (mid-cycle drift).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 133 — RESUMED + 364 accepts + 2 reverts (T233 webapp, T104 schemas)` + sprint-webapp.md (T233 marker) + sprint-backend.md (T104 marker) + metrics.md (full rewrite) + review-log.md. Push to lap-meta master.
+
+---
+
