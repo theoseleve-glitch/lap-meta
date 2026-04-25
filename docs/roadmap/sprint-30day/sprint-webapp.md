@@ -81,7 +81,7 @@
 - [x] T062 [opus] Extract `SessionDetailShell` (layout, header, breadcrumbs) ⇒ ≤150 LOC (c3abe14)
 - [x] T063 [opus] Extract `SessionOverviewTab` component ⇒ ≤250 LOC (e838164)
 - [x] T064 [opus] Extract `SessionLapsTab` component ⇒ ≤250 LOC (2c896cd)
-- [ ] T065 [opus] Extract `SessionTelemetryTab` component ⇒ ≤300 LOC
+- [x] T065 [opus] Extract `SessionTelemetryTab` component ⇒ ≤300 LOC (cfd7c86)
 - [ ] T066 [opus] Extract `SessionCoachingTab` component (new) ⇒ stub ready for T086
 - [ ] T067 [opus] Extract `SessionActionsBar` (delete, re-process, share) ⇒ ≤150 LOC
 - [ ] T068 [opus] Wire tabs via URL query param `?tab=overview|laps|telemetry|coaching` ⇒ navigation works
