@@ -174,7 +174,7 @@
 - [x] T143 [sonnet] Manual arm override: user can arm/disarm ⇒ works (93d8e08)
 - [x] T144 [sonnet] Strategy plan serialized into bundle per Q102 ⇒ tested (cbf7cbe)
 - [x] T145 [sonnet] Actual pit events captured (sim events or user-annotated) ⇒ stored (703dac8)
-- [ ] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable
+- [x] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable (27decd4)
 - [ ] T147 [sonnet] Strategy view in desktop review: compact summary ⇒ UI visible
 - [ ] T148 [sonnet] Strategy guidance: push/manage label based on fuel + tire ⇒ displayed
 - [ ] T149 [opus] Divergence alerts: safety car detection (from iRacing SDK) + strategy recalc ⇒ tested
