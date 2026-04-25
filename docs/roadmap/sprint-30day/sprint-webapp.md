@@ -264,7 +264,7 @@
 - [ ] T227 [sonnet] QR pairing modal: generate QR, poll until scanned ⇒ works [BLOCKED: waiting on lap-backend — needs POST `/me/devices/pair` (mint a short-lived pairing token to encode in the QR) plus GET `/me/devices/pair/:id` (poll until the mobile client has scanned and exchanged the token) and the `@lap/schemas` typed client. Webapp doctrine forbids untyped fetch and local DTO duplicates, so without these the QR payload has nothing to encode and the polling loop has no status to read. Client-side QR rendering alone (without a backend-issued token) would be premature scope.]
 - [ ] T228 [sonnet] Settings E2E: change preferences, pair device, toggle cohort ⇒ green [BLOCKED: waiting on lap-backend — every step of the E2E is upstream-blocked: change preferences (T224 PATCH /me/preferences), pair device (T227 POST /me/devices/pair + T225 GET /me/devices), toggle cohort (T226 PATCH /me/cohort). Cannot drive the flow until those endpoints + the `@lap/schemas` typed client land.]
 - [x] T229 [sonnet] Sentry + PostHog init in app shell ⇒ both active (dd7ac37)
-- [ ] T230 [sonnet] Error boundary at page level: show friendly error + report ⇒ works
+- [x] T230 [sonnet] Error boundary at page level: show friendly error + report ⇒ works (f07b47f)
 
 ## Block K — Polish + perf + a11y (T231–T240)
 
