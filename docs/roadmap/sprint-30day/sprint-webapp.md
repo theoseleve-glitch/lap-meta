@@ -219,7 +219,7 @@
 
 - [ ] T186 [design] Mockup: saved compare cases list + case detail ⇒ approved
 - [x] T187 [opus] Route `src/app/(app)/compare/page.tsx` lists saved cases ⇒ renders (8aa6c17)
-- [ ] T188 [opus] Route `src/app/(app)/compare/[caseId]/page.tsx` shows one case ⇒ renders
+- [x] T188 [opus] Route `src/app/(app)/compare/[caseId]/page.tsx` shows one case ⇒ renders (1ff586a)
 - [ ] T189 [opus] Data hooks: useCompareCases, useCompareCase(id) ⇒ cached
 - [ ] T190 [opus] `CompareCaseCreateModal` with rationale text field ⇒ Storybook
 - [ ] T191 [sonnet] New compare flow: select 2+ sessions from Timeline → "Save as compare case" ⇒ works
