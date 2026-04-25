@@ -191,7 +191,7 @@
 - [x] T157 [sonnet] Widget lap-delta: degraded = grayed with "—" ⇒ rendered (62d53ae)
 - [x] T158 [sonnet] Widget fuel: degraded = grayed ⇒ rendered (9110c8a)
 - [x] T159 [sonnet] Widget tire: degraded state ⇒ rendered (4b0a94b)
-- [ ] T160 [sonnet] Widget coaching card: "insights not available" banner ⇒ rendered
+- [x] T160 [sonnet] Widget coaching card: "insights not available" banner ⇒ rendered (c4b2c63)
 - [ ] T161 [sonnet] Widget input: degraded = "sensor stale" ⇒ rendered
 - [ ] T162 [sonnet] Widget g-g: degraded state ⇒ rendered
 - [ ] T163 [sonnet] Widget live trace: degraded state ⇒ rendered
