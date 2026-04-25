@@ -5376,3 +5376,18 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T20:25:00Z — Cycle #166 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 52**
+
+### lap-backend (HEAD 23f62f4 local; held 52) — CASCADE +2
+- 52 ahead, +2 since c165: T172 (emit prescription_accepted PostHog event, af9240e) + T173 (emit weakness_resolved PostHog event, 23f62f4). PostHog analytics event surface continues (T169 init + 5 events: session_ingested, prescription_created, prescription_accepted, weakness_resolved + presumably one prior).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 166 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 52.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 166 — IDLE (12th consecutive) + backend hold 52 (T172-T173 PostHog events)` + review-log.md + metrics.md (header only).
+
+---
+
