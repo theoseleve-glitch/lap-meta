@@ -168,7 +168,7 @@
 - [x] T137 [opus] Strategy service: pre-race calculation API ⇒ tested (9d3e8f6)
 - [x] T138 [opus] Strategy service: live recalculation API ⇒ tested (e3c2cce)
 - [x] T139 [opus] Strategy service: `armed` state field ⇒ tested (f194a65)
-- [ ] T140 [opus] Pit-armed computation: when fuel window or tire life reaches threshold ⇒ tested
+- [x] T140 [opus] Pit-armed computation: when fuel window or tire life reaches threshold ⇒ tested (9138a1e)
 - [ ] T141 [sonnet] Pit-armed UI: overlay color change + pit indicator ⇒ visible
 - [ ] T142 [sonnet] Pit-armed audio cue ⇒ optional
 - [ ] T143 [sonnet] Manual arm override: user can arm/disarm ⇒ works
