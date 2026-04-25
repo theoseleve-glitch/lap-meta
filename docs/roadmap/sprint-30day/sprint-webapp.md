@@ -31,7 +31,7 @@
 
 ## Block B — Contracts migration (T021–T045)
 
-- [ ] T021 [opus] Replace local `interface Session` in session-list with `SessionRecord` from @lap/schemas ⇒ tsc green
+- [x] T021 [opus] Replace local `interface Session` in session-list with `SessionRecord` from @lap/schemas ⇒ tsc green (no-op: no local `interface Session` was ever transplanted into this repo — T007's selective extraction skipped `types.ts`, and the session-list surface at `/timeline/page.tsx` is currently a placeholder `PageIntro` with no data binding. tsc is already green. Naturally addressed when T010 unblocks @lap/schemas + the timeline data hook lands and a real list ships against the typed `SessionRecord`.)
 - [ ] T022 [opus] Replace local interfaces on session-detail page ⇒ tsc green
 - [ ] T023 [opus] Replace on session-compare page ⇒ tsc green
 - [ ] T024 [opus] Replace on driver pages (progression, style, history) ⇒ tsc green
