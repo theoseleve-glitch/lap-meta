@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T21:13Z (Cycle #170 — IDLE 16th consecutive + backend hold 57; 170-cycle mark)
+## Last updated: 2026-04-25T22:06Z (Cycle #171 — IDLE 17th consecutive + backend hold 58)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 893310f (T178) | f005d57 (T122 pre-cascade) | **HELD 57 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T178 obs/analytics+admin (13 normal) |
+| lap-backend | 8d2bce5 (T179) | f005d57 (T122 pre-cascade) | **HELD 58 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T179 obs/analytics+admin+scheduled (14 normal) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -58,7 +58,8 @@
 - **c167**: IDLE 13th consecutive; backend hold +1 to 53 (T174 PostHog identify on first-login).
 - **c168**: IDLE 14th consecutive; backend hold +1 to 54 (T175 Prometheus /metrics endpoint).
 - **c169**: IDLE 15th consecutive; backend hold +2 to 56 (T176+T177 Prometheus domain metrics).
-- **c170 (this cycle)**: IDLE 16th consecutive; backend hold +1 to 57 (T178 admin /api/v1/admin/kpis endpoint). 170-cycle mark; idle streak now 4-hour wall-clock.
+- **c170**: IDLE 16th consecutive; backend hold +1 to 57 (T178 admin /api/v1/admin/kpis); 170-cycle mark.
+- **c171 (this cycle)**: IDLE 17th consecutive; backend hold +1 to 58 (T179 weekly Slack KPI cron Monday 09:00 UTC).
 
 ## Review loop state
 
