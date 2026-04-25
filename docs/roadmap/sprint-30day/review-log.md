@@ -5268,3 +5268,28 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T19:13:00Z — Cycle #160 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 42 · 160-CYCLE MILESTONE**
+
+### lap-backend (HEAD 2a73f9e local; held 42) — CASCADE +2
+- 42 ahead, +2 since c159: T162 (require_active_subscription gate, 32a6d8a) + T163 (grace period for trial-expired users, 2a73f9e). T162+T163 are auth/authz adjacent — ALSO subject to forced-checkpoint per runbook line 343-348 ("Any change to lap-backend/app/auth/* or lap-backend/app/billing/*"). The hold thus continues to bank a coherent billing+subscription-gating review.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 160 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 42.
+
+### 160-cycle cumulative
+
+- Total reviewed: ~754+ sprint commits (no change since c154)
+- Reverts (cumulative): **7** (~0.9% rate over 160 cycles)
+- Pause-trigger alerts fired: **2** (c124 corrective, c136 systematic)
+- Active cross-repo cascades: **1** (T104 → backend held 42 commits — 11 of which are billing/auth surface T155-T163, all forced-checkpoint candidates)
+- 20-failure datalogger flake recurrences: **4** (c139, c149, c151, c154)
+- Forced-checkpoint pauses lifted: **1** (c81 → c133 ADR-005 review)
+- Idle-cycle streak: **6 consecutive** (c155-c160) — review repos quiescent ~90 min
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 160 — IDLE (6th consecutive) + backend hold 42 (T162+T163 subscription-gating) · 160-cycle milestone` + review-log.md + metrics.md.
+
+---
+
