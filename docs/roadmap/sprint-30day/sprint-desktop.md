@@ -166,7 +166,7 @@
 
 - [x] T136 [opus] Refactor `core/race_strategy.py`: move logic out of OverlayViewModel ⇒ domain service (ff147d5)
 - [x] T137 [opus] Strategy service: pre-race calculation API ⇒ tested (9d3e8f6)
-- [ ] T138 [opus] Strategy service: live recalculation API ⇒ tested
+- [x] T138 [opus] Strategy service: live recalculation API ⇒ tested (e3c2cce)
 - [ ] T139 [opus] Strategy service: `armed` state field ⇒ tested
 - [ ] T140 [opus] Pit-armed computation: when fuel window or tire life reaches threshold ⇒ tested
 - [ ] T141 [sonnet] Pit-armed UI: overlay color change + pit indicator ⇒ visible
