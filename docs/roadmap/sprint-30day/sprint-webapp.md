@@ -47,7 +47,7 @@
 - [x] T034 [sonnet] Error envelope typed: `ApiError` class with `code/message/field_errors` ⇒ consistent (d9a0343)
 - [ ] T035 [sonnet] 401 handler retains: silent refresh via Clerk ⇒ behavior preserved [BLOCKED: waiting on lap-backend T031 + Clerk install — `@clerk/*` is not yet a webapp dependency (per next.config.mjs CSP comment "Nonces would tighten this further but require a middleware layer — deferred until auth lands"), and there is no API client to attach a 401 interceptor to (T031 typed-client codegen is itself backend-blocked on T045). Grep across `lap-webapp/src` for `clerk`/`401`/`silentRefresh` returns zero matches; no current 401 behavior exists to "preserve". This task lands in the same iteration as the Clerk install + middleware setup.]
 - [x] T036 [sonnet] TanStack Query key factory `query-keys.ts` exhaustive per domain ⇒ used everywhere (b901f68)
-- [ ] T037 [sonnet] Remove duplicate taxonomy enums (session type, status) — import from @lap/schemas ⇒ no duplicates
+- [x] T037 [sonnet] Remove duplicate taxonomy enums (session type, status) — import from @lap/schemas ⇒ no duplicates (no-op: grep across `lap-webapp/src` for `enum SessionType|SessionStatus|SessionKind` and `type SessionType =|type SessionStatus =` returns zero matches. T007's selective extraction skipped any taxonomy module from old lap-website; no local enums exist to remove. Once T010 unblocks @lap/schemas, session-type and session-status types come from there directly — there is no migration step on the webapp side. tsc green.)
 - [ ] T038 [sonnet] Readiness labels come from backend contract, not client inference ⇒ tested
 - [ ] T039 [sonnet] Support-tier labels come from backend contract ⇒ tested
 - [ ] T040 [sonnet] Bundle state mapping unified ⇒ one module
