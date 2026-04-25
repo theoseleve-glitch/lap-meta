@@ -193,7 +193,7 @@
 - [x] T159 [sonnet] Widget tire: degraded state ⇒ rendered (4b0a94b)
 - [x] T160 [sonnet] Widget coaching card: "insights not available" banner ⇒ rendered (c4b2c63)
 - [x] T161 [sonnet] Widget input: degraded = "sensor stale" ⇒ rendered (fba215b)
-- [ ] T162 [sonnet] Widget g-g: degraded state ⇒ rendered
+- [x] T162 [sonnet] Widget g-g: degraded state ⇒ rendered (2f550ac)
 - [ ] T163 [sonnet] Widget live trace: degraded state ⇒ rendered
 - [ ] T164 [sonnet] Widget sector colors: degraded state ⇒ rendered
 - [ ] T165 [sonnet] Widget flags: degraded state ⇒ rendered
