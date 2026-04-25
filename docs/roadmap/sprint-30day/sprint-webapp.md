@@ -204,7 +204,7 @@
 - [x] T173 [sonnet] Interactive trend: click point → navigate to that session ⇒ works (bfb1d84)
 - [ ] T174 [sonnet] A11y, responsive, E2E same pattern as Profile ⇒ green [BLOCKED: waiting on lap-backend — useSkillDrilldown T168 (driver skill drilldown endpoint). Without a data hook the route at /profile/skills/[dimension] only renders a PageIntro placeholder; there's no SkillTrendChart/Best/Worst/RelatedWeaknesses composition to E2E or measure responsively, and the per-component a11y tests already pass at the unit level.]
 - [x] T175 [opus] Weakness detail route `src/app/(app)/weaknesses/[id]/page.tsx` ⇒ renders (68ab251)
-- [ ] T176 [opus] `WeaknessHeader` component: category, severity, status ⇒ Storybook
+- [x] T176 [opus] `WeaknessHeader` component: category, severity, status ⇒ Storybook (7d78712)
 - [ ] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook
 - [ ] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook
 - [ ] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook
