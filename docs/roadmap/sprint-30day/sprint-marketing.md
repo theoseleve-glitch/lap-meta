@@ -116,7 +116,7 @@
 
 - [x] T091 [opus] Waitlist form component: email only, consent-compliant ⇒ submits — f95979c (lap-website; WaitlistForm.astro + /waitlist route; POST /api/waitlist (T092 Worker target), required type=email + required consent, inline GDPR-compliant disclosure, locked button copy "Join the waitlist", €12 founder-rate anchor in the page lead; /waitlist axe-clean)
 - [x] T092 [opus] Backend for form: Cloudflare Worker → forwards to Resend "waitlist" audience ⇒ tested — 9284c30 (lap-website; functions/api/waitlist.ts Cloudflare Pages Function — validates email + GDPR consent, forwards to Resend audience contacts API, 303 redirects on success, 502 on Resend 5xx, 500 on missing secrets; 8 unit tests cover all branches with stubbed fetch. DEPLOY DEPENDENCIES: blocked on T008 Pages project + Resend account/audience-id — code lands in repo today, runtime activation lights up when T008 unblocks)
-- [ ] T093 [opus] Spam protection: Cloudflare Turnstile ⇒ tested
+- [x] T093 [opus] Spam protection: Cloudflare Turnstile ⇒ tested — a0b7a2b (lap-website; widget on the form via async/deferred CDN script + cf-turnstile div; function verifies via siteverify before forwarding to Resend; 6 new unit tests cover missing token, invalid token, missing TURNSTILE_SECRET_KEY → 500, siteverify call signature; default site-key is Cloudflare's always-pass test fixture so dev "just works"; prod requires real keys via env. DEPLOY DEPENDENCIES: T008 + Cloudflare Turnstile site/secret keys)
 - [ ] T094 [opus] Double-opt-in email: "Confirm your email to join the LAP waitlist" ⇒ sent via Resend
 - [ ] T095 [opus] Post-confirm redirect to a personal welcome page ⇒ renders
 - [ ] T096 [opus] Waitlist welcome email drip (3 emails over 2 weeks) ⇒ scheduled
