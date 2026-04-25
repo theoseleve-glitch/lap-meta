@@ -5045,3 +5045,25 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-26T19:40:00Z — Cycle #151 — **🟢 2 accepts (website T150 publish-Pillar-2 + datalogger T147) + backend hold 25 + 20-flake 3rd recurrence**
+
+### lap-backend (HEAD e3f855b; held 25) — CASCADE
+- 25 ahead, +2. Cascade unchanged.
+
+### lap-website (HEAD c91eafb) — T150 ACCEPTED — PILLAR 2 SHIPPED
+- 1 commit `c91eafb T150 publish pillar 2 — closes Pillar 2 sprint`. Build now produces **20 pages** (was 19) — Pillar 2 article landed and indexable. Tagged + pushed.
+
+### datalogger (HEAD f29475d) — T147 ACCEPTED with 20-FLAKE (3rd occurrence)
+- 1 commit `f29475d T147 strategy view in desktop review`. pytest: **20 failed** / 2457 passed. 3rd occurrence of the overlay_browser timing flake (c139, c149, c151). Frequency increasing — flagging for awareness, but not new drift; same documented tech-debt set.
+- Tagged + pushed. Stash kept (the pop produced no output but stash entry remained per "kept in case you need it again" — harmless).
+
+### IDLE: webapp, schemas, mobile.
+
+### Cycle 151 totals: 2 accepts, 0 reverts, 0 alerts. Backend hold = 25.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 151 — 2 accepts (website T150 publish-Pillar-2 + datalogger T147) + backend hold 25 + 20-flake 3rd recurrence` + review-log.md only.
+
+---
+
