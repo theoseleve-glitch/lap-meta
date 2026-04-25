@@ -256,7 +256,7 @@
 - [ ] T219 [sonnet] Billing portal button → Stripe Billing Portal ⇒ works [BLOCKED: waiting on lap-backend — needs POST `/billing/portal` (returns Stripe Billing Portal session URL) plus the `@lap/schemas` typed client. The button + onOpenBillingPortal callback are already in place from T217; they just need a real mutation behind them.]
 - [x] T220 [sonnet] Trial expiry banner on app shell (48h soft block) ⇒ visible when near (7df9c7d)
 - [x] T221 [sonnet] Hard gate on expired trial: blocks all app pages with checkout CTA ⇒ works (8490384)
-- [ ] T222 [sonnet] Settings route with tabs: profile / preferences / integrations / data ⇒ renders
+- [x] T222 [sonnet] Settings route with tabs: profile / preferences / integrations / data ⇒ renders (b585bd7)
 - [ ] T223 [sonnet] Profile: display name, skill level, avatar upload ⇒ works
 - [ ] T224 [sonnet] Preferences: coaching tone (premium/blunt), unit system, language ⇒ works
 - [ ] T225 [sonnet] Integrations: list paired devices, revoke button ⇒ works
