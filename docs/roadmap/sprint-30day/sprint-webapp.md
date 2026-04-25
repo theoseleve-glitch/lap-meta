@@ -212,7 +212,7 @@
 - [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested [BLOCKED: waiting on lap-backend — depends on T180 resolve endpoint and on T138 useDriverProfile hook (also backend-blocked); cannot test mutation→profile invalidation chain without both.]
 - [x] T182 [sonnet] Loading/error/empty states ⇒ handled (cb6a579)
 - [ ] T183 [sonnet] E2E: navigate from Profile → Weakness Detail → mark resolved ⇒ green
-- [ ] T184 [sonnet] Tests for all sub-components ⇒ green
+- [x] T184 [sonnet] Tests for all sub-components ⇒ green (no-op: each Block H sub-component shipped TDD-first — WeaknessHeader 7d78712, WeaknessTrendChart d6a97cc, EvidenceSessionsList c7c2ab8, LinkedPrescriptionsList c2a0a75, WeaknessSkeleton/Error/NotFound cb6a579 — 7 files, 56 tests green)
 - [ ] T185 [sonnet] Analytics events on weakness interactions ⇒ tracked
 
 ## Block I — Compare (durable) (T186–T205)
