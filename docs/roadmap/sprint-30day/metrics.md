@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T22:54Z (Cycle #175 — IDLE 21st consecutive + backend hold 76; braking-pillar 10 rules)
+## Last updated: 2026-04-25T23:06Z (Cycle #176 — IDLE 22nd consecutive + backend hold 79; braking-pillar arc T180-T200 closed)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | da7c8ab (T197) | f005d57 (T122 pre-cascade) | **HELD 76 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T179 obs/analytics (14 normal), T180-T197 coaching engine + braking-pillar (18 normal: 8 kernel + 10 br.* rules) |
+| lap-backend | c46f8e7 (T200) | f005d57 (T122 pre-cascade) | **HELD 79 commits** awaiting T104 schemas cascade resolution; T123-T154 misc (32 normal), T155-T165 billing (11 forced-checkpoint), T166-T179 obs/analytics (14 normal), T180-T200 braking-pillar arc CLOSED (21 normal: 8 kernel + 10 rules + 3 track-fixture integration tests Sebring/Silverstone/Red Bull Ring) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -63,7 +63,8 @@
 - **c172**: IDLE 18th consecutive; backend hold +4 to 62 (T180 audit cron + T181-T183 coaching engine kernel start); surface shift to coaching rules engine.
 - **c173**: IDLE 19th consecutive; backend hold +5 to 67 (T184-T188 engine kernel complete + first rule).
 - **c174**: IDLE 20th consecutive; backend hold +5 to 72 (T189-T193 braking rules to 6 total).
-- **c175 (this cycle)**: IDLE 21st consecutive; backend hold +4 to 76 (T194 over_braking + T195 balance_shift + T196 trail_brake_release + T197 threshold_not_reached). Braking pillar now **10 rules** covering timing/force/consistency/warmup/mid-corner/balance/trail-brake/threshold.
+- **c175**: IDLE 21st consecutive; backend hold +4 to 76; braking pillar 10 rules complete.
+- **c176 (this cycle)**: IDLE 22nd consecutive; backend hold +3 to 79 (T198-T200 integration tests vs Sebring + Silverstone + Red Bull Ring fixtures). **Braking-pillar arc T180-T200 closed**: 8 kernel + 10 rules + 3 track-fixture tests = 21 commits coherently self-contained.
 
 ## Review loop state
 
