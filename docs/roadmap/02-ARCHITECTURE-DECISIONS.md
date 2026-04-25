@@ -580,6 +580,8 @@ transfer_profile:
 
 80-150 rules of this form by end of Month 4. Rules are YAML, live in the backend repo, versioned, unit-tested against archived sessions.
 
+**Schema (T181, sprint-backend):** the formal JSON Schema is generated from `lap-backend/coaching/library/rule_schema.py` (Pydantic v2 source of truth). Required top-level fields: `id`, `version`, `category` ∈ {technique, setup, strategy}, `subcategory`, `difficulty` ∈ {beginner, intermediate, advanced}, `detection`, `severity_rule`, `explanation_template` (all three difficulty branches), `prescription`. `transfer_profile` is optional. Extra keys are rejected (`extra="forbid"`) so YAML typos fail at load time. The example above is the canonical fixture — `tests/test_coaching_rule_schema.py::test_adr_013_example_validates` regresses any drift.
+
 **Status:** locked.
 
 ---

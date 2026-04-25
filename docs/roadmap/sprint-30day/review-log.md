@@ -5474,3 +5474,20 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T22:18:00Z — Cycle #172 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 62 + COACHING RULES SURFACE OPENED**
+
+### lap-backend (HEAD 9565aee local; held 62) — CASCADE +4 — SURFACE SHIFT
+- 62 ahead, +4 since c171: T180 (daily session-loss audit cron, 7dce81d) + T181 (coaching rule JSON Schema as Pydantic source of truth, bd12571) + T182 (coaching rule loader, recursive YAML + dup-id check, 01368f9) + T183 (condition compiler, AST whitelist, no eval, 9565aee).
+- **Surface shift**: backend sprint loop has moved from observability (T166-T179) to **coaching rules engine** — the actual product-domain code. T180 is bridge (audit cron), T181-T183 launches the rule-engine kernel.
+- T183 is security-sensitive (`AST whitelist, no eval` is explicit defense against code injection in user-supplied rule conditions). Not strictly forced-checkpoint per runbook line 343-348 (auth/billing/crypto/token/payment), but warrants careful review when cascade unblocks.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 172 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 62 (+4 — largest single-cycle delta in this idle streak).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 172 — IDLE (18th consecutive) + backend hold 62 (T180-T183 coaching rules engine surface opened, includes AST condition compiler)` + review-log.md + metrics.md (header only).
+
+---
+
