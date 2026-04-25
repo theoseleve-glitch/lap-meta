@@ -222,7 +222,7 @@
 - [x] T188 [opus] Route `src/app/(app)/compare/[caseId]/page.tsx` shows one case ⇒ renders (1ff586a)
 - [ ] T189 [opus] Data hooks: useCompareCases, useCompareCase(id) ⇒ cached [BLOCKED: waiting on lap-backend — needs `/compare/cases` (list) and `/compare/cases/:id` (detail) endpoints plus the `@lap/schemas`-generated typed client (not yet a dependency in this package). Webapp doctrine forbids `api.get<any>()` and local DTO duplicates, so the hooks cannot be wired through the typed client without these.]
 - [x] T190 [opus] `CompareCaseCreateModal` with rationale text field ⇒ Storybook (fcd03aa)
-- [ ] T191 [sonnet] New compare flow: select 2+ sessions from Timeline → "Save as compare case" ⇒ works
+- [ ] T191 [sonnet] New compare flow: select 2+ sessions from Timeline → "Save as compare case" ⇒ works [BLOCKED: waiting on lap-backend — the modal (T190) and Timeline UI exist, but the "⇒ works" end-to-end requires the create-case POST mutation, which depends on T189 hooks (also blocked) and the `@lap/schemas` typed client. Front-end-only multi-select + open-modal would be premature scope without the mutation to wire onSubmit through.]
 - [ ] T192 [sonnet] Compare case detail layout: sessions side-by-side + rationale + outcome section ⇒ renders
 - [ ] T193 [sonnet] Auto-updating outcome: on re-processing of referenced sessions, refetch ⇒ works
 - [ ] T194 [sonnet] Edit rationale ⇒ PATCH works
