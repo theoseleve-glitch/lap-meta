@@ -4175,3 +4175,11 @@ c81 markers still active. No review. 23 paused cycles = 5.75h elapsed since c81 
 
 ---
 
+## 2026-04-26T06:10:00Z — Cycle #105 — **🛑 PAUSE PERSISTS (cycle 24)**
+
+c81 markers still active. No review. 24 paused cycles = 6.0h elapsed since c81 forced checkpoint.
+
+Note: 6.0h equals the runbook `ci-broken` alert threshold (Step 11). No alert fires — predicate is "CI red", we are paused-by-design. Alert specificity preserved.
+
+---
+
