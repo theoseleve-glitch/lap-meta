@@ -132,8 +132,8 @@
 
 ## Block G — Product pages per pillar (T106–T130)
 
-- [ ] T106 [design] Figma: product pages (/product, /product/desktop, /product/mobile, /product/bridge) ⇒ approved
-- [ ] T107 [opus] `/product` overview ⇒ renders
+- [ ] T106 [design] Figma: product pages (/product, /product/desktop, /product/mobile, /product/bridge) ⇒ approved [BLOCKED: external Figma design work, cannot be automated from the loop environment. Same pattern as T021/T071. Unblock: user opens Figma (or Figma Make per 11-AI-PLAYBOOK.md), produces /product overview + per-pillar layouts (desktop, mobile, bridge, coaching, driver-profile), marks approved. T107+ ship doctrine-aligned defaults that the Figma refinement layers onto.]
+- [x] T107 [opus] `/product` overview ⇒ renders — 8e0094a (lap-website; src/pages/product.astro is the 5-pillar architecture surface — desktop / mobile / bridge / coaching / driver-profile, each with eyebrow + H3 + body + Read-more link to /product/<slug>. Sub-pages 404 today (T108-T122 land them); reads as honest "coming soon" pre-T108. Doctrine voice locked: cross-platform Driver OS, sim AND real-world named, ADR-005 weakness/prescription/outcome vocabulary, no AI-coach/LLM/generative. 8 contract tests lock single main, on-message H1, 5 pillar names + 5 cross-link paths, sim+real, Coaching Memory primitive, doctrine guardrail. Full suite 441/441, build 12 pages.)
 - [ ] T108 [opus] `/product/desktop` page: sim capture + live coaching + strategy ⇒ renders
 - [ ] T109 [opus] `/product/desktop` screenshots + video ⇒ embedded
 - [ ] T110 [opus] `/product/desktop` download CTA → GitHub Releases ⇒ linked
