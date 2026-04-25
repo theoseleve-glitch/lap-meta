@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T18:01Z (Cycle #154 — 4 accepts + 0 reverts + backend hold 31 + 20-flake 4th)
+## Last updated: 2026-04-25T18:13Z (Cycle #155 — IDLE + backend hold 33)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | f90708d (T152) | f005d57 (T122 pre-cascade) | **HELD 31 commits** awaiting T104 schemas cascade resolution |
+| lap-backend | bad2c25 (T154) | f005d57 (T122 pre-cascade) | **HELD 33 commits** awaiting T104 schemas cascade resolution |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -42,7 +42,8 @@
 - **c149-c150**: lap-schemas resumes clean wire commits (TrackCatalog, CarCatalog, Billing) demonstrating the loop CAN land schemas changes when test+model land together. 150-cycle milestone.
 - **c151-c152**: 20-flake 3rd recurrence on datalogger; mobile T181; backend hold 25→26.
 - **c153**: 4 accepts (mobile T182 + website T151 + datalogger T148+T149); backend hold +4 to 30.
-- **c154 (this cycle)**: 4 accepts (mobile T183 + website T152 + datalogger T150+T151); backend hold +1 to 31; 20-flake 4th recurrence (re-run dropped to 19-baseline confirming overlay_browser timing); `set -o pipefail` mitigation worked on mobile (no false-positive).
+- **c154**: 4 accepts (mobile T183 + website T152 + datalogger T150+T151); backend hold +1 to 31; 20-flake 4th recurrence; `set -o pipefail` mitigation worked.
+- **c155 (this cycle)**: IDLE (5 review repos at last-reviewed HEAD); backend hold +2 to 33 (T153+T154 webhook handlers).
 
 ## Review loop state
 

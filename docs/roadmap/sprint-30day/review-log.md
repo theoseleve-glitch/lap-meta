@@ -5165,3 +5165,31 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T18:13:00Z — Cycle #155 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 33**
+
+### lap-backend (HEAD bad2c25 local; origin pinned f005d57; held 33) — CASCADE +2
+- 33 ahead, +2 since c154: T153 (webhook handler subscription.updated syncs status, ff75f7f) + T154 (webhook handler subscription.deleted→canceled, bad2c25). Cascade unchanged.
+
+### lap-mobile-android (HEAD 64a88e4) — IDLE
+- HEAD = last-reviewed sha (T183 c154). No new sprint commits.
+
+### lap-website (HEAD 1e34d87) — IDLE
+- HEAD = last-reviewed sha (T152 c154). No new sprint commits.
+
+### lap-schemas (HEAD a837d89) — IDLE
+- HEAD = last-reviewed sha (Billing c153). 4 consecutive idle cycles.
+
+### lap-webapp (HEAD 1ac2574) — IDLE
+- HEAD = last-reviewed sha (T236 from c134-wave). Idle since c151.
+
+### datalogger (HEAD b23fbdf) — IDLE
+- HEAD = last-reviewed sha (T151 c154). No new sprint commits.
+
+### Cycle 155 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 33 (+2 webhook handlers).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 155 — IDLE + backend hold 33 (T153/T154 webhook handlers accumulated)` + review-log.md + metrics.md (header only).
+
+---
+
