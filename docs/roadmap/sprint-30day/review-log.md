@@ -4051,3 +4051,11 @@ To resume: delete `🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE` heading from review-log.m
 
 ---
 
+## 2026-04-26T01:10:00Z — Cycle #85 — **🛑 PAUSE PERSISTS (cycle 4 paused)**
+
+c81 markers still active in review-log.md L3874 and metrics.md L5. No review run.
+
+To resume: delete the two `PAUSE_FOR_HUMAN_REVIEW ACTIVE` headings.
+
+---
+
