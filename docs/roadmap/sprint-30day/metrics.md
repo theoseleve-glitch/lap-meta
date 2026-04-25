@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T19:13Z (Cycle #160 — IDLE 6th consecutive + backend hold 42 · 160-cycle milestone)
+## Last updated: 2026-04-25T19:25Z (Cycle #161 — IDLE 7th consecutive + backend hold 44)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 2a73f9e (T163) | f005d57 (T122 pre-cascade) | **HELD 42 commits** awaiting T104 schemas cascade resolution; T155-T163 billing+subscription-gating surface (9 commits incl require_active_subscription + trial grace period, forced-checkpoint will trigger on unblock) |
+| lap-backend | 9adfc4f (T165) | f005d57 (T122 pre-cascade) | **HELD 44 commits** awaiting T104 schemas cascade resolution; T155-T165 billing+subscription-gating surface (11 commits incl admin refund + e2e integration test, forced-checkpoint will trigger on unblock) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -48,7 +48,8 @@
 - **c157**: IDLE 3rd consecutive; backend hold +3 to 37 (T156-T158 billing/Stripe webhook + portal + promo).
 - **c158**: IDLE 4th consecutive; backend hold +2 to 39 (T159 + T160).
 - **c159**: IDLE 5th consecutive; backend hold +1 to 40 (T161 admin /billing/sync endpoint).
-- **c160 (this cycle)**: IDLE 6th consecutive; backend hold +2 to 42 (T162 require_active_subscription + T163 trial grace period). 160-cycle milestone. Forced-checkpoint surface = T155-T163 (9 commits across billing+subscription-gating).
+- **c160**: IDLE 6th consecutive; backend hold +2 to 42; 160-cycle milestone.
+- **c161 (this cycle)**: IDLE 7th consecutive; backend hold +2 to 44 (T164 admin refund + T165 e2e billing flow integration test). T165 e2e suggests T155-T165 may be a closed billing-feature batch.
 
 ## Review loop state
 

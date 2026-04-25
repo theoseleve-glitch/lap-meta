@@ -5293,3 +5293,21 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T19:25:00Z — Cycle #161 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 44**
+
+### lap-backend (HEAD 9adfc4f local; held 44) — CASCADE +2
+- 44 ahead, +2 since c160: T164 (admin refund endpoint, 3e499d2) + T165 (e2e billing flow integration test, 9adfc4f). T165 is notable — it's an integration test, which means the backend sprint loop is wrapping up the billing surface with end-to-end coverage. Forced-checkpoint surface = T155-T165 (11 commits).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 161 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 44.
+
+### Notes
+- 7th consecutive idle for review repos (~105 min quiescent). Backend continues steady billing surface progression with T165 e2e integration test landing — suggests T155-T165 might be a closed billing-feature batch.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 161 — IDLE (7th consecutive) + backend hold 44 (T164 refund endpoint + T165 e2e billing test)` + review-log.md + metrics.md (header only).
+
+---
+
