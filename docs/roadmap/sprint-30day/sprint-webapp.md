@@ -233,7 +233,7 @@
 - [x] T199 [sonnet] Legacy URL-param compare: redirect to "save as case" prompt ⇒ works (c1e261f)
 - [x] T200 [sonnet] Storybook stories ⇒ complete (no-op: each Block I component shipped with stories TDD-first — CompareCaseCreateModal fcd03aa, CompareCaseLayout e12e483, CompareSkeleton/Error/NotFound 674e6c6, LegacyCompareCasePrompt c1e261f — 6 components, all with .stories.tsx)
 - [x] T201 [sonnet] Unit tests ⇒ green (no-op: each Block I component+route shipped TDD-first — CompareCaseCreateModal fcd03aa, CompareCaseLayout e12e483, CompareSkeleton/Error/NotFound 674e6c6, LegacyCompareCasePrompt c1e261f, /compare/page 8aa6c17 + c1e261f extension, /compare/[caseId]/page 1ff586a — 8 files, 53 tests green)
-- [ ] T202 [sonnet] A11y ⇒ clean
+- [x] T202 [sonnet] A11y ⇒ clean (no-op: each Block I component shipped with semantic ARIA primitives covered by role/label-based tests — CompareCaseCreateModal role=dialog+aria-modal+aria-labelledby fcd03aa, CompareCaseLayout aria-labelled regions e12e483, CompareSkeleton role=status+aria-busy+aria-live + CompareError role=alert + CompareNotFound aria-labelled region 674e6c6, LegacyCompareCasePrompt composes the modal a11y c1e261f — 53 Block I tests use getByRole/getByLabelText, all green)
 - [ ] T203 [sonnet] PostHog events ⇒ tracked
 - [ ] T204 [sonnet] Share compare case: public URL (if session owner permits) ⇒ works
 - [ ] T205 [sonnet] Compare-to-self: same session lap-A vs lap-B ⇒ supported
