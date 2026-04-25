@@ -225,7 +225,7 @@
 - [ ] T191 [sonnet] New compare flow: select 2+ sessions from Timeline → "Save as compare case" ⇒ works [BLOCKED: waiting on lap-backend — the modal (T190) and Timeline UI exist, but the "⇒ works" end-to-end requires the create-case POST mutation, which depends on T189 hooks (also blocked) and the `@lap/schemas` typed client. Front-end-only multi-select + open-modal would be premature scope without the mutation to wire onSubmit through.]
 - [x] T192 [sonnet] Compare case detail layout: sessions side-by-side + rationale + outcome section ⇒ renders (e12e483)
 - [ ] T193 [sonnet] Auto-updating outcome: on re-processing of referenced sessions, refetch ⇒ works [BLOCKED: waiting on lap-backend — depends on T189 hooks (also blocked) plus a backend invalidation/refetch trigger when referenced sessions are re-processed; cannot test outcome auto-update without the live data hook.]
-- [ ] T194 [sonnet] Edit rationale ⇒ PATCH works
+- [ ] T194 [sonnet] Edit rationale ⇒ PATCH works [BLOCKED: waiting on lap-backend — needs PATCH `/compare/cases/:id` endpoint and the `@lap/schemas` typed client; webapp doctrine forbids untyped fetch and local DTO duplicates.]
 - [ ] T195 [sonnet] Delete compare case ⇒ works
 - [ ] T196 [sonnet] Compare list: filter by session/track/car ⇒ works
 - [ ] T197 [sonnet] Loading/error/empty states ⇒ handled
