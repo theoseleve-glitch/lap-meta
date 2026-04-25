@@ -1,62 +1,60 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T15:55Z (Cycle #136 — 6 accepts + 1 revert + T104 ESCALATED TO BLOCKED + pause-alert fired)
+## Last updated: 2026-04-25T17:52Z (Cycle #153 — 4 accepts + 0 reverts + backend hold 30)
 
-## Per-repo status
+## Per-repo status (HEAD as of c153 push)
 
-| Repo | `[x]` | `[BLOCKED]` | `[NEEDS_REWORK]` | `[SCOPE_FLAG]` | `[ ]` | HEAD |
-|---|---|---|---|---|---|---|
-| lap-backend | 117 | 4 | 2 (T013, **T104 new**) | 0 | 117 | `f005d57` (T122 SessionRecord persistence) |
-| lap-webapp | 116 | 0 | 1 (**T233 new**) | 0 | 123 | `612b18f` (revert T233) |
-| lap-schemas | — | 0 | — | 0 | — | `cab48ad` (revert T104) |
-| lap-mobile-android | 165 | 0 | 0 | 0 | 75 | `fda018b` (T168 force-kill resume) |
-| lap-website (marketing) | 110 | 0 | 0 | 0 | 110 | `bc6465a` (T136 pillar 1 §6) |
-| datalogger (desktop) | 128 | 2 | 0 | 0 | 110 | `98104d2` (T129 streamer toggle) |
+| Repo | HEAD (post-push) | Last reviewed sha | Notes |
+|---|---|---|---|
+| lap-backend | b80838f (T151) | f005d57 (T122 pre-cascade) | **HELD 30 commits** awaiting T104 schemas cascade resolution |
+| lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
+| lap-schemas | a837d89 (Billing wire) | a837d89 | 3rd consecutive clean schemas commit since T104 BLOCKED |
+| lap-mobile-android | 64a88e4 (T183 sprint drift) | bd241f6 (T182) | T182 reviewed in c153; T183 will be picked up in c154 |
+| lap-website | 1e34d87 (T152 sprint drift) | 2d1560a (T151) | Pillar 3 outline accepted; lint baseline flag (10 files) |
+| datalogger | b23fbdf (T150 sprint drift) | 9b1b00c (T149) | T148+T149 reviewed in c153; 19-stable-failure baseline holds |
 
-## Cumulative (133 cycles)
+## Cumulative (153 cycles)
 
-- Total reviewed: ~672 (+364 this cycle, post-resume)
-- Accepted+tagged this cycle: 364 (354 sprint + 10 already-pushed prior to cycle)
-- Reverted this cycle: **2** (lap-webapp T233 next/font spread, lap-schemas T104 missing test update)
-- Reverted total: **5** (1.0% revert rate over 504 sprint reviews)
-- Pause triggers: 0 active (c81 resolved at user RESUME 2026-04-26T13:00Z)
-- INFRA_FLAG this cycle: 1 (datalogger pyproject missing ruff/mypy/pytest dev extras → 145 ruff + 425 mypy latent errors revealed; not new drift, latent-since-c1)
+- Total reviewed: ~750+ sprint commits across 6 repos
+- Reverts (cumulative): **7** (~0.9% rate over 153 cycles)
+  - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
+  - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
+- Pause-trigger alerts fired: **2**
+  - c124 corrective `human-review-required` (deferred c81 alert — Resend `1dd7a636-6ed8-45b8-b8d1-f5be3d576d72`)
+  - c136 systematic-malfunction `pause-triggered` after T104 3rd revert (Resend `50090743-0584-49b4-a72d-7da1b4c8905b`)
+- Active cross-repo cascades: **1** (T104 → backend held 30 commits)
+- Forced-checkpoint pauses lifted: **1** (c81 → c133 ADR-005 review)
+- 20-failure datalogger flake recurrences: **3** (c139, c149, c151) — overlay_browser timing tech-debt; baseline 19 between
 
-## Cycle 133 notables — RESUME + 364-COMMIT BACKLOG CLEARED + 2 NEW REVERTS
+## Cycle 153 notables — 4 accepts, 0 reverts
 
-- **Pause lifted at 2026-04-26T13:00Z** by user after a two-layer ADR-005 audit: ORM (lap-backend) found 2 missing FKs fixed at T112 (`a831422`); Pydantic (lap-schemas) audit found 0 CRITICAL + 7 MINOR (full report `loop-report-c50-consumer-drift.md`); ADR-005 amended with 3 missing nested-type subsections (SessionContext, CohortDef, TargetEvent).
-- **lap-backend** — 64 sprint commits T071-T122 + T112 manual fix. 401 pytest pass, ruff/mypy clean, app.main importable. Includes T112 missing-FK fix + T117 sample stream + T118 sector splits + T119 metric extraction + T120 quality scorer + T121 timestamp alignment + T122 SessionRecord persistence.
-- **lap-webapp REVERT T233** — 39 sprint commits accepted; **T233 "font subsetting" reverted in `612b18f`** because `pnpm build` failed with "Unexpected spread" in next/font/google macros. Sprint loop's local verify (typecheck + lint + test) didn't catch it because the spread constraint only fires during `next build`. T234 (200KB JS budget) preserved — separate file. 595 tests pass post-revert. Block H largely landed: T217 BillingPage, T220 TrialExpiryBanner, T221 TrialHardGate, T222 Settings shell, T229 Sentry+PostHog, T230 ErrorBoundary, T231 LCP CI, T232 image optim, T234 JS budget.
-- **lap-schemas REVERT T104** — 6 schema commits accepted (T098-T103); **T104 "expand SessionIngestAccepted" reverted in `cab48ad`** because adding 3 required fields (`session_id`, `ingest_job_id`, `status_stream_url`) without updating `tests/test_session_ingest.py` left pytest red. T104 marked NEEDS_REWORK in sprint-backend.md (the parent backend task this schema commit supports).
-- **lap-mobile-android** — 108 sprint commits T069-T167. Gradle matrix all green (detekt + ktlintCheck + assembleDebug + testDebugUnitTest). T168 force-kill relaunch resume scenario locks attempt-count carry-over.
-- **lap-website** — 53 sprint commits T091-T136. 707 tests pass + 18-page build green. Pillar content + pricing journey + e2e.
-- **datalogger** — 94 sprint commits, 19 stable test baseline (2287 pass + 1 skip), INFRA_FLAG: dev-extras absent in pyproject (ruff/mypy/pytest not installed by `uv sync`). Latent ruff (145) and mypy (425) errors revealed but not attributable to specific cycle-133 commit (existed pre-c81). Recommend: add `[project.optional-dependencies.dev]` block to datalogger pyproject + re-evaluate ruff/mypy state after sprint loops can self-verify.
+- **lap-mobile-android T182**: UnpairDeviceUseCase (server revoke + local logout). bd241f6, 309 insertions. Initial gradle test BUILD FAILED in 5s (transient cache artifact); --rerun-tasks gave BUILD SUCCESSFUL in 46s. Not a regression. Pipe-masking pattern (`tail -N` swallowing exit code) recurred — flagged for runbook addendum.
+- **lap-website T151**: telemetry-apps-comparison pillar outline (Pillar 3 planning). 2d1560a, 474 insertions in `docs/pillar-articles/`. 20 pages built. **LINT-BASELINE-FLAG**: 10 baseline prettier issues (8 test fixtures + 2 blog astro pages) all unrelated to T151 — pre-existing tech-debt; recommended chore task `prettier --write` cleanup.
+- **datalogger T148 + T149**: strategy push/manage UI (6280ee1, 436 ins) + safety-car detection/strategy recalc (9b1b00c, 235+1 ins). Stable 19/2501/1-skip baseline. **FLAG**: 1 `# type: ignore[arg-type]` (specific error code, **kwargs unpack workaround) accepted not reverted per Step 4.
+- **lap-schemas Billing**: a837d89 already-tagged from prior session, no new push.
+- **lap-backend**: held +4 (T148-T151 sprint commits accumulated). Cascade resolution still pending.
 
-## Review loop state after c133
+## Recent cycle history (c134-c153 summary)
 
-- **Loop is ACTIVE.** Next cron fire processes any new mid-cycle commits (sprint loops fired during this cycle's verification — backend, schemas, website, datalogger HEADs advanced during pytest runs).
-- Mid-cycle HEAD drift this cycle: backend `f005d57→e16cfa0`, schemas `cab48ad→6b15072`, website `bc6465a→9cabdfa`, datalogger `98104d2→9f450ab`. Webapp + mobile stayed at the verified HEAD.
+- **c134-c136**: T104 saga — 3 reapplies, 3 reverts; ESCALATED BLOCKED at c136 with explicit resolution paths documented in sprint-backend.md. Pause-alert fired.
+- **c137-c145**: Long quiet stretch — sprint loops re-converging post-pause; user-paused at intervals; "reviewed go on" signal at c145 unblocked the resumed loop.
+- **c146-c148**: Gradle false-positive resolved (chained-task BUILD FAILED → strict per-task && gating). Pipe-masking bug noted for datalogger.
+- **c149-c150**: lap-schemas resumes clean wire commits (TrackCatalog, CarCatalog, Billing) demonstrating the loop CAN land schemas changes when test+model land together. 150-cycle milestone.
+- **c151-c152**: 20-flake 3rd recurrence on datalogger; mobile T181; backend hold 25→26.
+- **c153 (this cycle)**: 4 accepts; backend hold +4 to 30.
+
+## Review loop state
+
+- **Loop is ACTIVE** (cron 15-min interval; `/loop` self-paced).
+- **Backend hold is the dominant work item**: T104 cascade blocks 30 backend sprint commits. Resolution requires human-authored schemas commit landing model+test in one shot (or making the 3 new fields `Optional[str]=None` with field-level defaults).
+- **Webapp idle** through c151-c153 — the T237+ work appears not yet sprint-loop-generated.
 
 ## Current issues
 
-- **NEW**: webapp T233 NEEDS_REWORK (next/font spread).
-- **NEW**: backend T104 (schemas-side) NEEDS_REWORK (test not updated with required fields).
-- **NEW**: datalogger latent ruff (145) + mypy (425) errors — root cause: dev tools not in pyproject.
-- Datalogger 19 stable failures (overlay_browser/overlay_window_manager/sync_queue) + occasional 20th flake.
-- Desktop T035 [BLOCKED]: backend ingestion endpoint.
-- Backend T013 NEEDS_REWORK persistent (env schema ruff/SIM300).
-- Backend T018/T019 BLOCKED on docker.
-- Step 10 daily-email deferred.
+- **BLOCKED (cross-repo cascade)**: lap-backend held 30 commits pending lap-schemas T104 (`SessionIngestAccepted` required fields without paired test update). Awaiting human action.
+- **Lint baseline (lap-website)**: 10 prettier-formatting files pre-date T151. Recommend `chore: prettier --write` cleanup task.
+- **Datalogger pytest baseline**: 19 stable failures (overlay_browser/overlay_window_manager/sync_queue) — long-standing tech-debt, not new drift.
+- **Pipe-masking gating bug**: `cmd 2>&1 | tail -N` swallows exit code, masks failures. Runbook should mandate `set -o pipefail` + `${PIPESTATUS[0]}` checks for verification chains.
+- **Datalogger pyproject dev-extras absent**: ruff/mypy/pytest not installed by `uv sync`. Latent 145 ruff + 425 mypy errors invisible to sprint loop. Recommend `[project.optional-dependencies.dev]` block.
 
-## Cron: ACTIVE (15-min interval). Next fire processes mid-cycle commits.
-
-## Cycle 134 delta
-
-- backend: T123 verified red at e16cfa0 (cross-repo cascade from c133 schemas T104 revert; 31 tests fail). NOT pushed. Origin held at f005d57 (also red against current schemas master). T104 sprint marker strengthened in sprint-backend.md L140.
-- webapp: T233 reworked at e0f6494 (sprint loop used inline literals per c133 hint). 602 tests + build green. Tagged + pushed.
-- schemas: T104 reapplied at 39e3b7c with same test bug; reverted in dc6cad2. T123 (6b15072 SessionDetail) tagged + pushed.
-- mobile: T169 (23ee7ab BackoffSchedule retry) tagged + pushed.
-- website: T137 + T138 (pillar 1 cross-links) tagged + pushed. 722 tests.
-- datalogger: idle.
-- Cumulative reverts: **6** (1.1% over 134 cycles).
-- **Cross-repo cascade** active and blocking: lap-backend ingest path will stay red until lap-schemas T104 re-lands with proper test + lap-backend pytest verified green in same iteration.
+## Cron: ACTIVE (15-min interval). Next fire processes any new mid-cycle commits.

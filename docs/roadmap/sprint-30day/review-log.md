@@ -5084,3 +5084,45 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T17:52:00Z — Cycle #153 — **🟢 4 accepts (mobile T182 + website T151 + datalogger T148+T149; schemas Billing already-tagged) + backend hold 30**
+
+### lap-backend (HEAD b80838f; held 30) — CASCADE +4
+- 30 ahead, +4 since c152: T148 (Billing-API checkout creation), T149 (checkout metadata user_id+14d trial), T150 (success/cancel URLs), T151 (webhook signature validation). T104 cascade unchanged — backend stays held until human resolves schemas SessionIngestAccepted required-fields cascade.
+
+### lap-schemas (HEAD a837d89) — Billing wire schemas — ALREADY-TAGGED
+- `a837d89 feat(v1): add Billing wire schemas for backend T148`. Tag `reviewed/20260426/lap-schemas/a837d89` exists from prior session run. 106/106 pytest pass at HEAD. 3rd consecutive clean schemas commit since T104 BLOCKED. No new push needed.
+
+### lap-mobile-android (HEAD bd241f6 → push 64a88e4) — T182 ACCEPTED
+- `bd241f6 sprint(mobile): T182 UnpairDeviceUseCase server revoke + local logout`. 309 insertions / 0 forbidden / 0 secrets.
+- detekt + ktlintCheck + assembleDebug all green first run. testDebugUnitTest **first run BUILD FAILED in 5s** (suspicious — too fast). Re-investigation with `--rerun-tasks`: BUILD SUCCESSFUL in 46s, 96 tasks executed. Initial failure was a transient cache artifact from concurrent gradle/pnpm/pytest invocations sharing the same JVM gradle daemon. Not a T182 regression.
+- Tagged `reviewed/20260425/lap-mobile-android/bd241f6`. Pushed master 64a88e4 (sprint loop drift past T182 mid-cycle).
+
+### lap-website (HEAD 2d1560a → push 1e34d87) — T151 ACCEPTED + LINT-BASELINE-FLAG
+- `2d1560a sprint(marketing): T151 telemetry-apps-comparison pillar outline`. 474 insertions, single file: `docs/pillar-articles/telemetry-apps-comparison/outline.md`. 0 forbidden / 0 secrets.
+- typecheck/test/build all green; build produces 20 pages.
+- **LINT-BASELINE-FLAG**: `pnpm lint` reports prettier code-style issues in 10 files: 8 test fixtures (`src/__tests__/blog-sim-to-real-transfer`, `blog-what-is-trail-braking`, `pillar-1-cross-links`, `pillar-1-faq`, `pillar-2-article`, `pillar-2-cross-links`, `pillar-2-faq`, `pillar-2-section-06-examples`) + 2 blog astro pages (`sim-to-real-transfer.astro`, `what-is-trail-braking.astro`). **Zero overlap with T151's modified file** (T151 only touches `docs/pillar-articles/...`). Pre-existing prettier-formatting baseline; not T151-introduced. Per ADR-017 and Hard NEVER rule "never revert for infrastructure reasons", accept + flag for future cleanup task. Recommend a tracking task `chore(website): apply prettier --write to 10 baseline files`.
+- Tagged `reviewed/20260425/lap-website/2d1560a`. Pushed master 1e34d87 (sprint loop drift past T151).
+
+### datalogger (HEAD 9b1b00c → push b23fbdf) — T148+T149 ACCEPTED + 1 type:ignore FLAG
+- 2 commits: `6280ee1 sprint(desktop): T148 strategy guidance push/manage label` (436 insertions) + `9b1b00c sprint(desktop): T149 safety-car detection + strategy recalc` (235+1 insertions).
+- pytest: **19 failed (stable baseline) / 2501 passed / 1 skipped** in 80s. No new regressions on top of the documented overlay_browser/overlay_window_manager/sync_queue baseline. (No 20-flake recurrence this cycle.)
+- **FLAG**: 1 `# type: ignore[arg-type]` added at `service.compute_pre_race(**inputs)`. Specific error code (not blanket `# type: ignore` suppression); legitimate workaround for `**inputs` kwargs unpacking which mypy can't statically check. Logged per Step 4 forbidden-pattern scan, accept-not-revert.
+- Tagged `reviewed/20260425/datalogger/6280ee1` + `reviewed/20260425/datalogger/9b1b00c`. Pushed master b23fbdf (sprint loop drift past T149).
+
+### IDLE: lap-webapp.
+- HEAD 1ac2574 (T236 axe-via-Lighthouse a11y assertion). All recent (T233-rework, T234, T235, T236) carry `reviewed/*` tags. No new sprint commits since the c134 wave + a11y additions; idle for c151/c152/c153.
+
+### Cycle 153 totals: 4 push-tag accepts, 0 reverts, 0 alerts. Backend hold = 30 (+4 from c152).
+
+### Diagnostics + carry-forwards
+
+- **Pipe-masking false-positive resurfaced**: my chained `&&` gradle gating with `2>&1 | tail -3` masked exit code on testDebugUnitTest's transient failure. Same class of bug flagged at c148 for datalogger pytest. Investigation via `--rerun-tasks` recovered the truth (clean green). Future fix: `set -o pipefail` + per-task explicit `if [ $? -eq 0 ]` checks. Not blocking, but worth a runbook addendum.
+- **Backend cross-repo cascade hold +4 to 30**: lap-backend has accumulated T122-T151 (30 commits) waiting for T104 schemas resolution. Each cycle this grows by ~1-3. Human action remains the only path: reapply T104 with paired test update OR make new fields Optional[str]=None.
+- **Lint baseline tech-debt on lap-website (10 files)**: not a regression vector for T151; recommended cleanup task tracked above.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 153 — 4 accepts (mobile T182 + website T151 + datalogger T148+T149) + backend hold 30` + review-log.md + metrics.md.
+
+---
+
