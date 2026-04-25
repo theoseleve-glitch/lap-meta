@@ -209,7 +209,7 @@
 - [x] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook (c7c2ab8)
 - [x] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook (c2a0a75)
 - [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works [BLOCKED: waiting on lap-backend — POST /weaknesses/:id/resolve (or equivalent) endpoint. The button + confirm modal can be sketched but cannot be wired through a typed mutation without the endpoint and the @lap/schemas-generated client.]
-- [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested
+- [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested [BLOCKED: waiting on lap-backend — depends on T180 resolve endpoint and on T138 useDriverProfile hook (also backend-blocked); cannot test mutation→profile invalidation chain without both.]
 - [ ] T182 [sonnet] Loading/error/empty states ⇒ handled
 - [ ] T183 [sonnet] E2E: navigate from Profile → Weakness Detail → mark resolved ⇒ green
 - [ ] T184 [sonnet] Tests for all sub-components ⇒ green
