@@ -204,7 +204,7 @@
 - [x] T170 [sonnet] Widget long-run-pace: degraded ⇒ rendered (affafb1)
 - [x] T171 [sonnet] Global degraded banner: "coaching disabled — check backend" ⇒ visible when off (d8ff74a)
 - [x] T172 [sonnet] Global degraded banner: "offline — local only" ⇒ visible when no network (77fa936)
-- [ ] T173 [sonnet] Settings persistence: debounce saves (save every 2s max) ⇒ tested
+- [x] T173 [sonnet] Settings persistence: debounce saves (save every 2s max) ⇒ tested (4b4d54d)
 - [ ] T174 [sonnet] Settings persistence: rollback if save fails ⇒ user sees error
 - [ ] T175 [sonnet] Settings persistence: repeated saves don't corrupt config.json ⇒ tested
 
