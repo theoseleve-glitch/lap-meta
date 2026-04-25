@@ -137,7 +137,7 @@
 - [x] T101 [opus] Compute sha256 per chunk during streaming ⇒ matches manifest — sha: 784caf6
 - [x] T102 [opus] Create `Session` row with `status=uploaded` + `TelemetryArtifact` rows ⇒ DB rows present — sha: 0ad532f
 - [x] T103 [opus] Dispatch Celery task `process_session_ingest(session_id)` ⇒ task queued — sha: 1a8c058
-- [NEEDS_REWORK] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches — sha: 8d37def. **Reverted twice** (c133 cab48ad + c134 dc6cad2) — sprint loop reapplied T104 (39e3b7c) without updating `tests/test_session_ingest.py`, same root failure. **Cross-repo cascade**: lap-backend `app/routers/sessions.py` constructs `SessionIngestAccepted(ingest_job_id=..., status_stream_url=...)` but those fields don't exist in the reverted Pydantic model. lap-backend HEAD (e16cfa0+) is also red against the current lap-schemas master (3 mypy "Unexpected keyword argument" + 31 pytest fails). **Re-implementation requirements**: (a) write the schema change AND `test_session_ingest.py` update in the **same commit**, OR (b) make the 3 fields `Optional[T] = None` with sensible defaults so old test fixtures still validate, AND (c) verify lap-backend pytest stays green after the schema lands by running it in the same /loop iteration. Until this lands properly, lap-backend ingest tests remain red against shipped lap-schemas master.
+- [BLOCKED] T104 [opus] Return 202 with `{session_id, ingest_job_id, status_stream_url}` ⇒ response shape matches — sha: 8d37def. **Reverted THREE times** (c133 cab48ad + c134 dc6cad2 + c136 5609af4). Sprint loop has now reapplied the same broken commit 3x without updating `tests/test_session_ingest.py`. Per systematic-debugging Phase 4.5 (3+ identical failures = architectural problem, not a hypothesis to retry), this task is **escalated to BLOCKED** until manual human intervention. **Pause-triggered alert fired** at c136 (Resend ID 50090743). **Cross-repo cascade still active**: lap-backend `app/routers/sessions.py:160-164` constructs `SessionIngestAccepted(ingest_job_id=..., status_stream_url=...)` but those fields don't exist in shipped lap-schemas master (5609af4). lap-backend HEAD (b5a4ce4+) is red against the current lap-schemas master (3 mypy "Unexpected keyword argument" + 31 pytest fails). **Resolution paths** (require human action — sprint loop is incapable of self-correcting): (1) human-author T104 schemas-side commit that updates BOTH `lap_schemas/v1/session_ingest.py` AND `tests/test_session_ingest.py` in the same commit, OR (2) make the 3 new fields `Optional[T] = None` with sensible defaults so old test fixtures continue to validate, OR (3) add a lap-schemas pre-commit hook that blocks adding required Pydantic fields without corresponding test-fixture updates. Until lap-schemas T104 lands cleanly, lap-backend HEAD will keep accumulating new commits with the cross-repo cascade red — they will be HELD by the review loop and not pushed.
 - [x] T105 [sonnet] Cloudflare R2 client integration: `infra/storage.py` with put/get/sign-url ⇒ integration test — sha: 4c17a8e
 - [x] T106 [sonnet] Swap local fs → R2 in ingestion endpoint ⇒ works with R2 creds — sha: 7f1613a
 - [x] T107 [sonnet] Celery worker setup: `celery -A app.infra.celery worker -l info` ⇒ starts clean — sha: a7846d9
@@ -158,11 +158,11 @@
 - [x] T122 [sonnet] Persist `SessionRecord` after processing ⇒ row present — sha: f005d57
 - [x] T123 [sonnet] Update `Session.status=ready` when done ⇒ visible via GET /sessions/:id — sha: e16cfa0
 - [x] T124 [sonnet] Processing pipeline integration test with archived Sebring session ⇒ end-to-end green — sha: b5a4ce4
-- [ ] T125 [sonnet] Processing pipeline integration test with archived RaceBox session ⇒ end-to-end green
+- [x] T125 [sonnet] Processing pipeline integration test with archived RaceBox session ⇒ end-to-end green — sha: 58385ff
 
 ## Block G — Track + car catalog (T126–T145)
 
-- [ ] T126 [opus] Track catalog seed: `coaching/catalog/tracks/sebring.yaml` with checkpoints ⇒ parses
+- [x] T126 [opus] Track catalog seed: `coaching/catalog/tracks/sebring.yaml` with checkpoints ⇒ parses — sha: efc1c7d
 - [ ] T127 [opus] Same for Silverstone ⇒ parses
 - [ ] T128 [opus] Same for Nürburgring VLN (Gesamtstrecke) ⇒ parses
 - [ ] T129 [opus] Same for Red Bull Ring ⇒ parses

@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T15:25Z (Cycle #134 — 5 accepts + 1 revert + 1 cross-repo cascade hold)
+## Last updated: 2026-04-26T15:55Z (Cycle #136 — 6 accepts + 1 revert + T104 ESCALATED TO BLOCKED + pause-alert fired)
 
 ## Per-repo status
 

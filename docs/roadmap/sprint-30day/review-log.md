@@ -4626,3 +4626,78 @@ Mid-cycle drift from c133 absorbed; sprint loops re-implementing reverted tasks.
 
 ---
 
+## 2026-04-26T15:55:00Z — Cycle #136 — **🟠 5 accepts + 1 REVERT (T104 reapply #3) + ESCALATION TO BLOCKED + 📧 PAUSE-TRIGGERED ALERT**
+
+### lap-schemas — T104 REAPPLY #3 → ESCALATED TO BLOCKED
+
+- Sprint loop pushed `ac89f8c "Reapply 'Reapply schemas: T104 expand SessionIngestAccepted...'"` — **3rd identical reapply without test fix**.
+- Pytest at HEAD: same `test_session_ingest_accepted_builds` ValidationError. **Identical failure pattern, 3 cycles running** (c133 → c134 → c136).
+- **Per systematic-debugging Phase 4.5**: 3+ identical failures → architectural problem, not a hypothesis to retry. Stopped reverting-and-marking-NEEDS_REWORK loop.
+- Reverted in `5609af4`. Tagged + pushed origin/master.
+- T104 in sprint-backend.md L140 escalated `[NEEDS_REWORK]` → **`[BLOCKED]`**. Resolution paths spelled out (3 explicit options, all requiring human action).
+- **Fired `pause-triggered` alert** (Resend ID `50090743-0584-49b4-a72d-7da1b4c8905b`) per Pause Triggers section: "More than 1 cross-repo contract test fails in a row" — adapted: "Same task fails review 3x with no improvement = sprint loop systematic malfunction". User must manually unblock T104 OR add a pre-commit hook to lap-schemas blocking required-field-add without test-fixture-update.
+
+### lap-backend (HEAD b5a4ce4 → 58385ff; origin still f005d57) — CASCADE HOLD CONTINUES
+
+- New commits this cycle: `58385ff sprint(backend): T125 pipeline integration test (RaceBox)`. Range now T123+T124+T125.
+- Same cascade: 3 mypy errors in sessions.py:160 + 31 cascade test failures (387 passing now, +8 from T124's tests).
+- Holding 3-commit range; will continue absorbing new sprint commits without push until lap-schemas T104 lands cleanly.
+
+### lap-webapp (HEAD 77d6cb4) — T235 ACCEPTED
+
+- 1 commit: `77d6cb4 sprint(webapp): T235 30KB CSS budget enforces purge`.
+- typecheck OK, tests 9.65s pass, build green. Tagged + pushed.
+
+### lap-mobile-android (HEAD f8e23ee) — T170 ACCEPTED
+
+- 1 commit: `f8e23ee sprint(mobile): T170 422 immediate failed_permanent scenario locks no-retry contract`.
+- gradle matrix all green (20s build). Tagged + pushed. Stash popped.
+
+### lap-website (HEAD 5e8442c) — T139 + T140 ACCEPTED
+
+- 2 commits: `b0686d2 T139 pillar 1 FAQ + schema.org FAQPage markup` + `5e8442c T140 publish pillar 1 article + indexable surface`.
+- typecheck 0/0, tests pass, build 19 pages (was 18 — pillar 1 article published). Tagged both. Pushed.
+
+### datalogger (HEAD 0246bff) — T131 + T132 ACCEPTED (with stable-19 baseline)
+
+- 2 commits: `d0c243f T131 widget thumbnail data layer` + `0246bff T132 export preset to JSON`.
+- pytest: 19 failed (stable baseline) / 2310 passed / 1 skipped. +14 passes from new tests in T131/T132.
+- Tagged both. Pushed.
+
+### Step 5 — Cross-repo coherence
+
+- **Cascade unchanged**: lap-backend ingest path red against lap-schemas master (5609af4, 3rd revert HEAD). T104 now BLOCKED — no further sprint-loop reapply attempts will succeed.
+- **Codegen drift**: lap-schemas T123 (SessionDetail) shipped 2 cycles ago without webapp/mobile codegen rerun. Continuing flag.
+
+### Step 6/7 — Deploy / smoke
+
+- Skipped.
+
+### Step 8 — Metrics
+
+- Will rewrite metrics.md with: T104 BLOCKED (was NEEDS_REWORK), 7 total reverts (was 6), 1 pause-triggered alert fired, backend hold deepened to 3 commits.
+
+### Cycle 136 totals
+
+- Sprint accepts+tags: **6** (webapp T235, mobile T170, website T139+T140, datalogger T131+T132, schemas innocent T123 was already tagged at c134).
+- Backend hold range: **3** commits (T123+T124+T125).
+- Reverts: **1** (lap-schemas T104 reapply #3).
+- Cumulative reverts: **7** (1.3% rate over 136 cycles).
+- Alerts fired: **1** (pause-triggered).
+- BLOCKED tasks added this cycle: **1** (T104 escalated from NEEDS_REWORK).
+
+### Baselines for cycle 137
+
+- backend=`f005d57` on origin (held at 58385ff locally; awaiting human resolution of T104).
+- webapp=`77d6cb4`.
+- schemas=`5609af4` (3rd revert HEAD).
+- mobile=`f8e23ee`.
+- website=`5e8442c`.
+- datalogger=`0246bff`.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 136 — 6 accepts + 1 revert + T104 escalated to BLOCKED + pause-triggered alert fired (Resend 50090743)` + sprint-backend.md (T104 BLOCKED) + metrics.md + review-log.md. Push to lap-meta master.
+
+---
+
