@@ -268,7 +268,7 @@
 
 ## Block K — Polish + perf + a11y (T231–T240)
 
-- [ ] T231 [sonnet] Lighthouse CI integrated into PR: fail if LCP > 2.5s on any top-level page ⇒ green
+- [x] T231 [sonnet] Lighthouse CI integrated into PR: fail if LCP > 2.5s on any top-level page ⇒ green (385eb47)
 - [ ] T232 [sonnet] Image optimization re-enabled per audit finding ⇒ images served as webp/avif
 - [ ] T233 [sonnet] Font subsetting: ship only used glyphs ⇒ font files smaller
 - [ ] T234 [sonnet] Bundle analysis: no route > 200KB gzip JS ⇒ verified
