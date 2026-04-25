@@ -171,7 +171,7 @@
 - [x] T140 [opus] Pit-armed computation: when fuel window or tire life reaches threshold ⇒ tested (9138a1e)
 - [x] T141 [sonnet] Pit-armed UI: overlay color change + pit indicator ⇒ visible (9e4f77f)
 - [x] T142 [sonnet] Pit-armed audio cue ⇒ optional (c0cc85a)
-- [ ] T143 [sonnet] Manual arm override: user can arm/disarm ⇒ works
+- [x] T143 [sonnet] Manual arm override: user can arm/disarm ⇒ works (93d8e08)
 - [ ] T144 [sonnet] Strategy plan serialized into bundle per Q102 ⇒ tested
 - [ ] T145 [sonnet] Actual pit events captured (sim events or user-annotated) ⇒ stored
 - [ ] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable
