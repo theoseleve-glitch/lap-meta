@@ -208,7 +208,7 @@
 - [x] T177 [opus] `WeaknessTrendChart` component: confidence over time ⇒ Storybook (d6a97cc)
 - [x] T178 [opus] `EvidenceSessionsList` component ⇒ Storybook (c7c2ab8)
 - [x] T179 [opus] `LinkedPrescriptionsList` component with outcomes ⇒ Storybook (c2a0a75)
-- [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works
+- [ ] T180 [sonnet] Resolution action: "Mark resolved" with confirm ⇒ POST endpoint works [BLOCKED: waiting on lap-backend — POST /weaknesses/:id/resolve (or equivalent) endpoint. The button + confirm modal can be sketched but cannot be wired through a typed mutation without the endpoint and the @lap/schemas-generated client.]
 - [ ] T181 [sonnet] Resolution updates status to `resolved`, triggers refetch of Profile ⇒ tested
 - [ ] T182 [sonnet] Loading/error/empty states ⇒ handled
 - [ ] T183 [sonnet] E2E: navigate from Profile → Weakness Detail → mark resolved ⇒ green
