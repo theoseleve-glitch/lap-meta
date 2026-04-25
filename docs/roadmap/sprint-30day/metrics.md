@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T18:25Z (Cycle #156 — IDLE 2nd consecutive + backend hold 34)
+## Last updated: 2026-04-25T18:37Z (Cycle #157 — IDLE 3rd consecutive + backend hold 37 + billing-surface forced-checkpoint pending)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | e39e8ed (T155) | f005d57 (T122 pre-cascade) | **HELD 34 commits** awaiting T104 schemas cascade resolution |
+| lap-backend | 3075314 (T158) | f005d57 (T122 pre-cascade) | **HELD 37 commits** awaiting T104 schemas cascade resolution; T155-T158 billing surface (forced-checkpoint will trigger on unblock) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -44,7 +44,8 @@
 - **c153**: 4 accepts (mobile T182 + website T151 + datalogger T148+T149); backend hold +4 to 30.
 - **c154**: 4 accepts (mobile T183 + website T152 + datalogger T150+T151); backend hold +1 to 31; 20-flake 4th recurrence; `set -o pipefail` mitigation worked.
 - **c155**: IDLE; backend hold +2 to 33 (T153+T154 webhook handlers).
-- **c156 (this cycle)**: IDLE 2nd consecutive; backend hold +1 to 34 (T155 invoice.payment_failed handler).
+- **c156**: IDLE 2nd consecutive; backend hold +1 to 34 (T155 invoice.payment_failed handler).
+- **c157 (this cycle)**: IDLE 3rd consecutive; backend hold +3 to 37 (T156 invoice.payment_succeeded + T157 /billing/portal + T158 WAITLIST_FOUNDER promo). Billing surface accumulating — forced-checkpoint pending on cascade unblock.
 
 ## Review loop state
 

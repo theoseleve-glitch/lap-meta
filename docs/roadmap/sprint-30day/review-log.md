@@ -5211,3 +5211,22 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T18:37:00Z — Cycle #157 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 37**
+
+### lap-backend (HEAD 3075314 local; held 37) — CASCADE +3
+- 37 ahead, +3 since c156: T156 (invoice.payment_succeeded→active handler, 807100e) + T157 (GET /billing/portal + capture stripe_customer_id, 26abc9d) + T158 (WAITLIST_FOUNDER promo code in Config, 3075314). Backend sprint loop is now 4/4 most-recent commits in billing/Stripe-webhook surface — large coherent area accumulating under cascade hold.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 157 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 37 (+3 billing/webhook commits).
+
+### Notes
+- 3rd consecutive idle cycle for review repos. Backend sprint loop very active in billing surface (T155-T158 = 4 commits in 2 cycles).
+- **Forced-checkpoint flag preview**: per runbook line 343-348, "Any change to `lap-backend/app/auth/*` or `lap-backend/app/billing/*`" triggers a forced human-review checkpoint. The 4 most-recent backend commits (T155-T158) all touch billing/. **However, the cascade hold prevents these from being reviewed (and pushed/tagged) by this loop until T104 schemas resolution.** When/if the cascade unblocks and these billing commits become reviewable, they will trigger PAUSE_FOR_HUMAN_REVIEW. Logging this in advance for clarity — no PAUSE entry written this cycle since these commits are NOT in the review path yet.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 157 — IDLE (3rd consecutive) + backend hold 37 (T156-T158 billing surface accumulating)` + review-log.md + metrics.md (header only).
+
+---
+
