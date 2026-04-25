@@ -176,21 +176,21 @@
 - [x] T145 [sonnet] Actual pit events captured (sim events or user-annotated) ⇒ stored (703dac8)
 - [x] T146 [sonnet] Plan-vs-actual summary in bundle ⇒ computable (27decd4)
 - [x] T147 [sonnet] Strategy view in desktop review: compact summary ⇒ UI visible (f29475d)
-- [ ] T148 [sonnet] Strategy guidance: push/manage label based on fuel + tire ⇒ displayed
-- [ ] T149 [opus] Divergence alerts: safety car detection (from iRacing SDK) + strategy recalc ⇒ tested
-- [ ] T150 [opus] Divergence alerts: FCY detection + strategy recalc ⇒ tested
-- [ ] T151 [sonnet] Driver decision prompts: pit, save fuel, push, cool tires ⇒ shown
-- [ ] T152 [sonnet] Corner-specific prompts: "losing X at T1 — brake later" (from rules engine) ⇒ shown
-- [ ] T153 [sonnet] Minimal-click acknowledgment: button press on wheel-compatible input ⇒ works
-- [ ] T154 [sonnet] Test: strategy recalc with sim data ⇒ correct pit window
-- [ ] T155 [sonnet] Test: armed triggers at right fuel threshold ⇒ green
+- [x] T148 [sonnet] Strategy guidance: push/manage label based on fuel + tire ⇒ displayed (6280ee1)
+- [x] T149 [opus] Divergence alerts: safety car detection (from iRacing SDK) + strategy recalc ⇒ tested (9b1b00c)
+- [x] T150 [opus] Divergence alerts: FCY detection + strategy recalc ⇒ tested (1c1cb4b)
+- [x] T151 [sonnet] Driver decision prompts: pit, save fuel, push, cool tires ⇒ shown (b23fbdf)
+- [x] T152 [sonnet] Corner-specific prompts: "losing X at T1 — brake later" (from rules engine) ⇒ shown (31f4dc2)
+- [x] T153 [sonnet] Minimal-click acknowledgment: button press on wheel-compatible input ⇒ works (f76605e)
+- [x] T154 [sonnet] Test: strategy recalc with sim data ⇒ correct pit window (aa6d9fe)
+- [x] T155 [sonnet] Test: armed triggers at right fuel threshold ⇒ green (27ddd81)
 
 ## Block I — Overlay polish + degraded state (T156–T175)
 
-- [ ] T156 [sonnet] Audit all 40+ widgets: each has degraded-state rendering (stale/missing data) ⇒ list complete
-- [ ] T157 [sonnet] Widget lap-delta: degraded = grayed with "—" ⇒ rendered
-- [ ] T158 [sonnet] Widget fuel: degraded = grayed ⇒ rendered
-- [ ] T159 [sonnet] Widget tire: degraded state ⇒ rendered
+- [x] T156 [sonnet] Audit all 40+ widgets: each has degraded-state rendering (stale/missing data) ⇒ list complete (f977afb)
+- [x] T157 [sonnet] Widget lap-delta: degraded = grayed with "—" ⇒ rendered (62d53ae)
+- [x] T158 [sonnet] Widget fuel: degraded = grayed ⇒ rendered (9110c8a)
+- [x] T159 [sonnet] Widget tire: degraded state ⇒ rendered (4b0a94b)
 - [ ] T160 [sonnet] Widget coaching card: "insights not available" banner ⇒ rendered
 - [ ] T161 [sonnet] Widget input: degraded = "sensor stale" ⇒ rendered
 - [ ] T162 [sonnet] Widget g-g: degraded state ⇒ rendered
