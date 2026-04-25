@@ -196,7 +196,7 @@
 - [x] T162 [sonnet] Widget g-g: degraded state ⇒ rendered (2f550ac)
 - [x] T163 [sonnet] Widget live trace: degraded state ⇒ rendered (35a5cef)
 - [x] T164 [sonnet] Widget sector colors: degraded state ⇒ rendered (de36086)
-- [ ] T165 [sonnet] Widget flags: degraded state ⇒ rendered
+- [x] T165 [sonnet] Widget flags: degraded state ⇒ rendered (452434e)
 - [ ] T166 [sonnet] Widget position: degraded state ⇒ rendered
 - [ ] T167 [sonnet] Widget gap: degraded state ⇒ rendered
 - [ ] T168 [sonnet] Widget stint-timer (endurance): degraded ⇒ rendered
