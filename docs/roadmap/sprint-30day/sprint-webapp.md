@@ -271,7 +271,7 @@
 - [x] T231 [sonnet] Lighthouse CI integrated into PR: fail if LCP > 2.5s on any top-level page ⇒ green (385eb47)
 - [x] T232 [sonnet] Image optimization re-enabled per audit finding ⇒ images served as webp/avif (d30e203)
 - [x] T233 [sonnet] Font subsetting: ship only used glyphs ⇒ font files smaller (0b60e20)
-- [ ] T234 [sonnet] Bundle analysis: no route > 200KB gzip JS ⇒ verified
+- [x] T234 [sonnet] Bundle analysis: no route > 200KB gzip JS ⇒ verified (b8b957e)
 - [ ] T235 [sonnet] Unused CSS purged ⇒ verified
 - [ ] T236 [sonnet] A11y audit pass: axe across all top-level pages ⇒ no violations
 - [ ] T237 [sonnet] Keyboard-only navigation works on all pages ⇒ manual test passes
