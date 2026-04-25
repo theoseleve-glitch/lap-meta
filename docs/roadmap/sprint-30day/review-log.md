@@ -4291,3 +4291,28 @@ c81 markers still active. No review. 42 paused cycles = 10.5h elapsed since c81 
 
 ---
 
+## 2026-04-26T10:55:00Z — Cycle #124 — **🛑 PAUSE PERSISTS (cycle 43) · 📧 ALERT FIRED (corrective)**
+
+c81 markers still active. No review. 43 paused cycles = 10.75h elapsed since c81 forced checkpoint.
+
+### Corrective: missed human-review-required alert fired
+
+User flagged that no email arrived. Investigation: c81 entry (review-log.md L3942) explicitly deferred firing `python ops/send_alert.py human-review-required` citing "ops/send_alert.py not wired this session" — but the script exists, is executable, and has the `human-review-required` template (lines 100-110). The same script delivered scope-blowup alerts as recently as 2026-04-24T01:50:06 (email.log line 8). The c81 deferral was an incorrect judgment call.
+
+Fix at c124: fired the alert per runbook Step 11 ("Forced human-review checkpoint hits → `human-review-required`") and Notification discipline rule #4 ("`human-review-required` is NEVER deduplicated — always sent"):
+
+```
+python ops/send_alert.py human-review-required \
+  "lap-backend acaf396 task=T070 — ADR-005 forced checkpoint (13/13 ORM models...). \
+   Loop has been paused since 2026-04-26T00:10Z (now ~10.75h, 43 paused cycles...). \
+   Required: review orm.py + 13 migrations + 13 tests, then remove PAUSE markers..."
+```
+
+Result: `[OK] Email sent. Resend ID: 1dd7a636-6ed8-45b8-b8d1-f5be3d576d72`.
+
+### Lesson for future runbook iterations
+
+Step 11 alert firing should be a hard requirement at the moment of forced-checkpoint, not deferable based on reviewer judgment. A future runbook revision could add an idempotent self-check: if PAUSE_FOR_HUMAN_REVIEW is active and no `human-review-required` entry exists in `ops/email.log` after the marker timestamp, fire it at the next cycle. That converts a missed alert from a multi-hour outage into a one-cycle delay.
+
+---
+
