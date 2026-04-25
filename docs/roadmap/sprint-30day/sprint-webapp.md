@@ -250,7 +250,7 @@
 - [x] T213 [sonnet] Resumable: user can leave and return ⇒ tested (no-op: T207 5e3969f shipped localStorage persistence with both halves of the leave/return cycle covered — "persists state changes to localStorage" writes on every transition, "loads state from localStorage on mount" restores on re-mount, plus "ignores corrupt localStorage payloads" and "ignores out-of-range step values" defend against tampered persistence; 19 OnboardingProvider tests green)
 - [x] T214 [sonnet] Onboarding triggered only once per user ⇒ flag set on completion (722e8c6)
 - [ ] T215 [sonnet] Activation event sent to PostHog ⇒ visible [BLOCKED: waiting on lap-backend — the activation event fires only on T211 (accept-prescription success); without the backend mutation completing, there's no on-success hook to dispatch the PostHog event from. Firing client-side without backend confirmation would mean false positives in the funnel.]
-- [ ] T216 [sonnet] Time-to-first-value measured via PostHog funnel ⇒ reported
+- [ ] T216 [sonnet] Time-to-first-value measured via PostHog funnel ⇒ reported [BLOCKED: waiting on lap-backend — the funnel needs both the entry event (onboarding-start) and the activation event (T215, also blocked) emitting from real backend transitions; the funnel itself is built in PostHog UI, but it can only "report" once those events are firing.]
 - [ ] T217 [opus] `BillingPage` route + UI: current plan, trial status, billing portal button ⇒ renders
 - [ ] T218 [sonnet] Checkout button → POST /billing/checkout → redirect to Stripe ⇒ works
 - [ ] T219 [sonnet] Billing portal button → Stripe Billing Portal ⇒ works
