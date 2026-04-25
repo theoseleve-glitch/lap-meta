@@ -202,7 +202,7 @@
 - [x] T168 [sonnet] Widget stint-timer (endurance): degraded ⇒ rendered (be1d913)
 - [x] T169 [sonnet] Widget tire-life: degraded ⇒ rendered (8f6a441)
 - [x] T170 [sonnet] Widget long-run-pace: degraded ⇒ rendered (affafb1)
-- [ ] T171 [sonnet] Global degraded banner: "coaching disabled — check backend" ⇒ visible when off
+- [x] T171 [sonnet] Global degraded banner: "coaching disabled — check backend" ⇒ visible when off (d8ff74a)
 - [ ] T172 [sonnet] Global degraded banner: "offline — local only" ⇒ visible when no network
 - [ ] T173 [sonnet] Settings persistence: debounce saves (save every 2s max) ⇒ tested
 - [ ] T174 [sonnet] Settings persistence: rollback if save fails ⇒ user sees error
