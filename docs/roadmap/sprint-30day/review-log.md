@@ -5230,3 +5230,22 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T18:49:00Z — Cycle #158 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 39**
+
+### lap-backend (HEAD c5e67f1 local; held 39) — CASCADE +2
+- 39 ahead, +2 since c157: T159 (apply WAITLIST_FOUNDER promo at checkout for waitlist users, 2fc5fce) + T160 (daily Stripe<->DB billing reconciliation, c5e67f1). Continuing billing surface.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 158 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 39 (+2 billing/promo + reconciliation).
+
+### Notes
+- 4th consecutive idle for review repos. Backend billing thread continues T155-T160 (6 sprint commits, all in billing/).
+- T160 is interesting: a daily reconciliation between Stripe state and DB. This is exactly the kind of code that benefits from a billing-surface human review (eventual consistency window, drift detection logic). Reinforces the forced-checkpoint case.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 158 — IDLE (4th consecutive) + backend hold 39 (T159 WAITLIST promo + T160 reconciliation)` + review-log.md + metrics.md (header only).
+
+---
+
