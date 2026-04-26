@@ -105,8 +105,8 @@
 
 ## Block E — Coaching surface (T086–T110)
 
-- [ ] T086 [opus] Replace SessionDebrief client heuristic with `GET /sessions/:id/next_actions` fetch ⇒ tested
-- [ ] T087 [opus] Remove `src/lib/debrief/*` heuristic modules ⇒ zero client-side coaching logic
+- [ ] T086 [opus] Replace SessionDebrief client heuristic with `GET /sessions/:id/next_actions` fetch ⇒ tested [BLOCKED: waiting on lap-backend T224 — `GET /api/v1/sessions/:id/next_actions` is `[ ]` in sprint-backend.md (line 275) per WA-009. Two-sided block: (a) the endpoint doesn't exist server-side, (b) lap-webapp has no SessionDebrief client heuristic to replace (`grep -rln "SessionDebrief"` across `src/` returns zero matches in actual code; the only mentions are forward-looking comments in `app/(app)/sessions/[id]/page.tsx` and `SessionTabs.tsx` that point to this very task). Per T022/T084/T085 no-op chain, the legacy session-detail surface — which would have hosted the heuristic — never transplanted from the old repo. The replacement query hook lands together with T010 (`@lap/schemas` install, also BLOCKED) and T031 (typed client codegen).]
+- [x] T087 [opus] Remove `src/lib/debrief/*` heuristic modules ⇒ zero client-side coaching logic (no-op: `src/lib/debrief/` does not exist in lap-webapp. `ls src/lib/debrief/` returns "No such file or directory". Per T022/T084/T085/T086 no-op chain, the legacy session-detail surface that hosted these heuristics never transplanted from the old repo. The criterion "zero client-side coaching logic" is satisfied at scaffold time — webapp doctrine forbids local coaching rules per CLAUDE.md, and the `query-keys.ts` factory plus the placeholder `SessionTabs` PANEL_COPY (T068/40f772e) are the only coaching-adjacent surfaces, both data-binding-only.)
 - [x] T088 [opus] `WeaknessEpisodeCard` component: shows title, severity, confidence, evidence ⇒ Storybook renders (2df91cc)
 - [x] T089 [opus] `PrescriptionCard` component: title, rationale, drill link, accept/skip buttons ⇒ Storybook (f1d0e5e)
 - [x] T090 [opus] `OutcomeBadge` component: shows if prescription met success ⇒ Storybook (dc2fc0a)
