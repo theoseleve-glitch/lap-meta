@@ -35,7 +35,7 @@
 - [x] T021 [opus] `GET /api/v1/driver/:id/bridge/links` paginated driver timeline of links ⇒ tested — sha: d4ae4e5 (lap-schemas: 355f337)
 - [x] T022 [opus] `DELETE /api/v1/bridge/links/:id` revoke ⇒ tested — sha: 404c582
 - [x] T023 [opus] `POST /api/v1/bridge/links/:id/rate` thumbs-up/down usefulness feedback ⇒ stored — sha: 7a575fa (lap-schemas: 26c2485)
-- [ ] T024 [opus] Bridge RLS: drivers can only see their own links ⇒ integration test proves
+- [x] T024 [opus] Bridge RLS: drivers can only see their own links ⇒ integration test proves — sha: c607358
 - [ ] T025 [sonnet] Bridge storage: divergence_points stored as JSONB array, indexed by track_distance_m ⇒ efficient
 - [ ] T026 [sonnet] Link validation: both sessions must be same master_track_id + comparable car class ⇒ enforced
 - [ ] T027 [sonnet] Link dedup: same pair can't be linked twice ⇒ 409 on conflict
