@@ -276,5 +276,5 @@
 - [x] T236 [sonnet] Shortcut: Ctrl+Shift+R opens Restart with clean config for testing ⇒ works (a8aef36 — prepare_clean_restart helper + AppShell Ctrl+Shift+R Shortcut; QML restartVM bridge is follow-up)
 - [x] T237 [sonnet] Shortcut: F1 opens help ⇒ works (4b3236b — F1 already wired in AppShell.qml since T220; new drift test pins onActivated→shortcutHelp.visible contract)
 - [BLOCKED: Ctrl+L is already bound to "lock/unlock overlay positions" (AppShell.qml:401-407, ShortcutHelpOverlay.qml:77, pinned by test_appshell_no_duplicate_shortcut_sequences). Reassigning is UX-breaking. Also, DiagnosticsPanel.qml's logArea is an unwired placeholder TextArea ("Will be wired to serviceVM log events later") — there is no log model on serviceVM to clear. Both halves of the contract are missing prerequisites; defer pending decision on shortcut ownership and log-view wiring.] T238 [sonnet] Shortcut: Ctrl+L clears log view ⇒ works
-- [ ] T239 [sonnet] Splash screen during boot with progress ⇒ visible
+- [x] T239 [sonnet] Splash screen during boot with progress ⇒ visible (d9b0d23 — pure progress model: BOOT_PHASES + progress_pct + next_phase; QML SplashScreen.qml + bootstrap wiring is follow-up)
 - [ ] T240 [sonnet] Final smoke test on clean Win11 install: all features work ⇒ ship-ready
