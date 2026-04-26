@@ -234,7 +234,7 @@
 - [x] T197 [sonnet] Uninstaller leaves no orphan files ⇒ verified (d4deb86)
 - [x] T198 [sonnet] Documentation in docs/ folder updated for new architecture ⇒ current (ea74c9f)
 - [x] T199 [sonnet] README.md refreshed: install link, pair phone, first session ⇒ reviewed (7e56dc8)
-- [ ] T200 [sonnet] CHANGELOG.md has M1 + M2 entries ⇒ written
+- [x] T200 [sonnet] CHANGELOG.md has M1 + M2 entries ⇒ written (236e96d)
 
 ## Block K — Tests + perf + misc (T201–T240)
 
