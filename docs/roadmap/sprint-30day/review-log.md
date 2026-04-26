@@ -5867,3 +5867,21 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-26T02:30:00Z — Cycle #193 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 127 + M2 weakness detail + flag-wrong**
+
+### lap-backend (HEAD 60dbf23 local; held 127) — CASCADE +2 — M2 EXPANDING
+- 127 ahead, +2 since c192:
+  - M2/T007 GET /api/v1/driver/weaknesses/:id detail composite (c63c325) — composite read endpoint for a single weakness with full context (linked insights, prescriptions, outcomes)
+  - M2/T008 POST /prescriptions/:id/flag-wrong with state-transition tests (60dbf23) — user signal that a prescription was wrong; tested with state-transition assertions (state machine validation)
+- Driver-facing UX progressing: timeline → profile → compare-case → weakness detail → flag-wrong feedback. M2 surface = 8 commits.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 193 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 127 (M1 119 + M2 8).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 193 — IDLE (39th consecutive) + backend hold 127 (M2/T007 weakness detail + T008 flag-wrong with state-transition tests)` + review-log.md + metrics.md (header only).
+
+---
+
