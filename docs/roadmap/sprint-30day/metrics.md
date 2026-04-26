@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T01:18Z (Cycle #187 — IDLE 33rd consecutive + backend hold 114; ops hardening landed)
+## Last updated: 2026-04-26T01:30Z (Cycle #188 — IDLE 34th consecutive + backend hold 117; restore-test + feature flags + API versioning)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 2dceea7 (T235) | f005d57 (T122 pre-cascade) | **HELD 114 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T235 coaching chain + e2e + API docs + contract test + load scripts + ops hardening (56 normal incl T204) |
+| lap-backend | 8a0102b (T238) | f005d57 (T122 pre-cascade) | **HELD 117 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T238 coaching + e2e + API docs + contract/load tests + ops hardening + restore-test + feature flags + v1/v2 versioning (59 normal incl T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -75,7 +75,8 @@
 - **c184**: IDLE 30th consecutive; backend hold +3 to 101 (T220-T222); first triple-digit hold.
 - **c185**: IDLE 31st consecutive; backend hold to 105 (T223-T227 polish + e2e test + openapi/swagger).
 - **c186**: IDLE 32nd consecutive; backend hold to 110 (T228-T231 hardening: redoc + schemathesis + k6).
-- **c187 (this cycle)**: IDLE 33rd consecutive; backend hold to 114 (T232 error budget doc + T233 dependabot/renovate + T234 pip-audit/bandit CI + T235 daily pg_dump→R2 backup). Operational/SRE hardening complete.
+- **c187**: IDLE 33rd consecutive; backend hold to 114 (T232-T235 SLO+dep+sec+backups).
+- **c188 (this cycle)**: IDLE 34th consecutive; backend hold to 117 (T236 restore-from-backup with moto round-trip test + T237 env feature flags + T238 v1 lock + v2 router scaffold).
 
 ## Review loop state
 
