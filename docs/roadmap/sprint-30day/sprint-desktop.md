@@ -224,7 +224,7 @@
 - [x] T187 [sonnet] Auto-update: opt-out in Settings ⇒ respected (117dbab)
 - [x] T188 [sonnet] Auto-update: rollback if new version crashes ⇒ bail-out logic (375ac8a)
 - [x] T189 [sonnet] Crash dump capture: minidump on crash, offer to upload ⇒ works (34ebdec)
-- [ ] T190 [sonnet] First-launch wizard: welcome, sim detection, pairing QR prompt ⇒ renders
+- [x] T190 [sonnet] First-launch wizard: welcome, sim detection, pairing QR prompt ⇒ renders (e83e9cd)
 - [ ] T191 [sonnet] First-launch: download rules bundle for offline coaching ⇒ works
 - [ ] T192 [sonnet] First-launch: download track catalog for offline sector splits ⇒ works
 - [ ] T193 [sonnet] License.txt packaged ⇒ visible in installer
