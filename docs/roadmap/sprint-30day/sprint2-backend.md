@@ -46,7 +46,7 @@
 ## Block C — Bridge algorithms (T031–T050)
 
 - [x] T031 [opus] Lap-aligned segmenter: given two sessions + corner set, returns paired lap segments ⇒ unit-tested with fixture — sha: 52688a3
-- [ ] T032 [opus] Channel extraction: brake, throttle, steering, speed, g_lat, g_lon ⇒ consistent DataFrame shape
+- [x] T032 [opus] Channel extraction: brake, throttle, steering, speed, g_lat, g_lon ⇒ consistent DataFrame shape — sha: 4926b6a
 - [ ] T033 [opus] Normalization: each channel resampled to 500 points per corner via cubic spline ⇒ stable
 - [ ] T034 [opus] Shape match algorithm: normalized cross-correlation per channel ⇒ returns 0-1 score
 - [ ] T035 [opus] Shape match validation: on identical sim-vs-sim sessions returns 1.0 ⇒ tested
