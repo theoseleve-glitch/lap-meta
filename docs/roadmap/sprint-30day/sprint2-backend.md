@@ -61,7 +61,7 @@
 - [x] T044 [opus] Bridge algorithm performance: process a pair in <5s ⇒ benchmarked — sha: 4bd586b
 - [x] T045 [opus] Bridge algorithm deterministic: same input = same output ⇒ test — sha: f3b31f5
 - [x] T046 [sonnet] `GET /api/v1/bridge/suggest_links?session_id=X` returns candidate pairs by track + car class + 60-day window ⇒ tested — sha: 977cd74
-- [ ] T047 [sonnet] Suggest ordering: most-similar-track first, then recency ⇒ tested
+- [x] T047 [sonnet] Suggest ordering: most-similar-track first, then recency ⇒ tested — sha: b481404
 - [ ] T048 [sonnet] Suggest cache: 1h TTL per session ⇒ tested
 - [ ] T049 [sonnet] Algorithm fallback: if channel missing in one session, flag "partial-comparison" and exclude that channel ⇒ tested
 - [ ] T050 [sonnet] Algorithm tests against archived Sebring-sim + Sebring-real pair in LapCoachLogger_sessions/ ⇒ produces sensible output
