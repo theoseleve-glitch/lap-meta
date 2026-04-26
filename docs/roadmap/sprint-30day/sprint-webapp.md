@@ -101,7 +101,7 @@
 - [x] T082 [sonnet] A11y: all actions have aria-labels ⇒ axe clean (10d4171)
 - [x] T083 [sonnet] Mobile viewport: tabs render as accordion or horizontal scroll ⇒ responsive (e9256e9)
 - [x] T084 [sonnet] Session-level gamification removed from detail page (moved to Profile) ⇒ cleaner (no-op: there is no session-level gamification in lap-webapp to remove. `grep -rn "gamification\|sessionXp\|achievement\|streak\|xp\|badge"` across `src/` returns zero matches in any session-detail surface (T061 page placeholder, T062 SessionDetailShell, T063–T067 tab components, T068 SessionTabs, T075 skeleton, T076 error, T077 suspense, T081–T083 a11y/responsive). Per T022/T059 no-op citations, the legacy 600-LOC session-detail monolith never transplanted from the old repo, so any prior session-level gamification it might have hosted never existed in this codebase. Profile-side gamification surface (if any) lives at `/profile` and is not affected by this task.)
-- [ ] T085 [sonnet] Focus-mode gracefully degraded ⇒ still works
+- [x] T085 [sonnet] Focus-mode gracefully degraded ⇒ still works (no-op: there is no focus-mode in lap-webapp to degrade. `grep -rn "focus.mode\|focusMode\|focus_mode"` across `src/` returns zero matches. Per T022/T059/T084 no-op citations, the legacy session-detail page never transplanted, so the focus-mode it may have hosted in the old repo never existed in this codebase. The Block D session-detail surface (T061–T083) is doctrinally rendering-only — focus-mode would re-emerge as a new feature task gated on a backend session-state hook, not as legacy degradation work.)
 
 ## Block E — Coaching surface (T086–T110)
 
