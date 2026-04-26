@@ -59,7 +59,7 @@
 - [x] T042 [opus] Transferred-skills extraction: skills (dimensions) where both shape + intensity ≥0.85 ⇒ listed — sha: 1f6413b
 - [x] T043 [opus] Non-transferred-skills extraction: dimensions where shape <0.7 OR intensity <0.5 ⇒ listed — sha: dc7d7ca
 - [x] T044 [opus] Bridge algorithm performance: process a pair in <5s ⇒ benchmarked — sha: 4bd586b
-- [ ] T045 [opus] Bridge algorithm deterministic: same input = same output ⇒ test
+- [x] T045 [opus] Bridge algorithm deterministic: same input = same output ⇒ test — sha: f3b31f5
 - [ ] T046 [sonnet] `GET /api/v1/bridge/suggest_links?session_id=X` returns candidate pairs by track + car class + 60-day window ⇒ tested
 - [ ] T047 [sonnet] Suggest ordering: most-similar-track first, then recency ⇒ tested
 - [ ] T048 [sonnet] Suggest cache: 1h TTL per session ⇒ tested
