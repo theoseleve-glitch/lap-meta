@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T02:06Z (Cycle #191 — IDLE 37th consecutive + backend hold 122; M2 STARTED — driver timeline)
+## Last updated: 2026-04-26T02:18Z (Cycle #192 — IDLE 38th consecutive + backend hold 125; M2 expanding — timeline + profile + compare-case)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | d183302 (M2/T003) | f005d57 (T122 pre-cascade) | **HELD 122 commits** awaiting T104 schemas cascade resolution; M1 119 (T123-T240, incl forced-checkpoint 12: billing T155-T165 + crypto T204) + **M2 3** (T001-T003 driver timeline: paginated/badges + sha-tagged cursors + filters) |
+| lap-backend | 52746b1 (M2/T006) | f005d57 (T122 pre-cascade) | **HELD 125 commits** awaiting T104 schemas cascade resolution; M1 119 (T123-T240, incl forced-checkpoint 12) + **M2 6** (T001-T003 timeline + T004 profile aggregate + T005-T006 Compare Case CRUD/snapshot) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -79,7 +79,8 @@
 - **c188**: IDLE 34th consecutive; backend hold to 117 (T236 restore-test + T237 flags + T238 v1/v2 versioning).
 - **c189**: IDLE 35th consecutive; backend hold to 119 (T239 CHANGELOG + T240 README); M1 wrap-up signal.
 - **c190**: IDLE 36th consecutive; backend hold UNCHANGED at 119; M1 complete signal; 190-cycle mark.
-- **c191 (this cycle)**: IDLE 37th consecutive; backend hold +3 to 122 — **M2 STARTED** (M1→M2 transition confirmed). New T001-T003 introduce driver timeline endpoint with sha-tagged cursor pagination and composable filters. Per-milestone task numbering.
+- **c191**: IDLE 37th consecutive; backend hold +3 to 122 — M2 STARTED (T001-T003 driver timeline).
+- **c192 (this cycle)**: IDLE 38th consecutive; backend hold +3 to 125 (M2/T004 profile aggregate + T005 Compare Case CRUD + T006 auto-snapshot). M2 driver UX surface taking shape.
 
 ## Review loop state
 
