@@ -96,8 +96,8 @@
 - [x] T077 [sonnet] Suspense boundaries at tab level for streaming ⇒ experimental (3db3759)
 - [x] T078 [sonnet] Storybook stories for SessionDetailShell ⇒ renders (8971fb7) — initial 4-variant file shipped at T062/c3abe14; this commit replaces inline legacy proxies with real `SessionActionsBar` (T067) + `SessionTabs` (T068) and adds a `FullProductionLayout` story for the canonical composition.
 - [x] T079 [sonnet] Storybook stories for each tab ⇒ render with mock data (no-op: each tab already shipped a stories file with rich mock data alongside its feature commit. SessionOverviewTab.stories.tsx (4 stories — T063/e838164), SessionLapsTab.stories.tsx (4 stories — T064/2c896cd), SessionTelemetryTab.stories.tsx (3 stories — T065/cfd7c86), SessionCoachingTab.stories.tsx (4 stories — T066/8c5584b). Each covers Default + empty/edge-case variants.)
-- [ ] T080 [sonnet] E2E test: navigate between tabs, delete session, verify redirect ⇒ green
-- [ ] T081 [sonnet] A11y: all tabs keyboard-navigable ⇒ axe clean
+- [ ] T080 [sonnet] E2E test: navigate between tabs, delete session, verify redirect ⇒ green [BLOCKED: waiting on lap-backend — the criterion bundles three actions ("navigate between tabs" + "delete session" + "verify redirect"). The tab-navigation half is shippable in isolation (T068/40f772e wired `?tab=` URL routing), but "delete session" + the post-delete redirect both depend on the DELETE /sessions/:id endpoint that does not exist in lap-backend's sprint (same root cause as T072 — see its citation). A green E2E covering only the navigation half would falsify the criterion. Lands in the same iteration as T072 unblocks; reuse the existing `e2e/dashboard.spec.ts` (T017/25dbeb1) harness.]
+- [x] T081 [sonnet] A11y: all tabs keyboard-navigable ⇒ axe clean (ce67f08)
 - [ ] T082 [sonnet] A11y: all actions have aria-labels ⇒ axe clean
 - [ ] T083 [sonnet] Mobile viewport: tabs render as accordion or horizontal scroll ⇒ responsive
 - [ ] T084 [sonnet] Session-level gamification removed from detail page (moved to Profile) ⇒ cleaner
