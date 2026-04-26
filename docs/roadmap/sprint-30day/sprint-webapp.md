@@ -92,7 +92,7 @@
 - [ ] T073 [sonnet] Re-process action: calls backend endpoint, shows toast ⇒ works [BLOCKED: waiting on lap-backend — `POST /api/v1/sessions/:id/reprocess` (or equivalent) does not exist in lap-backend's sprint (grep for `reprocess` returns zero matches). Per ADR-009 / ADR-013, post-session coaching is the heaviest server-side workflow (FastAPI + Celery, <60s p95), so re-process is a non-trivial server task that needs its own endpoint + Celery handoff. UI surface ready (T067 `onReprocess` callback + `pendingAction="reprocess"` state); endpoint + typed client (T031) needed.]
 - [ ] T074 [sonnet] Share action: generate share link via backend ⇒ works [BLOCKED: waiting on lap-backend — no share-link endpoint exists in lap-backend's sprint (grep for `share.*session` / `sessions/:id/share` returns zero matches). A share endpoint also needs an authorization model decision (public link vs. signed-URL with TTL vs. cohort-scoped) which is unspecified in ADR-005 and ADR-007. UI surface ready (T067 `onShare` callback + `pendingAction="share"` state); endpoint + auth-model decision + typed client (T031) needed.]
 - [x] T075 [sonnet] Loading states for each tab: skeleton screens ⇒ tested (127e793)
-- [ ] T076 [sonnet] Error states for each tab: retry button ⇒ tested
+- [x] T076 [sonnet] Error states for each tab: retry button ⇒ tested (751ab7e)
 - [ ] T077 [sonnet] Suspense boundaries at tab level for streaming ⇒ experimental
 - [ ] T078 [sonnet] Storybook stories for SessionDetailShell ⇒ renders
 - [ ] T079 [sonnet] Storybook stories for each tab ⇒ render with mock data
