@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T00:54Z (Cycle #185 — IDLE 31st consecutive + backend hold 105; coaching loop polish + e2e test)
+## Last updated: 2026-04-26T01:06Z (Cycle #186 — IDLE 32nd consecutive + backend hold 110; pre-launch hardening with schemathesis + k6 load tests)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | d474981 (T227) | f005d57 (T122 pre-cascade) | **HELD 105 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T227 coaching chain incl e2e integration test + openapi/swagger docs (48 normal incl T204) |
+| lap-backend | 0726709 (T231) | f005d57 (T122 pre-cascade) | **HELD 110 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T231 coaching chain + e2e + API docs + schemathesis contract test + k6 load scripts (52 normal incl T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -73,7 +73,8 @@
 - **c182**: IDLE 28th consecutive; backend hold +4 to 94 (T212-T215 Prescription kernel).
 - **c183**: IDLE 29th consecutive; backend hold +4 to 98 (T216-T219 Prescription close + ActionOutcome opens).
 - **c184**: IDLE 30th consecutive; backend hold +3 to 101 (T220-T222); first triple-digit hold.
-- **c185 (this cycle)**: IDLE 31st consecutive; backend hold to 105 (T223 expiry sweep + T224 next_actions + **T225 full loop e2e test** + T226 openapi.json + T227 swagger UI). Coaching chain validated end-to-end and documented.
+- **c185**: IDLE 31st consecutive; backend hold to 105 (T223-T227 polish + e2e test + openapi/swagger).
+- **c186 (this cycle)**: IDLE 32nd consecutive; backend hold to 110 (T228 redoc + **T229 schemathesis OpenAPI contract test** + T230-T231 k6 load scripts). Pre-launch hardening: API contract fuzz testing + load testing of ingest + driver-profile read paths.
 
 ## Review loop state
 
