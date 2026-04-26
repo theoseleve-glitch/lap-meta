@@ -226,7 +226,7 @@
 - [x] T189 [sonnet] Crash dump capture: minidump on crash, offer to upload ⇒ works (34ebdec)
 - [x] T190 [sonnet] First-launch wizard: welcome, sim detection, pairing QR prompt ⇒ renders (e83e9cd)
 - [x] T191 [sonnet] First-launch: download rules bundle for offline coaching ⇒ works (c1e9e8a)
-- [ ] T192 [sonnet] First-launch: download track catalog for offline sector splits ⇒ works
+- [x] T192 [sonnet] First-launch: download track catalog for offline sector splits ⇒ works (e8ba343)
 - [ ] T193 [sonnet] License.txt packaged ⇒ visible in installer
 - [ ] T194 [sonnet] Privacy.txt packaged ⇒ visible
 - [ ] T195 [sonnet] Build matrix in CI: Windows 10 + 11 builds ⇒ green
