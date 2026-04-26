@@ -50,7 +50,7 @@
 - [x] T033 [opus] Normalization: each channel resampled to 500 points per corner via cubic spline ⇒ stable — sha: 04da9c6
 - [x] T034 [opus] Shape match algorithm: normalized cross-correlation per channel ⇒ returns 0-1 score — sha: 586662f
 - [x] T035 [opus] Shape match validation: on identical sim-vs-sim sessions returns 1.0 ⇒ tested — sha: 8614c3d
-- [ ] T036 [opus] Shape match: on sim-vs-real same track gives >0.6, <0.95 ⇒ validated with archived pair
+- [x] T036 [opus] Shape match: on sim-vs-real same track gives >0.6, <0.95 ⇒ validated with archived pair — sha: 773b0f1
 - [ ] T037 [opus] Intensity match algorithm: peak + integral ratios per channel ⇒ returns 0-1 score
 - [ ] T038 [opus] Intensity match validation: identical sessions = 1.0, scaled sessions = 0.8 ⇒ tested
 - [ ] T039 [opus] Divergence detection: scan per-corner for shape ≥0.9 but intensity ≤0.6 → "same shape, different intensity" divergence ⇒ tested
