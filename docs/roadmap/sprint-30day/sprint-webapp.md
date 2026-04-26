@@ -126,7 +126,7 @@
 - [ ] T104 [sonnet] E2E: upload session → see coaching tab → accept prescription ⇒ green [BLOCKED: waiting on lap-backend + webapp T010+T031 — three-stage E2E that bundles (a) upload session (no upload route in lap-webapp yet), (b) see coaching tab (BLOCKED on T086 next_actions data hook), (c) accept prescription (BLOCKED on T094 typed mutation hook). All three stages converge on the @lap/schemas typed client; lands once T086+T094 unblock together.]
 - [x] T105 [sonnet] Paginate if >10 prescriptions ⇒ tested (aeee9d1)
 - [x] T106 [sonnet] Coaching view responsive ⇒ mobile works (e3f826d)
-- [ ] T107 [sonnet] Toast notifications on accept/skip ⇒ visible, dismissable
+- [x] T107 [sonnet] Toast notifications on accept/skip ⇒ visible, dismissable (d98ac30)
 - [ ] T108 [sonnet] Keyboard shortcuts: `A` accept focused, `S` skip ⇒ works
 - [ ] T109 [sonnet] PostHog events fired on accept/skip/flag ⇒ visible in PostHog
 - [ ] T110 [sonnet] Analytics: coaching acceptance rate dashboard widget spec ⇒ documented
