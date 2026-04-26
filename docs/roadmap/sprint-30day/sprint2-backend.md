@@ -64,7 +64,7 @@
 - [x] T047 [sonnet] Suggest ordering: most-similar-track first, then recency ⇒ tested — sha: b481404
 - [x] T048 [sonnet] Suggest cache: 1h TTL per session ⇒ tested — sha: a976580
 - [x] T049 [sonnet] Algorithm fallback: if channel missing in one session, flag "partial-comparison" and exclude that channel ⇒ tested — sha: af19bc1
-- [ ] T050 [sonnet] Algorithm tests against archived Sebring-sim + Sebring-real pair in LapCoachLogger_sessions/ ⇒ produces sensible output
+- [BLOCKED: no real-world Sebring telemetry in LapCoachLogger_sessions/ (only iRacing-vs-iRacing sessions present); cannot test sim-vs-real acceptance without it. Synthetic+iRacing-only end-to-end already covered by T035/T036/T044/T045] T050 [sonnet] Algorithm tests against archived Sebring-sim + Sebring-real pair in LapCoachLogger_sessions/ ⇒ produces sensible output
 
 ## Block D — Cohort benchmarks (T051–T065)
 
