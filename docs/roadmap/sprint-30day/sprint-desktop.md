@@ -240,7 +240,7 @@
 
 - [x] T201 [sonnet] Integration test: full Practice session from sim-start → finalize ⇒ green (9e5c6e5)
 - [x] T202 [sonnet] Integration test: full Sprint session ⇒ green (54631c5)
-- [ ] T203 [sonnet] Integration test: Endurance 30-min simulated session ⇒ green
+- [x] T203 [sonnet] Integration test: Endurance 30-min simulated session ⇒ green (8e657e6)
 - [ ] T204 [sonnet] Integration test: iRacing adapter happy path ⇒ green
 - [ ] T205 [sonnet] Integration test: iRacing adapter sim-disconnect mid-session ⇒ finalize correctly
 - [ ] T206 [sonnet] Integration test: ACC adapter happy path ⇒ green
