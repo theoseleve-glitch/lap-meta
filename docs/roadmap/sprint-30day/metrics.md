@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T00:18Z (Cycle #182 — IDLE 28th consecutive + backend hold 94; Prescription kernel filling out)
+## Last updated: 2026-04-26T00:30Z (Cycle #183 — IDLE 29th consecutive + backend hold 98; ActionOutcome surface opens — full coaching chain wired)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 0c0edfe (T215) | f005d57 (T122 pre-cascade) | **HELD 94 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T215 coaching engine + braking + API + WeaknessEpisode + Prescription kernel (36 normal incl T204) |
+| lap-backend | d280f92 (T219) | f005d57 (T122 pre-cascade) | **HELD 98 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T219 full coaching chain: engine + braking + API + insight→episode→prescription→outcome (40 normal incl T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -70,7 +70,8 @@
 - **c179**: IDLE 25th consecutive; backend hold +2 to 86 (T206 flag aggregation + T207 persist run_rules output).
 - **c180**: IDLE 26th consecutive; backend hold +2 to 88 (T208+T209 WeaknessEpisode lifecycle); 180-cycle mark.
 - **c181**: IDLE 27th consecutive; backend hold +2 to 90 (T210 dedup counter + T211 Prescription skeleton).
-- **c182 (this cycle)**: IDLE 28th consecutive; backend hold +4 to 94 (T212 drill linkage + T213 success_condition + T214 dedup + T215 accept endpoint). Prescription kernel filling out — mirrors WeaknessEpisode pattern.
+- **c182**: IDLE 28th consecutive; backend hold +4 to 94 (T212-T215 Prescription kernel).
+- **c183 (this cycle)**: IDLE 29th consecutive; backend hold +4 to 98 (T216 skip + T217 list + T218 **ActionOutcome** pure evaluator + T219 outcome persistence). Full ADR-005 coaching chain wired: insight → episode → prescription → outcome.
 
 ## Review loop state
 
