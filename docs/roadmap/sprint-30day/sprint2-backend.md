@@ -37,7 +37,7 @@
 - [x] T023 [opus] `POST /api/v1/bridge/links/:id/rate` thumbs-up/down usefulness feedback ⇒ stored — sha: 7a575fa (lap-schemas: 26c2485)
 - [x] T024 [opus] Bridge RLS: drivers can only see their own links ⇒ integration test proves — sha: c607358
 - [x] T025 [sonnet] Bridge storage: divergence_points stored as JSONB array, indexed by track_distance_m ⇒ efficient — sha: 8dc92ee
-- [ ] T026 [sonnet] Link validation: both sessions must be same master_track_id + comparable car class ⇒ enforced
+- [x] T026 [sonnet] Link validation: both sessions must be same master_track_id + comparable car class ⇒ enforced — sha: 11f2d10
 - [ ] T027 [sonnet] Link dedup: same pair can't be linked twice ⇒ 409 on conflict
 - [ ] T028 [sonnet] Backend generates `CoachingInsight` when a link is created (transfer findings) ⇒ persisted
 - [ ] T029 [sonnet] Link lifecycle: marked `stale` if a referenced session is deleted ⇒ tested
