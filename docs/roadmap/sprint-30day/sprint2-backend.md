@@ -9,32 +9,32 @@
 
 ## Block A — M3 API completion (T001–T015)
 
-- [ ] T001 [sonnet] `GET /api/v1/driver/timeline?cursor=&limit=20` paginated endpoint returning SessionRecord[] with badges ⇒ tested
-- [ ] T002 [sonnet] Timeline cursor format (base64 of `{sha256(user_id+last_seen_at)}`) ⇒ opaque + stable
-- [ ] T003 [sonnet] Timeline filters: source, track, car, date range ⇒ composable
-- [ ] T004 [sonnet] `GET /api/v1/driver/profile` single-shot aggregate (progress snapshot + top-5 weaknesses + active prescriptions + readiness) ⇒ <200ms p95
-- [ ] T005 [opus] Durable Compare API: `POST /api/v1/compare_cases`, `GET /api/v1/compare_cases/:id`, `DELETE` ⇒ CRUD tested
-- [ ] T006 [sonnet] Compare case refetch: when referenced sessions reprocessed, outcome section updates ⇒ cache invalidation works
-- [ ] T007 [sonnet] `GET /api/v1/driver/weaknesses/:id` weakness detail with history + evidence + linked prescriptions ⇒ tested
-- [ ] T008 [sonnet] `POST /api/v1/prescriptions/:id/accept` / `/skip` / `/flag-wrong` ⇒ state transitions tested
-- [ ] T009 [sonnet] `GET /api/v1/driver/skills/:dimension` drilldown endpoint (trend + best/worst sessions + related weaknesses) ⇒ tested
-- [ ] T010 [sonnet] `GET /api/v1/sessions/:id/coaching` aggregated coaching view for a single session ⇒ tested
-- [ ] T011 [sonnet] `POST /api/v1/insights/:id/flag` user-flagged false positive → decrements rule confidence ⇒ tested
-- [ ] T012 [sonnet] Rule false-positive aggregation job (nightly) ⇒ surfaces high-FP rules to admin
-- [ ] T013 [sonnet] `GET /api/v1/admin/rules/health` admin endpoint listing rules with FP rate ⇒ 200
-- [ ] T014 [sonnet] Rate-limit enforcement: 100 req/min/user read, 10 ingest/hr ⇒ 429 on overflow
-- [ ] T015 [sonnet] API contract tests: schemathesis against OpenAPI ⇒ zero drift
+- [x] T001 [sonnet] `GET /api/v1/driver/timeline?cursor=&limit=20` paginated endpoint returning SessionRecord[] with badges ⇒ tested — sha: afcd3af (lap-schemas: 234890d)
+- [x] T002 [sonnet] Timeline cursor format (base64 of `{sha256(user_id+last_seen_at)}`) ⇒ opaque + stable — sha: 6f9bbc3
+- [x] T003 [sonnet] Timeline filters: source, track, car, date range ⇒ composable — sha: d183302
+- [x] T004 [sonnet] `GET /api/v1/driver/profile` single-shot aggregate (progress snapshot + top-5 weaknesses + active prescriptions + readiness) ⇒ <200ms p95 — sha: 717fa07 (lap-schemas: 071be32)
+- [x] T005 [opus] Durable Compare API: `POST /api/v1/compare_cases`, `GET /api/v1/compare_cases/:id`, `DELETE` ⇒ CRUD tested — sha: ea19755 (lap-schemas: a5c60ff)
+- [x] T006 [sonnet] Compare case refetch: when referenced sessions reprocessed, outcome section updates ⇒ cache invalidation works — sha: 52746b1 (lap-schemas: 94217a5)
+- [x] T007 [sonnet] `GET /api/v1/driver/weaknesses/:id` weakness detail with history + evidence + linked prescriptions ⇒ tested — sha: c63c325 (lap-schemas: a78e56e)
+- [x] T008 [sonnet] `POST /api/v1/prescriptions/:id/accept` / `/skip` / `/flag-wrong` ⇒ state transitions tested — sha: 60dbf23
+- [x] T009 [sonnet] `GET /api/v1/driver/skills/:dimension` drilldown endpoint (trend + best/worst sessions + related weaknesses) ⇒ tested — sha: d7e8643 (lap-schemas: 3ada902)
+- [x] T010 [sonnet] `GET /api/v1/sessions/:id/coaching` aggregated coaching view for a single session ⇒ tested — sha: 5963ca3 (lap-schemas: 1e353d5)
+- [x] T011 [sonnet] `POST /api/v1/insights/:id/flag` user-flagged false positive → decrements rule confidence ⇒ tested — sha: 5199e03
+- [x] T012 [sonnet] Rule false-positive aggregation job (nightly) ⇒ surfaces high-FP rules to admin — sha: a4bca1a
+- [x] T013 [sonnet] `GET /api/v1/admin/rules/health` admin endpoint listing rules with FP rate ⇒ 200 — sha: 0c25e0f
+- [x] T014 [sonnet] Rate-limit enforcement: 100 req/min/user read, 10 ingest/hr ⇒ 429 on overflow — sha: 465c95d
+- [x] T015 [sonnet] API contract tests: schemathesis against OpenAPI ⇒ zero drift — sha: dfd0c0d
 
 ## Block B — Bridge entity + CRUD (T016–T030)
 
-- [ ] T016 [opus] `TransferLink` Pydantic model per ADR-005 §5.5 ⇒ validates, round-trip JSON
-- [ ] T017 [opus] `DivergencePoint` Pydantic model ⇒ validates
-- [ ] T018 [opus] ORM `TransferLinkEntity` + migration (driver_id, session_pair, shape_match, intensity_match, divergence_points, created_by) ⇒ applied
-- [ ] T019 [opus] `POST /api/v1/bridge/links` create link (manual or auto) ⇒ tested
-- [ ] T020 [opus] `GET /api/v1/bridge/links/:id` full report ⇒ tested
-- [ ] T021 [opus] `GET /api/v1/driver/:id/bridge/links` paginated driver timeline of links ⇒ tested
-- [ ] T022 [opus] `DELETE /api/v1/bridge/links/:id` revoke ⇒ tested
-- [ ] T023 [opus] `POST /api/v1/bridge/links/:id/rate` thumbs-up/down usefulness feedback ⇒ stored
+- [x] T016 [opus] `TransferLink` Pydantic model per ADR-005 §5.5 ⇒ validates, round-trip JSON — sha: ee5a979 (lap-schemas)
+- [x] T017 [opus] `DivergencePoint` Pydantic model ⇒ validates — sha: fe5ac42 (lap-schemas)
+- [x] T018 [opus] ORM `TransferLinkEntity` + migration (driver_id, session_pair, shape_match, intensity_match, divergence_points, created_by) ⇒ applied — sha: 512892a (already shipped as T068 in sprint 1; verified migration applies + round-trip test green)
+- [x] T019 [opus] `POST /api/v1/bridge/links` create link (manual or auto) ⇒ tested — sha: eb15c68 (lap-schemas: 627d3b6)
+- [x] T020 [opus] `GET /api/v1/bridge/links/:id` full report ⇒ tested — sha: 256a2ca
+- [x] T021 [opus] `GET /api/v1/driver/:id/bridge/links` paginated driver timeline of links ⇒ tested — sha: d4ae4e5 (lap-schemas: 355f337)
+- [x] T022 [opus] `DELETE /api/v1/bridge/links/:id` revoke ⇒ tested — sha: 404c582
+- [x] T023 [opus] `POST /api/v1/bridge/links/:id/rate` thumbs-up/down usefulness feedback ⇒ stored — sha: 7a575fa (lap-schemas: 26c2485)
 - [ ] T024 [opus] Bridge RLS: drivers can only see their own links ⇒ integration test proves
 - [ ] T025 [sonnet] Bridge storage: divergence_points stored as JSONB array, indexed by track_distance_m ⇒ efficient
 - [ ] T026 [sonnet] Link validation: both sessions must be same master_track_id + comparable car class ⇒ enforced
