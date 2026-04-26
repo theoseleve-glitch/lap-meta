@@ -70,7 +70,7 @@
 
 - [x] T051 [opus] `DriverBenchmarkProfile` Pydantic + ORM entity ⇒ migration — sha: 32999fb (already landed via prior-sprint T069: schema, ORM, migration 76849f461d19, and round-trip tests in test_driver_benchmark_profile_model.py — verified green)
 - [x] T052 [opus] `cohort_opt_in` field on DriverProfile + privacy enforcement ⇒ only opt-in drivers' data flows to cohort — sha: ed4aa56
-- [ ] T053 [opus] `PATCH /api/v1/driver/profile` to toggle cohort_opt_in ⇒ updates
+- [x] T053 [opus] `PATCH /api/v1/driver/profile` to toggle cohort_opt_in ⇒ updates — sha: de6b6e0
 - [ ] T054 [opus] Anonymized metric store: `cohort_metrics` table with `{car_id, track_id, metric, value, session_time}`, NO driver_id ⇒ schema
 - [ ] T055 [opus] Cohort ingestion job: after each session, if opt-in, append metric rows ⇒ nightly or per-session
 - [ ] T056 [opus] Cohort minimum: compute percentile only if ≥20 distinct cohort members per {car_id, track_id, metric} ⇒ enforced
