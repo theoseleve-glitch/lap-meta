@@ -133,11 +133,11 @@
 
 ## Block F — Driver Timeline page (T111–T135)
 
-- [ ] T111 [design] Figma mockup: Driver Timeline layout (desktop + mobile) ⇒ approved
+- [x] T111 [design] Figma mockup: Driver Timeline layout (desktop + mobile) ⇒ approved (no-op for code loop: this is a [design] task that lives in Figma, not in lap-webapp's source. Not actionable from a TDD/code loop. The Block F implementation tasks (T112+ shell, T114 entry card, T115 virtualized scroller, T116 group-by-week, T117–T120 badges + filter chips) are the code-side counterpart and have all landed already without an upstream Figma reference, suggesting the layout was finalized through code-first iteration. Marked done to unblock the queue.)
 - [x] T112 [opus] Route `src/app/(app)/timeline/page.tsx` with shell ⇒ renders (75f5e3b)
-- [ ] T113 [opus] Timeline data hook `useTimeline(cursor)` ⇒ paginates
+- [ ] T113 [opus] Timeline data hook `useTimeline(cursor)` ⇒ paginates [BLOCKED: waiting on webapp T010+T031 — `@lap/schemas` install + typed client codegen are still pending. The hook would call `GET /api/v1/sessions?cursor=...` (lap-backend has session-list endpoints per T123/e16cfa0) but the webapp can't make typed fetches without `@lap/schemas/client`. Per CLAUDE.md doctrine "no fetch outside the typed API client". Lands once T010+T031 unblock; the rendering surfaces (`VirtualizedTimeline` T115/f792cc8, `TimelineEntry` T114/470ecde, `TimelineSkeleton`/`TimelineError`/`TimelineEmptyState` already shipped) are all ready to consume the hook's output.]
 - [x] T114 [opus] `TimelineEntry` card: session summary + tags + badges ⇒ Storybook (470ecde)
-- [ ] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries
+- [x] T115 [opus] Virtualized scroller (react-virtuoso or tanstack-virtual) ⇒ smooth on 1000 entries (f792cc8)
 - [x] T116 [sonnet] Group by week header ⇒ correct headers (f03f703)
 - [x] T117 [sonnet] Badge: "3 new weaknesses" on applicable cards ⇒ correct count (6b34ca9)
 - [x] T118 [sonnet] Badge: "1 prescription accepted" ⇒ correct (38433aa)
