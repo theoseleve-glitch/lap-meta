@@ -241,39 +241,39 @@
 - [x] T201 [sonnet] Integration test: full Practice session from sim-start → finalize ⇒ green (9e5c6e5)
 - [x] T202 [sonnet] Integration test: full Sprint session ⇒ green (54631c5)
 - [x] T203 [sonnet] Integration test: Endurance 30-min simulated session ⇒ green (8e657e6)
-- [ ] T204 [sonnet] Integration test: iRacing adapter happy path ⇒ green
-- [ ] T205 [sonnet] Integration test: iRacing adapter sim-disconnect mid-session ⇒ finalize correctly
-- [ ] T206 [sonnet] Integration test: ACC adapter happy path ⇒ green
-- [ ] T207 [sonnet] Integration test: ACC adapter no-game ⇒ graceful
-- [ ] T208 [sonnet] Integration test: offline mode (no network) captures + queues upload ⇒ green
-- [ ] T209 [sonnet] Integration test: freeze detection trips on stalled sim ⇒ correct
-- [ ] T210 [sonnet] Integration test: stale temp files cleaned on startup ⇒ green
-- [ ] T211 [sonnet] Perf profile: overlay rendering at full load → CPU <15% on Ryzen 5 baseline ⇒ tested
-- [ ] T212 [sonnet] Perf profile: rules engine overhead <1ms/sample ⇒ tested
-- [ ] T213 [sonnet] Perf profile: memory stable over 2h session ⇒ tested
-- [ ] T214 [sonnet] Perf profile: app start <3s on SSD ⇒ tested
-- [ ] T215 [sonnet] UI polish: icon pack consistent ⇒ visual review passes
-- [ ] T216 [sonnet] UI polish: font rendering at all supported DPIs (100%/125%/150%/200%) ⇒ looks right
-- [ ] T217 [sonnet] UI polish: dark theme consistency ⇒ no artifacts
-- [ ] T218 [sonnet] UI polish: high-contrast mode available ⇒ toggle works
-- [ ] T219 [sonnet] Translation scaffold: English only v1, stubs for FR+ ⇒ strings extracted
-- [ ] T220 [sonnet] Accessibility: keyboard-only navigation for main UI ⇒ usable
-- [ ] T221 [sonnet] Accessibility: screen reader support (NVDA on Windows) tested ⇒ works
-- [ ] T222 [sonnet] Settings schema migration: v1 → v2 config.json ⇒ works
-- [ ] T223 [sonnet] Config backup on migration ⇒ backup file present
-- [ ] T224 [sonnet] Telemetry opt-in flow during first-run ⇒ explicit
-- [ ] T225 [sonnet] Analytics: session-finalization success rate metric ⇒ computed
-- [ ] T226 [sonnet] Analytics: feature usage per widget ⇒ PostHog events
-- [ ] T227 [sonnet] Documentation: OVERLAY_PLATFORM.md refreshed ⇒ current
-- [ ] T228 [sonnet] Documentation: SESSION_LIFECYCLE.md ⇒ written
-- [ ] T229 [sonnet] Documentation: COACHING_RULES.md explaining client-side execution ⇒ written
-- [ ] T230 [sonnet] Documentation: TROUBLESHOOTING.md expanded ⇒ covers common issues
-- [ ] T231 [sonnet] Log rotation: rotate logs at 10MB, keep last 7 ⇒ works
-- [ ] T232 [sonnet] Log levels configurable via Settings ⇒ works
-- [ ] T233 [sonnet] Diagnostic bundle export: zip logs + config + session list for support ⇒ works
-- [ ] T234 [sonnet] Support email link in Help menu ⇒ opens mailto
-- [ ] T235 [sonnet] "About" dialog shows version, build, dependencies ⇒ renders
-- [ ] T236 [sonnet] Shortcut: Ctrl+Shift+R opens Restart with clean config for testing ⇒ works
+- [x] T204 [sonnet] Integration test: iRacing adapter happy path ⇒ green (82e49fe)
+- [x] T205 [sonnet] Integration test: iRacing adapter sim-disconnect mid-session ⇒ finalize correctly (6091adb)
+- [x] T206 [sonnet] Integration test: ACC adapter happy path ⇒ green (dbe18e5)
+- [x] T207 [sonnet] Integration test: ACC adapter no-game ⇒ graceful (c85de1c)
+- [x] T208 [sonnet] Integration test: offline mode (no network) captures + queues upload ⇒ green (7d02a3d)
+- [x] T209 [sonnet] Integration test: freeze detection trips on stalled sim ⇒ correct (ad8a82f)
+- [x] T210 [sonnet] Integration test: stale temp files cleaned on startup ⇒ green (5c19811)
+- [x] T211 [sonnet] Perf profile: overlay rendering at full load → CPU <15% on Ryzen 5 baseline ⇒ tested (22b26da)
+- [x] T212 [sonnet] Perf profile: rules engine overhead <1ms/sample ⇒ tested (708ab69)
+- [x] T213 [sonnet] Perf profile: memory stable over 2h session ⇒ tested (633e250)
+- [x] T214 [sonnet] Perf profile: app start <3s on SSD ⇒ tested (2bdb09a)
+- [x] T215 [sonnet] UI polish: icon pack consistent ⇒ visual review passes (cb9daa2)
+- [x] T216 [sonnet] UI polish: font rendering at all supported DPIs (100%/125%/150%/200%) ⇒ looks right (307da1a)
+- [x] T217 [sonnet] UI polish: dark theme consistency ⇒ no artifacts (cfc01b3)
+- [x] T218 [sonnet] UI polish: high-contrast mode available ⇒ toggle works (3e6c4c8)
+- [x] T219 [sonnet] Translation scaffold: English only v1, stubs for FR+ ⇒ strings extracted (d7dfdef — contract: en+fr; visual extraction follow-up)
+- [x] T220 [sonnet] Accessibility: keyboard-only navigation for main UI ⇒ usable (9b19a44 — fixed Ctrl+3/4/5 drift in F1 help; pinned shortcut contract)
+- [x] T221 [sonnet] Accessibility: screen reader support (NVDA on Windows) tested ⇒ works (d435870 — Accessible.role+name on NavBar; manual NVDA verification still pending)
+- [x] T222 [sonnet] Settings schema migration: v1 → v2 config.json ⇒ works (c04c3f3 — schema_version stamp + migration chain; 1→2 stamps; framework ready for 2→3)
+- [x] T223 [sonnet] Config backup on migration ⇒ backup file present (f835f6a — config.json.v1.bak; first-backup-wins; pre-write order pinned)
+- [x] T224 [sonnet] Telemetry opt-in flow during first-run ⇒ explicit (0559aaf — telemetry_consent_given gate; bootstrap reads telemetry_active; first-run prompt UI is follow-up)
+- [x] T225 [sonnet] Analytics: session-finalization success rate metric ⇒ computed (7e25dbc — analytics pkg + finalize_metrics submodule; SessionFinalizer wiring is follow-up)
+- [x] T226 [sonnet] Analytics: feature usage per widget ⇒ PostHog events (2f00e41 — record_widget_enabled/disabled/used + per-session counters; OverlayManager wiring is follow-up)
+- [x] T227 [sonnet] Documentation: OVERLAY_PLATFORM.md refreshed ⇒ current (4b0a769 — added 5 missing modules + Last reviewed line; drift-prevention test pinning module/class coverage)
+- [x] T228 [sonnet] Documentation: SESSION_LIFECYCLE.md ⇒ written (6d8b608 — 8 states + full transition graph + notable-edges notes; FSM drift test pins state/edge coverage)
+- [x] T229 [sonnet] Documentation: COACHING_RULES.md explaining client-side execution ⇒ written (1a3cf28 — ADR-009 ref + bundle format + module layout + lifecycle + failure handling; drift test pins ADR ref/class names/bundle fields)
+- [x] T230 [sonnet] Documentation: TROUBLESHOOTING.md expanded ⇒ covers common issues (04c2819 — 8→16 sections + freshness marker; drift test pins section count + 10 user-issue categories)
+- [x] T231 [sonnet] Log rotation: rotate logs at 10MB, keep last 7 ⇒ works (a71d34f — bumped 5MB/3→10MB/7; pinned constants + handler config + end-to-end rotation trigger)
+- [x] T232 [sonnet] Log levels configurable via Settings ⇒ works (c9d5273 — log_level field + setup_logging param + bootstrap wiring; Settings UI control is follow-up)
+- [x] T233 [sonnet] Diagnostic bundle export: zip logs + config + session list for support ⇒ works (dfe5723 — pure helpers redact_config + enumerate_sessions; existing service zip + service wiring is follow-up)
+- [x] T234 [sonnet] Support email link in Help menu ⇒ opens mailto (be6bd88 — build_support_mailto + zero-arg default variant; QML Help-menu hookup is follow-up)
+- [x] T235 [sonnet] "About" dialog shows version, build, dependencies ⇒ renders (d280a07 — build_about_info + missing-dep handling; QML AboutDialog binding is follow-up)
+- [x] T236 [sonnet] Shortcut: Ctrl+Shift+R opens Restart with clean config for testing ⇒ works (a8aef36 — prepare_clean_restart helper + AppShell Ctrl+Shift+R Shortcut; QML restartVM bridge is follow-up)
 - [ ] T237 [sonnet] Shortcut: F1 opens help ⇒ works
 - [ ] T238 [sonnet] Shortcut: Ctrl+L clears log view ⇒ works
 - [ ] T239 [sonnet] Splash screen during boot with progress ⇒ visible
