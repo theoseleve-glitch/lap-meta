@@ -1,22 +1,22 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T03:42Z (Cycle #199 — IDLE 45th consecutive + backend hold 138 UNCHANGED)
+## Last updated: 2026-04-26T03:54Z (Cycle #200 — IDLE 46th consecutive + backend hold 141 · 200-CYCLE MILESTONE)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 404c582 (M2/T022) | f005d57 (T122 pre-cascade) | **HELD 138 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 19** (T001-T011 driver UX + T012-T015 admin/ops + T019-T022 Bridge Links CRUD+revoke) |
+| lap-backend | 8dc92ee (M2/T025) | f005d57 (T122 pre-cascade) | **HELD 141 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 22** (T001-T011 driver UX + T012-T015 admin/ops + T019-T025 Bridge Links: CRUD+revoke+rating+RLS+GIN index) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
 | lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
 | datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (190 cycles)
+## Cumulative (200 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos (36-cycle idle streak — no new reviews since c154)
-- Reverts (cumulative): **7** (~0.74% rate over 190 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (46-cycle idle streak — no new reviews since c154)
+- Reverts (cumulative): **7** (~0.70% rate over 200 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -87,7 +87,8 @@
 - **c196**: IDLE 42nd consecutive; backend hold +3 to 133 (M2/T012-T014 admin/ops including rate limits).
 - **c197**: IDLE 43rd consecutive; backend hold +1 to 134 (M2/T015 schemathesis zero-drift pin).
 - **c198**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links CRUD+revoke).
-- **c199 (this cycle)**: IDLE 45th consecutive; **backend hold UNCHANGED at 138** — 2nd non-advancing backend cycle in this idle streak (first c190).
+- **c199**: IDLE 45th consecutive; backend hold UNCHANGED at 138 (2nd non-advancing backend cycle).
+- **c200 (this cycle)**: IDLE 46th consecutive; backend hold +3 to 141 (M2/T023 thumbs rating + T024 bridge RLS test + T025 GIN divergence_points index). 200-cycle milestone; idle streak ~11.5 hours wall-clock.
 
 ## Review loop state
 
