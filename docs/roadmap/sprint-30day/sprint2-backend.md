@@ -63,7 +63,7 @@
 - [x] T046 [sonnet] `GET /api/v1/bridge/suggest_links?session_id=X` returns candidate pairs by track + car class + 60-day window ⇒ tested — sha: 977cd74
 - [x] T047 [sonnet] Suggest ordering: most-similar-track first, then recency ⇒ tested — sha: b481404
 - [x] T048 [sonnet] Suggest cache: 1h TTL per session ⇒ tested — sha: a976580
-- [ ] T049 [sonnet] Algorithm fallback: if channel missing in one session, flag "partial-comparison" and exclude that channel ⇒ tested
+- [x] T049 [sonnet] Algorithm fallback: if channel missing in one session, flag "partial-comparison" and exclude that channel ⇒ tested — sha: af19bc1
 - [ ] T050 [sonnet] Algorithm tests against archived Sebring-sim + Sebring-real pair in LapCoachLogger_sessions/ ⇒ produces sensible output
 
 ## Block D — Cohort benchmarks (T051–T065)
