@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T01:42Z (Cycle #189 — IDLE 35th consecutive + backend hold 119; M1 wrap-up signal — CHANGELOG + README onboarding)
+## Last updated: 2026-04-26T01:54Z (Cycle #190 — IDLE 36th consecutive + backend hold 119 UNCHANGED · M1 backend sprint complete · 190-cycle mark)
 
 ## Per-repo status (HEAD as of c154 push)
 
@@ -13,10 +13,10 @@
 | lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
 | datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (180 cycles)
+## Cumulative (190 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos (26-cycle idle streak — no new reviews since c154)
-- Reverts (cumulative): **7** (~0.78% rate over 180 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (36-cycle idle streak — no new reviews since c154)
+- Reverts (cumulative): **7** (~0.74% rate over 190 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -77,7 +77,8 @@
 - **c186**: IDLE 32nd consecutive; backend hold to 110 (T228-T231 hardening: redoc + schemathesis + k6).
 - **c187**: IDLE 33rd consecutive; backend hold to 114 (T232-T235 SLO+dep+sec+backups).
 - **c188**: IDLE 34th consecutive; backend hold to 117 (T236 restore-test + T237 flags + T238 v1/v2 versioning).
-- **c189 (this cycle)**: IDLE 35th consecutive; backend hold to 119 (T239 CHANGELOG with M1 entries + T240 README onboarding with mermaid arch diagram). **M1 wrap-up signal** — sprint loop adding project documentation suggests Milestone 1 closing on backend.
+- **c189**: IDLE 35th consecutive; backend hold to 119 (T239 CHANGELOG + T240 README); M1 wrap-up signal.
+- **c190 (this cycle)**: IDLE 36th consecutive; **backend hold UNCHANGED at 119** — first non-advancing backend cycle in this idle streak. Confirms **M1 backend sprint complete** at T240. 190-cycle mark; idle streak ~9 hours wall-clock.
 
 ## Review loop state
 
