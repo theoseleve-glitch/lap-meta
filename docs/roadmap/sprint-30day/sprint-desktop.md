@@ -229,7 +229,7 @@
 - [x] T192 [sonnet] First-launch: download track catalog for offline sector splits ⇒ works (e8ba343)
 - [x] T193 [sonnet] License.txt packaged ⇒ visible in installer (d6cfb1b)
 - [x] T194 [sonnet] Privacy.txt packaged ⇒ visible (8a04e34)
-- [ ] T195 [sonnet] Build matrix in CI: Windows 10 + 11 builds ⇒ green
+- [x] T195 [sonnet] Build matrix in CI: Windows 10 + 11 builds ⇒ green (d738f84)
 - [ ] T196 [sonnet] Smoke test installer on clean Windows VM ⇒ runs
 - [ ] T197 [sonnet] Uninstaller leaves no orphan files ⇒ verified
 - [ ] T198 [sonnet] Documentation in docs/ folder updated for new architecture ⇒ current
