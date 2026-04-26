@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T01:30Z (Cycle #188 — IDLE 34th consecutive + backend hold 117; restore-test + feature flags + API versioning)
+## Last updated: 2026-04-26T01:42Z (Cycle #189 — IDLE 35th consecutive + backend hold 119; M1 wrap-up signal — CHANGELOG + README onboarding)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 8a0102b (T238) | f005d57 (T122 pre-cascade) | **HELD 117 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T238 coaching + e2e + API docs + contract/load tests + ops hardening + restore-test + feature flags + v1/v2 versioning (59 normal incl T204) |
+| lap-backend | 07604cb (T240) | f005d57 (T122 pre-cascade) | **HELD 119 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T240 full M1 surface incl coaching chain + hardening + ops + project docs (61 normal incl T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -76,7 +76,8 @@
 - **c185**: IDLE 31st consecutive; backend hold to 105 (T223-T227 polish + e2e test + openapi/swagger).
 - **c186**: IDLE 32nd consecutive; backend hold to 110 (T228-T231 hardening: redoc + schemathesis + k6).
 - **c187**: IDLE 33rd consecutive; backend hold to 114 (T232-T235 SLO+dep+sec+backups).
-- **c188 (this cycle)**: IDLE 34th consecutive; backend hold to 117 (T236 restore-from-backup with moto round-trip test + T237 env feature flags + T238 v1 lock + v2 router scaffold).
+- **c188**: IDLE 34th consecutive; backend hold to 117 (T236 restore-test + T237 flags + T238 v1/v2 versioning).
+- **c189 (this cycle)**: IDLE 35th consecutive; backend hold to 119 (T239 CHANGELOG with M1 entries + T240 README onboarding with mermaid arch diagram). **M1 wrap-up signal** — sprint loop adding project documentation suggests Milestone 1 closing on backend.
 
 ## Review loop state
 
