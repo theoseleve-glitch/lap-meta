@@ -93,7 +93,7 @@
 - [ ] T074 [sonnet] Share action: generate share link via backend ⇒ works [BLOCKED: waiting on lap-backend — no share-link endpoint exists in lap-backend's sprint (grep for `share.*session` / `sessions/:id/share` returns zero matches). A share endpoint also needs an authorization model decision (public link vs. signed-URL with TTL vs. cohort-scoped) which is unspecified in ADR-005 and ADR-007. UI surface ready (T067 `onShare` callback + `pendingAction="share"` state); endpoint + auth-model decision + typed client (T031) needed.]
 - [x] T075 [sonnet] Loading states for each tab: skeleton screens ⇒ tested (127e793)
 - [x] T076 [sonnet] Error states for each tab: retry button ⇒ tested (751ab7e)
-- [ ] T077 [sonnet] Suspense boundaries at tab level for streaming ⇒ experimental
+- [x] T077 [sonnet] Suspense boundaries at tab level for streaming ⇒ experimental (3db3759)
 - [ ] T078 [sonnet] Storybook stories for SessionDetailShell ⇒ renders
 - [ ] T079 [sonnet] Storybook stories for each tab ⇒ render with mock data
 - [ ] T080 [sonnet] E2E test: navigate between tabs, delete session, verify redirect ⇒ green
