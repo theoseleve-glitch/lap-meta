@@ -17,7 +17,7 @@
 - [x] T007 [codex] Move `src/lib/api/**` → new repo ⇒ imports resolve (29ffe70)
 - [x] T008 [codex] Move `src/lib/hooks/**` → new repo ⇒ imports resolve (19b0803)
 - [x] T009 [codex] Remove marketing routes from webapp (they stay in `lap-website`) ⇒ no `/marketing/` dir (no-op: webapp seeded clean, never had marketing routes)
-- [ ] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works [BLOCKED: waiting on lap-backend T045 — TS codegen pipeline; lap-schemas/typescript/ is empty (no package.json)]
+- [x] T010 [opus] Install `@lap/schemas` from workspace ⇒ import works (ef45fd2)
 - [x] T011 [sonnet] Configure next.config.mjs for `app.lap-coach.racing` subdomain + strict CSP ⇒ deploys (33cde90)
 - [x] T012 [codex] Re-enable TS + ESLint checks in next build (remove audit's bypass) ⇒ `next build` strict (no-op: T001 scaffold never carried the audit's `eslint.ignoreDuringBuilds` / `typescript.ignoreBuildErrors` bypass)
 - [x] T013 [codex] Setup ESLint with next/core-web-vitals + strict TS rules ⇒ lint green (bac7b0c)
