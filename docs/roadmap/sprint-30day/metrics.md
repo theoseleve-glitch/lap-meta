@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T03:18Z (Cycle #197 — IDLE 43rd consecutive + backend hold 134; M2/T015 schemathesis zero-drift pin)
+## Last updated: 2026-04-26T03:30Z (Cycle #198 — IDLE 44th consecutive + backend hold 138; M2/T019-T022 Bridge Links sharing feature)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | dfd0c0d (M2/T015) | f005d57 (T122 pre-cascade) | **HELD 134 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 15** (T001-T011 driver UX + T012-T014 admin/ops + T015 schemathesis zero-drift pin) |
+| lap-backend | 404c582 (M2/T022) | f005d57 (T122 pre-cascade) | **HELD 138 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 19** (T001-T011 driver UX + T012-T015 admin/ops + T019-T022 Bridge Links CRUD+revoke) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -85,7 +85,8 @@
 - **c194**: IDLE 40th consecutive; backend hold +1 to 128 (M2/T009 skills drilldown).
 - **c195**: IDLE 41st consecutive; backend hold +2 to 130 (M2/T010 session-coaching + T011 flag URL).
 - **c196**: IDLE 42nd consecutive; backend hold +3 to 133 (M2/T012-T014 admin/ops including rate limits).
-- **c197 (this cycle)**: IDLE 43rd consecutive; backend hold +1 to 134 (M2/T015 schemathesis zero-drift contract pin — tightens M1/T229's contract test to fail on any spec deviation).
+- **c197**: IDLE 43rd consecutive; backend hold +1 to 134 (M2/T015 schemathesis zero-drift pin).
+- **c198 (this cycle)**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links: create + read + paginated list + revoke). Driver-to-coach sharing surface. Note T016-T018 not in batch (possibly squashed/reserved).
 
 ## Review loop state
 
