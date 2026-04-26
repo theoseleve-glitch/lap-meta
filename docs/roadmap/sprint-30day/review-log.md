@@ -5611,3 +5611,28 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-25T23:54:00Z — Cycle #180 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 88 · 180-cycle mark**
+
+### lap-backend (HEAD 74574eb local; held 88) — CASCADE +2
+- 88 ahead, +2 since c179: T208 (WeaknessEpisode opener with dedup, dad031c) + T209 (nightly WeaknessEpisode confidence decay, 74574eb).
+- WeaknessEpisode is one of the ADR-005 aggregates — backend now wiring CoachingInsight → WeaknessEpisode aggregation. T208 opens new episodes (with dedup so the same weakness doesn't spawn duplicate episodes), T209 ages existing episodes (confidence decays without supporting evidence). Lifecycle: open → confirm via insights → decay → close.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 180 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 88 (+2).
+
+### 180-cycle cumulative
+
+- Total reviewed: ~754+ sprint commits (26-cycle idle streak — no new reviews since c154)
+- Reverts: **7** (~0.78% over 180 cycles, decreasing)
+- Active cascades: **1** (T104 → backend held 88)
+- Forced-checkpoint surface within hold: **12 commits** (T155-T165 billing 11 + T204 signed-bundle crypto 1)
+- Idle streak: **26 consecutive** for review repos (~6.5 hours wall-clock)
+- Coherent backend batches accumulated: **3** (billing T155-T165, observability T166-T179, coaching engine+rules+API+lifecycle T180-T209 = 30 commits)
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 180 — IDLE (26th consecutive) + backend hold 88 (T208-T209 WeaknessEpisode lifecycle) · 180-cycle mark` + review-log.md + metrics.md.
+
+---
+

@@ -1,22 +1,22 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-25T23:42Z (Cycle #179 — IDLE 25th consecutive + backend hold 86)
+## Last updated: 2026-04-25T23:54Z (Cycle #180 — IDLE 26th consecutive + backend hold 88; 180-cycle mark)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | f3c7f53 (T207) | f005d57 (T122 pre-cascade) | **HELD 86 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (T155-T165 billing 11 + T204 signed-bundle crypto 1); T180-T200 braking-pillar (21 normal); T201-T207 coaching API + flag aggregation (incl T204 forced-checkpoint) |
+| lap-backend | 74574eb (T209) | f005d57 (T122 pre-cascade) | **HELD 88 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (T155-T165 billing 11 + T204 signed-bundle crypto 1); T180-T209 coaching engine + braking-pillar + API + WeaknessEpisode lifecycle (30 commits incl forced-checkpoint T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
 | lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
 | datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (170 cycles)
+## Cumulative (180 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos (16-cycle idle streak — no new reviews since c154)
-- Reverts (cumulative): **7** (~0.85% rate over 170 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (26-cycle idle streak — no new reviews since c154)
+- Reverts (cumulative): **7** (~0.78% rate over 180 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -67,7 +67,8 @@
 - **c176**: IDLE 22nd consecutive; backend hold +3 to 79; braking-pillar arc T180-T200 closed (21 commits).
 - **c177**: IDLE 23rd consecutive; backend hold +2 to 81 (T201 admin simulate + T202 public listing).
 - **c178**: IDLE 24th consecutive; backend hold +3 to 84 (T203 + **T204 signed-bundle crypto forced-checkpoint** + T205); checkpoint surface 11→12 commits.
-- **c179 (this cycle)**: IDLE 25th consecutive; backend hold +2 to 86 (T206 flag aggregation + admin surface + T207 persist run_rules output). User-feedback loop closing — flags now cross-referenceable to specific insights.
+- **c179**: IDLE 25th consecutive; backend hold +2 to 86 (T206 flag aggregation + T207 persist run_rules output).
+- **c180 (this cycle)**: IDLE 26th consecutive; backend hold +2 to 88 (T208 WeaknessEpisode opener with dedup + T209 nightly confidence decay). 180-cycle mark; idle streak ~6.5 hours wall-clock; 3 coherent backend batches accumulated (billing 11 + observability 14 + coaching 30).
 
 ## Review loop state
 
