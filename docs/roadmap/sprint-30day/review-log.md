@@ -5636,3 +5636,19 @@ User explicit "go on" — interpreting as authorization to continue current casc
 
 ---
 
+## 2026-04-26T00:06:00Z — Cycle #181 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 90 + Prescription surface opening**
+
+### lap-backend (HEAD 405c8e0 local; held 90) — CASCADE +2
+- 90 ahead, +2 since c180: T210 (dedup recurrence counter on session_id, b3ee572) + T211 (**Prescription generator skeleton**, 405c8e0).
+- T210 finishes WeaknessEpisode tooling (per-session recurrence counter for dedup logic). T211 opens **next ADR-005 aggregate**: ActionPrescription generator. Backend now climbing the ADR-005 chain: insight → episode → prescription.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 181 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 90 (+2).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 181 — IDLE (27th consecutive) + backend hold 90 (T210 dedup counter + T211 Prescription generator skeleton)` + review-log.md + metrics.md (header only).
+
+---
+
