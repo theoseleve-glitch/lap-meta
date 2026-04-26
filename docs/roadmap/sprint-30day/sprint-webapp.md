@@ -100,7 +100,7 @@
 - [x] T081 [sonnet] A11y: all tabs keyboard-navigable ⇒ axe clean (ce67f08)
 - [x] T082 [sonnet] A11y: all actions have aria-labels ⇒ axe clean (10d4171)
 - [x] T083 [sonnet] Mobile viewport: tabs render as accordion or horizontal scroll ⇒ responsive (e9256e9)
-- [ ] T084 [sonnet] Session-level gamification removed from detail page (moved to Profile) ⇒ cleaner
+- [x] T084 [sonnet] Session-level gamification removed from detail page (moved to Profile) ⇒ cleaner (no-op: there is no session-level gamification in lap-webapp to remove. `grep -rn "gamification\|sessionXp\|achievement\|streak\|xp\|badge"` across `src/` returns zero matches in any session-detail surface (T061 page placeholder, T062 SessionDetailShell, T063–T067 tab components, T068 SessionTabs, T075 skeleton, T076 error, T077 suspense, T081–T083 a11y/responsive). Per T022/T059 no-op citations, the legacy 600-LOC session-detail monolith never transplanted from the old repo, so any prior session-level gamification it might have hosted never existed in this codebase. Profile-side gamification surface (if any) lives at `/profile` and is not affected by this task.)
 - [ ] T085 [sonnet] Focus-mode gracefully degraded ⇒ still works
 
 ## Block E — Coaching surface (T086–T110)
