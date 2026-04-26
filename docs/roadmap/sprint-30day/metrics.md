@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T03:30Z (Cycle #198 — IDLE 44th consecutive + backend hold 138; M2/T019-T022 Bridge Links sharing feature)
+## Last updated: 2026-04-26T03:42Z (Cycle #199 — IDLE 45th consecutive + backend hold 138 UNCHANGED)
 
 ## Per-repo status (HEAD as of c154 push)
 
@@ -86,7 +86,8 @@
 - **c195**: IDLE 41st consecutive; backend hold +2 to 130 (M2/T010 session-coaching + T011 flag URL).
 - **c196**: IDLE 42nd consecutive; backend hold +3 to 133 (M2/T012-T014 admin/ops including rate limits).
 - **c197**: IDLE 43rd consecutive; backend hold +1 to 134 (M2/T015 schemathesis zero-drift pin).
-- **c198 (this cycle)**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links: create + read + paginated list + revoke). Driver-to-coach sharing surface. Note T016-T018 not in batch (possibly squashed/reserved).
+- **c198**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links CRUD+revoke).
+- **c199 (this cycle)**: IDLE 45th consecutive; **backend hold UNCHANGED at 138** — 2nd non-advancing backend cycle in this idle streak (first c190).
 
 ## Review loop state
 
