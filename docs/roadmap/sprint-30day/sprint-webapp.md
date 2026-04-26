@@ -128,8 +128,8 @@
 - [x] T106 [sonnet] Coaching view responsive ⇒ mobile works (e3f826d)
 - [x] T107 [sonnet] Toast notifications on accept/skip ⇒ visible, dismissable (d98ac30)
 - [x] T108 [sonnet] Keyboard shortcuts: `A` accept focused, `S` skip ⇒ works (886f51a)
-- [ ] T109 [sonnet] PostHog events fired on accept/skip/flag ⇒ visible in PostHog
-- [ ] T110 [sonnet] Analytics: coaching acceptance rate dashboard widget spec ⇒ documented
+- [ ] T109 [sonnet] PostHog events fired on accept/skip/flag ⇒ visible in PostHog [BLOCKED: waiting on T094/T095/T096 — accept/skip/flag mutation handlers don't exist yet (BLOCKED on webapp T010+T031 typed client; lap-backend T205/T215/T216 endpoints are shipped). Without those handlers there is nowhere to call `posthog.capture(...)`. The webapp's PostHog SDK is initialized via `initObservability` (T229/c352c1f for query-keys, T230 for the provider) but no event-capture helper or event-name registry exists. Lands in the same iteration as T094-T096; spec for the events themselves is T110 (also BLOCKED).]
+- [ ] T110 [sonnet] Analytics: coaching acceptance rate dashboard widget spec ⇒ documented [BLOCKED: waiting on T109 — the widget spec depends on (a) event names + property shapes that T109 will emit (`coaching_prescription_accepted`/`coaching_prescription_skipped`/`coaching_insight_flagged`), (b) actual event flow data so the acceptance-rate metric formula can be calibrated against real numerator/denominator semantics, (c) PostHog project provisioning (project ID, dashboard host) which is not yet documented in lap-webapp's env. Pre-emptive widget spec authored now would harden field shapes before T109 implements them, risking rot. Lands together with T109.]
 
 ## Block F — Driver Timeline page (T111–T135)
 
