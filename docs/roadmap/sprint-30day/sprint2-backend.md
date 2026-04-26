@@ -54,7 +54,7 @@
 - [x] T037 [opus] Intensity match algorithm: peak + integral ratios per channel ⇒ returns 0-1 score — sha: 0a2fe64
 - [x] T038 [opus] Intensity match validation: identical sessions = 1.0, scaled sessions = 0.8 ⇒ tested — sha: f463e12
 - [x] T039 [opus] Divergence detection: scan per-corner for shape ≥0.9 but intensity ≤0.6 → "same shape, different intensity" divergence ⇒ tested — sha: 7428be8
-- [ ] T040 [opus] Divergence detection: scan for shape ≤0.5 → "different technique" divergence ⇒ tested
+- [x] T040 [opus] Divergence detection: scan for shape ≤0.5 → "different technique" divergence ⇒ tested — sha: af6a3ee
 - [ ] T041 [opus] Divergence point serialization: corner tag + metric + sim_value + real_value + divergence_type ⇒ persisted
 - [ ] T042 [opus] Transferred-skills extraction: skills (dimensions) where both shape + intensity ≥0.85 ⇒ listed
 - [ ] T043 [opus] Non-transferred-skills extraction: dimensions where shape <0.7 OR intensity <0.5 ⇒ listed
