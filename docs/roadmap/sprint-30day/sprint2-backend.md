@@ -41,7 +41,7 @@
 - [x] T027 [sonnet] Link dedup: same pair can't be linked twice ⇒ 409 on conflict — sha: 81501e9
 - [x] T028 [sonnet] Backend generates `CoachingInsight` when a link is created (transfer findings) ⇒ persisted — sha: 433b012
 - [x] T029 [sonnet] Link lifecycle: marked `stale` if a referenced session is deleted ⇒ tested — sha: 2c0de5e (lap-schemas: f12ce69)
-- [ ] T030 [sonnet] Bulk link operations: batch create for migration/import ⇒ tested
+- [x] T030 [sonnet] Bulk link operations: batch create for migration/import ⇒ tested — sha: f841880 (lap-schemas: 68a5664)
 
 ## Block C — Bridge algorithms (T031–T050)
 
