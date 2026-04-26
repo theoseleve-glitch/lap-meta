@@ -57,7 +57,7 @@
 - [x] T040 [opus] Divergence detection: scan for shape ≤0.5 → "different technique" divergence ⇒ tested — sha: af6a3ee
 - [x] T041 [opus] Divergence point serialization: corner tag + metric + sim_value + real_value + divergence_type ⇒ persisted — sha: cdf10ad
 - [x] T042 [opus] Transferred-skills extraction: skills (dimensions) where both shape + intensity ≥0.85 ⇒ listed — sha: 1f6413b
-- [ ] T043 [opus] Non-transferred-skills extraction: dimensions where shape <0.7 OR intensity <0.5 ⇒ listed
+- [x] T043 [opus] Non-transferred-skills extraction: dimensions where shape <0.7 OR intensity <0.5 ⇒ listed — sha: dc7d7ca
 - [ ] T044 [opus] Bridge algorithm performance: process a pair in <5s ⇒ benchmarked
 - [ ] T045 [opus] Bridge algorithm deterministic: same input = same output ⇒ test
 - [ ] T046 [sonnet] `GET /api/v1/bridge/suggest_links?session_id=X` returns candidate pairs by track + car class + 60-day window ⇒ tested
