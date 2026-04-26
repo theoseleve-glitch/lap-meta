@@ -94,7 +94,7 @@
 - [x] T075 [sonnet] Loading states for each tab: skeleton screens ⇒ tested (127e793)
 - [x] T076 [sonnet] Error states for each tab: retry button ⇒ tested (751ab7e)
 - [x] T077 [sonnet] Suspense boundaries at tab level for streaming ⇒ experimental (3db3759)
-- [ ] T078 [sonnet] Storybook stories for SessionDetailShell ⇒ renders
+- [x] T078 [sonnet] Storybook stories for SessionDetailShell ⇒ renders (8971fb7) — initial 4-variant file shipped at T062/c3abe14; this commit replaces inline legacy proxies with real `SessionActionsBar` (T067) + `SessionTabs` (T068) and adds a `FullProductionLayout` story for the canonical composition.
 - [ ] T079 [sonnet] Storybook stories for each tab ⇒ render with mock data
 - [ ] T080 [sonnet] E2E test: navigate between tabs, delete session, verify redirect ⇒ green
 - [ ] T081 [sonnet] A11y: all tabs keyboard-navigable ⇒ axe clean
