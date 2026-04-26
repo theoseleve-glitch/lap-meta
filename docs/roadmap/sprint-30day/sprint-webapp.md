@@ -144,7 +144,7 @@
 - [x] T119 [sonnet] Badge: "Outcome achieved" green ⇒ correct (da3079f)
 - [x] T120 [sonnet] Filter chip: source (sim / real / all) ⇒ filter works (1dfa795)
 - [x] T121 [sonnet] Filter chip: track ⇒ works (8d07afb)
-- [ ] T122 [sonnet] Filter chip: car ⇒ works
+- [x] T122 [sonnet] Filter chip: car ⇒ works (2145c49)
 - [x] T123 [sonnet] Filter chip: date range picker ⇒ works (8dac3bc)
 - [x] T124 [sonnet] URL state sync: filters in query params ⇒ shareable URLs (538b89d)
 - [x] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered (455a6b4)
