@@ -5828,3 +5828,23 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-26T02:06:00Z — Cycle #191 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 122 + M2 STARTED**
+
+### lap-backend (HEAD d183302 local; held 122) — CASCADE +3 — M2 BEGINS
+- 122 ahead, +3 since c190: **M1→M2 transition** confirmed — sprint loop now using fresh M2 task IDs:
+  - T001 GET /api/v1/driver/timeline paginated with badges (afcd3af)
+  - T002 opaque sha-tagged cursor for /driver/timeline (6f9bbc3)
+  - T003 composable timeline filters (source, track, car, date) (d183302)
+- M2 opens with **driver timeline** — UX-facing feature for the driver-facing app (likely lap-mobile + lap-webapp consumers). Sha-tagged cursors are a clean pagination pattern (vs. offset, vs. opaque-string-with-no-context).
+- Note: T### namespace is per-milestone, not global. M1 T123-T240 ≠ M2 T001-T003 (118 + 3 = 121 commits past T122 baseline).
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 191 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 122 (M1 119 + M2 3).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 191 — IDLE (37th consecutive) + backend hold 122 (M2 starts: T001-T003 driver timeline + sha cursors + filters)` + review-log.md + metrics.md (header only).
+
+---
+
