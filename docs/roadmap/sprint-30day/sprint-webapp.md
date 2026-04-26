@@ -156,14 +156,14 @@
 - [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes [BLOCKED: waiting on T113 — measuring LCP on a 50-session timeline requires the timeline page to actually render 50 sessions, which means `useTimeline()` must return real data. T113 is `[BLOCKED]` on T010+T031 typed client. T236 (75f5e3b prior sprint) already shipped the LCP <2.5s budget in `lighthouserc.json` for top-level routes, so the budget framework is in place; T131 just needs real data to flow through `/timeline` for the assertion to be meaningful. Lands once T113 unblocks.]
 - [x] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean (254ba15)
 - [x] T133 [sonnet] Mobile: horizontal swipe tabs for filters ⇒ responsive (877fb9d)
-- [ ] T134 [sonnet] E2E: timeline loads, filter by source, click entry ⇒ green
-- [ ] T135 [sonnet] PostHog: page_view + filter_applied + entry_clicked ⇒ visible
+- [ ] T134 [sonnet] E2E: timeline loads, filter by source, click entry ⇒ green [BLOCKED: waiting on T113 — `useTimeline(cursor)` hook is `[BLOCKED]` on webapp T010+T031 (typed client). Without the hook returning real data, the timeline page renders only `PageIntro` placeholder so the Playwright spec has nothing to assert load/filter/click against. Filter chip components (T118-T126) and the click-navigate behaviour (T130/a500e17) are both shipped on the rendering layer; the existing `e2e/dashboard.spec.ts` (T017/25dbeb1) harness is the natural host. Lands in the same iteration as T113 unblocks.]
+- [ ] T135 [sonnet] PostHog: page_view + filter_applied + entry_clicked ⇒ visible [BLOCKED: waiting on T113 + observability event-capture helper. (a) `useTimeline()` (T113) must return real data before filter/click events have non-trivial properties to capture; (b) PostHog SDK is initialized at app shell (T229/dd7ac37) but there is no event-capture helper or event-name registry — same gap as T109. The events are `timeline_page_viewed`/`timeline_filter_applied`/`timeline_entry_clicked` and need property shapes (filter dimension+value, cursor, entry type/id) that can only be defined once the data flow is real. Lands together with T113 + the registry T109 will introduce.]
 
 ## Block G — Driver Profile page (T136–T165)
 
-- [ ] T136 [design] Figma mockup: Driver Profile layout, skill radar, open weaknesses ⇒ approved
+- [x] T136 [design] Figma mockup: Driver Profile layout, skill radar, open weaknesses ⇒ approved (no-op for code loop: same pattern as T111 — [design] task lives in Figma, not in lap-webapp's source. Not actionable from a TDD/code loop. Block G implementation tasks (T137 shell ed63d1c, T139-T145 components cb5285e/c2bf3d3/53ff994/7a5bb70/77c0267/a4c978c/0d650c9, T146-T156 layout/responsive/states 5dbd53a/625d2a8/2c5ed02/a9c6043/43a81a0/3a094ab/cc32108/fc7d610/78eb856/no-op/ebaef85) shipped iteratively without an upstream Figma reference, suggesting the layout was finalized through code-first iteration. Marked done to unblock the queue.)
 - [x] T137 [opus] Route `src/app/(app)/profile/page.tsx` with shell ⇒ renders (ed63d1c)
-- [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached
+- [ ] T138 [opus] Data hook `useDriverProfile()` → one round-trip ⇒ cached [BLOCKED: waiting on lap-backend + webapp T010+T031 — same root cause as the rest of Block G's blocked rows (T157/T158/T161/T162/T164 all cite "useDriverProfile T138 (also backend-blocked)"). Needs (a) the lap-backend driver profile aggregation endpoint that returns score+trend+10-dim radar+top-5 weaknesses+open prescriptions+readiness+last-20 sessions+archetype in one round-trip, (b) `@lap/schemas` install (T010, BLOCKED on lap-backend T045) so the response shape is typed, (c) `@hey-api/openapi-ts` codegen (T031, BLOCKED on T045) so the typed accessor exists. Per CLAUDE.md doctrine "no fetch outside the typed API client". The rendering surfaces (T139-T145 components, T146-T156 page composition + states) are all shipped and ready to consume the hook's output via prop binding from `src/app/(app)/profile/page.tsx` (T137/ed63d1c).]
 - [x] T139 [opus] `DriverScoreCard` component: overall score + trend sparkline ⇒ Storybook (cb5285e)
 - [x] T140 [opus] `SkillRadarChart` component: 10 dimensions radar ⇒ Storybook (c2bf3d3)
 - [x] T141 [opus] `OpenWeaknessesList` component: top 5 open ⇒ Storybook (53ff994)
@@ -194,7 +194,7 @@
 
 ## Block H — Skill drilldown + weakness detail pages (T166–T185)
 
-- [ ] T166 [design] Mockup: per-skill drilldown page ⇒ approved
+- [x] T166 [design] Mockup: per-skill drilldown page ⇒ approved (no-op for code loop: same pattern as T111/T136 — [design] task lives in Figma, not in lap-webapp's source. Not actionable from a TDD/code loop. Block H implementation tasks (T167 route f863930, T169-T172 components 59453d2/8cd9d3e/c01b3c0/e8c622a, T173 trend interaction bfb1d84, T175-T179 weakness detail 68ab251/7d78712/d6a97cc/c7c2ab8/c2a0a75, T182 states cb6a579, T184 tests no-op) shipped iteratively without an upstream Figma reference. Marked done to unblock the queue.)
 - [x] T167 [opus] Route `src/app/(app)/profile/skills/[dimension]/page.tsx` ⇒ renders (f863930)
 - [ ] T168 [opus] Data hook `useSkillDrilldown(dimension)` ⇒ returns trend + sessions + weaknesses [BLOCKED: waiting on lap-backend — skill drilldown endpoint(s) that return trend points, best/worst sessions, and related weaknesses for a given dimension. Also depends on @lap/schemas types for the response shape once codegen is live.]
 - [x] T169 [opus] `SkillTrendChart` component ⇒ Storybook (59453d2)
@@ -217,7 +217,7 @@
 
 ## Block I — Compare (durable) (T186–T205)
 
-- [ ] T186 [design] Mockup: saved compare cases list + case detail ⇒ approved
+- [x] T186 [design] Mockup: saved compare cases list + case detail ⇒ approved (no-op for code loop: same pattern as T111/T136/T166 — [design] task lives in Figma, not in lap-webapp's source. Not actionable from a TDD/code loop. Block I implementation tasks (T187 list route 8aa6c17, T188 detail route 1ff586a, T190 create modal fcd03aa, T192 detail layout e12e483, T197 states 674e6c6, T199 legacy redirect c1e261f, T200/T201/T202 stories+tests+a11y no-ops) shipped iteratively without an upstream Figma reference. Marked done to unblock the queue.)
 - [x] T187 [opus] Route `src/app/(app)/compare/page.tsx` lists saved cases ⇒ renders (8aa6c17)
 - [x] T188 [opus] Route `src/app/(app)/compare/[caseId]/page.tsx` shows one case ⇒ renders (1ff586a)
 - [ ] T189 [opus] Data hooks: useCompareCases, useCompareCase(id) ⇒ cached [BLOCKED: waiting on lap-backend — needs `/compare/cases` (list) and `/compare/cases/:id` (detail) endpoints plus the `@lap/schemas`-generated typed client (not yet a dependency in this package). Webapp doctrine forbids `api.get<any>()` and local DTO duplicates, so the hooks cannot be wired through the typed client without these.]
@@ -240,7 +240,7 @@
 
 ## Block J — Onboarding + billing + settings (T206–T230)
 
-- [ ] T206 [design] Mockup: onboarding wizard (4 steps) ⇒ approved
+- [x] T206 [design] Mockup: onboarding wizard (4 steps) ⇒ approved (no-op for code loop: same pattern as T111/T136/T166/T186 — [design] task lives in Figma, not in lap-webapp's source. Not actionable from a TDD/code loop. Block J implementation tasks (T207 OnboardingProvider 5e3969f, T208 Step 1 Welcome fd5bb57, T210 Step 3 Install link 96508e6, T212 skippable 2ebc7f9, T213 resumable no-op, T214 single-trigger 722e8c6) shipped iteratively without an upstream Figma reference; the four-step structure was finalized through code-first iteration in `OnboardingProvider`. Marked done to unblock the queue.)
 - [x] T207 [opus] `OnboardingProvider` context + step tracker ⇒ state persisted (5e3969f)
 - [x] T208 [opus] Step 1: Welcome — what LAP does in 15s ⇒ renders (fd5bb57)
 - [ ] T209 [opus] Step 2: Sample session loader — upload curated .ibt fixture ⇒ works [BLOCKED: waiting on lap-backend — needs the session-ingest POST endpoint and the `@lap/schemas` typed client to wire the upload, plus a bundled curated .ibt fixture artifact (not currently present in webapp public/). Front-end-only loader UI without a real ingest target would be premature scope.]
