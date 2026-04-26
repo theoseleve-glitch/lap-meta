@@ -127,7 +127,7 @@
 - [x] T105 [sonnet] Paginate if >10 prescriptions ⇒ tested (aeee9d1)
 - [x] T106 [sonnet] Coaching view responsive ⇒ mobile works (e3f826d)
 - [x] T107 [sonnet] Toast notifications on accept/skip ⇒ visible, dismissable (d98ac30)
-- [ ] T108 [sonnet] Keyboard shortcuts: `A` accept focused, `S` skip ⇒ works
+- [x] T108 [sonnet] Keyboard shortcuts: `A` accept focused, `S` skip ⇒ works (886f51a)
 - [ ] T109 [sonnet] PostHog events fired on accept/skip/flag ⇒ visible in PostHog
 - [ ] T110 [sonnet] Analytics: coaching acceptance rate dashboard widget spec ⇒ documented
 
