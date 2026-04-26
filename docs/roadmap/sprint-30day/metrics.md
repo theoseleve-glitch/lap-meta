@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T02:30Z (Cycle #193 — IDLE 39th consecutive + backend hold 127; M2 driver UX = timeline+profile+compare+weakness+flag)
+## Last updated: 2026-04-26T02:42Z (Cycle #194 — IDLE 40th consecutive + backend hold 128; M2/T009 skills drilldown)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 60dbf23 (M2/T008) | f005d57 (T122 pre-cascade) | **HELD 127 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 8** (T001-T003 timeline + T004 profile + T005-T006 Compare Case + T007 weakness detail + T008 flag-wrong) |
+| lap-backend | d7e8643 (M2/T009) | f005d57 (T122 pre-cascade) | **HELD 128 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 9** (T001-T003 timeline + T004 profile + T005-T006 Compare Case + T007 weakness + T008 flag-wrong + T009 skills drilldown) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -81,7 +81,8 @@
 - **c190**: IDLE 36th consecutive; backend hold UNCHANGED at 119; M1 complete signal; 190-cycle mark.
 - **c191**: IDLE 37th consecutive; backend hold +3 to 122 — M2 STARTED (T001-T003 driver timeline).
 - **c192**: IDLE 38th consecutive; backend hold +3 to 125 (M2/T004-T006 profile + Compare Case).
-- **c193 (this cycle)**: IDLE 39th consecutive; backend hold +2 to 127 (M2/T007 weakness detail composite + T008 flag-wrong with state-transition tests). M2 driver UX = timeline + profile + compare + weakness + flag-wrong.
+- **c193**: IDLE 39th consecutive; backend hold +2 to 127 (M2/T007 weakness detail + T008 flag-wrong).
+- **c194 (this cycle)**: IDLE 40th consecutive; backend hold +1 to 128 (M2/T009 GET /skills/:dimension drilldown).
 
 ## Review loop state
 
