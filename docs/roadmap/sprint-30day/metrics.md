@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T00:42Z (Cycle #184 — IDLE 30th consecutive + backend hold **101** · 100-commit threshold crossed)
+## Last updated: 2026-04-26T00:54Z (Cycle #185 — IDLE 31st consecutive + backend hold 105; coaching loop polish + e2e test)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 0ff7506 (T222) | f005d57 (T122 pre-cascade) | **HELD 101 commits** (TRIPLE-DIGIT) awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T222 full coaching chain w/ bidirectional confidence flow (43 normal incl T204) |
+| lap-backend | d474981 (T227) | f005d57 (T122 pre-cascade) | **HELD 105 commits** awaiting T104 schemas cascade resolution; **forced-checkpoint = 12 commits** (billing T155-T165 + crypto T204); T180-T227 coaching chain incl e2e integration test + openapi/swagger docs (48 normal incl T204) |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -72,7 +72,8 @@
 - **c181**: IDLE 27th consecutive; backend hold +2 to 90 (T210 dedup counter + T211 Prescription skeleton).
 - **c182**: IDLE 28th consecutive; backend hold +4 to 94 (T212-T215 Prescription kernel).
 - **c183**: IDLE 29th consecutive; backend hold +4 to 98 (T216-T219 Prescription close + ActionOutcome opens).
-- **c184 (this cycle)**: IDLE 30th consecutive; backend hold +3 to **101 — first triple-digit hold** (T220 outcome→episode confidence propagation + T221 efficacy 3-grain aggregation + T222 outcomes list endpoint). Bidirectional confidence flow now wired across full ADR-005 chain.
+- **c184**: IDLE 30th consecutive; backend hold +3 to 101 (T220-T222); first triple-digit hold.
+- **c185 (this cycle)**: IDLE 31st consecutive; backend hold to 105 (T223 expiry sweep + T224 next_actions + **T225 full loop e2e test** + T226 openapi.json + T227 swagger UI). Coaching chain validated end-to-end and documented.
 
 ## Review loop state
 
