@@ -274,7 +274,7 @@
 - [x] T234 [sonnet] Support email link in Help menu ⇒ opens mailto (be6bd88 — build_support_mailto + zero-arg default variant; QML Help-menu hookup is follow-up)
 - [x] T235 [sonnet] "About" dialog shows version, build, dependencies ⇒ renders (d280a07 — build_about_info + missing-dep handling; QML AboutDialog binding is follow-up)
 - [x] T236 [sonnet] Shortcut: Ctrl+Shift+R opens Restart with clean config for testing ⇒ works (a8aef36 — prepare_clean_restart helper + AppShell Ctrl+Shift+R Shortcut; QML restartVM bridge is follow-up)
-- [ ] T237 [sonnet] Shortcut: F1 opens help ⇒ works
+- [x] T237 [sonnet] Shortcut: F1 opens help ⇒ works (4b3236b — F1 already wired in AppShell.qml since T220; new drift test pins onActivated→shortcutHelp.visible contract)
 - [ ] T238 [sonnet] Shortcut: Ctrl+L clears log view ⇒ works
 - [ ] T239 [sonnet] Splash screen during boot with progress ⇒ visible
 - [ ] T240 [sonnet] Final smoke test on clean Win11 install: all features work ⇒ ship-ready
