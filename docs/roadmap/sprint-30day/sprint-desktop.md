@@ -238,7 +238,7 @@
 
 ## Block K — Tests + perf + misc (T201–T240)
 
-- [ ] T201 [sonnet] Integration test: full Practice session from sim-start → finalize ⇒ green
+- [x] T201 [sonnet] Integration test: full Practice session from sim-start → finalize ⇒ green (9e5c6e5)
 - [ ] T202 [sonnet] Integration test: full Sprint session ⇒ green
 - [ ] T203 [sonnet] Integration test: Endurance 30-min simulated session ⇒ green
 - [ ] T204 [sonnet] Integration test: iRacing adapter happy path ⇒ green
