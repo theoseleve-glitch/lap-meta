@@ -155,7 +155,7 @@
 - [x] T130 [sonnet] Click entry → navigate to session detail ⇒ works (a500e17)
 - [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes [BLOCKED: waiting on T113 — measuring LCP on a 50-session timeline requires the timeline page to actually render 50 sessions, which means `useTimeline()` must return real data. T113 is `[BLOCKED]` on T010+T031 typed client. T236 (75f5e3b prior sprint) already shipped the LCP <2.5s budget in `lighthouserc.json` for top-level routes, so the budget framework is in place; T131 just needs real data to flow through `/timeline` for the assertion to be meaningful. Lands once T113 unblocks.]
 - [x] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean (254ba15)
-- [ ] T133 [sonnet] Mobile: horizontal swipe tabs for filters ⇒ responsive
+- [x] T133 [sonnet] Mobile: horizontal swipe tabs for filters ⇒ responsive (877fb9d)
 - [ ] T134 [sonnet] E2E: timeline loads, filter by source, click entry ⇒ green
 - [ ] T135 [sonnet] PostHog: page_view + filter_applied + entry_clicked ⇒ visible
 
