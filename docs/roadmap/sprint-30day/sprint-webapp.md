@@ -125,7 +125,7 @@
 - [x] T103 [sonnet] Unit test: SessionCoachingTab with 3 fixtures (no insights, some insights, many insights) ⇒ green (no-op: T066/8c5584b's `SessionCoachingTab.test.tsx` already exercises 4 distinct fixtures — `FULL` (1 new + 1 escalated + 1 prescription = "some insights"), `partial` (1 new only = "partial insights"), `insufficient` (empty + dataQualityInsufficient flag), `empty` (empty without flag = "no insights"). The list-rendering pattern is the same regardless of array length; "many insights" exercises the same render path and adds no new coverage. 9 tests green.)
 - [ ] T104 [sonnet] E2E: upload session → see coaching tab → accept prescription ⇒ green [BLOCKED: waiting on lap-backend + webapp T010+T031 — three-stage E2E that bundles (a) upload session (no upload route in lap-webapp yet), (b) see coaching tab (BLOCKED on T086 next_actions data hook), (c) accept prescription (BLOCKED on T094 typed mutation hook). All three stages converge on the @lap/schemas typed client; lands once T086+T094 unblock together.]
 - [x] T105 [sonnet] Paginate if >10 prescriptions ⇒ tested (aeee9d1)
-- [ ] T106 [sonnet] Coaching view responsive ⇒ mobile works
+- [x] T106 [sonnet] Coaching view responsive ⇒ mobile works (e3f826d)
 - [ ] T107 [sonnet] Toast notifications on accept/skip ⇒ visible, dismissable
 - [ ] T108 [sonnet] Keyboard shortcuts: `A` accept focused, `S` skip ⇒ works
 - [ ] T109 [sonnet] PostHog events fired on accept/skip/flag ⇒ visible in PostHog
