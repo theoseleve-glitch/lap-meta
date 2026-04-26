@@ -5900,3 +5900,21 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-26T02:54:00Z — Cycle #195 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 130 + M2 session-coaching + flag canonicalization**
+
+### lap-backend (HEAD 5199e03 local; held 130) — CASCADE +2
+- 130 ahead, +2 since c194:
+  - M2/T010 GET /api/v1/sessions/:id/coaching aggregate (5963ca3) — composite endpoint returning all coaching outputs (insights, prescriptions) for a single session in one shot
+  - M2/T011 POST /api/v1/insights/:id/flag canonical URL (5199e03) — canonicalize flag endpoint to be insight-scoped (vs the prescription-scoped flag-wrong from M2/T008)
+- M2 surface = 11 commits. Driver-facing UX nearly complete: timeline + profile + compare + weakness + skills + flag (insight-level + prescription-level) + session-coaching aggregate.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 195 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 130 (M1 119 + M2 11).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 195 — IDLE (41st consecutive) + backend hold 130 (M2/T010 session-coaching aggregate + T011 insight flag canonical URL)` + review-log.md + metrics.md (header only).
+
+---
+
