@@ -230,7 +230,7 @@
 - [x] T193 [sonnet] License.txt packaged ⇒ visible in installer (d6cfb1b)
 - [x] T194 [sonnet] Privacy.txt packaged ⇒ visible (8a04e34)
 - [x] T195 [sonnet] Build matrix in CI: Windows 10 + 11 builds ⇒ green (d738f84)
-- [ ] T196 [sonnet] Smoke test installer on clean Windows VM ⇒ runs
+- [x] T196 [sonnet] Smoke test installer on clean Windows VM ⇒ runs (d4606e2)
 - [ ] T197 [sonnet] Uninstaller leaves no orphan files ⇒ verified
 - [ ] T198 [sonnet] Documentation in docs/ folder updated for new architecture ⇒ current
 - [ ] T199 [sonnet] README.md refreshed: install link, pair phone, first session ⇒ reviewed
