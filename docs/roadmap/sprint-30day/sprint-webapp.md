@@ -150,11 +150,11 @@
 - [x] T125 [sonnet] Empty state: "No sessions yet — upload your first" ⇒ rendered (455a6b4)
 - [x] T126 [sonnet] Loading: skeleton cards ⇒ shows (61d4e8f)
 - [x] T127 [sonnet] Error: retry ⇒ works (32b3640)
-- [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works
+- [ ] T128 [sonnet] Cursor-based pagination: load more on scroll ⇒ works [BLOCKED: waiting on T113 — cursor pagination needs the `useTimeline(cursor)` data hook to (a) accept a cursor param, (b) call the typed client's `GET /api/v1/sessions?cursor=...`, (c) expose `hasMore`/`nextCursor` to the rendering layer. Webapp T113 is `[BLOCKED]` on T010+T031 (typed client). The Virtuoso `endReached` callback (T115/f792cc8) is the natural integration point — it fires when the user scrolls within the configured threshold of the bottom and would call `useTimeline.fetchNextPage()`. Lands together with T113.]
 - [x] T129 [sonnet] Cache strategy: 5-min stale time, refetch on focus ⇒ configured (9293914)
 - [x] T130 [sonnet] Click entry → navigate to session detail ⇒ works (a500e17)
-- [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes
-- [ ] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean
+- [ ] T131 [sonnet] LCP <2s measured on 50-session timeline ⇒ Lighthouse passes [BLOCKED: waiting on T113 — measuring LCP on a 50-session timeline requires the timeline page to actually render 50 sessions, which means `useTimeline()` must return real data. T113 is `[BLOCKED]` on T010+T031 typed client. T236 (75f5e3b prior sprint) already shipped the LCP <2.5s budget in `lighthouserc.json` for top-level routes, so the budget framework is in place; T131 just needs real data to flow through `/timeline` for the assertion to be meaningful. Lands once T113 unblocks.]
+- [x] T132 [sonnet] A11y: card keyboard-navigable ⇒ axe clean (254ba15)
 - [ ] T133 [sonnet] Mobile: horizontal swipe tabs for filters ⇒ responsive
 - [ ] T134 [sonnet] E2E: timeline loads, filter by source, click entry ⇒ green
 - [ ] T135 [sonnet] PostHog: page_view + filter_applied + entry_clicked ⇒ visible
