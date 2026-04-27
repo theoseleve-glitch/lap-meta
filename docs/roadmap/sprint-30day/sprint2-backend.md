@@ -159,7 +159,7 @@
 - [x] T122 [opus] Rule `cs.min_speed.too_high_wide_line` ⇒ YAML + tests — sha: 32e21d3
 - [x] T123 [opus] Rule `cs.apex_miss.early_turn` ⇒ YAML + tests — sha: fe48cc7
 - [x] T124 [opus] Rule `cs.apex_miss.late_turn` ⇒ YAML + tests — sha: 729954e
-- [ ] T125 [opus] Rule `cs.line_variance.inconsistent_apex` ⇒ YAML + tests
+- [x] T125 [opus] Rule `cs.line_variance.inconsistent_apex` ⇒ YAML + tests — sha: f3a5006
 - [ ] T126 [opus] Rule `cs.rotation_lack.understeer_mid` ⇒ YAML + tests
 - [ ] T127 [opus] Rule `cs.rotation_excess.overrotation_exit` ⇒ YAML + tests
 - [ ] T128 [opus] Rule `cs.trail_brake_insufficient.rotation_missing` ⇒ YAML + tests
