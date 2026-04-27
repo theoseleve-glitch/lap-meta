@@ -155,7 +155,7 @@
 - [x] T120 [opus] Rule `th.exit_commit.confidence_deficit` ⇒ YAML + tests — sha: 3bcaacc
 
 ### Minimum speed / cornering (T121–T130)
-- [ ] T121 [opus] Rule `cs.min_speed.too_low_late_apex` ⇒ YAML + tests
+- [x] T121 [opus] Rule `cs.min_speed.too_low_late_apex` ⇒ YAML + tests — sha: 3b0c2ed
 - [ ] T122 [opus] Rule `cs.min_speed.too_high_wide_line` ⇒ YAML + tests
 - [ ] T123 [opus] Rule `cs.apex_miss.early_turn` ⇒ YAML + tests
 - [ ] T124 [opus] Rule `cs.apex_miss.late_turn` ⇒ YAML + tests
