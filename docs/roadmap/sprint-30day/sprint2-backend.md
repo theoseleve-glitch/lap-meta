@@ -150,7 +150,7 @@
 - [x] T115 [opus] Rule `th.throttle_lift.mid_corner` (involuntary lift) ⇒ YAML + tests — sha: 8907013
 - [x] T116 [opus] Rule `th.staircase_pattern.uneven_modulation` ⇒ YAML + tests — sha: f0ad38d
 - [x] T117 [opus] Rule `th.early_full.before_apex` ⇒ YAML + tests — sha: 383d8de
-- [ ] T118 [opus] Rule `th.full_throttle_underuse.straights` ⇒ YAML + tests
+- [x] T118 [opus] Rule `th.full_throttle_underuse.straights` ⇒ YAML + tests — sha: ceee125
 - [ ] T119 [opus] Rule `th.throttle_consistency.lap_variance` ⇒ YAML + tests
 - [ ] T120 [opus] Rule `th.exit_commit.confidence_deficit` ⇒ YAML + tests
 
