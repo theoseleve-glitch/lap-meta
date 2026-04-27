@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T13:31Z (Cycle #201 — IDLE 47th consecutive + backend hold 309 · +168 overnight; forced-checkpoint 12→17)
+## Last updated: 2026-04-27T13:43Z (Cycle #202 — IDLE 48th consecutive + backend hold 312; M2 wrap-up signal — Sprint 2 CHANGELOG + audit log + public docs)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 2dbe507 (M2/T196) | f005d57 (T122 pre-cascade) | **HELD 309 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 190** (huge surface: driver UX + admin/ops + Bridge Links + suggest_links + cohort/percentile + endurance + iRacing calendar + organizations multi-seat + B2B billing + security audit + DR + v2 router + perf + GDPR compliance); **forced-checkpoint expanded to 17** (M1 12 + M2 5: org-RBAC + multi-seat + B2B billing) plus 3 GDPR commits warrant human attention |
+| lap-backend | 968f54d (M2/T199) | f005d57 (T122 pre-cascade) | **HELD 312 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 193** (T001-T199: huge surface incl driver UX + admin/ops + Bridge Links + cohort/percentile + endurance + organizations + B2B billing + security audit + DR + v2 router + perf + GDPR + admin audit log + CHANGELOG); **forced-checkpoint = 17** (M1 12 + M2 5) plus 3 GDPR for human attention |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -89,7 +89,8 @@
 - **c198**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links CRUD+revoke).
 - **c199**: IDLE 45th consecutive; backend hold UNCHANGED at 138 (2nd non-advancing backend cycle).
 - **c200**: IDLE 46th consecutive; backend hold +3 to 141 (M2/T023-T025); 200-cycle milestone.
-- **c201 (this cycle)**: IDLE 47th consecutive; backend hold **+168 to 309** — large overnight batch (~9.5h, ~17 commits/hour). M2 surface expanded 22→190 across cohorts/endurance/orgs/B2B-billing/security-audit/GDPR. Forced-checkpoint surface expanded 12→17 (added M2 org-RBAC + multi-seat + B2B billing). Cascade-banking now stretched past optimal coherent-batch size.
+- **c201**: IDLE 47th consecutive; backend hold +168 to 309 (overnight batch); forced-checkpoint surface 12→17.
+- **c202 (this cycle)**: IDLE 48th consecutive; backend hold +3 to 312 (M2/T197 admin audit log + T198 Sprint 2 CHANGELOG + T199 public docs without auth/rate-limit). **M2 wrap-up signal** mirrors M1 closure pattern (T239 CHANGELOG).
 
 ## Review loop state
 
