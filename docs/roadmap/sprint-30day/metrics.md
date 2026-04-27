@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T19:07Z (Cycle #229 — 🛑 PAUSE_FOR_HUMAN_REVIEW PERSISTS · cycle 13 paused · 301 unreviewed sprint commits held)
+## Last updated: 2026-04-27T19:19Z (Cycle #230 — 🛑 PAUSE_FOR_HUMAN_REVIEW PERSISTS · cycle 14 paused · 230-cycle mark · 301 unreviewed sprint commits held)
 
 ## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE
 
