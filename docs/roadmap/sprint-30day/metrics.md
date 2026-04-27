@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T13:55Z (Cycle #203 — IDLE 49th consecutive + backend hold 313; M2/T200 load test pass 2 — 500 VUs)
+## Last updated: 2026-04-27T14:07Z (Cycle #204 — IDLE 50th consecutive + backend hold 313 UNCHANGED · 50-cycle review-idle streak milestone)
 
 ## Per-repo status (HEAD as of c154 push)
 
@@ -91,7 +91,8 @@
 - **c200**: IDLE 46th consecutive; backend hold +3 to 141 (M2/T023-T025); 200-cycle milestone.
 - **c201**: IDLE 47th consecutive; backend hold +168 to 309 (overnight batch); forced-checkpoint surface 12→17.
 - **c202**: IDLE 48th consecutive; backend hold +3 to 312 (M2/T197-T199 wrap-up signal mirrors M1).
-- **c203 (this cycle)**: IDLE 49th consecutive; backend hold +1 to 313 (M2/T200 load test pass 2 — 500 concurrent VUs validates pre-launch capacity, extends M1/T230-T231 k6 baseline).
+- **c203**: IDLE 49th consecutive; backend hold +1 to 313 (M2/T200 load test pass 2 — 500 VUs).
+- **c204 (this cycle)**: IDLE 50th consecutive (**50-cycle review-idle streak milestone** c155-c204, ~12.5h active loop time); **backend hold UNCHANGED at 313** — 3rd non-advancing backend cycle (c190, c199, c204). M2 likely at resting point near T200.
 
 ## Review loop state
 
