@@ -1,12 +1,12 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-26T03:54Z (Cycle #200 — IDLE 46th consecutive + backend hold 141 · 200-CYCLE MILESTONE)
+## Last updated: 2026-04-27T13:31Z (Cycle #201 — IDLE 47th consecutive + backend hold 309 · +168 overnight; forced-checkpoint 12→17)
 
 ## Per-repo status (HEAD as of c154 push)
 
 | Repo | HEAD (post-push) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 8dc92ee (M2/T025) | f005d57 (T122 pre-cascade) | **HELD 141 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 22** (T001-T011 driver UX + T012-T015 admin/ops + T019-T025 Bridge Links: CRUD+revoke+rating+RLS+GIN index) |
+| lap-backend | 2dbe507 (M2/T196) | f005d57 (T122 pre-cascade) | **HELD 309 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 190** (huge surface: driver UX + admin/ops + Bridge Links + suggest_links + cohort/percentile + endurance + iRacing calendar + organizations multi-seat + B2B billing + security audit + DR + v2 router + perf + GDPR compliance); **forced-checkpoint expanded to 17** (M1 12 + M2 5: org-RBAC + multi-seat + B2B billing) plus 3 GDPR commits warrant human attention |
 | lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
 | lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
 | lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
@@ -88,7 +88,8 @@
 - **c197**: IDLE 43rd consecutive; backend hold +1 to 134 (M2/T015 schemathesis zero-drift pin).
 - **c198**: IDLE 44th consecutive; backend hold +4 to 138 (M2/T019-T022 Bridge Links CRUD+revoke).
 - **c199**: IDLE 45th consecutive; backend hold UNCHANGED at 138 (2nd non-advancing backend cycle).
-- **c200 (this cycle)**: IDLE 46th consecutive; backend hold +3 to 141 (M2/T023 thumbs rating + T024 bridge RLS test + T025 GIN divergence_points index). 200-cycle milestone; idle streak ~11.5 hours wall-clock.
+- **c200**: IDLE 46th consecutive; backend hold +3 to 141 (M2/T023-T025); 200-cycle milestone.
+- **c201 (this cycle)**: IDLE 47th consecutive; backend hold **+168 to 309** — large overnight batch (~9.5h, ~17 commits/hour). M2 surface expanded 22→190 across cohorts/endurance/orgs/B2B-billing/security-audit/GDPR. Forced-checkpoint surface expanded 12→17 (added M2 org-RBAC + multi-seat + B2B billing). Cascade-banking now stretched past optimal coherent-batch size.
 
 ## Review loop state
 

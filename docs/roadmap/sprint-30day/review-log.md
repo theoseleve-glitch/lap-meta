@@ -6017,3 +6017,38 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-27T13:31:00Z — Cycle #201 — **⏸ IDLE (5/5 review repos at last-reviewed HEAD) + backend hold 309 + LARGE OVERNIGHT BATCH (+168 commits) + FORCED-CHECKPOINT EXPANSION**
+
+### lap-backend (HEAD 2dbe507 local; held 309) — CASCADE +168 — MAJOR EXPANSION
+- 309 ahead, **+168 since c200** — sprint loop ran continuously for ~9.5 hours producing 168 commits across multiple major surfaces. Hold has more than doubled.
+- High-level surface decomposition (sample, not exhaustive):
+  - **M2/T046-T049 Bridge suggest_links** (suggest-sharing endpoint w/ same-track ordering, 1h TTL cache, partial-comparison detection)
+  - **M2/T052-T057 cohort/percentile system** (`cohort_opt_in` privacy, anonymized cohort_metrics table, cohort ingestion job, k=20 minimum enforcement, per-dimension/per-(car+track) percentiles)
+  - **M2/T079-T088 endurance + target events + iRacing calendar** (90-min endurance pipeline, TargetEvent entity, iRacing calendar scraper + parser + Monday refresh cron)
+  - **M2/T165-T169 organizations + multi-seat billing** (org invite/accept, member removal, coach view-driver-profile + billing RBAC, Stripe multi-seat subscription proration)
+  - **M2/T177-T179 B2B billing surface** (B2B Stripe pricing tiers, 30-day trial for B2B orgs, B2B invoice PDF via Stripe) — **NEW FORCED-CHECKPOINT material per runbook line 343-348 (billing diff)**
+  - **M2/T180-T186 ops/security audit + DR** (org-flow integration test, security audit report, write-tier rate limit, secret rotation runbook, env-overridable CORS, backup-restore drill, disaster-recovery plan)
+  - **M2/T187-T193 v2 router + perf + observability** (ErrorCode StrEnum, v2 router scaffold, deprecation policy, N+1 fix in coach-dashboard, hot-query indexes, business-metric histograms, 5xx>0.5% alert)
+  - **M2/T194-T196 GDPR compliance** (export endpoint, **delete endpoint** [sensitive: data destruction], anonymize old sessions for opt-out drivers) — flag for human attention even though not strictly forced-checkpoint per runbook letter
+
+### Forced-checkpoint surface expansion
+- **Was**: 12 commits (M1/T155-T165 billing 11 + M1/T204 signed-bundle crypto 1)
+- **Now adds**: M2/T165 org invite-accept (auth-adjacent), M2/T166 member DELETE (auth), M2/T168 Stripe multi-seat proration (billing), M2/T169 billing RBAC (auth+billing), M2/T177-T179 B2B billing tiers/trial/invoice (billing×3) → **+5 new forced-checkpoint commits**
+- **New total**: **17 commits** require explicit human review at cascade-unblock; spread across M1 (12 billing+crypto) and M2 (5 org-billing/RBAC).
+- **Plus**: M2/T194-T196 GDPR compliance (3 commits) — runbook letter doesn't mandate forced-checkpoint, but data-deletion semantics + irreversibility warrant explicit human attention.
+
+### IDLE: lap-mobile-android (64a88e4), lap-website (1e34d87), lap-schemas (a837d89), lap-webapp (1ac2574), datalogger (b23fbdf).
+
+### Cycle 201 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = **309** (M1 119 + M2 190 — M2 surface expanded 22 → 190 in this cycle).
+
+### Diagnostics
+
+- **Cascade-banking pattern is now stretched past optimal "coherent batch" size**: at 309 commits, the eventual review burden is substantial. Recommendation logged here (not actionable by loop): consider asking user whether to surface a "cascade-status" alert when hold crosses 200 (was crossed silently between c184 and c201 at +168 in one window). The loop's role is to continue holding gates, not to push for unblock — but visibility into hold-size growth helps the human plan their review session.
+- 168 commits in 9.5h is ~17/hour sustained sprint-loop output. No verifications run by loop; sprint-loop's own gates (presumably its local pytest/ruff/mypy on each commit) are the only gate this batch passed through.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 201 — IDLE (47th consecutive) + backend hold 309 (+168 overnight: M2/T046-T196 cohorts/endurance/orgs/B2B-billing/security-audit/GDPR; forced-checkpoint surface expanded 12→17)` + review-log.md + metrics.md.
+
+---
+
