@@ -71,83 +71,83 @@
 - [x] T051 [opus] `DriverBenchmarkProfile` Pydantic + ORM entity ⇒ migration — sha: 32999fb (already landed via prior-sprint T069: schema, ORM, migration 76849f461d19, and round-trip tests in test_driver_benchmark_profile_model.py — verified green)
 - [x] T052 [opus] `cohort_opt_in` field on DriverProfile + privacy enforcement ⇒ only opt-in drivers' data flows to cohort — sha: ed4aa56
 - [x] T053 [opus] `PATCH /api/v1/driver/profile` to toggle cohort_opt_in ⇒ updates — sha: de6b6e0
-- [ ] T054 [opus] Anonymized metric store: `cohort_metrics` table with `{car_id, track_id, metric, value, session_time}`, NO driver_id ⇒ schema
-- [ ] T055 [opus] Cohort ingestion job: after each session, if opt-in, append metric rows ⇒ nightly or per-session
-- [ ] T056 [opus] Cohort minimum: compute percentile only if ≥20 distinct cohort members per {car_id, track_id, metric} ⇒ enforced
-- [ ] T057 [opus] Percentile compute: per-dimension, per-(car+track) ⇒ nightly aggregation
-- [ ] T058 [opus] `GET /api/v1/driver/benchmark` returns driver's percentile profile (null if cohort not unlocked) ⇒ tested
-- [ ] T059 [sonnet] Cohort size query endpoint: "how many drivers have this car+track combo?" ⇒ for UI messaging
-- [ ] T060 [sonnet] Archetype assignment: given percentiles, tag as `late_braker`, `smooth_flow`, etc. ⇒ rule-based
-- [ ] T061 [sonnet] Cohort privacy audit: test that querying another driver's percentile is impossible ⇒ proven
-- [ ] T062 [sonnet] Cohort data deletion: when driver opts out, purge their metric rows ⇒ tested
-- [ ] T063 [sonnet] Cohort refresh: percentiles recomputed weekly ⇒ cron
-- [ ] T064 [sonnet] Admin endpoint: `/api/v1/admin/cohort/status` shows size per cohort context ⇒ auth-gated
-- [ ] T065 [sonnet] Cohort unlock notifications: when a driver's cohort crosses 20 threshold, send event → triggers benchmark population ⇒ tested
+- [x] T054 [opus] Anonymized metric store: `cohort_metrics` table with `{car_id, track_id, metric, value, session_time}`, NO driver_id ⇒ schema — sha: 8a4ab12
+- [x] T055 [opus] Cohort ingestion job: after each session, if opt-in, append metric rows ⇒ nightly or per-session — sha: 32ec8fa
+- [x] T056 [opus] Cohort minimum: compute percentile only if ≥20 distinct cohort members per {car_id, track_id, metric} ⇒ enforced — sha: ab84885
+- [x] T057 [opus] Percentile compute: per-dimension, per-(car+track) ⇒ nightly aggregation — sha: bbeb84a
+- [x] T058 [opus] `GET /api/v1/driver/benchmark` returns driver's percentile profile (null if cohort not unlocked) ⇒ tested — sha: 6e5294d (lap-schemas: eb3fea5)
+- [x] T059 [sonnet] Cohort size query endpoint: "how many drivers have this car+track combo?" ⇒ for UI messaging — sha: 303ba91 (lap-schemas: 9105a6d)
+- [x] T060 [sonnet] Archetype assignment: given percentiles, tag as `late_braker`, `smooth_flow`, etc. ⇒ rule-based — sha: 6ad2749
+- [x] T061 [sonnet] Cohort privacy audit: test that querying another driver's percentile is impossible ⇒ proven — sha: 5badb8b
+- [x] T062 [sonnet] Cohort data deletion: when driver opts out, purge their metric rows ⇒ tested — sha: ce664d1
+- [x] T063 [sonnet] Cohort refresh: percentiles recomputed weekly ⇒ cron — sha: 63ee4a1
+- [x] T064 [sonnet] Admin endpoint: `/api/v1/admin/cohort/status` shows size per cohort context ⇒ auth-gated — sha: 821e196
+- [x] T065 [sonnet] Cohort unlock notifications: when a driver's cohort crosses 20 threshold, send event → triggers benchmark population ⇒ tested — sha: 6fe4895
 
 ## Block E — Endurance + long-run scoring (T066–T080)
 
-- [ ] T066 [opus] `endurance_event_id` field on SessionManifest ⇒ schema updated
-- [ ] T067 [opus] `EnduranceEvent` entity (id, event_name, total_duration, stint_count, driver_ids) ⇒ migration
-- [ ] T068 [opus] Stint detection: in long sessions, split into stints by pit-event markers ⇒ tested
-- [ ] T069 [opus] Stint record: per-stint laps, tire age, fuel used, lap-time decay ⇒ persisted
-- [ ] T070 [opus] Long-run consistency score: stddev of lap time over last N laps of each stint ⇒ tested
-- [ ] T071 [opus] Pace-decay score: slope of lap time over stint duration ⇒ tested
-- [ ] T072 [opus] Tire preservation score: tire-life proxy from fuel + pace decay ⇒ rule-based
-- [ ] T073 [opus] Endurance-weighted DriverProgressSnapshot (adds long-run dimensions) ⇒ tested
-- [ ] T074 [opus] Coaching rules specific to endurance (stint management, tire) ⇒ 5+ rules authored
-- [ ] T075 [sonnet] `GET /api/v1/endurance/events/:id` summary endpoint ⇒ tested
-- [ ] T076 [sonnet] `GET /api/v1/driver/endurance/history` list ⇒ tested
-- [ ] T077 [sonnet] Endurance-specific insights emitted: "your pace decay in hour 2 is 0.8s/lap — coolant management issue" ⇒ fires
-- [ ] T078 [sonnet] Long-run benchmarks (cohort, if opt-in): percentile of pace decay ⇒ available
-- [ ] T079 [sonnet] Endurance test: 90-min archive session scored correctly ⇒ validated
-- [ ] T080 [sonnet] Endurance edge cases: single-stint session, variable stint length ⇒ tested
+- [x] T066 [opus] `endurance_event_id` field on SessionManifest ⇒ schema updated — sha: 6e61e66 (lap-schemas)
+- [x] T067 [opus] `EnduranceEvent` entity (id, event_name, total_duration, stint_count, driver_ids) ⇒ migration — sha: 9853b07
+- [x] T068 [opus] Stint detection: in long sessions, split into stints by pit-event markers ⇒ tested — sha: 0189c24
+- [x] T069 [opus] Stint record: per-stint laps, tire age, fuel used, lap-time decay ⇒ persisted — sha: 0c70c7a
+- [x] T070 [opus] Long-run consistency score: stddev of lap time over last N laps of each stint ⇒ tested — sha: 1dd63bb
+- [x] T071 [opus] Pace-decay score: slope of lap time over stint duration ⇒ tested — sha: 47a7de6
+- [x] T072 [opus] Tire preservation score: tire-life proxy from fuel + pace decay ⇒ rule-based — sha: 0b27647
+- [x] T073 [opus] Endurance-weighted DriverProgressSnapshot (adds long-run dimensions) ⇒ tested — sha: 1791561 (lap-schemas: 8a06ca4)
+- [x] T074 [opus] Coaching rules specific to endurance (stint management, tire) ⇒ 5+ rules authored — sha: c9e1e1d
+- [x] T075 [sonnet] `GET /api/v1/endurance/events/:id` summary endpoint ⇒ tested — sha: a1c17bc (lap-schemas: 9d76055)
+- [x] T076 [sonnet] `GET /api/v1/driver/endurance/history` list ⇒ tested — sha: 931de7a (lap-schemas: 1095e7a)
+- [x] T077 [sonnet] Endurance-specific insights emitted: "your pace decay in hour 2 is 0.8s/lap — coolant management issue" ⇒ fires — sha: 6bb7fc4
+- [x] T078 [sonnet] Long-run benchmarks (cohort, if opt-in): percentile of pace decay ⇒ available — sha: 24102b6
+- [x] T079 [sonnet] Endurance test: 90-min archive session scored correctly ⇒ validated — sha: d0d47fe
+- [x] T080 [sonnet] Endurance edge cases: single-stint session, variable stint length ⇒ tested — sha: 84572fe
 
 ## Block F — Target events + calendar (T081–T095)
 
-- [ ] T081 [opus] `TargetEvent` entity (id, driver_id, source, event_name, track, car, date, priority) ⇒ migration
-- [ ] T082 [opus] `POST /api/v1/driver/target-events` pin a target ⇒ tested
-- [ ] T083 [opus] `DELETE /api/v1/driver/target-events/:id` unpin ⇒ tested
-- [ ] T084 [opus] `GET /api/v1/driver/target-events` list ⇒ tested
-- [ ] T085 [opus] iRacing calendar scraper: weekly fetch official series + special events ⇒ data stored
-- [ ] T086 [opus] Calendar parser: extract track, car class, start-end dates ⇒ tested
-- [ ] T087 [opus] Calendar refresh cron: Mondays 08:00 UTC ⇒ runs
-- [ ] T088 [opus] Real-life events (manual curation): user can add a track day ⇒ form endpoint
-- [ ] T089 [opus] Target-aware readiness: DriverReadinessState recomputed when event pinned/unpinned ⇒ tested
-- [ ] T090 [opus] Target-aware plan generation: ActionPrescription priority weighted by match to target ⇒ tested
-- [ ] T091 [opus] Target preparation milestones: "3 sessions until event" triggers specific prescriptions ⇒ rule
-- [ ] T092 [sonnet] Event suggestion: recommend events matching driver's history ⇒ algorithm
-- [ ] T093 [sonnet] Event countdown endpoint for UI ⇒ tested
-- [ ] T094 [sonnet] Event notification (via email) 24h and 1h before ⇒ scheduled via Celery
-- [ ] T095 [sonnet] Event post-mortem: after event, compare predicted readiness to actual performance ⇒ feedback loop
+- [x] T081 [opus] `TargetEvent` entity (id, driver_id, source, event_name, track, car, date, priority) ⇒ migration — sha: 05ee235
+- [x] T082 [opus] `POST /api/v1/driver/target-events` pin a target ⇒ tested — sha: d8bb25b (lap-schemas: a0b3104)
+- [x] T083 [opus] `DELETE /api/v1/driver/target-events/:id` unpin ⇒ tested — sha: 7ba491d
+- [x] T084 [opus] `GET /api/v1/driver/target-events` list ⇒ tested — sha: f68f6a4 (lap-schemas: 718be6e)
+- [x] T085 [opus] iRacing calendar scraper: weekly fetch official series + special events ⇒ data stored — sha: 16280b2
+- [x] T086 [opus] Calendar parser: extract track, car class, start-end dates ⇒ tested — sha: 0706b01
+- [x] T087 [opus] Calendar refresh cron: Mondays 08:00 UTC ⇒ runs — sha: 144e601
+- [x] T088 [opus] Real-life events (manual curation): user can add a track day ⇒ form endpoint — sha: 675b0b1 (lap-schemas: 2d83425)
+- [x] T089 [opus] Target-aware readiness: DriverReadinessState recomputed when event pinned/unpinned ⇒ tested — sha: 8e0538c
+- [x] T090 [opus] Target-aware plan generation: ActionPrescription priority weighted by match to target ⇒ tested — sha: f41f01b
+- [x] T091 [opus] Target preparation milestones: "3 sessions until event" triggers specific prescriptions ⇒ rule — sha: a35ce00
+- [x] T092 [sonnet] Event suggestion: recommend events matching driver's history ⇒ algorithm — sha: 2881e2f
+- [x] T093 [sonnet] Event countdown endpoint for UI ⇒ tested — sha: 5d635cd
+- [x] T094 [sonnet] Event notification (via email) 24h and 1h before ⇒ scheduled via Celery — sha: 6740026
+- [x] T095 [sonnet] Event post-mortem: after event, compare predicted readiness to actual performance ⇒ feedback loop — sha: a18c90c
 
 ## Block G — Strategy plan vs actual (T096–T110)
 
-- [ ] T096 [opus] `StrategyPlan` entity (id, session_id, planned_stints, planned_fuel, planned_pit_laps) ⇒ migration
-- [ ] T097 [opus] `StrategyEvent` entity (id, session_id, kind [plan, armed, pit, stint_end, fcy, sc], at_lap, details) ⇒ migration
-- [ ] T098 [opus] `POST /api/v1/sessions/:id/strategy/plan` set pre-race plan ⇒ tested
-- [ ] T099 [opus] `POST /api/v1/sessions/:id/strategy/events` append runtime event ⇒ tested
-- [ ] T100 [opus] `GET /api/v1/sessions/:id/strategy/timeline` combined plan+actual timeline ⇒ tested
-- [ ] T101 [opus] Plan-vs-actual divergence scoring: pit-lap delta, fuel delta, stint duration delta ⇒ computed
-- [ ] T102 [opus] Strategy execution score (0-100) per session ⇒ persisted
-- [ ] T103 [opus] Bundle v2 extension: strategy_section in manifest ⇒ tested round-trip
-- [ ] T104 [sonnet] Strategy insights: coaching emitted when execution <70 (e.g., "missed pit window by 3 laps") ⇒ rule
-- [ ] T105 [sonnet] Plan-vs-actual visualization data endpoint for webapp ⇒ tested
-- [ ] T106 [sonnet] Strategy history endpoint ⇒ lists recent sessions with execution scores
-- [ ] T107 [sonnet] Strategy templates: user can save "my Le Mans strategy" for reuse ⇒ CRUD
-- [ ] T108 [sonnet] FCY/SC event integration: strategy recalcs accounting for caution laps ⇒ tested
-- [ ] T109 [sonnet] Strategy simulation API: "what if I pitted 2 laps later?" ⇒ returns alt outcome
-- [ ] T110 [sonnet] Strategy tests vs archived endurance sessions ⇒ sensible outputs
+- [x] T096 [opus] `StrategyPlan` entity (id, session_id, planned_stints, planned_fuel, planned_pit_laps) ⇒ migration — sha: 5b326bf
+- [x] T097 [opus] `StrategyEvent` entity (id, session_id, kind [plan, armed, pit, stint_end, fcy, sc], at_lap, details) ⇒ migration — sha: 3ad897e
+- [x] T098 [opus] `POST /api/v1/sessions/:id/strategy/plan` set pre-race plan ⇒ tested — sha: b30021c
+- [x] T099 [opus] `POST /api/v1/sessions/:id/strategy/events` append runtime event ⇒ tested — sha: fac52e0
+- [x] T100 [opus] `GET /api/v1/sessions/:id/strategy/timeline` combined plan+actual timeline ⇒ tested — sha: 89115e4
+- [x] T101 [opus] Plan-vs-actual divergence scoring: pit-lap delta, fuel delta, stint duration delta ⇒ computed — sha: d0f0eef
+- [x] T102 [opus] Strategy execution score (0-100) per session ⇒ persisted — sha: c9255e9
+- [x] T103 [opus] Bundle v2 extension: strategy_section in manifest ⇒ tested round-trip — sha: 2ca91e5 (lap-schemas: ed73a66)
+- [x] T104 [sonnet] Strategy insights: coaching emitted when execution <70 (e.g., "missed pit window by 3 laps") ⇒ rule — sha: 04c5a1d
+- [x] T105 [sonnet] Plan-vs-actual visualization data endpoint for webapp ⇒ tested — sha: f903428 (lap-schemas: 52bfd03)
+- [x] T106 [sonnet] Strategy history endpoint ⇒ lists recent sessions with execution scores — sha: e5867ac (lap-schemas: fe5910b)
+- [x] T107 [sonnet] Strategy templates: user can save "my Le Mans strategy" for reuse ⇒ CRUD — sha: b871b05 (lap-schemas: 7aa5fb8)
+- [x] T108 [sonnet] FCY/SC event integration: strategy recalcs accounting for caution laps ⇒ tested — sha: cb2c069
+- [x] T109 [sonnet] Strategy simulation API: "what if I pitted 2 laps later?" ⇒ returns alt outcome — sha: d7d5c9d (lap-schemas: a038ef1)
+- [x] T110 [sonnet] Strategy tests vs archived endurance sessions ⇒ sensible outputs — sha: 2f68aed
 
 ## Block H — Coaching library expansion (T111–T160) — 50 new rules
 
 **Goal: go from ~10 rules (Sprint 1) to 60 total. Each task = 1 rule authored + tested against ≥3 archive sessions.**
 
 ### Throttle pickup (T111–T120)
-- [ ] T111 [opus] Rule `th.early_throttle.snap_oversteer` (early throttle causes rear slip) ⇒ YAML + tests
-- [ ] T112 [opus] Rule `th.late_throttle.exit_speed_loss` (late throttle loses exit momentum) ⇒ YAML + tests
-- [ ] T113 [opus] Rule `th.abrupt_pickup.traction_break` (binary on-off vs modulated) ⇒ YAML + tests
-- [ ] T114 [opus] Rule `th.partial_throttle.mid_corner` (coasting instead of committing) ⇒ YAML + tests
-- [ ] T115 [opus] Rule `th.throttle_lift.mid_corner` (involuntary lift) ⇒ YAML + tests
+- [x] T111 [opus] Rule `th.early_throttle.snap_oversteer` (early throttle causes rear slip) ⇒ YAML + tests — sha: 730244f
+- [x] T112 [opus] Rule `th.late_throttle.exit_speed_loss` (late throttle loses exit momentum) ⇒ YAML + tests — sha: 3adc438
+- [x] T113 [opus] Rule `th.abrupt_pickup.traction_break` (binary on-off vs modulated) ⇒ YAML + tests — sha: 89e2d8a
+- [x] T114 [opus] Rule `th.partial_throttle.mid_corner` (coasting instead of committing) ⇒ YAML + tests — sha: 21eada8
+- [x] T115 [opus] Rule `th.throttle_lift.mid_corner` (involuntary lift) ⇒ YAML + tests — sha: 8907013
 - [ ] T116 [opus] Rule `th.staircase_pattern.uneven_modulation` ⇒ YAML + tests
 - [ ] T117 [opus] Rule `th.early_full.before_apex` ⇒ YAML + tests
 - [ ] T118 [opus] Rule `th.full_throttle_underuse.straights` ⇒ YAML + tests
