@@ -6246,3 +6246,24 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-27T16:07:00Z — Cycle #214 — **⏸ IDLE (6/6 repos quiescent) + backend hold 313 UNCHANGED — 11th in a row · 60-CYCLE REVIEW-IDLE STREAK**
+
+### lap-backend (HEAD 9f7bba8 local; held 313) — CASCADE +0 (11th-in-a-row)
+
+### IDLE: all 6 repos at last-reviewed shas. Full-stack quiescence.
+
+### Cycle 214 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 313.
+
+### 60-cycle review-idle streak milestone (c155-c214)
+
+- 60 consecutive cycles with no new sprint commits in any of the 5 review repos
+- 11 consecutive cycles with no backend advancement either (c204-c214)
+- Backend hold accumulation during streak: 138 → 313 (+175 net)
+- Sprint-loop pattern: backend produced 175 commits across 49 of 60 cycles (active 82% of time during streak), then settled at T200; other 5 review repos produced 0 commits across all 60 cycles (0% activity)
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 214 — IDLE (60th consecutive) + backend hold 313 UNCHANGED · 11th-in-a-row · 60-cycle review-idle streak milestone` + review-log.md + metrics.md.
+
+---
+
