@@ -152,7 +152,7 @@
 - [x] T117 [opus] Rule `th.early_full.before_apex` ⇒ YAML + tests — sha: 383d8de
 - [x] T118 [opus] Rule `th.full_throttle_underuse.straights` ⇒ YAML + tests — sha: ceee125
 - [x] T119 [opus] Rule `th.throttle_consistency.lap_variance` ⇒ YAML + tests — sha: ca97fd1
-- [ ] T120 [opus] Rule `th.exit_commit.confidence_deficit` ⇒ YAML + tests
+- [x] T120 [opus] Rule `th.exit_commit.confidence_deficit` ⇒ YAML + tests — sha: 3bcaacc
 
 ### Minimum speed / cornering (T121–T130)
 - [ ] T121 [opus] Rule `cs.min_speed.too_low_late_apex` ⇒ YAML + tests
