@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T16:31Z (Cycle #216 — 🛑 PAUSE_FOR_HUMAN_REVIEW — 60-cycle drought ENDED · 301 unreviewed sprint commits queued · 15 forced-checkpoint commits triggered loop pause)
+## Last updated: 2026-04-27T16:43Z (Cycle #217 — 🛑 PAUSE_FOR_HUMAN_REVIEW PERSISTS · cycle 1 paused · 301 unreviewed sprint commits held)
 
 ## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE
 
