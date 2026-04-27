@@ -6167,3 +6167,17 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-27T15:07:00Z — Cycle #209 — **⏸ IDLE (6/6 repos quiescent) + backend hold 313 UNCHANGED — 6th in a row**
+
+### lap-backend (HEAD 9f7bba8 local; held 313) — CASCADE +0 (6th-in-a-row non-advancing)
+
+### IDLE: all 6 repos at last-reviewed shas.
+
+### Cycle 209 totals: 0 accepts, 0 reverts, 0 alerts. Backend hold = 313.
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 209 — IDLE (55th consecutive) + backend hold 313 UNCHANGED · 6th-in-a-row non-advancing backend cycle` + review-log.md + metrics.md (header only).
+
+---
+
