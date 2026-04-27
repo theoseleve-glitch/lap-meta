@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T15:07Z (Cycle #209 — IDLE 55th consecutive + backend hold 313 UNCHANGED · 6th-in-a-row non-advancing backend cycle)
+## Last updated: 2026-04-27T15:19Z (Cycle #210 — IDLE 56th consecutive + backend hold 313 UNCHANGED · 7th-in-a-row · 210-cycle mark)
 
 ## Per-repo status (HEAD as of c154 push)
 
@@ -13,10 +13,10 @@
 | lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
 | datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
 
-## Cumulative (200 cycles)
+## Cumulative (210 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos (46-cycle idle streak — no new reviews since c154)
-- Reverts (cumulative): **7** (~0.70% rate over 200 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (56-cycle idle streak — no new reviews since c154)
+- Reverts (cumulative): **7** (~0.67% rate over 210 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**
@@ -97,7 +97,8 @@
 - **c206**: IDLE 52nd consecutive; backend UNCHANGED at 313 (5th non-advancing, 3rd-in-a-row).
 - **c207**: IDLE 53rd consecutive; backend UNCHANGED at 313 (6th non-advancing, 4th-in-a-row).
 - **c208**: IDLE 54th consecutive; backend UNCHANGED at 313 (7th non-advancing, 5th-in-a-row).
-- **c209 (this cycle)**: IDLE 55th consecutive; backend UNCHANGED at 313 (8th non-advancing, **6th-in-a-row**).
+- **c209**: IDLE 55th consecutive; backend UNCHANGED at 313 (8th non-advancing, 6th-in-a-row).
+- **c210 (this cycle)**: IDLE 56th consecutive; backend UNCHANGED at 313 (9th non-advancing, **7th-in-a-row**); 210-cycle mark; full-stack quiescence ~1.4h active loop time.
 
 ## Review loop state
 
