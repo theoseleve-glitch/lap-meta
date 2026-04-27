@@ -1,22 +1,26 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T16:19Z (Cycle #215 — IDLE 61st consecutive + backend hold 313 UNCHANGED · 12th-in-a-row)
+## Last updated: 2026-04-27T16:31Z (Cycle #216 — 🛑 PAUSE_FOR_HUMAN_REVIEW — 60-cycle drought ENDED · 301 unreviewed sprint commits queued · 15 forced-checkpoint commits triggered loop pause)
 
-## Per-repo status (HEAD as of c154 push)
+## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE
 
-| Repo | HEAD (post-push) | Last reviewed sha | Notes |
+Trigger: token-handling + RBAC + payment-flow surface landed in mobile + schemas (runbook L344-345). Mobile auth T176/T177/T184-T190 (9), schemas org-RBAC T163-T167 (4), schemas billing T177 (1), mobile telemetry T224 (1) = 15 commits requiring human review. Loop will not auto-accept any commits until the user removes this marker AND `🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE` from review-log.md (~L6286). Alert fired (Resend `3fdf3f8a`).
+
+## Per-repo status (HEAD as of c216 detection — NOT pushed/tagged this cycle, awaiting human review)
+
+| Repo | HEAD (current) | Last reviewed sha | Notes |
 |---|---|---|---|
-| lap-backend | 9f7bba8 (M2/T200) | f005d57 (T122 pre-cascade) | **HELD 313 commits** awaiting T104 schemas cascade resolution; M1 119 (incl forced-checkpoint 12) + **M2 194** (T001-T200: huge surface incl driver UX + cohorts + endurance + orgs + B2B billing + security audit + DR + GDPR + load test pass 2 @ 500 VUs); **forced-checkpoint = 17** (M1 12 + M2 5) plus 3 GDPR for human attention |
-| lap-webapp | 1ac2574 (T236) | 1ac2574 (T236) | idle since c151 |
-| lap-schemas | a837d89 (Billing wire) | a837d89 | 3 consecutive clean schemas commits since T104 BLOCKED |
-| lap-mobile-android | 64a88e4 (T183) | 64a88e4 (T183) | T183 OfflineCapturePolicy reviewed in c154 |
-| lap-website | 1e34d87 (T152) | 1e34d87 (T152) | Pillar 3 §2 accepted; lint baseline flag (10 files) unchanged |
-| datalogger | b23fbdf (T151) | b23fbdf (T151) | T150+T151 reviewed in c154; 19-stable-failure baseline holds; 20-flake 4th recurrence |
+| lap-backend | 9f7bba8 (M2/T200) | f005d57 (T122 pre-cascade) | **HELD 313 commits** UNCHANGED 13th-in-a-row; T104 cascade unresolved; **forced-checkpoint = 17** (M1 12 + M2 5) plus 3 GDPR for human attention |
+| lap-webapp | ef45fd2 (T010 schemas install) | 1ac2574 (T236) | **+25 unreviewed** held by PAUSE — SessionDetail decomposition (T061-T078) + a11y/filters/virtualization (T081-T133) + workspace install (T010) |
+| lap-schemas | b311dd8 (T177 B2B billing) | a837d89 | **+49 unreviewed** held by PAUSE — TransferLink/Bridge/Coaching/Strategy/Endurance schemas + RBAC org-membership (T163-T167) + T177 B2B BillingPlan |
+| lap-mobile-android | 588f928 (T236 closed-beta-track) | 64a88e4 (T183) | **+64 unreviewed** held by PAUSE — auth surface (T176-T190) + dashboard (T192-T210) + rules engine (T211-T217) + Sentry/PostHog (T222-T223) + R8/Play Store (T232-T240) |
+| lap-website | 30458db (T051 dev-docs footer) | 1e34d87 (T152) | **+75 unreviewed** held by PAUSE — Pillar 3+4 publish + blog batches 1+2 + launch surface (T197-T220) |
+| datalogger | d9b0d23 (T239 boot splash) | b23fbdf (T151) | **+88 unreviewed** held by PAUSE — widget degraded states + sim adapters integration + PyInstaller/Inno Setup distribution + telemetry opt-in (T224) + drift-prevention pins |
 
-## Cumulative (210 cycles)
+## Cumulative (216 cycles)
 
-- Total reviewed: ~754+ sprint commits across 6 repos (56-cycle idle streak — no new reviews since c154)
-- Reverts (cumulative): **7** (~0.67% rate over 210 cycles)
+- Total reviewed: ~754+ sprint commits across 6 repos (61-cycle review-idle streak ENDED at c216 — drought broke with 301 unreviewed sprint commits queued; PAUSE_FOR_HUMAN_REVIEW prevents auto-accept)
+- Reverts (cumulative): **7** (~0.65% rate over 216 cycles)
   - c133: lap-webapp T233 (next/font spread macros — reworked c134 with inline literals at e0f6494)
   - c133/c134/c136: lap-schemas T104 — 3 reapplies all reverted (test fixture not updated alongside required-field additions); ESCALATED TO BLOCKED at c136 — awaiting human resolution
 - Pause-trigger alerts fired: **2**

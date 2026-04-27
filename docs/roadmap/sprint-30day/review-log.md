@@ -6281,3 +6281,77 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ---
 
+## 2026-04-27T16:31:00Z — Cycle #216 — **🛑 PAUSE_FOR_HUMAN_REVIEW — TOKEN-HANDLING + RBAC + PAYMENT-FLOW SURFACE LANDED**
+
+## 🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE
+
+**Runbook trigger fired** (loop-review.md L344-345):
+> Any change to `lap-backend/app/auth/*` or `lap-backend/app/billing/*`. Any diff touching cryptographic code, token handling, or payment flow.
+
+The 60-cycle review-idle streak (c155-c215) ENDED this cycle. All 5 review repos resumed activity simultaneously with **301 unreviewed sprint commits** queued. ~15 commits constitute **forced-checkpoint surface** (token-handling + RBAC + payment-flow). The runbook requires the loop to STOP and not auto-accept these commits.
+
+### Repo state at c216 (HEADs vs last-reviewed)
+
+| Repo | Last reviewed | HEAD | Unreviewed sprint commits |
+|---|---|---|---|
+| lap-backend | f005d57 | 9f7bba8 (T200) | 313 — held by T104 cascade (UNCHANGED 13th-in-a-row) |
+| lap-webapp | 1ac2574 | ef45fd2 (T010) | 25 (T061-T133, T010 schemas install) |
+| lap-schemas | a837d89 | b311dd8 (T177) | 49 (T093-T177) |
+| lap-mobile-android | 64a88e4 | 588f928 (T236) | 64 (T184-T240) |
+| lap-website | 1e34d87 | 30458db (T051) | 75 (T153-T220 + T051/T076/T080-T087/T096) |
+| datalogger | b23fbdf | d9b0d23 (T239) | 88 (T152-T239) |
+
+### Forced-checkpoint commits (REQUIRE HUMAN REVIEW before loop can advance)
+
+**Mobile auth + token handling (9 commits):**
+- T176 `8d816e8` Apple-sign-in-via-Clerk integration shape — Clerk SDK seam, fun-interface (token surface deferred)
+- T177 `d09c710` magic-link sign-in flow kernel — two-phase orchestrator (MagicLinkSender/Verifier)
+- T184 `a13876d` DeepLinkRouter + lap-pair intent filter
+- T185 `bb29430` App Links autoVerify intent filter for app.lap-coach.racing/pair
+- T186 `0f10d2d` SessionExpired modal preserves local data (auth-flow)
+- T187 `9dbd03a` AccountRepository multi-account scaffold
+- T188 `6981acf` BiometricLockPolicy + Settings toggle
+- T189 `871bd99` SyncMeProfileUseCase /me fetch + cache
+- T190 `65c00e8` AuthFlows integration + instrumented scaffold
+
+**Schemas RBAC + org-membership (4 commits):**
+- T163 `e31ce52` Organization + OrganizationCreate
+- T164 `b152fcf` OrganizationInvitation + OrgInviteRole
+- T165 `51ecbdd` OrganizationMembership
+- T167 `2c391c6` OrgRole / OrganizationMemberEntry / List
+
+**Schemas billing/payment (1 commit):**
+- T177 `b311dd8` add B2B tiers to BillingPlan literal
+
+**Privacy/PII gate (1 commit):**
+- mobile T224 `af26a35` telemetry opt-out toggle + decorators
+
+### What the user should review before resuming
+
+1. **lap-mobile-android auth surface (T176-T177, T184-T190)** — verify Clerk integration design, magic-link orchestration, multi-account model, biometric gate. Confirm fun-interface seams keep token surfaces off-classpath until backend agrees on URL/token format. Per runbook this is the strongest checkpoint trigger.
+2. **lap-schemas org-RBAC + B2B billing (T163-T167, T177)** — verify Organization/Membership/Invitation/Role shapes match doctrine; verify B2B billing tier addition won't break FE expectations. Note these are wire shapes only (Pydantic), no implementation.
+3. **lap-mobile-android telemetry opt-out (T224)** — privacy gate; decorator pattern for opting out PostHog/Sentry events.
+4. **Backend cascade**: T104 still BLOCKED. The 313 backend commits remain held. Resolution path unchanged.
+
+### Non-forced surface (held with PAUSE — NOT reviewed this cycle)
+
+- **Mobile** (55 of 64): R8 release/Play Store readiness (T232-T240), JVM perf benchmarks (T228-T232), Sentry/PostHog SDKs (T222-T223), dashboard widgets (T192-T210), accessibility (T206-T209), rules engine kernel (T211-T217), coaching UI (T218-T221), startup/repo tests (T225-T227), CHANGELOG (T239).
+- **Schemas** (44 of 49): pre-T163 schemas — TransferLink/Bridge/CompareCase/Skill/Coaching/Strategy/Endurance/Cohort/TargetEvent/TrackDay (T046-T088 + T093-T109) plus T171-T176 Coach/Org dashboards.
+- **Webapp** (25 of 25): SessionDetail decomposition (T061-T078), Skeleton/Error/Suspense (T075-T077), session-actions/paginate, A11y (T081-T083, T108), VirtualizedTimeline (T115), filters (T121-T122), TimelineEntry a11y (T132), mobile filter scroll (T133), schemas install (T010).
+- **Website** (75 of 75): Pillar 3 + Pillar 4 publish (T153-T170), blog batches 1+2 (T171-T196), launch landing pages (T197-T210), Reddit/Twitter/Discord/PH/LinkedIn drafts (T211-T219), audit gate (T220), mobile responsive demo (T080-T087), waitlist drip (T096), CTA (T076), dev-docs deep-links footer (T051).
+- **Datalogger** (88 of 88): widget degraded states (T152-T172), settings persistence (T173-T175), PyInstaller/Inno Setup distribution (T176-T184), update flow (T185-T188), wizard (T189-T193), CI matrix (T194-T197), uninstall audit (T197-T198), USER_GUIDE pin (T198), CHANGELOG (T200), sim adapters integration (T201-T210), perf budgets (T211-T214), drift-prevention (T215-T220), translations (T219), config migration (T221-T223), telemetry opt-in (T224), session metrics (T225-T226), platform docs refresh (T227-T230), log rotation (T231-T232), diagnostic bundle (T233), about-dialog (T234-T235), restart (T236), help drift (T237), boot splash (T239).
+
+### Step 11 — Alert fired
+
+`python ops/send_alert.py human-review-required "..."` → Resend ID `3fdf3f8a-b6f2-45cd-9701-2baf0e74aa1f` (2026-04-27T16:31Z).
+
+### Cycle 216 totals: 0 accepts, 0 reverts, 1 alert (human-review-required), PAUSE marker written. Backend hold = 313 (UNCHANGED).
+
+### Step 9 commit + push
+
+- `meta: review loop cycle 216 — 🛑 PAUSE_FOR_HUMAN_REVIEW — token-handling + RBAC + payment-flow surface landed in mobile + schemas after 60-cycle drought` + review-log.md + metrics.md.
+
+**To resume:** delete `## 🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE` heading from review-log.md (~L6286) and `## ⚠️ PAUSE_FOR_HUMAN_REVIEW ACTIVE` heading from metrics.md (~L5).
+
+---
+
