@@ -163,7 +163,7 @@
 - [x] T126 [opus] Rule `cs.rotation_lack.understeer_mid` ⇒ YAML + tests — sha: 2144196
 - [x] T127 [opus] Rule `cs.rotation_excess.overrotation_exit` ⇒ YAML + tests — sha: f0ed736
 - [x] T128 [opus] Rule `cs.trail_brake_insufficient.rotation_missing` ⇒ YAML + tests — sha: 10ebf55
-- [ ] T129 [opus] Rule `cs.steering_smoothness.saw_pattern` ⇒ YAML + tests
+- [x] T129 [opus] Rule `cs.steering_smoothness.saw_pattern` ⇒ YAML + tests — sha: b3c6d83
 - [ ] T130 [opus] Rule `cs.corner_speed.cohort_deficit` (requires cohort) ⇒ YAML + tests
 
 ### Consistency / racecraft (T131–T140)
