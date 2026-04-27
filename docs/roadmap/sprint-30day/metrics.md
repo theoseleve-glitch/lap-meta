@@ -1,6 +1,6 @@
 # Sprint Metrics — live snapshot
 
-## Last updated: 2026-04-27T15:19Z (Cycle #210 — IDLE 56th consecutive + backend hold 313 UNCHANGED · 7th-in-a-row · 210-cycle mark)
+## Last updated: 2026-04-27T15:31Z (Cycle #211 — IDLE 57th consecutive + backend hold 313 UNCHANGED · 8th-in-a-row)
 
 ## Per-repo status (HEAD as of c154 push)
 
@@ -98,7 +98,8 @@
 - **c207**: IDLE 53rd consecutive; backend UNCHANGED at 313 (6th non-advancing, 4th-in-a-row).
 - **c208**: IDLE 54th consecutive; backend UNCHANGED at 313 (7th non-advancing, 5th-in-a-row).
 - **c209**: IDLE 55th consecutive; backend UNCHANGED at 313 (8th non-advancing, 6th-in-a-row).
-- **c210 (this cycle)**: IDLE 56th consecutive; backend UNCHANGED at 313 (9th non-advancing, **7th-in-a-row**); 210-cycle mark; full-stack quiescence ~1.4h active loop time.
+- **c210**: IDLE 56th consecutive; backend UNCHANGED at 313 (9th non-advancing, 7th-in-a-row); 210-cycle mark.
+- **c211 (this cycle)**: IDLE 57th consecutive; backend UNCHANGED at 313 (10th non-advancing, **8th-in-a-row**).
 
 ## Review loop state
 
