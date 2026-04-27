@@ -162,7 +162,7 @@
 - [x] T125 [opus] Rule `cs.line_variance.inconsistent_apex` ⇒ YAML + tests — sha: f3a5006
 - [x] T126 [opus] Rule `cs.rotation_lack.understeer_mid` ⇒ YAML + tests — sha: 2144196
 - [x] T127 [opus] Rule `cs.rotation_excess.overrotation_exit` ⇒ YAML + tests — sha: f0ed736
-- [ ] T128 [opus] Rule `cs.trail_brake_insufficient.rotation_missing` ⇒ YAML + tests
+- [x] T128 [opus] Rule `cs.trail_brake_insufficient.rotation_missing` ⇒ YAML + tests — sha: 10ebf55
 - [ ] T129 [opus] Rule `cs.steering_smoothness.saw_pattern` ⇒ YAML + tests
 - [ ] T130 [opus] Rule `cs.corner_speed.cohort_deficit` (requires cohort) ⇒ YAML + tests
 
