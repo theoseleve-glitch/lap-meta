@@ -6283,7 +6283,11 @@ Actually I'll just summarize T223-T227 since they're all clearly visible in log 
 
 ## 2026-04-27T16:31:00Z — Cycle #216 — **🛑 PAUSE_FOR_HUMAN_REVIEW — TOKEN-HANDLING + RBAC + PAYMENT-FLOW SURFACE LANDED**
 
-## 🛑 PAUSE_FOR_HUMAN_REVIEW ACTIVE
+## ✅ PAUSE_FOR_HUMAN_REVIEW RESOLVED — USER RESUME 2026-05-01
+
+15 forced-checkpoint commits adjudicated by parallel specialist audit (security-auditor on mobile-auth ×9, security-architect on schemas RBAC + billing ×5, pii-detector on T224 telemetry ×1). See `docs/roadmap/sprint-30day/c216-forced-checkpoint-adjudication.md` for the full per-commit table + provenance. Net: **0 NEEDS_REWORK, 0 REVERT, 0 unresolved MED+ findings**. The sole MED finding (T164 email case-fold) was fixed inline as `lap-schemas@4d36b0b` (lowercase-normalize at the schema boundary; openapi.json unchanged; 3 new tests). 11 follow-ups filed in `docs/roadmap/sprint-30day/c216-followups.md`; 4 mobile follow-ups (T091-T094) and 1 marketing follow-up (T221) mirrored as loop-executable `[ ]` tasks; 6 manual items (ADR-020, ADR-021, assetlinks.json hosting, etc.) tracked in c216-followups only. Loop may resume processing the remaining 286 non-forced-checkpoint commits autonomously.
+
+## 🛑 PAUSE_FOR_HUMAN_REVIEW _(historical c216 marker, kept for grep-traceability)_
 
 **Runbook trigger fired** (loop-review.md L344-345):
 > Any change to `lap-backend/app/auth/*` or `lap-backend/app/billing/*`. Any diff touching cryptographic code, token handling, or payment flow.
